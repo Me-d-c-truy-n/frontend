@@ -11,10 +11,12 @@ import ButtonUtils from "../components/Button/ButtonUtils";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { SettingsContext } from "../contexts/SettingsContext";
+import SettingPopup from "../components/Popup/SettingPopup";
 
 const NovelChapter = () => {
   const { novelId, chapterId }  = useParams();
   const [novel, setNovel] = useState<INovelRoot | null>(null);
+  const [openSettingPopup, setOpenSettingPopup] = useState<boolean>(false);
   const { color, background, fontSize } = useContext(SettingsContext)!;
 
   useEffect(() =>{
@@ -44,6 +46,12 @@ const NovelChapter = () => {
 
   return (
     <div>
+      {
+        openSettingPopup && 
+      <SettingPopup
+        close ={() => setOpenSettingPopup(false)}
+      />
+      }
       <Slider/>
       <div className="flex flex-col justify-center items-center mt-2">
         <Link to={`/truyen/${novel.id}`} className="font-bold text-gray-900 text-xl capitalize hover:text-amber-700">{novel.name}</Link>
@@ -62,10 +70,11 @@ const NovelChapter = () => {
         </div>
 
         <div className="mt-6 flex gap-5">
-          <ButtonUtils func={()=>{}}>
+          <ButtonUtils func={()=>setOpenSettingPopup(true)}>
             <IoSettingsOutline />
             Cấu hình
           </ButtonUtils>
+
           <ButtonUtils func={()=>{}}>
             <MdOutlineFormatListBulleted/>
             Mục lục
