@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Slider from "../components/Slider"
 import { Link, useParams } from "react-router-dom";
 import { INovelRoot } from "../types/novel";
@@ -10,13 +10,15 @@ import ButtonUtils from "../components/Button/ButtonUtils";
 
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineFormatListBulleted } from "react-icons/md";
+import { SettingsContext } from "../contexts/SettingsContext";
 
 const NovelChapter = () => {
   const { novelId, chapterId }  = useParams();
   const [novel, setNovel] = useState<INovelRoot | null>(null);
+  const { color, background, fontSize } = useContext(SettingsContext)!;
 
   useEffect(() =>{
-    document.body.style.backgroundColor="#f8f8e3";
+    document.body.style.backgroundColor=background;
     
     function handleOnBeforeUnload(e: BeforeUnloadEvent) {
       e.preventDefault();
@@ -28,7 +30,7 @@ const NovelChapter = () => {
       window.removeEventListener('beforeunload', handleOnBeforeUnload);
       document.body.style.backgroundColor="#ffffff";
     };
-  },[])
+  },[background])
 
   useEffect(() => {
     novels['novel'].map(novel => {
@@ -70,7 +72,9 @@ const NovelChapter = () => {
           </ButtonUtils>
         </div>
       </div>
-      <div className="text-xl leading-10 my-10">
+      <div className="leading-10 my-10" 
+        style={{fontSize:fontSize, color: color}}
+      >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium ratione, maxime itaque similique suscipit quod aliquid dignissimos eaque quos recusandae mollitia! Earum ut doloribus facilis harum quia quibusdam consectetur?
         <br/>
         <br/>
