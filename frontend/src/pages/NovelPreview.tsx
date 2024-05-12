@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import novels from '../constants/novel.json';
+import novels from '../constants/novelDetail.json';
 import { useEffect, useState } from "react";
 import { INovelRoot } from "../types/novel";
 import Slider from "../components/Slider";
@@ -9,10 +9,10 @@ import TitleTabFull from "../components/TitleTabFull";
 const NovelPreview = () => {
   const { novelId }  = useParams();
   const [novel, setNovel] = useState<INovelRoot | null>(null);
-
+  console.log(novelId);
   useEffect(() => {
-    novels['novel'].map(novel => {
-      if (novel.id === novelId){
+    novels['novels'].map((novel: INovelRoot) => {
+      if (novel.novelId+'' === novelId){
         setNovel(novel);
       }
     })

@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import Slider from "../components/Slider"
-import { Link, useParams } from "react-router-dom";
-import { INovelRoot } from "../types/novel";
-import novels from '../constants/novel.json';
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { IChapter } from "../types/novel";
+import novels from '../constants/chapterList.json';
 
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
@@ -14,35 +14,43 @@ import { SettingsContext } from "../contexts/SettingsContext";
 import SettingPopup from "../components/Popup/SettingPopup";
 
 const NovelChapter = () => {
+  const navigate = useNavigate();
   const { novelId, chapterId }  = useParams();
-  const [novel, setNovel] = useState<INovelRoot | null>(null);
+  const [chapter, setChapter] = useState<IChapter | null>(null);
   const [openSettingPopup, setOpenSettingPopup] = useState<boolean>(false);
   const { color, background, fontSize } = useContext(SettingsContext)!;
 
   useEffect(() =>{
     document.body.style.backgroundColor=background;
-    
-    function handleOnBeforeUnload(e: BeforeUnloadEvent) {
-      e.preventDefault();
-    }
-
-    window.addEventListener('beforeunload', handleOnBeforeUnload)
-
     return () => {
-      window.removeEventListener('beforeunload', handleOnBeforeUnload);
       document.body.style.backgroundColor="#ffffff";
     };
   },[background])
 
   useEffect(() => {
-    novels['novel'].map(novel => {
-      if (novel.id === novelId){
-        setNovel(novel);
+    if (novelId == undefined || chapterId == undefined) return;
+
+    if (novels['chapter'][parseInt(novelId)-1] === undefined) return;
+
+    novels['chapter'][parseInt(novelId)-1][parseInt(novelId)]?.map((chapter: IChapter) => {
+      if (chapter.chapterId+'' === chapterId){
+        setChapter(chapter);
       }
     })
-  },[novel, novelId, chapterId])
 
-  if (novel === null) return <div>Loading...</div>
+  },[chapter, novelId, chapterId])
+
+  if (chapter === null || chapterId == undefined) return <div>Loading...</div>
+
+  const handleNextChapter =()=>{
+    if (chapterId === '3') navigate(`/truyen/${novelId}/1`)
+      navigate(`/truyen/${novelId}/${parseInt(chapterId) + 1}`)
+  }
+
+  const handlePrevChapter =()=>{
+    if (chapterId === '1') navigate(`/truyen/${novelId}`)
+      navigate(`/truyen/${novelId}/${parseInt(chapterId) - 1}`)
+  }
 
   return (
     <div>
@@ -54,17 +62,21 @@ const NovelChapter = () => {
       }
       <Slider/>
       <div className="flex flex-col justify-center items-center mt-2">
-        <Link to={`/truyen/${novel.id}`} className="font-bold text-gray-900 text-xl capitalize hover:text-amber-700">{novel.name}</Link>
-        <Link to={`/tac-gia/1`} className="text-gray-500">{novel.author}</Link>
+        <Link to={`/truyen/${chapter.novelId}`} className="font-bold text-gray-900 text-xl capitalize hover:text-amber-700">{chapter.novelName}</Link>
+        <Link to={`/tac-gia/${chapter.author.authorId}`} className="text-gray-500">{chapter.author.name}</Link>
 
         <div className="flex mt-6 items-center gap-4">
-          <button className="border flex items-center justify-center rounded-full p-1 text-amber-600 border-amber-600 hover:bg-amber-600 hover:text-white">
+          <button 
+          onClick={handlePrevChapter}
+          className="border flex items-center justify-center rounded-full p-1 text-amber-600 border-amber-600 hover:bg-amber-600 hover:text-white">
             <GrPrevious/>
           </button>
 
-          <div className="text-gray-700">Chương 1: võ hồn thế giới</div>
+          <div className="text-gray-700">{chapter.name}</div>
           
-          <button className="border flex items-center justify-center rounded-full p-1 text-amber-600 border-amber-600 hover:bg-amber-600 hover:text-white">
+          <button 
+          onClick={handleNextChapter}
+          className="border flex items-center justify-center rounded-full p-1 text-amber-600 border-amber-600 hover:bg-amber-600 hover:text-white">
             <GrNext/>
           </button>
         </div>
@@ -83,27 +95,8 @@ const NovelChapter = () => {
       </div>
       <div className="leading-10 my-10" 
         style={{fontSize:fontSize, color: color}}
+        dangerouslySetInnerHTML={{__html: chapter.content}}
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium ratione, maxime itaque similique suscipit quod aliquid dignissimos eaque quos recusandae mollitia! Earum ut doloribus facilis harum quia quibusdam consectetur?
-        <br/>
-        <br/>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt, nesciunt ipsum ex perspiciatis reprehenderit. Voluptate quod, asperiores, nemo est doloribus tenetur, neque animi necessitatibus reprehenderit aperiam consequuntur libero nulla.
-        <br/>
-        <br/>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. 
-        <br/>
-        <br/>
-        Quia culpa asperiores veniam, ad voluptatem in. Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-        <br/>
-        <br/>
-        Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.
-        <br/>
-        <br/>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum adipisci voluptatum numquam, odit earum illum velit dignissimos iure, obcaecati iusto eveniet nihil ullam aperiam asperiores animi sunt provident. Veniam, quia.
-        <br/>
-        Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.
-        <br/>
-        <br/>
       </div>
       <Slider/>
     </div>

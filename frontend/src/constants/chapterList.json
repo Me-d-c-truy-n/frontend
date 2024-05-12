@@ -1,0 +1,134 @@
+{
+  "chapter": [
+    {
+      "1": [
+        {
+          "novelId": 1,
+          "chapterId": 1,
+          "name": "Chương 1: võ hồn thế giới",
+          "novelName": "Thần Kiếm Vô Địch",
+          "total": 713,
+          "time": "2022-12-14 16:50:52",
+          "author": {
+            "authorId": 1,
+            "name": "Thần Kiến"
+          },
+          "content": "<p> Lorem ipsum dolor sit amet consectetur adipisicing elit.Sed praesentium ratione, maxime itaque similique suscipit quod aliquid dignissimos eaque quos recusandae mollitia! Earum ut doloribus facilis harum quia quibusdam consectetur?<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt, nesciunt ipsum ex perspiciatis reprehenderit. Voluptate quod, asperiores, nemo est doloribus tenetur, neque animi necessitatibus reprehenderit aperiam consequuntur libero nulla.<br/><br/>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. <br/><br/>Quia culpa asperiores veniam, ad voluptatem in Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br/><br/> Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum adipisci voluptatum numquam, odit earum illum velit dignissimos iure, obcaecati iusto eveniet nihil ullam aperiam asperiores animi sunt provident. Veniam, quia.<br/>Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/></p>"
+        },
+        {
+          "novelId": 1,
+          "chapterId": 2,
+          "name": "Chương 2: Gia gia bất công",
+          "novelName": "Thần Kiếm Vô Địch",
+          "total": 713,
+          "time": "2022-12-14 16:50:52",
+          "author": {
+            "authorId": 1,
+            "name": "Thần Kiến"
+          },
+          "content": "<p> Lorem ipsum dolor sit amet consectetur adipisicing elit.Sed praesentium ratione, maxime itaque similique suscipit quod aliquid dignissimos eaque quos recusandae mollitia! Earum ut doloribus facilis harum quia quibusdam consectetur?<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt, nesciunt ipsum ex perspiciatis reprehenderit. Voluptate quod, asperiores, nemo est doloribus tenetur, neque animi necessitatibus reprehenderit aperiam consequuntur libero nulla.<br/><br/>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. <br/><br/>Quia culpa asperiores veniam, ad voluptatem in Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br/><br/> Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum adipisci voluptatum numquam, odit earum illum velit dignissimos iure, obcaecati iusto eveniet nihil ullam aperiam asperiores animi sunt provident. Veniam, quia.<br/>Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/></p>"
+        },
+        {
+          "novelId": 1,
+          "chapterId": 3,
+          "name": "Chương 3: Muội muội bị đánh",
+          "novelName": "Thần Kiếm Vô Địch",
+          "total": 713,
+          "time": "2022-12-14 16:50:52",
+          "author": {
+            "authorId": 1,
+            "name": "Thần Kiến"
+          },
+          "content": "<p> Lorem ipsum dolor sit amet consectetur adipisicing elit.Sed praesentium ratione, maxime itaque similique suscipit quod aliquid dignissimos eaque quos recusandae mollitia! Earum ut doloribus facilis harum quia quibusdam consectetur?<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt, nesciunt ipsum ex perspiciatis reprehenderit. Voluptate quod, asperiores, nemo est doloribus tenetur, neque animi necessitatibus reprehenderit aperiam consequuntur libero nulla.<br/><br/>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. <br/><br/>Quia culpa asperiores veniam, ad voluptatem in Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br/><br/> Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum adipisci voluptatum numquam, odit earum illum velit dignissimos iure, obcaecati iusto eveniet nihil ullam aperiam asperiores animi sunt provident. Veniam, quia.<br/>Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/></p>"
+        }
+      ]
+    },
+    {
+      "2": [
+        {
+          "novelId": 2,
+          "chapterId": 1,
+          "name": "Chương 01: Tam Quỷ Gia (thượng)",
+          "novelName": "Đế Bá",
+          "total": 7134,
+          "time": "2022-12-14 16:50:52",
+          "author": {
+            "authorId": 2,
+            "name": "Yếm Bút Tiêu Sinh"
+          },
+          "content": "<p> Lorem ipsum dolor sit amet consectetur adipisicing elit.Sed praesentium ratione, maxime itaque similique suscipit quod aliquid dignissimos eaque quos recusandae mollitia! Earum ut doloribus facilis harum quia quibusdam consectetur?<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt, nesciunt ipsum ex perspiciatis reprehenderit. Voluptate quod, asperiores, nemo est doloribus tenetur, neque animi necessitatibus reprehenderit aperiam consequuntur libero nulla.<br/><br/>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. <br/><br/>Quia culpa asperiores veniam, ad voluptatem in Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br/><br/> Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum adipisci voluptatum numquam, odit earum illum velit dignissimos iure, obcaecati iusto eveniet nihil ullam aperiam asperiores animi sunt provident. Veniam, quia.<br/>Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/></p>"
+        },
+        {
+          "novelId": 2,
+          "chapterId": 2,
+          "name": "Chương 02: Tam Quỷ Gia (hạ)",
+          "novelName": "Đế Bá",
+          "total": 7134,
+          "time": "2022-12-14 16:50:52",
+          "author": {
+            "authorId": 2,
+            "name": "Yếm Bút Tiêu Sinh"
+          },
+          "content": "<p> Lorem ipsum dolor sit amet consectetur adipisicing elit.Sed praesentium ratione, maxime itaque similique suscipit quod aliquid dignissimos eaque quos recusandae mollitia! Earum ut doloribus facilis harum quia quibusdam consectetur?<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt, nesciunt ipsum ex perspiciatis reprehenderit. Voluptate quod, asperiores, nemo est doloribus tenetur, neque animi necessitatibus reprehenderit aperiam consequuntur libero nulla.<br/><br/>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. <br/><br/>Quia culpa asperiores veniam, ad voluptatem in Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br/><br/> Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum adipisci voluptatum numquam, odit earum illum velit dignissimos iure, obcaecati iusto eveniet nihil ullam aperiam asperiores animi sunt provident. Veniam, quia.<br/>Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/></p>"
+        },
+        {
+          "novelId": 2,
+          "chapterId": 3,
+          "name": "Chương 03: Tẩy Nhan Cổ Phái (thượng)",
+          "novelName": "Đế Bá",
+          "total": 7134,
+          "time": "2022-12-14 16:50:52",
+          "author": {
+            "authorId": 2,
+            "name": "Yếm Bút Tiêu Sinh"
+          },
+          "content": "<p> Lorem ipsum dolor sit amet consectetur adipisicing elit.Sed praesentium ratione, maxime itaque similique suscipit quod aliquid dignissimos eaque quos recusandae mollitia! Earum ut doloribus facilis harum quia quibusdam consectetur?<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt, nesciunt ipsum ex perspiciatis reprehenderit. Voluptate quod, asperiores, nemo est doloribus tenetur, neque animi necessitatibus reprehenderit aperiam consequuntur libero nulla.<br/><br/>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. <br/><br/>Quia culpa asperiores veniam, ad voluptatem in Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br/><br/> Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum adipisci voluptatum numquam, odit earum illum velit dignissimos iure, obcaecati iusto eveniet nihil ullam aperiam asperiores animi sunt provident. Veniam, quia.<br/>Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/></p>"
+        }
+      ]
+    },
+    {
+      "3": [
+        {
+          "novelId": 3,
+          "chapterId": 1,
+          "name": "Chương 1: Đáng sợ thế giới",
+          "novelName": "Thần Thoại Kỷ Nguyên, Ta Tiến Hóa Thành Hằng Tinh Cấp Cự Thú",
+          "total": 663,
+          "time": "2022-12-14 16:50:52",
+          "author": {
+            "authorId": 3,
+            "name": "Quần Ngọc Sơn Đầu Kiến"
+          },
+          "content": "<p> Lorem ipsum dolor sit amet consectetur adipisicing elit.Sed praesentium ratione, maxime itaque similique suscipit quod aliquid dignissimos eaque quos recusandae mollitia! Earum ut doloribus facilis harum quia quibusdam consectetur?<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt, nesciunt ipsum ex perspiciatis reprehenderit. Voluptate quod, asperiores, nemo est doloribus tenetur, neque animi necessitatibus reprehenderit aperiam consequuntur libero nulla.<br/><br/>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. <br/><br/>Quia culpa asperiores veniam, ad voluptatem in Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br/><br/> Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum adipisci voluptatum numquam, odit earum illum velit dignissimos iure, obcaecati iusto eveniet nihil ullam aperiam asperiores animi sunt provident. Veniam, quia.<br/>Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/></p>"
+        },
+        {
+          "novelId": 3,
+          "chapterId": 2,
+          "name": "Chương 2: Thiên phú",
+          "novelName": "Thần Thoại Kỷ Nguyên, Ta Tiến Hóa Thành Hằng Tinh Cấp Cự Thú",
+          "total": 663,
+          "time": "2022-12-14 16:50:52",
+          "author": {
+            "authorId": 3,
+            "name": "Quần Ngọc Sơn Đầu Kiến"
+          },
+          "content": "<p> Lorem ipsum dolor sit amet consectetur adipisicing elit.Sed praesentium ratione, maxime itaque similique suscipit quod aliquid dignissimos eaque quos recusandae mollitia! Earum ut doloribus facilis harum quia quibusdam consectetur?<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt, nesciunt ipsum ex perspiciatis reprehenderit. Voluptate quod, asperiores, nemo est doloribus tenetur, neque animi necessitatibus reprehenderit aperiam consequuntur libero nulla.<br/><br/>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. <br/><br/>Quia culpa asperiores veniam, ad voluptatem in Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br/><br/> Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum adipisci voluptatum numquam, odit earum illum velit dignissimos iure, obcaecati iusto eveniet nihil ullam aperiam asperiores animi sunt provident. Veniam, quia.<br/>Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/></p>"
+        },
+        {
+          "novelId": 3,
+          "chapterId": 3,
+          "name": "Chương 3: PY quan hệ",
+          "novelName": "Thần Thoại Kỷ Nguyên, Ta Tiến Hóa Thành Hằng Tinh Cấp Cự Thú",
+          "total": 663,
+          "time": "2022-12-14 16:50:52",
+          "author": {
+            "authorId": 3,
+            "name": "Quần Ngọc Sơn Đầu Kiến"
+          },
+          "content": "<p> Lorem ipsum dolor sit amet consectetur adipisicing elit.Sed praesentium ratione, maxime itaque similique suscipit quod aliquid dignissimos eaque quos recusandae mollitia! Earum ut doloribus facilis harum quia quibusdam consectetur?<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt, nesciunt ipsum ex perspiciatis reprehenderit. Voluptate quod, asperiores, nemo est doloribus tenetur, neque animi necessitatibus reprehenderit aperiam consequuntur libero nulla.<br/><br/>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. <br/><br/>Quia culpa asperiores veniam, ad voluptatem in Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br/><br/> Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum adipisci voluptatum numquam, odit earum illum velit dignissimos iure, obcaecati iusto eveniet nihil ullam aperiam asperiores animi sunt provident. Veniam, quia.<br/>Esse, architecto sequi blanditiis error veritatis aliquid quod culpa necessitatibus eligendi, eaque voluptatum quia dolore. Quia culpa asperiores veniam, ad voluptatem in.<br/><br/></p>"
+        }
+      ]
+    }
+
+  ]
+}
