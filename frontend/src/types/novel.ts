@@ -11,6 +11,15 @@ export interface INovelRoot {
   description: string;
 }
 
+export interface IChapterRoot {
+  novelId: number;
+  chapterId: number;
+  name: string;
+  novelName: string;
+  total: number;
+  time: string;
+}
+
 export interface IChapter {
   novelId: number;
   chapterId: number;

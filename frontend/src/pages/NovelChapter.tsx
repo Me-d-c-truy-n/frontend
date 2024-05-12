@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Slider from "../components/Slider"
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { IChapter } from "../types/novel";
+import { IChapter, IChapterRoot } from "../types/novel";
 import novels from '../constants/chapterList.json';
 
 import { GrNext } from "react-icons/gr";
@@ -13,12 +13,16 @@ import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { SettingsContext } from "../contexts/SettingsContext";
 import SettingPopup from "../components/Popup/SettingPopup";
 import { HistoryContext } from "../contexts/HistoryContext";
+import ChapterPopup from "../components/Popup/ChapterPopup";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
   const { novelId, chapterId }  = useParams();
   const [chapter, setChapter] = useState<IChapter | null>(null);
   const [openSettingPopup, setOpenSettingPopup] = useState<boolean>(false);
+  const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
+  const [chapters, setChapters] = useState<IChapterRoot[]>([]);
+
   const { color, background, fontSize } = useContext(SettingsContext)!;
   const { updateNovelReaded } = useContext(HistoryContext)!;
 
@@ -34,6 +38,7 @@ const NovelChapter = () => {
 
     if (novels['chapter'][parseInt(novelId)-1] === undefined) return;
 
+    setChapters(novels['chapter'][parseInt(novelId)-1][parseInt(novelId)]);
     novels['chapter'][parseInt(novelId)-1][parseInt(novelId)]?.map((chapter: IChapter) => {
       if (chapter.chapterId+'' === chapterId){
         setChapter(chapter);
@@ -47,6 +52,7 @@ const NovelChapter = () => {
       }
     })
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[chapter, novelId, chapterId])
 
   if (chapter === null || chapterId == undefined) return <div>Loading...</div>
@@ -67,6 +73,13 @@ const NovelChapter = () => {
         openSettingPopup && 
       <SettingPopup
         close ={() => setOpenSettingPopup(false)}
+      />
+      }
+      {
+        openChapterPopup && 
+      <ChapterPopup
+        close ={() => setOpenChapterPopup(false)}
+        chapters = {chapters}
       />
       }
       <Slider/>
@@ -96,7 +109,7 @@ const NovelChapter = () => {
             Cấu hình
           </ButtonUtils>
 
-          <ButtonUtils func={()=>{}}>
+          <ButtonUtils func={()=>setOpenChapterPopup(true)}>
             <MdOutlineFormatListBulleted/>
             Mục lục
           </ButtonUtils>
