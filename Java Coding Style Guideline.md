@@ -13,8 +13,8 @@ Java Coding Style Guideline
 **Table of Contents**
 
 - [1 Source file basics](#1-source-file-basics)
-  - [1.2 File name](#12-file-name)
-  - [1.3 File encoding](#13-file-encoding)
+  - [1.1 File name](#11-file-name)
+  - [1.2 File encoding](#12-file-encoding)
 - [2 Source file structure](#2-source-file-structure)
   - [2.1 License or copyright information](#21-license-or-copyright-information)
   - [2.2 Package statement](#22-package-statement)
