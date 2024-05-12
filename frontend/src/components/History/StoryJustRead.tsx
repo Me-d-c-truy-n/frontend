@@ -1,13 +1,16 @@
+import { useContext } from "react";
 import TitleTab from "../TitleTab";
-import data from '../../constants/history.json';
 import StoryHistoryRow from "./StoryHistoryRow";
+import { HistoryContext } from "../../contexts/HistoryContext";
 
 const StoryJustRead = () => {
+  const { novels } = useContext(HistoryContext)!;
+
   return (
       <div className="mb-10">
         <TitleTab name="TRUYỆN VỪA ĐỌC" link="/"/>
         {
-          data['history'].map((hs,idx) =>
+          novels.map((hs,idx) =>
             <StoryHistoryRow 
               key={idx}
               data={hs}

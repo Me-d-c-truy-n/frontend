@@ -1,7 +1,7 @@
 export interface IHistoryRoot {
   time: string;
   name: string;
-  url: string;
+  novelId: number;
+  chapterId: number;
   totalChapter: number;
-  readed: number;
 }

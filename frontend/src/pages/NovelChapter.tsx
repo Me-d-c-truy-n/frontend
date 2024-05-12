@@ -12,6 +12,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { SettingsContext } from "../contexts/SettingsContext";
 import SettingPopup from "../components/Popup/SettingPopup";
+import { HistoryContext } from "../contexts/HistoryContext";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const NovelChapter = () => {
   const [chapter, setChapter] = useState<IChapter | null>(null);
   const [openSettingPopup, setOpenSettingPopup] = useState<boolean>(false);
   const { color, background, fontSize } = useContext(SettingsContext)!;
+  const { updateNovelReaded } = useContext(HistoryContext)!;
 
   useEffect(() =>{
     document.body.style.backgroundColor=background;
@@ -35,6 +37,13 @@ const NovelChapter = () => {
     novels['chapter'][parseInt(novelId)-1][parseInt(novelId)]?.map((chapter: IChapter) => {
       if (chapter.chapterId+'' === chapterId){
         setChapter(chapter);
+        updateNovelReaded({
+          time: (new Date).toString(),
+          name: chapter.novelName,
+          novelId: chapter.novelId,
+          chapterId: chapter.chapterId,
+          totalChapter: chapter.total
+        })
       }
     })
 
