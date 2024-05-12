@@ -15,7 +15,7 @@ const SettingPopup = ({ close }: Props) => {
     setFontSize("25px");
   } 
   return (
-    <div className="fixed left-0 mt-2 top-0 w-full">
+    <div className="z-10 fixed left-0 mt-2 top-0 w-full">
       <div className="shadow-2xl p-5 w-11/12 md:w-6/12 mx-auto border rounded-lg border-amber-600"
       style={{backgroundColor: background, color: color}}
       >
