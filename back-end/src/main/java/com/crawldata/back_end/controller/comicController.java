@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/truyenfull")
@@ -38,6 +39,16 @@ public class comicController {
     {
         ChapterDetail chapterDetail = truyenFullService.getDetailChapter(idNovel,idChapter);
         dataResponse result = new dataResponse("success",1,1,"",chapterDetail);
+        return ResponseEntity.ok(result);
+    }
+
+    //get all chapters of novel
+    @GetMapping("{idNovel}/all")
+    public ResponseEntity<?> getAllChapters( @PathVariable("idNovel") String idNovel
+    ) throws IOException
+    {
+        List<Chapter> chapters = truyenFullService.getAllChapters(idNovel);
+        dataResponse result = new dataResponse("success",1,1,"",chapters);
         return ResponseEntity.ok(result);
     }
 }

@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Chapter {
+    String novelId;
+    String novelName;
     String chapterId;
-    String link;
+    String name;
+    Integer total;
+    Author author;
 }

@@ -12,7 +12,7 @@ public class ChapterDetail {
     String novelId;
     String novelName;
     String chapterId;
-    String chapterName;
+    String name;
     Integer total;
     Author author;
     String content;
