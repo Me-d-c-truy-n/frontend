@@ -10,7 +10,7 @@ interface Props {
 const ChapterPopup = ({ close, chapters }: Props) => {
   
   return (
-    <div className="fixed left-0 mt-0 top-0 w-full h-screen bg-gray-400">
+    <div className="fixed left-0 mt-0 z-10 top-0 w-full h-screen bg-gray-400">
       <div className="shadow-2xl p-4 w-11/12 lg:w-8/12 mx-auto border rounded-lg border-amber-600 bg-amber-50 pb-10"
       >
         <div className='flex justify-between items-center mb-10 border-b pb-6'>

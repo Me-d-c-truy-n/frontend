@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { INovelRoot } from "../../types/novel"
 import { HiUser } from "react-icons/hi2";
-import { GoStack } from "react-icons/go";
 
 const BoxNovelAuthor = ({ novel }: {novel: INovelRoot}) => {
   return (
@@ -23,12 +22,9 @@ const BoxNovelAuthor = ({ novel }: {novel: INovelRoot}) => {
             {novel.totalChapter}{" chương"}
           </div>
         </div>
-        <div className="flex mb-5 justify-between items-center">
-          <div className="text-slate-600 flex gap-2 items-center text-sm">
-            <GoStack />
-            <Link to={'/'} className="font-medium hover:text-amber-700">{novel.category[0]}</Link>
-          </div>
-            <Link to={`/truyen/${novel.id}`} className="bg-amber-700 text-white px-2 rounded-md text-sm py-1 text-sm">
+        <div className="flex mb-5 justify-end items-center">
+          
+            <Link to={`/truyen/${novel.id}`} className="bg-amber-700 text-white px-2 rounded-md text-sm py-1">
               Đọc thử
             </Link>
         </div>

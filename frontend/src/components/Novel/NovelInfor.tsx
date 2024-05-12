@@ -5,7 +5,6 @@ import ButtonUtils from "../Button/ButtonUtils"
 import { FiBookOpen } from "react-icons/fi";
 import { MdOutlineFormatListBulleted } from "react-icons/md";
 import Specifications from "./Specifications";
-import ButtonCategory from "./ButtonCategory";
 
 const NovelInfor = ({ novel }: {novel:INovelRoot}) => {
   const navigate = useNavigate();
@@ -28,13 +27,14 @@ const NovelInfor = ({ novel }: {novel:INovelRoot}) => {
           </ButtonUtils>
           <ButtonUtils
             func={()=>{}}
+            count={novel.total}
           >
               <MdOutlineFormatListBulleted/>
               Mục lục
           </ButtonUtils>
         </div>
         <Specifications/>
-        <div className="flex flex-wrap gap-5 mt-8">
+        {/* <div className="flex flex-wrap gap-5 mt-8">
           {
             novel.category.map((cat, idx) => 
               <ButtonCategory key={idx} name={cat.name}
@@ -42,7 +42,7 @@ const NovelInfor = ({ novel }: {novel:INovelRoot}) => {
               />
             )
           }
-        </div>
+        </div> */}
         
       </div>
     </div>

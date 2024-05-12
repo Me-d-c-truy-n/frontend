@@ -24,7 +24,7 @@ const HistoryProvider: React.FC<HistoryProviderProps> = ({children}) =>{
   function updateNovelReaded(novel: IHistoryRoot){
     const filterNovel = novels.filter((nov: IHistoryRoot)=>novel.novelId !== nov.novelId)
 
-    setNovels([...filterNovel, novel])
+    setNovels([novel, ...filterNovel])
   }
 
   function reomveNovelReaded(novelId: number) {

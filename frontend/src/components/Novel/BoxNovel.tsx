@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { INovelRoot } from "../../types/novel"
 import { HiUser } from "react-icons/hi2";
-import ButtonCategory from "./ButtonCategory";
 
 const BoxNovel = ({ novel }: {novel: INovelRoot}) => {
   return (
@@ -19,10 +18,10 @@ const BoxNovel = ({ novel }: {novel: INovelRoot}) => {
             <HiUser />
             <Link to={`/tac-gia/${novel.author.authorId}`} className="font-medium hover:text-amber-700">{novel.author.name}</Link>
           </div>
-          <ButtonCategory
+          {/* <ButtonCategory
             name={novel.category[0].name}
             color="orange"
-          />
+          /> */}
         </div>
       </div>
     </div>
