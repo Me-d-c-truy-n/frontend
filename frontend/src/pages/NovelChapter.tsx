@@ -58,12 +58,12 @@ const NovelChapter = () => {
   if (chapter === null || chapterId == undefined) return <div>Loading...</div>
 
   const handleNextChapter =()=>{
-    if (chapterId === '3') navigate(`/truyen/${novelId}/1`)
+    if (chapterId == '3') return navigate(`/truyen/${novelId}/1`)
       navigate(`/truyen/${novelId}/${parseInt(chapterId) + 1}`)
   }
 
   const handlePrevChapter =()=>{
-    if (chapterId === '1') navigate(`/truyen/${novelId}`)
+    if (chapterId == '1') return navigate(`/truyen/${novelId}`)
       navigate(`/truyen/${novelId}/${parseInt(chapterId) - 1}`)
   }
 
