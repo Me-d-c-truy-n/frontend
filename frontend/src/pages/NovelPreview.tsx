@@ -15,7 +15,7 @@ const NovelPreview = () => {
   const { isLoading } = useQuery({
     queryKey: ['preview', novelId],
     queryFn: async () => {
-      const data: IResponse = await ApiGetDetailNovel('truyenfull', novelId || 'a');
+      const data: IResponse<INovelRoot> = await ApiGetDetailNovel('truyenfull', novelId || 'a');
 
       setNovel(data.data);
       return data;

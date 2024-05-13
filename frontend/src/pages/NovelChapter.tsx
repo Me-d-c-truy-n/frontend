@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Slider from "../components/Slider"
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { IChapter, IChapterRoot } from "../types/novel";
-import novels from '../constants/chapterList.json';
+import { IChapter } from "../types/novel";
 
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
@@ -14,6 +13,9 @@ import { SettingsContext } from "../contexts/SettingsContext";
 import SettingPopup from "../components/Popup/SettingPopup";
 import { HistoryContext } from "../contexts/HistoryContext";
 import ChapterPopup from "../components/Popup/ChapterPopup";
+import { IResponse } from "../types/response";
+import { useQuery } from "@tanstack/react-query";
+import { ApiGetOneChapter } from "../api/apiNovel";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -21,7 +23,6 @@ const NovelChapter = () => {
   const [chapter, setChapter] = useState<IChapter | null>(null);
   const [openSettingPopup, setOpenSettingPopup] = useState<boolean>(false);
   const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
-  const [chapters, setChapters] = useState<IChapterRoot[]>([]);
 
   const { color, background, fontSize } = useContext(SettingsContext)!;
   const { updateNovelReaded } = useContext(HistoryContext)!;
@@ -33,29 +34,28 @@ const NovelChapter = () => {
     };
   },[background])
 
-  useEffect(() => {
-    if (novelId == undefined || chapterId == undefined) return;
+  const { isLoading } = useQuery({
+    queryKey: ['chapter', novelId, chapterId],
+    queryFn: async () => {
+      const data: IResponse<IChapter> = await ApiGetOneChapter('truyenfull', novelId || 'a', chapterId || 'chuong-1');
+      setChapter(data.data);
+      return data;
+    },
+  })
 
-    if (novels['chapter'][parseInt(novelId)-1] === undefined) return;
-
-    setChapters(novels['chapter'][parseInt(novelId)-1][parseInt(novelId)]);
-    novels['chapter'][parseInt(novelId)-1][parseInt(novelId)]?.map((chapter: IChapter) => {
-      if (chapter.chapterId+'' === chapterId){
-        setChapter(chapter);
-        updateNovelReaded({
-          time: (new Date).toString(),
-          name: chapter.novelName,
-          novelId: chapter.novelId,
-          chapterId: chapter.chapterId,
-          totalChapter: chapter.total
-        })
-      }
+  useEffect(() =>{
+    if (chapter == null) return;
+    updateNovelReaded({
+      time: (new Date).toString(),
+      name: chapter.novelName,
+      novelId: chapter.novelId,
+      chapterId: chapter.chapterId,
+      totalChapter: chapter.total
     })
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[chapter, novelId, chapterId])
+  },[chapter])
 
-  if (chapter === null || chapterId == undefined) return <div>Loading...</div>
+  if (chapter === null || chapterId == undefined  || isLoading || novelId == null) return <div>Loading...</div>
 
   const handleNextChapter =()=>{
     if (chapterId == '3') return navigate(`/truyen/${novelId}/1`)
@@ -79,7 +79,7 @@ const NovelChapter = () => {
         openChapterPopup && 
       <ChapterPopup
         close ={() => setOpenChapterPopup(false)}
-        chapters = {chapters}
+        novelId={novelId}
       />
       }
       <Slider/>
