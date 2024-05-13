@@ -16,6 +16,7 @@ import ChapterPopup from "../components/Popup/ChapterPopup";
 import { IResponse } from "../types/response";
 import { useQuery } from "@tanstack/react-query";
 import { ApiGetOneChapter } from "../api/apiNovel";
+import NovelChapterSkeleton from "../components/Loading/NovelChapterSkeleton";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -55,17 +56,17 @@ const NovelChapter = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[chapter])
 
-  if (chapter === null || chapterId == undefined  || isLoading || novelId == null) return <div>Loading...</div>
-
   const handleNextChapter =()=>{
-    if (chapterId == '3') return navigate(`/truyen/${novelId}/1`)
-      navigate(`/truyen/${novelId}/${parseInt(chapterId) + 1}`)
+    // if (chapterId == '3') return navigate(`/truyen/${novelId}/1`)
+    //   navigate(`/truyen/${novelId}/${parseInt(chapterId) + 1}`)
   }
 
   const handlePrevChapter =()=>{
-    if (chapterId == '1') return navigate(`/truyen/${novelId}`)
-      navigate(`/truyen/${novelId}/${parseInt(chapterId) - 1}`)
+    // if (chapterId == '1') return navigate(`/truyen/${novelId}`)
+    //   navigate(`/truyen/${novelId}/${parseInt(chapterId) - 1}`)
   }
+
+  if (chapter === null || isLoading || novelId == null) return <NovelChapterSkeleton/>;
 
   return (
     <div>
