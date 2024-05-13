@@ -1,15 +1,25 @@
 import slider_const from "../constants/slider.json"
+import Skeleton from 'react-loading-skeleton'
 
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
 
-const Slider = () => {
+interface Props {
+  isLoading?: boolean;
+}
+
+const Slider = ({ isLoading = false }: Props) => {
   const slider = slider_const["slider"][getRandomInt(slider_const["slider"].length)];
 
   return (
     <div className='w-full mb-5'>
+      {
+        isLoading ?
+        <Skeleton className="h-20 lg:h-48"/> 
+        :
         <img src={slider} alt="slider" className='w-full cursor-pointer'/>
+      }
     </div>
   )
 }

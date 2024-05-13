@@ -4,10 +4,30 @@ import ButtonUtils from "../Button/ButtonUtils"
 
 import { FiBookOpen } from "react-icons/fi";
 import { MdOutlineFormatListBulleted } from "react-icons/md";
-import Specifications from "./Specifications";
+import Skeleton from 'react-loading-skeleton'
 
-const NovelInfor = ({ novel }: {novel:INovelRoot}) => {
+interface Props {
+  novel: INovelRoot | null;
+  isLoading?: boolean;
+}
+
+const NovelInfor = ({ novel, isLoading = false }: Props) => {
   const navigate = useNavigate();
+
+  if (isLoading || novel == null) 
+    return (
+    <div className="flex gap-6 my-6 flex-col md:flex-row items-center">
+      <div>
+        <Skeleton className="h-64 w-48"/>
+      </div>
+      <div className="flex flex-col min-w-48">
+        <div className="font-bold text-xl mb-3 text-gray-700">
+          <Skeleton/>
+        </div>
+        <Skeleton/>
+      </div>
+    </div>
+  );
 
   return (
     <div className="flex gap-6 my-6 flex-col md:flex-row items-center">
@@ -33,17 +53,7 @@ const NovelInfor = ({ novel }: {novel:INovelRoot}) => {
               Mục lục
           </ButtonUtils>
         </div>
-        <Specifications/>
-        {/* <div className="flex flex-wrap gap-5 mt-8">
-          {
-            novel.category.map((cat, idx) => 
-              <ButtonCategory key={idx} name={cat.name}
-              color={idx===0?'red':'green'}
-              />
-            )
-          }
-        </div> */}
-        
+        {/* <Specifications/> */}
       </div>
     </div>
   )
