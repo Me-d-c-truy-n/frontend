@@ -35,7 +35,7 @@ const NovelChapter = () => {
     };
   },[background])
 
-  const { isLoading } = useQuery({
+  const { isLoading, isError } = useQuery({
     queryKey: ['chapter', novelId, chapterId],
     queryFn: async () => {
       const data: IResponse<IChapter> = await ApiGetOneChapter('truyenfull', novelId || 'a', chapterId || 'chuong-1');
@@ -65,6 +65,11 @@ const NovelChapter = () => {
     // if (chapterId == '1') return navigate(`/truyen/${novelId}`)
     //   navigate(`/truyen/${novelId}/${parseInt(chapterId) - 1}`)
   }
+
+  useEffect(() =>{
+    if (isError) navigate('/notfound', { replace: true });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[isError])
 
   if (chapter === null || isLoading || novelId == null) return <NovelChapterSkeleton/>;
 

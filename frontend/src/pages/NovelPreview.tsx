@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom"
-import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom"
+import { useEffect, useState } from "react";
 import { INovelRoot } from "../types/novel";
 import Slider from "../components/Slider";
 import NovelInfor from "../components/Novel/NovelInfor";
@@ -10,10 +10,11 @@ import { IResponse } from "../types/response";
 import Skeleton from 'react-loading-skeleton'
 
 const NovelPreview = () => {
+  const navigate = useNavigate();
   const [novel, setNovel] = useState<INovelRoot | null>(null);
   const { novelId }  = useParams();
 
-  const { isLoading } = useQuery({
+  const { isLoading, isError } = useQuery({
     queryKey: ['preview', novelId],
     queryFn: async () => {
       const data: IResponse<INovelRoot> = await ApiGetDetailNovel('truyenfull', novelId || 'a');
@@ -22,6 +23,11 @@ const NovelPreview = () => {
       return data;
     },
   })
+
+  useEffect(() =>{
+    if (isError) navigate('/notfound', { replace: true });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[isError])
 
   return (
     <div>

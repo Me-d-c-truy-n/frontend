@@ -6,6 +6,7 @@ import ScrollToTop from "../hooks/useScrollToTop";
 import NovelChapter from "../pages/NovelChapter";
 import AuthorPage from "../pages/AuthorPage";
 import FilterPage from "../pages/FilterPage";
+import Notfound from "../pages/error/Notfound";
 
 const router = createBrowserRouter(
   [
@@ -41,6 +42,14 @@ const router = createBrowserRouter(
               element: <FilterPage/>
             }
           ]
+        },
+        {
+          path: '/notfound',
+          element: <Notfound/>
+        },
+        {
+          path: '*',
+          element: <Notfound/>
         }
       ]
     },
