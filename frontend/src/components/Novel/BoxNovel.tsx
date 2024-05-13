@@ -14,7 +14,7 @@ const BoxNovel = ({ novel }: {novel: INovelRoot}) => {
         </Link>
         <div className="font-normal text-slate-500 w-72 h-12 text-wrap truncate">{novel.description}</div>
         <div className="flex mb-5 justify-between items-center">
-          <div className="text-slate-600 flex gap-2 items-center w-7/12">
+          <div className="text-slate-600 flex gap-2 items-center">
             <HiUser />
             <Link to={`/tac-gia/${novel.author.authorId}`} className="font-medium hover:text-amber-700">{novel.author.name}</Link>
           </div>
