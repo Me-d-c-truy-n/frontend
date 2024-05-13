@@ -1,12 +1,10 @@
 import { IAuthorRoot } from "./author";
-import { ICategory } from "./category";
 
 export interface INovelRoot {
   novelId: number;
   image: string;
   name: string;
   total: number;
-  category: ICategory[];
   author: IAuthorRoot;
   description: string;
 }

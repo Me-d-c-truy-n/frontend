@@ -8,6 +8,7 @@ export interface IResponse<T> {
   message: string;
   totalPage: number;
   currentPage: number;
+  perPage: number;
   searchValue: string;
   data: T;
 }
