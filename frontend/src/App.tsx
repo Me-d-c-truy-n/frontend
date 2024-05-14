@@ -6,9 +6,13 @@ import router from './routers/router';
 import { useContext, useEffect } from 'react';
 import { ChapterOpenContext } from './contexts/ChapterOpenContext';
 import { SettingsContext } from './contexts/SettingsContext';
+import { SkeletonTheme } from 'react-loading-skeleton';
+import { ThemeContext } from './contexts/ThemeContext';
+import { THEME } from './types/theme';
 
 function App() {
   const { isOpen } = useContext(ChapterOpenContext)!;
+  const { theme } = useContext(ThemeContext)!;
   const { background } = useContext(SettingsContext)!;
 
   useEffect(()=>{
@@ -18,7 +22,18 @@ function App() {
   
   return (
     <div className={`${isOpen?'':'bg-white dark:bg-stone-950 '}`}>
-      <RouterProvider router={router}/>
+      {
+        theme === THEME.LIGHT ?(
+        <SkeletonTheme baseColor="#c9c9c9" highlightColor="#a3a0a0">
+          <RouterProvider router={router}/>
+        </SkeletonTheme>
+        ):(
+        <SkeletonTheme baseColor="#333333" highlightColor="#424242">
+          <RouterProvider router={router}/>
+        </SkeletonTheme>
+        )
+      }
+      
       <ToastContainer 
         position="top-center"
         autoClose={2000}
