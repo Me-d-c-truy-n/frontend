@@ -1,4 +1,4 @@
-import Skeleton from "react-loading-skeleton"
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 
 const ListChapterSkeleton = ({ name }: {name: string}) => {
   return (
@@ -8,11 +8,13 @@ const ListChapterSkeleton = ({ name }: {name: string}) => {
       </div>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {
-          [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16].map((idx)=>
-            <Skeleton key={idx} className="h-8"/>
-          )
-        }
+        <SkeletonTheme baseColor="#d6d4d4" highlightColor="#dfdcdc">
+          {
+            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16].map((idx)=>
+              <Skeleton key={idx} className="h-10"/>
+            )
+          }
+        </SkeletonTheme>
       </div>
     </div>
   )
