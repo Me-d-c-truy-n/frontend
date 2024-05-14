@@ -29,7 +29,7 @@ const NovelChapter = () => {
   const { updateNovelReaded } = useContext(HistoryContext)!;
 
   useEffect(() =>{
-    document.body.style.backgroundColor=background;
+    document.body.style.backgroundColor=background +'!important';
     return () => {
       document.body.style.backgroundColor="#ffffff";
     };

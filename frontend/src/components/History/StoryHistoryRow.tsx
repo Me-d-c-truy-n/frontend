@@ -9,7 +9,7 @@ const StoryHistoryRow = ({ data, color }: {data: IHistoryRoot,color: boolean}) =
   const { reomveNovelReaded } = useContext(HistoryContext)!;
   
   return (
-    <div className={`flex mb-2 text-slate-500 text-sm items-center gap-2 p-2 px-3 ${color&&'bg-slate-100'}`}>
+    <div className={`flex mb-2 text-slate-500 text-sm items-center gap-2 p-2 px-3 ${color&&'bg-slate-100 dark:bg-stone-900'}`}>
       <div className="w-1/12 truncate">{convertDate(data.time)}</div>
       <Link to={`/truyen/${data.novelId}/${data.chapterId}`} className="w-8/12 text-base font-bold text-slate-700 truncate hover:text-amber-800">{data.name}</Link>
       <div className="w-2/12">Đã đọc: {data.chapterId}/{data.totalChapter}</div>

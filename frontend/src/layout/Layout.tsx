@@ -3,6 +3,7 @@ import Footer from "./Footer"
 import Header from "./Header"
 
 const Layout = () => {
+
   return (
     <div className="max-w-4xl mx-auto relative">
       <Header/>

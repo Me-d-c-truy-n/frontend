@@ -2,7 +2,7 @@ import logo from '../assets/images/logo.png';
 
 const Footer = () => {
   return (
-    <div className="border-t-2 mt-5 p-5 mb-2">
+    <div className="border-t-2 mt-5 p-5">
       <div className="text-lg text-center text-gray-600">
         Mê Truyện Chữ là nền tảng mở trực tuyến, miễn phí đọc truyện chữ được đóng góp nội dung từ các tác giả viết truyện và các dịch giả convert, dịch truyện, rất nhiều truyện hay và nổi bật được cập nhật nhanh nhất với đủ các thể loại tiên hiệp, kiếm hiệp, huyền ảo ...
       </div>

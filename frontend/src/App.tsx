@@ -7,7 +7,7 @@ import router from './routers/router';
 function App() {
 
   return (
-    <div className=''>
+    <div className='bg-white dark:bg-stone-950'>
       <RouterProvider router={router}/>
       <ToastContainer 
         position="top-center"
