@@ -1,19 +1,33 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import BoxNovel from "../Novel/BoxNovel";
 import TitleTab from "../TitleTab";
 import { IResponse } from "../../types/response";
 import { ApiGetAllNovel } from "../../api/apiNovel";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { INovelRoot } from "../../types/novel";
 import ListNovelSkeleton from "../Loading/ListNovelSkeleton";
+import Pagination from '@mui/material/Pagination';
+import  '../../assets/style/pagination.css';
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const ListNovel = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [perPage, setPerPage] = useState<number>(0);
+  const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
+  const { theme } = useContext(ThemeContext)!;
+  
+  const handleChangePage = (_e: React.ChangeEvent<unknown>, value: number) =>{
+    setCurrentPage(value);
+    changePage(value);
+  } 
 
-  const { isLoading } = useQuery({
+  const changePage=(page: number)=>{
+    if (page > totalPage) setCurrentPage(1);
+    setCurrentPage(page);
+  }
+
+  const { isLoading, isFetching } = useQuery({
     queryKey: ['all_novel', currentPage],
     queryFn: async () => {
       const data: IResponse<INovelRoot[]> = await ApiGetAllNovel('truyenfull', currentPage);
@@ -24,9 +38,10 @@ const ListNovel = () => {
 
       return data.data;
     },
+    placeholderData: keepPreviousData,
   })
 
-  if (isLoading || novels.length == 0) return <ListNovelSkeleton/>
+  if (isLoading || isFetching || novels.length == 0) return <ListNovelSkeleton/>
   
   return (
     <div>
@@ -40,6 +55,15 @@ const ListNovel = () => {
               />
           )
         }
+      </div>
+      <div className="mt-5 flex justify-center">
+        <Pagination 
+          count={totalPage} 
+          page={currentPage}
+          color="primary" size="large" 
+          onChange={handleChangePage}  
+          className={`${theme=='dark' && 'dark-pagination' }`}
+        />
       </div>
     </div>
   )

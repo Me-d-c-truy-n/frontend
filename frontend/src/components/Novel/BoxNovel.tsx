@@ -32,7 +32,9 @@ const BoxNovel = ({ novel, isLoading = false }: {novel?: INovelRoot, isLoading?:
         <Link to={`/truyen/${novel.novelId}`} className="text-slate-700 font-bold hover:text-amber-700">      
           {novel.name}
         </Link>
-        <div className="font-normal text-slate-500 w-72 h-12 text-wrap truncate">{novel.description}</div>
+        <div className="font-normal text-slate-500 w-72 h-12 text-wrap truncate"
+        dangerouslySetInnerHTML={{__html: novel.description}}
+        ></div>
         <div className="flex mb-5 justify-between items-center">
           <div className="text-slate-600 flex gap-2 items-center">
             <HiUser />

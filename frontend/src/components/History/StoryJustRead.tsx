@@ -8,7 +8,10 @@ const StoryJustRead = () => {
 
   return (
       <div className="mb-10">
+        {
+          novels.length > 0 &&
         <TitleTab name="TRUYỆN VỪA ĐỌC" link="/"/>
+        }
         {
           novels.map((hs,idx) =>
             <StoryHistoryRow 
