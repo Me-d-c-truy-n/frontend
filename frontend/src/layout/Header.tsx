@@ -6,6 +6,7 @@ import { CiDark } from "react-icons/ci";
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { ChapterOpenContext } from '../contexts/ChapterOpenContext';
+import { THEME } from '../types/theme';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -28,8 +29,8 @@ const Header = () => {
   }
 
   function handleChangeTheme() {
-    if (theme === 'light') changeTheme('dark');
-    else changeTheme('light');
+    if (theme === THEME.LIGHT) changeTheme(THEME.DARK);
+    else changeTheme(THEME.LIGHT)
   }
 
   return (
@@ -52,9 +53,9 @@ const Header = () => {
         <button className='hover:shadow p-1 rounded-lg' onClick={handleChangeTheme}>
           {
             theme =='light' ?
-            <CiLight className='text-2xl' />
+            <CiLight className='text-2xl text-black' />
             :
-            <CiDark className='text-2xl'/>
+            <CiDark className='text-2xl text-white'/>
           }
         </button>
     </div>

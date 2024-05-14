@@ -15,7 +15,17 @@ export function useLocalStorageState({initialState, key} : Props) {
     function () {
       localStorage.setItem(key, JSON.stringify(value));
     },
-    [value, key]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [value]
+  );
+
+  useEffect(
+    function () {
+      const storedValue = localStorage.getItem(key);
+      setValue(storedValue ? JSON.parse(storedValue) : initialState);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [key]
   );
 
   return [value, setValue];

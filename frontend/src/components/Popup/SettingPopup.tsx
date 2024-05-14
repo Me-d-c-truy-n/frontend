@@ -7,13 +7,8 @@ interface Props {
   close: ()=>void;
 }
 const SettingPopup = ({ close }: Props) => {
-  const { background, setBackground, color, setColor, fontSize, setFontSize } = useContext(SettingsContext)!;
-  
-  const handleResetSetting = () => {
-    setBackground("#f8f8e3")
-    setColor("#000000");
-    setFontSize("25px");
-  } 
+  const { background, setBackground, color, setColor, fontSize, setFontSize, resetSettings } = useContext(SettingsContext)!;
+
   return (
     <div className="z-10 fixed left-0 mt-2 top-0 w-full">
       <div className="shadow-2xl p-5 w-11/12 md:w-6/12 mx-auto border rounded-lg border-amber-600"
@@ -53,7 +48,7 @@ const SettingPopup = ({ close }: Props) => {
         </div>
 
         <div className='flex items-center justify-center'>
-          <button onClick={handleResetSetting} className='text-slate-600 px-4 py-1 rounded-md bg-white'>Mặc định</button>
+          <button onClick={resetSettings} className='text-slate-600 px-4 py-1 rounded-md bg-white'>Mặc định</button>
         </div>
       </div>
     </div>

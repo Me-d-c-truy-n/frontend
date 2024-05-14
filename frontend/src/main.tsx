@@ -16,15 +16,15 @@ const queryClient = new QueryClient({
 });
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <SettingsProvider>
-    <HistoryProvider>
-      <ThemeProvider>  
+  <HistoryProvider>
+    <ThemeProvider>  
+      <SettingsProvider>
         <ChapterOpenProvider>
           <QueryClientProvider client={queryClient}>
             <App />
           </QueryClientProvider>
         </ChapterOpenProvider>
-      </ThemeProvider>
-    </HistoryProvider>
-  </SettingsProvider>
+      </SettingsProvider>
+    </ThemeProvider>
+  </HistoryProvider>
 )
