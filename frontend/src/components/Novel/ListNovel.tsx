@@ -29,7 +29,11 @@ const ListNovel = () => {
     placeholderData: keepPreviousData,
   })
 
-  if (isLoading || isFetching || novels.length == 0) return <ListNovelSkeleton/>
+  if (isLoading || isFetching || novels.length == 0) return (
+    <ListNovelSkeleton>
+      <TitleTab name="DANH SÁCH TRUYỆN" link="/"/>
+    </ListNovelSkeleton>
+  )
   
   return (
     <div>

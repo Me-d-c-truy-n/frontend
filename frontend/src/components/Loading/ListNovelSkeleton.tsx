@@ -1,10 +1,9 @@
-import TitleTab from "../TitleTab"
 import BoxNovel from "../Novel/BoxNovel"
 
-const ListNovelSkeleton = () => {
+const ListNovelSkeleton = ({ children }: {children: React.ReactNode}) => {
   return (
     <div>
-      <TitleTab name="DANH SÁCH TRUYỆN" link="/"/>
+      {children}
       <div className="grid grid-cols-1 gap-y-10 gap-x-4 lg:grid-cols-2">
         {
           [1, 2, 3, 4].map((idx) =>

@@ -99,7 +99,7 @@ const NovelChapter = () => {
       <Slider/>
       <div className="flex flex-col justify-center items-center mt-2">
         <Link to={`/truyen/${chapter.novelId}`} className="font-bold text-gray-900 text-xl capitalize hover:text-amber-700">{chapter.novelName}</Link>
-        <Link to={`/tac-gia/${chapter.author.authorId}`} className="text-gray-500">{chapter.author.name}</Link>
+        <Link to={`/tac-gia/${chapter.author.authorId || chapter.author.id}`} className="text-gray-500">{chapter.author.name}</Link>
 
         <div className="flex mt-6 items-center gap-4">
           <button 
@@ -130,7 +130,7 @@ const NovelChapter = () => {
 
         </div>
       </div>
-      <div className="leading-10 my-10 px-2" 
+      <div className="leading-10 my-0 md:my-10 px-2" 
         style={{fontSize:fontSize, color: color}}
         dangerouslySetInnerHTML={{__html: chapter.content}}
       >
