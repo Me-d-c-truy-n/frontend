@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { ChapterOpenContext } from "../../contexts/ChapterOpenContext";
+
 interface Props {
   func: () => void;
   de?: boolean;
@@ -6,8 +9,10 @@ interface Props {
 }
 
 const ButtonUtils = ({ de = true, func, children, count=0 }: Props) => {
+  const { isOpen } = useContext(ChapterOpenContext)!;
+  
   return (
-    <div className={`dark:text-white relative outline-none shadow cursor-pointer rounded px-2 py-1 ${de?'border border-gray-700 hover:border-amber-700 hover:text-amber-700':'text-white bg-amber-700'}`} onClick={func}>
+    <div className={`${!isOpen&&'dark:text-white'} relative outline-none shadow cursor-pointer rounded px-2 py-1 ${de?'border border-gray-700 hover:border-amber-700 hover:text-amber-700':'text-white bg-amber-700'}`} onClick={func}>
       <div className="flex gap-2 items-center capitalize">
         {children}
       </div>

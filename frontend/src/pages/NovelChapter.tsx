@@ -17,6 +17,7 @@ import { IResponse } from "../types/response";
 import { useQuery } from "@tanstack/react-query";
 import { ApiGetOneChapter } from "../api/apiNovel";
 import NovelChapterSkeleton from "../components/Loading/NovelChapterSkeleton";
+import { ChapterOpenContext } from "../contexts/ChapterOpenContext";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -27,13 +28,15 @@ const NovelChapter = () => {
 
   const { color, background, fontSize } = useContext(SettingsContext)!;
   const { updateNovelReaded } = useContext(HistoryContext)!;
+  const { setIsOpen } = useContext(ChapterOpenContext)!;
 
   useEffect(() =>{
-    document.body.style.backgroundColor=background +'!important';
+    setIsOpen(true);
     return () => {
-      document.body.style.backgroundColor="#ffffff";
+      setIsOpen(false);
     };
-  },[background])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   const { isLoading, isError } = useQuery({
     queryKey: ['chapter', novelId, chapterId],
@@ -74,7 +77,7 @@ const NovelChapter = () => {
   if (chapter === null || isLoading || novelId == null) return <NovelChapterSkeleton/>;
 
   return (
-    <div>
+    <div style={{backgroundColor: background }}>
       {
         openSettingPopup && 
       <SettingPopup
@@ -121,7 +124,7 @@ const NovelChapter = () => {
           </ButtonUtils>
         </div>
       </div>
-      <div className="leading-10 my-10" 
+      <div className="leading-10 my-10 px-2" 
         style={{fontSize:fontSize, color: color}}
         dangerouslySetInnerHTML={{__html: chapter.content}}
       >
