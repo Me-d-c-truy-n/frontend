@@ -39,7 +39,7 @@ const NovelChapter = () => {
   },[])
 
   const { isLoading, isError } = useQuery({
-    queryKey: ['chapter', novelId, chapterId],
+    queryKey: ['chapter', chapterId, novelId],
     queryFn: async () => {
       const data: IResponse<IChapter> = await ApiGetOneChapter('truyenfull', novelId || 'a', chapterId || 'chuong-1');
       setChapter(data.data);
@@ -60,13 +60,17 @@ const NovelChapter = () => {
   },[chapter])
 
   const handleNextChapter =()=>{
+    if (chapter == null || chapterId == null) return;
+    if (chapter.total+'' == chapterId) return;
     // if (chapterId == '3') return navigate(`/truyen/${novelId}/1`)
-    //   navigate(`/truyen/${novelId}/${parseInt(chapterId) + 1}`)
+    navigate(`/truyen/${novelId}/${parseInt(chapterId) + 1}`)
   }
 
   const handlePrevChapter =()=>{
-    // if (chapterId == '1') return navigate(`/truyen/${novelId}`)
-    //   navigate(`/truyen/${novelId}/${parseInt(chapterId) - 1}`)
+    if (chapter == null || chapterId == null) return;
+    if (parseInt(chapterId) <= 1) return;
+        // if (chapterId == '1') return navigate(`/truyen/${novelId}`)
+    navigate(`/truyen/${novelId}/${parseInt(chapterId) - 1}`)
   }
 
   useEffect(() =>{

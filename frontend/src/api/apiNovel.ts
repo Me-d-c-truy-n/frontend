@@ -6,16 +6,16 @@ export const ApiGetAllNovel = async(server: string, page: number) => {
 }
 
 export const ApiGetDetailNovel = async(server: string, novelId: string) => {
-  const res = await AxiosClient.get(`/${server}/${novelId}`);
+  const res = await AxiosClient.get(`/${server}/truyen/${novelId}`);
   return res.data;
 }
 
 export const ApiGetOneChapter = async(server: string, novelId: string, chapterId: string) => {
-  const res = await AxiosClient.get(`/${server}/${novelId}/${chapterId}`);
+  const res = await AxiosClient.get(`/${server}/truyen/${novelId}/${chapterId}`);
   return res.data;
 }
 
 export const ApiGetAllChapter = async(server: string, novelId: string) => {
-  const res = await AxiosClient.get(`/${server}/${novelId}/all`);
+  const res = await AxiosClient.get(`/${server}/truyen/${novelId}/all`);
   return res.data;
 }
