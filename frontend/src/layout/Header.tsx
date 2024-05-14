@@ -50,7 +50,7 @@ const Header = () => {
             onClick={handleSearch}
           />
         </div>
-        <button className='hover:shadow p-1 rounded-lg' onClick={handleChangeTheme}>
+        <button className='outline-none hover:shadow p-1 rounded-lg' onClick={handleChangeTheme}>
           {
             theme =='light' ?
             <CiLight className='text-2xl text-black' />

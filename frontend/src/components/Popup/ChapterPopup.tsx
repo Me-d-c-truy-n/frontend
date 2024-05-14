@@ -59,6 +59,7 @@ const ChapterPopup = ({ close, novelId, name }: Props) => {
                   totalPage={totalPage}
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
+                  changeThemeEffect={false}
               />
             </>
           )
