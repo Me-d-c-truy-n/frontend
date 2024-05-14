@@ -5,6 +5,7 @@ const ChapterRow = ({ chapter, close }: {chapter: IChapterRoot, close: ()=>void;
   const navigate = useNavigate();
 
   const handleNavigate = () => {
+    console.log(chapter);
     navigate(`/truyen/${chapter.novelId}/${chapter.chapterId}`)
     close();
   }

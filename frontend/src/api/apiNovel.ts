@@ -15,7 +15,7 @@ export const ApiGetOneChapter = async(server: string, novelId: string, chapterId
   return res.data;
 }
 
-export const ApiGetAllChapter = async(server: string, novelId: string) => {
-  const res = await AxiosClient.get(`/${server}/truyen/${novelId}/all`);
+export const ApiGetAllChapter = async(server: string, novelId: string, page:number) => {
+  const res = await AxiosClient.get(`/${server}/truyen/${novelId}/all?page=${page}`);
   return res.data;
 }

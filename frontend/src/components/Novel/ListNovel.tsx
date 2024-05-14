@@ -3,29 +3,17 @@ import BoxNovel from "../Novel/BoxNovel";
 import TitleTab from "../TitleTab";
 import { IResponse } from "../../types/response";
 import { ApiGetAllNovel } from "../../api/apiNovel";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { INovelRoot } from "../../types/novel";
 import ListNovelSkeleton from "../Loading/ListNovelSkeleton";
-import Pagination from '@mui/material/Pagination';
 import  '../../assets/style/pagination.css';
-import { ThemeContext } from "../../contexts/ThemeContext";
+import CustomPagination from "../CustomPagination";
 
 const ListNovel = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
-  const { theme } = useContext(ThemeContext)!;
-  
-  const handleChangePage = (_e: React.ChangeEvent<unknown>, value: number) =>{
-    setCurrentPage(value);
-    changePage(value);
-  } 
-
-  const changePage=(page: number)=>{
-    if (page > totalPage) setCurrentPage(1);
-    setCurrentPage(page);
-  }
 
   const { isLoading, isFetching } = useQuery({
     queryKey: ['all_novel', currentPage],
@@ -56,15 +44,11 @@ const ListNovel = () => {
           )
         }
       </div>
-      <div className="mt-5 flex justify-center">
-        <Pagination 
-          count={totalPage} 
-          page={currentPage}
-          color="primary" size="large" 
-          onChange={handleChangePage}  
-          className={`${theme=='dark' && 'dark-pagination' }`}
-        />
-      </div>
+      <CustomPagination
+        totalPage={totalPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   )
 }

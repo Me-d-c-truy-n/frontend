@@ -93,6 +93,7 @@ const NovelChapter = () => {
       <ChapterPopup
         close ={() => setOpenChapterPopup(false)}
         novelId={novelId}
+        name={chapter.novelName}
       />
       }
       <Slider/>
@@ -126,6 +127,7 @@ const NovelChapter = () => {
             <MdOutlineFormatListBulleted/>
             Mục lục
           </ButtonUtils>
+
         </div>
       </div>
       <div className="leading-10 my-10 px-2" 
