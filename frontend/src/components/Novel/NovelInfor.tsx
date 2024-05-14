@@ -5,6 +5,8 @@ import ButtonUtils from "../Button/ButtonUtils"
 import { FiBookOpen } from "react-icons/fi";
 import { MdOutlineFormatListBulleted } from "react-icons/md";
 import Skeleton from 'react-loading-skeleton'
+import { useState } from "react";
+import ChapterPopup from "../Popup/ChapterPopup";
 
 interface Props {
   novel: INovelRoot | null;
@@ -13,6 +15,7 @@ interface Props {
 
 const NovelInfor = ({ novel, isLoading = false }: Props) => {
   const navigate = useNavigate();
+  const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
 
   if (isLoading || novel == null) 
     return (
@@ -31,6 +34,14 @@ const NovelInfor = ({ novel, isLoading = false }: Props) => {
 
   return (
     <div className="flex gap-6 my-6 flex-col md:flex-row items-center">
+      {
+            openChapterPopup && 
+          <ChapterPopup
+            close ={() => setOpenChapterPopup(false)}
+            novelId={novel.novelId + ''}
+            name={novel.name}
+          />
+      }
       <div>
         <img src={novel.image} alt={novel.name} className="w-52 rounded-md shadow-xl"/>
       </div>
@@ -46,14 +57,13 @@ const NovelInfor = ({ novel, isLoading = false }: Props) => {
               Đọc Truyện
           </ButtonUtils>
           <ButtonUtils
-            func={()=>{}}
+            func={()=>setOpenChapterPopup(true)}
             count={novel.total}
           >
               <MdOutlineFormatListBulleted/>
               Mục lục
           </ButtonUtils>
         </div>
-        {/* <Specifications/> */}
       </div>
     </div>
   )

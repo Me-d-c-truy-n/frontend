@@ -12,6 +12,7 @@ import Skeleton from 'react-loading-skeleton'
 const NovelPreview = () => {
   const navigate = useNavigate();
   const [novel, setNovel] = useState<INovelRoot | null>(null);
+
   const { novelId }  = useParams();
 
   const { isLoading, isError } = useQuery({

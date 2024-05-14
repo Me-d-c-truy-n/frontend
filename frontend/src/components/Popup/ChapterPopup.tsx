@@ -38,7 +38,7 @@ const ChapterPopup = ({ close, novelId, name }: Props) => {
       <div className="shadow-2xl p-2 lg:w-8/12 lg:p-4 mx-auto border rounded-lg border-amber-600 bg-amber-50 pb-5"
       >
         {
-          (isFetching ||chapters.length<=0) ?<ListChapterSkeleton name={name}/>:(
+          (isFetching ||chapters.length<=0) ?<ListChapterSkeleton name={name} close={close}/>:(
             <>
               <div className='flex justify-between items-center mb-10 border-b pb-6'>
                 <h1 className='text-xl font-bold'>{chapters[0].novelName}</h1>
