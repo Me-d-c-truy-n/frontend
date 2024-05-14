@@ -47,13 +47,13 @@ const SettingPopup = ({ close }: Props) => {
           <input 
             type="text" 
             value={fontSize}
-            className='w-20 px-5 py-1'
+            className='w-20 px-5 py-1 text-slate-600'
             onChange={(e) => setFontSize(e.target.value)}
           />
         </div>
 
         <div className='flex items-center justify-center'>
-          <button onClick={handleResetSetting} className='px-4 py-1 rounded-md bg-white'>Mặc định</button>
+          <button onClick={handleResetSetting} className='text-slate-600 px-4 py-1 rounded-md bg-white'>Mặc định</button>
         </div>
       </div>
     </div>
