@@ -1,10 +1,12 @@
 import { Dispatch, ReactNode, SetStateAction, createContext } from "react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
-import { IHistoryRoot } from "../types/history";
+import { IHistoryRoot, IReaded, IReadedRoot } from "../types/history";
 
 interface HistoryContextType {
+  readed: IReaded[];
   novels: IHistoryRoot[];
   setNovels: Dispatch<SetStateAction<IHistoryRoot[]>>;
+  addNovelReaded: (novel: IReadedRoot) => void;
   updateNovelReaded: (novel: IHistoryRoot) => void;
   removeNovelReaded: (novelId: string) => void;
 }
@@ -21,6 +23,15 @@ const HistoryProvider: React.FC<HistoryProviderProps> = ({children}) =>{
     initialState: [],
   });
 
+  const [readed, setReaded] = useLocalStorageState({
+    key: 'readed',
+    initialState: [],
+  });
+
+  function addNovelReaded(novel: IReadedRoot){
+    console.log(novel);
+  }
+
   function updateNovelReaded(novel: IHistoryRoot){
     const filterNovel = novels.filter((nov: IHistoryRoot)=>novel.novelId !== nov.novelId)
 
@@ -35,7 +46,10 @@ const HistoryProvider: React.FC<HistoryProviderProps> = ({children}) =>{
 
   return (
     <HistoryContext.Provider
-      value={{ novels, setNovels, updateNovelReaded, removeNovelReaded }}
+      value={{ 
+        novels, setNovels, readed, 
+        addNovelReaded, updateNovelReaded, removeNovelReaded 
+      }}
     >
       {children}
     </HistoryContext.Provider>

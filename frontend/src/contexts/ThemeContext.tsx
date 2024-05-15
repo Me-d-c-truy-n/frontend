@@ -1,10 +1,11 @@
 import { ReactNode, createContext, useEffect } from "react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 import { THEME } from "../types/theme";
+import { KEY } from "../types/key";
 
 interface ThemeContextType {
   theme: THEME;
-  changeTheme: (newTheme: string) => void;
+  changeTheme: (newTheme: THEME) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -15,19 +16,19 @@ interface ThemeProviderProps {
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({children}) =>{
   const [theme, setTheme] = useLocalStorageState({
-    key: 'theme',
+    key: KEY.THEME,
     initialState: THEME.LIGHT,
   });
 
-  function changeTheme(newTheme: string) {
+  function changeTheme(newTheme: THEME) {
     setTheme(newTheme);
   }
 
   useEffect(() =>{
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
+    if (theme === THEME.DARK) {
+      document.documentElement.classList.add(THEME.DARK);
     } else {
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove(THEME.DARK);
     }
   },[theme])
 

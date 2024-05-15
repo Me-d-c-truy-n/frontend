@@ -2,6 +2,7 @@ import { Dispatch, ReactNode, SetStateAction, createContext, useContext } from "
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 import { ThemeContext } from "./ThemeContext";
 import { THEME, THEME_DARK, THEME_LIGHT } from "../types/theme";
+import { KEY } from "../types/key";
 
 interface SettingsContextType {
   color: string;
@@ -25,19 +26,19 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
   const { theme } = useContext(ThemeContext)!;
   
   const [color, setColor] = useLocalStorageState({
-    key: 'color-'+theme,
+    key: KEY.COLOR + theme,
     initialState: theme == THEME.LIGHT?THEME_LIGHT.COLOR:THEME_DARK.COLOR,
   });
   const [background, setBackground] = useLocalStorageState({
-    key: 'background-'+theme,
+    key: KEY.BACKGROUND + theme,
     initialState: theme == THEME.LIGHT?THEME_LIGHT.BACKGROUND:THEME_DARK.BACKGROUND,
   });
   const [fontSize, setFontSize] = useLocalStorageState({
-    key: 'fontSize',
+    key: KEY.BACKGROUND,
     initialState: '25px',
   });
   const [server, setServer] = useLocalStorageState({
-    key: 'server',
+    key: KEY.SERVER,
     initialState: 'truyenfull',
   });
 

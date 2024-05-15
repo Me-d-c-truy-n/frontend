@@ -10,3 +10,8 @@ export interface IReaded {
   novelId: string;
   chapterId: number[];
 }
+
+export interface IReadedRoot {
+  novelId: string;
+  chapterId: number;
+}
