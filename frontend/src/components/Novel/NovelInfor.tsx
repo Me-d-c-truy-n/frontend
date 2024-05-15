@@ -4,9 +4,12 @@ import ButtonUtils from "../Button/ButtonUtils"
 
 import { FiBookOpen } from "react-icons/fi";
 import { MdOutlineFormatListBulleted } from "react-icons/md";
+import { GrNext } from "react-icons/gr";
+
 import Skeleton from 'react-loading-skeleton'
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ChapterPopup from "../Popup/ChapterPopup";
+import { HistoryContext } from "../../contexts/HistoryContext";
 
 interface Props {
   novel: INovelRoot | null;
@@ -16,6 +19,7 @@ interface Props {
 const NovelInfor = ({ novel, isLoading = false }: Props) => {
   const navigate = useNavigate();
   const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
+  const { getChapterJustReaded } = useContext(HistoryContext)!;
 
   if (isLoading || novel == null) 
     return (
@@ -63,6 +67,18 @@ const NovelInfor = ({ novel, isLoading = false }: Props) => {
               <MdOutlineFormatListBulleted/>
               Mục lục
           </ButtonUtils>
+
+          {
+            getChapterJustReaded(novel.novelId) > 0 && (
+            <ButtonUtils
+              func={()=>navigate(`/truyen/${novel.novelId}/${getChapterJustReaded(novel.novelId)}`)}
+              className="bg-red-600 text-white border-red-600 hover:text-white"
+            >
+                Đọc Tiếp
+                <GrNext/>
+            </ButtonUtils>
+            )
+          }
         </div>
       </div>
     </div>

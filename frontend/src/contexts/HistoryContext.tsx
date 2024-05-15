@@ -11,6 +11,7 @@ interface HistoryContextType {
   updateNovelReaded: (novel: IHistoryRoot) => void;
   removeNovelReaded: (novelId: string) => void;
   getListChapterReaded: (novelId: string) => number[];
+  getChapterJustReaded: (novelId: string) => number;
 }
 
 const HistoryContext = createContext<HistoryContextType | undefined>(undefined);
@@ -75,11 +76,18 @@ const HistoryProvider: React.FC<HistoryProviderProps> = ({children}) =>{
     return filterReaded[0]?.chapterId || [];
   }
 
+  function getChapterJustReaded(novelId: string) {
+    const filterNovel = novels.filter((nov: IHistoryRoot)=>novelId === nov.novelId);
+
+    if (filterNovel.length <= 0) return 0;
+    return filterNovel[0].chapterId;
+  }
+
   return (
     <HistoryContext.Provider
       value={{ 
         novels, setNovels, readed, 
-        addNovelReaded, updateNovelReaded, removeNovelReaded, getListChapterReaded
+        addNovelReaded, updateNovelReaded, removeNovelReaded, getListChapterReaded, getChapterJustReaded
       }}
     >
       {children}
