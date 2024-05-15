@@ -109,8 +109,8 @@ const NovelChapter = () => {
       }
       <Slider/>
       <div className="flex flex-col justify-center items-center mt-2">
-        <Link to={`/truyen/${chapter.novelId}`} className="font-bold text-gray-900 text-xl capitalize hover:text-amber-700">{chapter.novelName}</Link>
-        <Link to={`/tac-gia/${chapter.author.authorId || chapter.author.id}`} className="text-gray-500">{chapter.author.name}</Link>
+        <Link to={`/truyen/${chapter.novelId}`} className="font-bold text-gray-900 text-xl capitalize hover:text-amber-700 dark:text-slate-500">{chapter.novelName}</Link>
+        <Link to={`/tac-gia/${chapter.author.authorId || chapter.author.id}`} className="text-gray-500 dark:text-gray-300">{chapter.author.name}</Link>
 
         <div className="flex mt-6 items-center gap-4">
           <button 
@@ -119,7 +119,7 @@ const NovelChapter = () => {
             <GrPrevious/>
           </button>
 
-          <div className="text-gray-700">{chapter.name}</div>
+          <div className="text-gray-700 dark:text-gray-500">{chapter.name}</div>
           
           <button 
           onClick={handleNextChapter}
