@@ -6,7 +6,7 @@ interface HistoryContextType {
   novels: IHistoryRoot[];
   setNovels: Dispatch<SetStateAction<IHistoryRoot[]>>;
   updateNovelReaded: (novel: IHistoryRoot) => void;
-  reomveNovelReaded: (novelId: number) => void;
+  removeNovelReaded: (novelId: string) => void;
 }
 
 const HistoryContext = createContext<HistoryContextType | undefined>(undefined);
@@ -27,7 +27,7 @@ const HistoryProvider: React.FC<HistoryProviderProps> = ({children}) =>{
     setNovels([novel, ...filterNovel])
   }
 
-  function reomveNovelReaded(novelId: number) {
+  function removeNovelReaded(novelId: string) {
     const filterNovel = novels.filter((nov: IHistoryRoot)=>novelId !== nov.novelId)
 
     setNovels([...filterNovel])
@@ -35,7 +35,7 @@ const HistoryProvider: React.FC<HistoryProviderProps> = ({children}) =>{
 
   return (
     <HistoryContext.Provider
-      value={{ novels, setNovels, updateNovelReaded, reomveNovelReaded }}
+      value={{ novels, setNovels, updateNovelReaded, removeNovelReaded }}
     >
       {children}
     </HistoryContext.Provider>

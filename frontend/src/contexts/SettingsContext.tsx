@@ -41,8 +41,6 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
     initialState: 'truyenfull',
   });
 
-
-
   function resetSettings() {
     if (theme === THEME.LIGHT) {
       setBackground(THEME_LIGHT.BACKGROUND)

@@ -1,7 +1,7 @@
 import { IAuthorRoot } from "./author";
 
 export interface INovelRoot {
-  novelId: number;
+  novelId: string;
   image: string;
   name: string;
   total: number;
@@ -10,7 +10,7 @@ export interface INovelRoot {
 }
 
 export interface IChapterRoot {
-  novelId: number;
+  novelId: string;
   chapterId: number;
   name: string;
   novelName: string;
@@ -19,7 +19,7 @@ export interface IChapterRoot {
 }
 
 export interface IChapter {
-  novelId: number;
+  novelId: string;
   chapterId: number;
   name: string;
   novelName: string;
