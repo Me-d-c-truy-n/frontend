@@ -9,6 +9,7 @@ import { SettingsContext } from './contexts/SettingsContext';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import { ThemeContext } from './contexts/ThemeContext';
 import { THEME } from './types/theme';
+import ScrollButton from './components/Button/ScrollButton';
 
 function App() {
   const { isOpen } = useContext(ChapterOpenContext)!;
@@ -33,6 +34,8 @@ function App() {
         </SkeletonTheme>
         )
       }
+      
+      <ScrollButton/>
       
       <ToastContainer 
         position="top-center"
