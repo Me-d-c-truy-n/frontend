@@ -8,6 +8,7 @@ import { useContext, useState } from "react";
 import ListChapterSkeleton from "../Loading/ListChapterSkeleton";
 import CustomPagination from "../CustomPagination";
 import { SettingsContext } from "../../contexts/SettingsContext";
+import { HistoryContext } from "../../contexts/HistoryContext";
 
 interface Props {
   close: ()=>void;
@@ -20,9 +21,11 @@ const ChapterPopup = ({ close, novelId, name }: Props) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
+  const [listChapterReaded, setListChapterReaded] = useState<number[]>([])
 
   const { server } = useContext(SettingsContext)!;
-  
+  const { getListChapterReaded } = useContext(HistoryContext)!;
+
   const { isFetching } = useQuery({
     queryKey: ['all_chapter', novelId, currentPage, server],
     queryFn: async () => {
@@ -33,6 +36,8 @@ const ChapterPopup = ({ close, novelId, name }: Props) => {
       setTotalPage(data.totalPage);
       setChapters(data.data);
 
+      setListChapterReaded(getListChapterReaded(novelId));
+      
       return data;
     },
   })
@@ -55,7 +60,9 @@ const ChapterPopup = ({ close, novelId, name }: Props) => {
                   <ChapterRow 
                     key={chapter.chapterId} 
                     chapter={chapter} 
-                    close={close}/>)
+                    close={close}
+                    isReaded={listChapterReaded.includes(chapter.chapterId)}
+                  />)
                 }
               </div>
 
