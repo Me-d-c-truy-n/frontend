@@ -43,11 +43,11 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
   });
   const [fontStyle, setFontStyle] = useLocalStorageState({
     key: KEY.FONTSTYLE,
-    initialState: 'Open sans',
+    initialState: 'Roboto',
   });
   const [leading, setLeading] = useLocalStorageState({
     key: KEY.LEADING,
-    initialState: '150%',
+    initialState: '180%',
   });
   const [server, setServer] = useLocalStorageState({
     key: KEY.SERVER,
@@ -64,8 +64,8 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
     }
     
     setFontSize("24px");
-    setFontStyle("Open sans");
-    setLeading("150%");
+    setFontStyle("Roboto");
+    setLeading("180%");
   }
 
   return (
