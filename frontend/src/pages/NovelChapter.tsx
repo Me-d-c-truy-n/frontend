@@ -158,14 +158,14 @@ const NovelChapter = () => {
 
       <div className="mt-8 flex gap-14 items-center justify-center">
         {
-          (chapterId && chapterId > '1') &&
+          (chapterId && parseInt(chapterId) > 1) &&
           <ButtonChangeChapter func={handlePrevChapter}>
             <RiSkipLeftLine className="text-2xl"/>
             TRƯỚC
           </ButtonChangeChapter>
         }
         {
-          (chapterId && chapterId < chapter.total+'') &&
+          (chapterId && parseInt(chapterId) < chapter.total) &&
           <ButtonChangeChapter func={handleNextChapter}>
             <RiSkipRightLine className="text-2xl"/>
             SAU
