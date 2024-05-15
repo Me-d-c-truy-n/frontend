@@ -18,6 +18,10 @@ import { useQuery } from "@tanstack/react-query";
 import { ApiGetOneChapter } from "../api/apiNovel";
 import NovelChapterSkeleton from "../components/Loading/NovelChapterSkeleton";
 import { ChapterOpenContext } from "../contexts/ChapterOpenContext";
+import ButtonChangeChapter from "../components/Button/ButtonChangeChapter";
+
+import { RiSkipLeftLine } from "react-icons/ri";
+import { RiSkipRightLine } from "react-icons/ri";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -143,6 +147,23 @@ const NovelChapter = () => {
       >
       </div>
       <Slider/>
+
+      <div className="mt-8 flex gap-14 items-center justify-center">
+        {
+          (chapterId && chapterId > '1') &&
+          <ButtonChangeChapter func={handlePrevChapter}>
+            <RiSkipLeftLine className="text-2xl"/>
+            TRƯỚC
+          </ButtonChangeChapter>
+        }
+        {
+          (chapterId && chapterId < chapter.total+'') &&
+          <ButtonChangeChapter func={handleNextChapter}>
+            <RiSkipRightLine className="text-2xl"/>
+            SAU
+          </ButtonChangeChapter>
+        }
+      </div>
     </div>
   )
 }
