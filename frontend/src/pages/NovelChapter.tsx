@@ -26,7 +26,7 @@ const NovelChapter = () => {
   const [openSettingPopup, setOpenSettingPopup] = useState<boolean>(false);
   const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
 
-  const { color, background, fontSize, server } = useContext(SettingsContext)!;
+  const { color, background, fontSize, fontStyle, server } = useContext(SettingsContext)!;
   const { updateNovelReaded, addNovelReaded } = useContext(HistoryContext)!;
   const { setIsOpen } = useContext(ChapterOpenContext)!;
 
@@ -138,7 +138,7 @@ const NovelChapter = () => {
         </div>
       </div>
       <div className="leading-10 my-0 md:my-10 px-2" 
-        style={{fontSize:fontSize, color: color}}
+        style={{fontSize:fontSize, color: color, fontFamily: fontStyle}}
         dangerouslySetInnerHTML={{__html: chapter.content}}
       >
       </div>

@@ -2,12 +2,15 @@ import { useContext } from 'react';
 import logo from '../../assets/images/logo.png';
 import { GrClose } from "react-icons/gr";
 import { SettingsContext } from '../../contexts/SettingsContext';
+import CustomSelection from './CustomSelection';
+import { SelectionKey } from '../../types/key';
 
 interface Props {
   close: ()=>void;
 }
 const SettingPopup = ({ close }: Props) => {
-  const { background, setBackground, color, setColor, fontSize, setFontSize, resetSettings } = useContext(SettingsContext)!;
+  const { background, setBackground, color, setColor, 
+    fontSize, setFontSize, fontStyle, setFontStyle, resetSettings } = useContext(SettingsContext)!;
 
   return (
     <div className="z-10 fixed left-0 mt-2 top-0 w-full">
@@ -39,11 +42,19 @@ const SettingPopup = ({ close }: Props) => {
         </div>
         <div className='flex justify-between mb-4'>
           <div>Cỡ chữ</div>
-          <input 
-            type="text" 
-            value={fontSize}
-            className='w-20 px-5 py-1 text-slate-600'
-            onChange={(e) => setFontSize(e.target.value)}
+          <CustomSelection 
+            value={fontSize} 
+            setValue={setFontSize}
+            title={SelectionKey.SIZE}
+          />
+        </div>
+
+        <div className='flex justify-between mb-4'>
+          <div>Font chữ</div>
+          <CustomSelection 
+            value={fontStyle} 
+            setValue={setFontStyle}
+            title={SelectionKey.FONT}
           />
         </div>
 

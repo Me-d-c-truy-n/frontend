@@ -8,10 +8,12 @@ interface SettingsContextType {
   color: string;
   background: string;
   fontSize: string;
+  fontStyle: string;
   server: string;
   setColor: Dispatch<SetStateAction<string>>;
   setBackground: Dispatch<SetStateAction<string>>;
   setFontSize: Dispatch<SetStateAction<string>>;
+  setFontStyle: Dispatch<SetStateAction<string>>;
   setServer: Dispatch<SetStateAction<string>>;
   resetSettings: () => void;
 }
@@ -34,8 +36,12 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
     initialState: theme == THEME.LIGHT?THEME_LIGHT.BACKGROUND:THEME_DARK.BACKGROUND,
   });
   const [fontSize, setFontSize] = useLocalStorageState({
-    key: KEY.BACKGROUND,
+    key: KEY.FONTSIZE,
     initialState: '25px',
+  });
+  const [fontStyle, setFontStyle] = useLocalStorageState({
+    key: KEY.FONTSTYLE,
+    initialState: 'Open sans',
   });
   const [server, setServer] = useLocalStorageState({
     key: KEY.SERVER,
@@ -52,13 +58,14 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
     }
     
     setFontSize("25px");
+    setFontStyle("Open sans");
   }
 
   return (
     <SettingsContext.Provider
       value={{ 
-        color, background, fontSize, server,
-        setColor, setBackground, setFontSize, setServer,
+        color, background, fontSize, fontStyle, server,
+        setColor, setBackground, setFontSize, setFontStyle, setServer,
         resetSettings 
       }}
     >

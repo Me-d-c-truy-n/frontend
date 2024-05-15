@@ -1,0 +1,11 @@
+.dark-select .MuiSelect-select {
+  color: white !important;
+}
+
+.dark-select .MuiOutlinedInput-notchedOutline {
+  border-color: white !important;
+}
+
+.dark-select .MuiSvgIcon-root {
+  fill: white !important;
+}
