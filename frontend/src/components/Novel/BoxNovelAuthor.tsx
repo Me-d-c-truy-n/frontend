@@ -12,7 +12,9 @@ const BoxNovelAuthor = ({ novel }: {novel: INovelRoot}) => {
         <Link to={`/truyen/${novel.novelId}`} className="text-slate-700 font-bold hover:text-amber-700">      
           {novel.name}
         </Link>
-        <div className="font-normal text-slate-500 w-72 h-12 text-wrap truncate">{novel.description}</div>
+        <div className="font-normal text-slate-500 w-72 h-12 text-wrap truncate"
+        dangerouslySetInnerHTML={{__html: novel.description}}
+        ></div>
         <div className="flex justify-between items-center mt-2">
           <div className="text-slate-600 flex gap-2 items-center text-sm">
             <HiUser />
