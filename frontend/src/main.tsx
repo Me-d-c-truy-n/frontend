@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
+import './font.css'
 import './index.css'
 import { SettingsProvider } from './contexts/SettingsContext.tsx'
 import { HistoryProvider } from './contexts/HistoryContext.tsx'
