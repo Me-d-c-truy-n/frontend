@@ -12,7 +12,7 @@ const ButtonUtils = ({ de = true, func, children, count=0, className='' }: Props
     ${de?'border border-gray-700 hover:border-amber-700 hover:text-amber-700':'text-white bg-amber-700'}
     ${className} flex text-xs md:text-base
     `} onClick={func}>
-      <div className="flex gap-2 items-center capitalize">
+      <div className="flex gap-1 md:gap-2 items-center capitalize">
         {children}
       </div>
       {
