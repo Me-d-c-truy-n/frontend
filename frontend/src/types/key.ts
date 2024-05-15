@@ -1,4 +1,4 @@
-export enum KEY{
+export enum KEY {
   HISTORY = 'history',
   READED = 'readed',
 

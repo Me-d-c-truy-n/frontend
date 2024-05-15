@@ -27,7 +27,7 @@ const NovelChapter = () => {
   const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
 
   const { color, background, fontSize, server } = useContext(SettingsContext)!;
-  const { updateNovelReaded } = useContext(HistoryContext)!;
+  const { updateNovelReaded, addNovelReaded } = useContext(HistoryContext)!;
   const { setIsOpen } = useContext(ChapterOpenContext)!;
 
   useEffect(() =>{
@@ -58,6 +58,10 @@ const NovelChapter = () => {
       novelId: chapter.novelId,
       chapterId: chapter.chapterId,
       totalChapter: chapter.total
+    })
+    addNovelReaded({
+      novelId: chapter.novelId,
+      chapterId: chapter.chapterId
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[chapter])

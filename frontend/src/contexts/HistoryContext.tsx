@@ -1,6 +1,7 @@
 import { Dispatch, ReactNode, SetStateAction, createContext } from "react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 import { IHistoryRoot, IReaded, IReadedRoot } from "../types/history";
+import { KEY } from "../types/key";
 
 interface HistoryContextType {
   readed: IReaded[];
@@ -19,17 +20,39 @@ interface HistoryProviderProps {
 
 const HistoryProvider: React.FC<HistoryProviderProps> = ({children}) =>{
   const [novels, setNovels] = useLocalStorageState({
-    key: 'history',
+    key: KEY.HISTORY,
     initialState: [],
   });
 
   const [readed, setReaded] = useLocalStorageState({
-    key: 'readed',
+    key: KEY.READED,
     initialState: [],
   });
 
   function addNovelReaded(novel: IReadedRoot){
-    console.log(novel);
+    const filterUnReaded = readed.filter((read: IReaded)=>
+      read.novelId !== novel.novelId);
+    const filterReaded = readed.filter((read: IReaded)=>
+      read.novelId === novel.novelId);
+
+    if (filterReaded.length <= 0) {
+      const newReaded: IReaded = {
+        novelId: novel.novelId,
+        chapterId: [novel.chapterId]
+      };
+
+      setReaded([newReaded, ...filterUnReaded]);
+    } else {
+      const listChapter = 
+        filterReaded[0].chapterId.filter((chapter: number) => chapter !== novel.chapterId);
+
+      const newReaded: IReaded = {
+        novelId: novel.novelId,
+        chapterId: [...listChapter, novel.chapterId]
+      };
+
+      setReaded([newReaded, ...filterUnReaded]);
+    }
   }
 
   function updateNovelReaded(novel: IHistoryRoot){
