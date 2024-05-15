@@ -7,9 +7,11 @@ interface SettingsContextType {
   color: string;
   background: string;
   fontSize: string;
+  server: string;
   setColor: Dispatch<SetStateAction<string>>;
   setBackground: Dispatch<SetStateAction<string>>;
   setFontSize: Dispatch<SetStateAction<string>>;
+  setServer: Dispatch<SetStateAction<string>>;
   resetSettings: () => void;
 }
 
@@ -34,6 +36,12 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
     key: 'fontSize',
     initialState: '25px',
   });
+  const [server, setServer] = useLocalStorageState({
+    key: 'server',
+    initialState: 'truyenfull',
+  });
+
+
 
   function resetSettings() {
     if (theme === THEME.LIGHT) {
@@ -49,7 +57,11 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
 
   return (
     <SettingsContext.Provider
-      value={{ color, background, fontSize, setColor, setBackground, setFontSize, resetSettings }}
+      value={{ 
+        color, background, fontSize, server,
+        setColor, setBackground, setFontSize, setServer,
+        resetSettings 
+      }}
     >
       {children}
     </SettingsContext.Provider>

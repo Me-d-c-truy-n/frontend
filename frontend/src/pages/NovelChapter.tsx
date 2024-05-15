@@ -26,7 +26,7 @@ const NovelChapter = () => {
   const [openSettingPopup, setOpenSettingPopup] = useState<boolean>(false);
   const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
 
-  const { color, background, fontSize } = useContext(SettingsContext)!;
+  const { color, background, fontSize, server } = useContext(SettingsContext)!;
   const { updateNovelReaded } = useContext(HistoryContext)!;
   const { setIsOpen } = useContext(ChapterOpenContext)!;
 
@@ -39,10 +39,13 @@ const NovelChapter = () => {
   },[])
 
   const { isLoading, isError } = useQuery({
-    queryKey: ['chapter', chapterId, novelId],
+    queryKey: ['chapter', chapterId, novelId, server],
     queryFn: async () => {
-      const data: IResponse<IChapter> = await ApiGetOneChapter('truyenfull', novelId || 'a', chapterId || 'chuong-1');
+      const data: IResponse<IChapter> = 
+        await ApiGetOneChapter(server, novelId || 'a', chapterId || 'chuong-1');
+      
       setChapter(data.data);
+      
       return data;
     },
   })

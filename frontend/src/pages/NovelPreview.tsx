@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { INovelRoot } from "../types/novel";
 import Slider from "../components/Slider";
 import NovelInfor from "../components/Novel/NovelInfor";
@@ -8,19 +8,22 @@ import { useQuery } from "@tanstack/react-query";
 import { ApiGetDetailNovel } from "../api/apiNovel";
 import { IResponse } from "../types/response";
 import Skeleton from 'react-loading-skeleton'
+import { SettingsContext } from "../contexts/SettingsContext";
 
 const NovelPreview = () => {
   const navigate = useNavigate();
+  const { server } = useContext(SettingsContext)!;
   const [novel, setNovel] = useState<INovelRoot | null>(null);
 
   const { novelId }  = useParams();
 
   const { isLoading, isError } = useQuery({
-    queryKey: ['preview', novelId],
+    queryKey: ['preview', novelId, server],
     queryFn: async () => {
-      const data: IResponse<INovelRoot> = await ApiGetDetailNovel('truyenfull', novelId || 'a');
+      const data: IResponse<INovelRoot> = await ApiGetDetailNovel(server, novelId || 'a');
 
       setNovel(data.data);
+
       return data;
     },
   })

@@ -3,22 +3,25 @@ import BoxNovel from "../Novel/BoxNovel";
 import TitleTab from "../TitleTab";
 import { IResponse } from "../../types/response";
 import { ApiGetAllNovel } from "../../api/apiNovel";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { INovelRoot } from "../../types/novel";
 import ListNovelSkeleton from "../Loading/ListNovelSkeleton";
 import  '../../assets/style/pagination.css';
 import CustomPagination from "../CustomPagination";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 const ListNovel = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
-
+  const { server } = useContext(SettingsContext)!;
+  
   const { isLoading, isFetching } = useQuery({
-    queryKey: ['all_novel', currentPage],
+    queryKey: ['all_novel', currentPage, server],
     queryFn: async () => {
-      const data: IResponse<INovelRoot[]> = await ApiGetAllNovel('truyenfull', currentPage);
+      const data: IResponse<INovelRoot[]> = 
+        await ApiGetAllNovel(server, currentPage);
       
       setPerPage(data.perPage);
       setNovels(data.data);

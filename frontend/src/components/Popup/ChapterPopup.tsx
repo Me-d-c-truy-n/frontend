@@ -4,9 +4,10 @@ import ChapterRow from "./ChapterRow";
 import { useQuery } from "@tanstack/react-query";
 import { IResponse } from "../../types/response";
 import { ApiGetAllChapter } from "../../api/apiNovel";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ListChapterSkeleton from "../Loading/ListChapterSkeleton";
 import CustomPagination from "../CustomPagination";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 interface Props {
   close: ()=>void;
@@ -20,10 +21,13 @@ const ChapterPopup = ({ close, novelId, name }: Props) => {
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
 
+  const { server } = useContext(SettingsContext)!;
+  
   const { isFetching } = useQuery({
-    queryKey: ['all_chapter', novelId, currentPage],
+    queryKey: ['all_chapter', novelId, currentPage, server],
     queryFn: async () => {
-      const data: IResponse<IChapterRoot[]> = await ApiGetAllChapter('truyenfull', novelId, currentPage);
+      const data: IResponse<IChapterRoot[]> = 
+        await ApiGetAllChapter(server, novelId, currentPage);
 
       setPerPage(data.perPage);
       setTotalPage(data.totalPage);

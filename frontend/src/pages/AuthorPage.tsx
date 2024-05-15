@@ -6,21 +6,23 @@ import { ApiGetAllNovelOfAuthor } from "../api/apiAuthor";
 import { useQuery } from "@tanstack/react-query";
 import { INovelRoot } from "../types/novel";
 import { IResponse } from "../types/response";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ListNovelSkeleton from "../components/Loading/ListNovelSkeleton";
 import TitleTab from "../components/TitleTab";
+import { SettingsContext } from "../contexts/SettingsContext";
 
 const AuthorPage = () => {
   const navigate = useNavigate();
   const { authorId}  = useParams();
   const [novels, setNovels] = useState<INovelRoot[]>([]);
+  const { server } = useContext(SettingsContext)!;
 
   const { isLoading, isError } = useQuery({
-    queryKey: ['author', authorId],
+    queryKey: ['author', authorId, server],
     queryFn: async () => {
-      const data: IResponse<INovelRoot[]> = await ApiGetAllNovelOfAuthor('truyenfull', authorId || 'a', 1);
+      const data: IResponse<INovelRoot[]> = 
+        await ApiGetAllNovelOfAuthor(server, authorId || 'a', 1);
 
-      console.log(data);
       setNovels(data.data);
 
       return data;

@@ -23,10 +23,9 @@ const BoxNovelAuthor = ({ novel }: {novel: INovelRoot}) => {
           </div>
         </div>
         <div className="flex mb-5 justify-end items-center">
-          
-            <Link to={`/truyen/${novel.novelId}`} className="bg-amber-700 text-white px-2 rounded-md text-sm py-1">
-              Đọc thử
-            </Link>
+          <Link to={`/truyen/${novel.novelId}`} className="bg-amber-700 text-white px-2 rounded-md text-sm py-1">
+            Đọc thử
+          </Link>
         </div>
       </div>
     </div>
