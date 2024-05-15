@@ -26,13 +26,13 @@ const BoxNovel = ({ novel, isLoading = false }: {novel?: INovelRoot, isLoading?:
   return (
     <div className="flex gap-2">
       <Link to={`/truyen/${novel.novelId}`}>
-        <img src={novel.image} alt={novel.name} className="rounded min-h-40 shadow-2xl" />
+        <img src={novel.image} alt={novel.name} className="rounded min-h-28 shadow-2xl md:min-h-40" />
       </Link>
       <div className="flex flex-col justify-between">
         <Link to={`/truyen/${novel.novelId}`} className="text-slate-700 font-bold hover:text-amber-700">      
           {novel.name}
         </Link>
-        <div className="font-normal text-slate-500 w-72 h-12 text-wrap truncate"
+        <div className="font-normal text-slate-500 max-w-72 h-12 text-wrap truncate"
         dangerouslySetInnerHTML={{__html: novel.description}}
         ></div>
         <div className="flex mb-5 justify-between items-center">

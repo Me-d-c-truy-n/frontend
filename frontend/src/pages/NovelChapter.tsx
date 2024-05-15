@@ -22,6 +22,7 @@ import ButtonChangeChapter from "../components/Button/ButtonChangeChapter";
 
 import { RiSkipLeftLine } from "react-icons/ri";
 import { RiSkipRightLine } from "react-icons/ri";
+import CustomSelectionNavigate from "../components/CustomSelectionNavigate";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -128,12 +129,19 @@ const NovelChapter = () => {
           </button>
         </div>
 
-        <div className="mt-6 flex gap-5">
+        <div className="mt-6 flex gap-5 mb-5">
           <ButtonUtils func={()=>setOpenSettingPopup(true)}>
             <IoSettingsOutline />
             Cấu hình
           </ButtonUtils>
 
+          <CustomSelectionNavigate 
+            currentChapter={chapter.chapterId} 
+            totalChapter={chapter.total}
+            novelId={novelId}
+            title="Chapter"
+          />
+        
           <ButtonUtils func={()=>setOpenChapterPopup(true)}>
             <MdOutlineFormatListBulleted/>
             Mục lục
