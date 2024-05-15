@@ -10,7 +10,8 @@ interface Props {
 }
 const SettingPopup = ({ close }: Props) => {
   const { background, setBackground, color, setColor, 
-    fontSize, setFontSize, fontStyle, setFontStyle, resetSettings } = useContext(SettingsContext)!;
+    fontSize, setFontSize, fontStyle, setFontStyle,
+    leading, setLeading, resetSettings } = useContext(SettingsContext)!;
 
   return (
     <div className="z-10 fixed left-0 mt-2 top-0 w-full">
@@ -55,6 +56,15 @@ const SettingPopup = ({ close }: Props) => {
             value={fontStyle} 
             setValue={setFontStyle}
             title={SelectionKey.FONT}
+          />
+        </div>
+
+        <div className='flex justify-between mb-4'>
+          <div>Chiều cao dòng</div>
+          <CustomSelection 
+            value={leading} 
+            setValue={setLeading}
+            title={SelectionKey.LEADING}
           />
         </div>
 

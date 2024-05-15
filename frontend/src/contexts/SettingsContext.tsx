@@ -9,11 +9,13 @@ interface SettingsContextType {
   background: string;
   fontSize: string;
   fontStyle: string;
+  leading: string;
   server: string;
   setColor: Dispatch<SetStateAction<string>>;
   setBackground: Dispatch<SetStateAction<string>>;
   setFontSize: Dispatch<SetStateAction<string>>;
   setFontStyle: Dispatch<SetStateAction<string>>;
+  setLeading: Dispatch<SetStateAction<string>>;
   setServer: Dispatch<SetStateAction<string>>;
   resetSettings: () => void;
 }
@@ -37,11 +39,15 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
   });
   const [fontSize, setFontSize] = useLocalStorageState({
     key: KEY.FONTSIZE,
-    initialState: '25px',
+    initialState: '24px',
   });
   const [fontStyle, setFontStyle] = useLocalStorageState({
     key: KEY.FONTSTYLE,
     initialState: 'Open sans',
+  });
+  const [leading, setLeading] = useLocalStorageState({
+    key: KEY.LEADING,
+    initialState: '150%',
   });
   const [server, setServer] = useLocalStorageState({
     key: KEY.SERVER,
@@ -57,15 +63,16 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
       setColor(THEME_DARK.COLOR);
     }
     
-    setFontSize("25px");
+    setFontSize("24px");
     setFontStyle("Open sans");
+    setLeading("150%");
   }
 
   return (
     <SettingsContext.Provider
       value={{ 
-        color, background, fontSize, fontStyle, server,
-        setColor, setBackground, setFontSize, setFontStyle, setServer,
+        color, background, fontSize, fontStyle, leading, server,
+        setColor, setBackground, setFontSize, setFontStyle, setServer, setLeading,
         resetSettings 
       }}
     >

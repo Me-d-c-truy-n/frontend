@@ -6,6 +6,7 @@ export enum KEY {
   BACKGROUND = 'background-',
   FONTSIZE = 'fontSize',
   FONTSTYLE = 'fontStyle',
+  LEADING = 'leading',
   SERVER = 'server',
 
   THEME = 'theme',
@@ -14,4 +15,5 @@ export enum KEY {
 export enum SelectionKey {
   SIZE = 'size',
   FONT = 'font',
+  LEADING = 'leading',
 }

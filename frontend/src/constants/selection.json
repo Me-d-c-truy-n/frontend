@@ -1,5 +1,6 @@
 {
   "size":
     ["12px", "13px", "14px", "15px", "16px", "17px", "18px", "19px", "20px", "21px", "22px", "23px", "24px", "25px", "26px", "27px", "28px", "29px", "30px", "31px", "32px", "33px", "34px", "35px", "36px", "37px", "38px", "39px", "40px", "41px", "42px","43px", "44px", "45px", "46px", "47px", "48px", "49px", "50px"],
-  "font": ["Roboto", "Open sans", "Inter", "Gentium Book Plus", "Noto Sans Georgian", "Ubuntu Sans", "Baskervville"]
+  "font": ["Roboto", "Open sans", "Inter", "Gentium Book Plus", "Noto Sans Georgian", "Ubuntu Sans", "Baskervville"],
+  "leading": ["100%", "110%", "120%", "130%","140%", "150%", "160%", "170%", "180%", "190%", "200%", "210%", "220%", "230%", "240%", "250%", "260%","270%","280%","290%","300%"]
 }
