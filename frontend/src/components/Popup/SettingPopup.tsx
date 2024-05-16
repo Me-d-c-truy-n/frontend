@@ -4,12 +4,13 @@ import { GrClose } from "react-icons/gr";
 import { SettingsContext } from '../../contexts/SettingsContext';
 import CustomSelection from './CustomSelection';
 import { SelectionKey } from '../../types/key';
+import CustomSelectColor from './CustomSelectColor';
 
 interface Props {
   close: ()=>void;
 }
 const SettingPopup = ({ close }: Props) => {
-  const { background, setBackground, color, setColor, 
+  const { background, color, setColor, 
     fontSize, setFontSize, fontStyle, setFontStyle,
     leading, setLeading, align, setAlign, resetSettings } = useContext(SettingsContext)!;
 
@@ -25,19 +26,14 @@ const SettingPopup = ({ close }: Props) => {
         </div>
         <div className='flex justify-between mb-4'>
           <div>Màu nền</div>
-          <input 
-            type="color" 
-            value={background}
-            className='w-20'
-            onChange={(e) => setBackground(e.target.value)}
-          />
+          <CustomSelectColor/>
         </div>
         <div className='flex justify-between mb-4'>
           <div>Màu chữ</div>
           <input 
             type="color" 
             value={color}
-            className='w-20'
+            className='w-32'
             onChange={(e) => setColor(e.target.value)}
           />
         </div>

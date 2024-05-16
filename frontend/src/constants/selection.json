@@ -20,5 +20,6 @@
       "key": "Canh phải",
       "value": "right"
     }
-  ]
+  ],
+  "color": ["#F8FAFC","#f4f4f4","#e9ebee","#d5d8dc","#f4f4e4","#f5ebcd","#eae4d3","#f2f2f2","#c2b49b","#272729","#232323","#1e293b"]
 }

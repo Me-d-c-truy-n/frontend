@@ -20,7 +20,7 @@ const CustomSelection = ({ value, setValue, title }: Props) => {
   const { theme } = useContext(ThemeContext)!;
   
   return (
-    <FormControl className={`w-28 ${theme==THEME.DARK&&'dark-select'}`}>
+    <FormControl className={`w-32 ${theme==THEME.DARK&&'dark-select'}`}>
       <InputLabel id={'demo-simple-select-label' + title} className="dark:!text-white capitalize"> 
         {title}
       </InputLabel>

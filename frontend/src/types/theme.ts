@@ -10,5 +10,5 @@ export enum THEME_LIGHT{
 
 export enum THEME_DARK{
   COLOR ='#ffffff',
-  BACKGROUND ='#212121',
+  BACKGROUND ='#272729',
 }
