@@ -7,6 +7,7 @@ export enum KEY {
   FONTSIZE = 'fontSize',
   FONTSTYLE = 'fontStyle',
   LEADING = 'leading',
+  ALIGN = 'align',
   SERVER = 'server',
 
   THEME = 'theme',
@@ -16,4 +17,5 @@ export enum SelectionKey {
   SIZE = 'size',
   FONT = 'font',
   LEADING = 'leading',
+  ALIGN = 'align',
 }

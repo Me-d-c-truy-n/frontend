@@ -10,12 +10,14 @@ interface SettingsContextType {
   fontSize: string;
   fontStyle: string;
   leading: string;
+  align: 'center' | 'left' | 'right' | 'justify';
   server: string;
   setColor: Dispatch<SetStateAction<string>>;
   setBackground: Dispatch<SetStateAction<string>>;
   setFontSize: Dispatch<SetStateAction<string>>;
   setFontStyle: Dispatch<SetStateAction<string>>;
   setLeading: Dispatch<SetStateAction<string>>;
+  setAlign: Dispatch<SetStateAction<string>>;
   setServer: Dispatch<SetStateAction<string>>;
   resetSettings: () => void;
 }
@@ -43,11 +45,15 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
   });
   const [fontStyle, setFontStyle] = useLocalStorageState({
     key: KEY.FONTSTYLE,
-    initialState: 'Roboto',
+    initialState: 'Palatino Linotype',
   });
   const [leading, setLeading] = useLocalStorageState({
     key: KEY.LEADING,
     initialState: '180%',
+  });
+  const [align, setAlign] = useLocalStorageState({
+    key: KEY.ALIGN,
+    initialState: 'left',
   });
   const [server, setServer] = useLocalStorageState({
     key: KEY.SERVER,
@@ -64,15 +70,16 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
     }
     
     setFontSize("24px");
-    setFontStyle("Roboto");
+    setFontStyle("Palatino Linotype");
     setLeading("180%");
+    setAlign('left');
   }
 
   return (
     <SettingsContext.Provider
       value={{ 
-        color, background, fontSize, fontStyle, leading, server,
-        setColor, setBackground, setFontSize, setFontStyle, setServer, setLeading,
+        color, background, fontSize, fontStyle, leading, align, server,
+        setColor, setBackground, setFontSize, setFontStyle, setServer, setLeading, setAlign,
         resetSettings 
       }}
     >

@@ -32,10 +32,15 @@ const CustomSelection = ({ value, setValue, title }: Props) => {
         onChange={(e) => setValue(e.target.value)}
       >
         {
-          data[title].map((fs)=>
-            <MenuItem value={fs} key={fs}>
-              <span>{fs}</span>
-            </MenuItem>
+          data[title].map((fs)=>(typeof fs === 'string')?(
+              <MenuItem value={fs} key={fs}>
+                <span>{fs}</span>
+              </MenuItem>
+            ):(
+              <MenuItem value={fs.value} key={fs.value}>
+                <span>{fs.key}</span>
+              </MenuItem>
+            )
           )
         }
       </Select>
