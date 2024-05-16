@@ -2,6 +2,7 @@ import { useState } from "react";
 import Nav from "../components/Nav"
 import Slider from "../components/Slider"
 import StoryJustRead from "../components/History/StoryJustRead";
+import NovelBookmark from "../components/NovelBookmark";
 
 const Bookcase = () => {
   const [tabIndex, setTabIndex] = useState<number>(1);
@@ -20,6 +21,7 @@ const Bookcase = () => {
             Chức năng đánh dấu dùng để lưu lại các truyện, chương mà bạn dự định sau này sẽ đọc hoặc cần tìm lại, do đó một truyện bạn có thể đánh dấu được nhiều chương. Đừng dùng chức năng đánh dấu để lưu tiến độ đọc truyện vì nó đã được tựu động lưu vào mục 
             <b>Truyện đang đọc</b>
           </div>
+          <NovelBookmark/>
         </div>
       }
     </>

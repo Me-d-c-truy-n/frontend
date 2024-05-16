@@ -38,16 +38,15 @@ function App() {
       <ScrollButton/>
       
       <ToastContainer 
-        position="top-center"
+        position="top-right"
         autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
-        draggable
         pauseOnHover
-        theme="light"
+        theme={theme}
+        className="w-fit hidden md:block"
       />
     </div>
   )

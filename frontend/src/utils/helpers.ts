@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-export function convertDate(date: string) {
+export function convertDateToTime(date: string) {
   const convertDate = new Date(date);
   return moment(convertDate).fromNow()
         .replace('a few seconds', 'vài giây trước')
@@ -12,4 +12,9 @@ export function convertDate(date: string) {
         .replace('days ago', 'ngày trước')
         .replace('an', '1')
         .replace('a ', '1 ');  
+}
+
+export function convertDate(date: string) {
+  const convertDate = new Date(date);
+  return moment(convertDate).format('YYYY-MM-DD HH:mm:ss');
 }

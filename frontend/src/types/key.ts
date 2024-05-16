@@ -11,6 +11,8 @@ export enum KEY {
   SERVER = 'server',
 
   THEME = 'theme',
+
+  BOOKMARK = 'bookmark',
 }
 
 export enum SelectionKey {

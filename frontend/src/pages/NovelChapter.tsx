@@ -3,12 +3,8 @@ import Slider from "../components/Slider"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { IChapter } from "../types/novel";
 
-import { GrNext } from "react-icons/gr";
-import { GrPrevious } from "react-icons/gr";
-import ButtonUtils from "../components/Button/ButtonUtils";
 
-import { IoSettingsOutline } from "react-icons/io5";
-import { MdOutlineFormatListBulleted } from "react-icons/md";
+import ButtonUtils from "../components/Button/ButtonUtils";
 import { SettingsContext } from "../contexts/SettingsContext";
 import SettingPopup from "../components/Popup/SettingPopup";
 import { HistoryContext } from "../contexts/HistoryContext";
@@ -22,7 +18,11 @@ import ButtonChangeChapter from "../components/Button/ButtonChangeChapter";
 
 import { RiSkipLeftLine } from "react-icons/ri";
 import { RiSkipRightLine } from "react-icons/ri";
-import CustomSelectionNavigate from "../components/CustomSelectionNavigate";
+import { IoSettingsOutline } from "react-icons/io5";
+import { MdOutlineFormatListBulleted } from "react-icons/md";
+import { GrNext } from "react-icons/gr";
+import { GrPrevious } from "react-icons/gr";
+import ButtonBookmark from "../components/Button/ButtonBookmark";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -129,23 +129,32 @@ const NovelChapter = () => {
           </button>
         </div>
 
-        <div className="mt-6 flex gap-5 mb-5">
+        <div className="mt-6 flex gap-5 mb-5 flex-wrap justify-center">
           <ButtonUtils func={()=>setOpenSettingPopup(true)}>
             <IoSettingsOutline />
             Cấu hình
           </ButtonUtils>
 
-          <CustomSelectionNavigate 
+          {/* <CustomSelectionNavigate 
             currentChapter={chapter.chapterId} 
             totalChapter={chapter.total}
             novelId={novelId}
             title="Chapter"
           />
-        
+         */}
+
           <ButtonUtils func={()=>setOpenChapterPopup(true)}>
             <MdOutlineFormatListBulleted/>
             Mục lục
           </ButtonUtils>
+
+          <ButtonBookmark 
+            novelId={chapter.novelId}
+            novelName={chapter.novelName}
+            chapterId={chapter.chapterId}
+            chapterName={chapter.name}
+            time={(new Date).toString()}
+          />
 
         </div>
       </div>

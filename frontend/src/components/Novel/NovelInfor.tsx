@@ -10,6 +10,7 @@ import Skeleton from 'react-loading-skeleton'
 import { useContext, useState } from "react";
 import ChapterPopup from "../Popup/ChapterPopup";
 import { HistoryContext } from "../../contexts/HistoryContext";
+import ButtonBookmark from "../Button/ButtonBookmark";
 
 interface Props {
   novel: INovelRoot | null;
@@ -52,7 +53,7 @@ const NovelInfor = ({ novel, isLoading = false }: Props) => {
       <div className="flex flex-col">
         <div className="font-bold text-xl mb-3 text-gray-700">{novel.name}</div>
         <Link to={`/tac-gia/${novel.author.authorId || novel.author.id}`} className="text-base text-gray-700">{novel.author.name}</Link>
-        <div className="flex gap-5 my-5">
+        <div className="flex gap-5 my-5 flex-wrap justify-center">
           <ButtonUtils
             func={()=>navigate(`/truyen/${novel.novelId}/1`)}
             de={false}
@@ -60,6 +61,12 @@ const NovelInfor = ({ novel, isLoading = false }: Props) => {
               <FiBookOpen/>
               Đọc Truyện
           </ButtonUtils>
+          <ButtonBookmark 
+            novelId={novel.novelId}
+            novelName={novel.name}
+            time={(new Date()).toString()}
+          />
+          
           <ButtonUtils
             func={()=>setOpenChapterPopup(true)}
             count={novel.total}
