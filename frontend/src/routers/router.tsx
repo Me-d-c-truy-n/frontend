@@ -7,6 +7,7 @@ import NovelChapter from "../pages/NovelChapter";
 import AuthorPage from "../pages/AuthorPage";
 import FilterPage from "../pages/FilterPage";
 import Notfound from "../pages/error/Notfound";
+import Bookcase from "../pages/Bookcase";
 
 const router = createBrowserRouter(
   [
@@ -19,6 +20,10 @@ const router = createBrowserRouter(
             {
               path:'/',
               element:<Home/>
+            },
+            {
+              path:'/tu-truyen',
+              element: <Bookcase/>
             },
             {
               path: '/truyen/:novelId',

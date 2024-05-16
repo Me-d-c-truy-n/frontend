@@ -15,8 +15,8 @@ const SettingPopup = ({ close }: Props) => {
     leading, setLeading, align, setAlign, resetSettings } = useContext(SettingsContext)!;
 
   return (
-    <div className="z-10 fixed left-0 mt-2 top-0 w-full">
-      <div className="shadow-2xl p-5 w-11/12 md:w-6/12 mx-auto border rounded-lg border-amber-600"
+    <div className="z-10 fixed left-0 top-0 w-full h-full">
+      <div className="mt-1 shadow-2xl p-5 w-11/12 md:w-6/12 mx-auto border rounded-lg border-amber-600"
       style={{backgroundColor: background, color: color}}
       >
         <div className='flex justify-between items-center mb-10'>

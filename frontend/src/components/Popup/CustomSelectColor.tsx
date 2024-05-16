@@ -16,7 +16,7 @@ const CustomSelectColor = () => {
       <datalist id="presetColors">
         {
           listColor["color"].map((color) =>
-          <option value={color}>{color}</option>)
+          <option key={color} value={color}>{color}</option>)
         }
       </datalist>
     </>

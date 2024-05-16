@@ -13,7 +13,7 @@ const Slider = ({ isLoading = false }: Props) => {
   const slider = slider_const["slider"][getRandomInt(slider_const["slider"].length)];
 
   return (
-    <div className='w-full mb-5'>
+    <div className='w-full'>
       {
         isLoading ?
         <Skeleton className="h-20 lg:h-48"/> 

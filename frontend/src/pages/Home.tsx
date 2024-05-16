@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
       <Slider/>
-      <StoryJustRead/>
+      <StoryJustRead isShowAll={false}/>
       <ListNovel/>
     </div>
   )
