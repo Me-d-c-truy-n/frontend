@@ -34,7 +34,7 @@ const ButtonBookmark = ({
           <SiTicktick className="text-amber-500"/>:
           <FaRegBookmark />
       }
-      Đánh dấu
+        Đánh dấu
     </ButtonUtils>
   )
 }

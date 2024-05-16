@@ -44,12 +44,13 @@ const FilterPage = () => {
   return (
     <div>
       <Slider isLoading={isFetching}/>
-      <div>
-        <h1 className="uppercase text-amber-700 mb-5">TÌM KIẾM:{" "}{searchParams.get('q')}</h1>
+      <div className="mt-3">
+        {/* <h1 className="uppercase text-amber-700 mb-5 mt-2">TÌM KIẾM:{" "}{searchParams.get('q')}</h1> */}
+        <TitleTab name={`TÌM KIẾM: ${searchParams.get('q')}`}/>
 
         {
           novels.length <= 0 ?(
-            <div className="dark:text-white text-center text-xl mt-6">
+            <div className="dark:text-white text-center text-xl">
               KHÔNG TÌM THẤY KẾT QUẢ NÀO
             </div>
           ):(

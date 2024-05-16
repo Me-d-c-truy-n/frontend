@@ -38,7 +38,7 @@ const Header = () => {
         <Link to={'/'}>
           <img src={logo} alt="logo" width={60}/>
         </Link>
-        <div className={`${!isOpen && 'dark:bg-stone-950'}bg-white dark:border-slate-600 flex items-center w-72 md:w-96 border p-2 ps-5 rounded-full shadow-sm outline-none ${isSelected?'border-amber-500':''}`}>
+        <div className={`${!isOpen && 'dark:bg-stone-950'}bg-white dark:border-slate-600 border-slate-300 flex items-center w-72 md:w-96 border p-2 ps-5 rounded-full shadow-sm outline-none ${isSelected?'border-amber-500':''}`}>
           <input className={`dark:text-slate-200 bg-transparent outline-none w-11/12`}placeholder='Tìm kiếm theo tên truyện, tác giả'
           onFocus={() => setIsSelected(true)}
           onBlur={() => setIsSelected(false)}
