@@ -26,7 +26,9 @@ const BoxNovel = ({ novel, isLoading = false }: {novel?: INovelRoot, isLoading?:
   return (
     <div className="flex gap-2">
       <Link to={`/truyen/${novel.novelId}`}>
-        <img src={novel.image} alt={novel.name} className="rounded min-h-28 shadow-2xl md:min-h-40" />
+        <img src={novel.image} alt={novel.name} 
+        className=
+        "min-w-28 max-w-28 max-h-40 min-h-40 md:min-w-40 md:max-w-40 md:max-h-60 md:min-h-60 rounded shadow-2xl object-cover" />
       </Link>
       <div className="flex flex-col justify-between">
         <Link to={`/truyen/${novel.novelId}`} className="text-slate-700 font-bold hover:text-amber-700">      

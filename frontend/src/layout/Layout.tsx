@@ -5,7 +5,7 @@ import Header from "./Header"
 const Layout = () => {
 
   return (
-    <div className="max-w-5xl mx-auto relative">
+    <div className="max-w-5xl mx-auto relative overflow-x-hidden">
       <Header/>
       <main className="min-h-screen p-1">
         <Outlet/>
