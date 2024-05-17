@@ -10,8 +10,8 @@ interface HistoryContextType {
   addNovelReaded: (novel: IReadedRoot) => void;
   updateNovelReaded: (novel: IHistoryRoot) => void;
   removeNovelReaded: (novelId: string) => void;
-  getListChapterReaded: (novelId: string) => number[];
-  getChapterJustReaded: (novelId: string) => number;
+  getListChapterReaded: (novelId: string) => string[];
+  getChapterJustReaded: (novelId: string) => string;
 }
 
 const HistoryContext = createContext<HistoryContextType | undefined>(undefined);

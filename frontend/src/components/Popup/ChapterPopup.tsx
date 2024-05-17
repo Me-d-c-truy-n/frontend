@@ -21,7 +21,7 @@ const ChapterPopup = ({ close, novelId, name }: Props) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
-  const [listChapterReaded, setListChapterReaded] = useState<number[]>([])
+  const [listChapterReaded, setListChapterReaded] = useState<string[]>([])
 
   const { server } = useContext(SettingsContext)!;
   const { getListChapterReaded } = useContext(HistoryContext)!;
@@ -51,7 +51,7 @@ const ChapterPopup = ({ close, novelId, name }: Props) => {
             <>
               <div className='flex justify-between items-center mb-10 border-b pb-6'>
                 <h1 className='text-xl font-bold'>{chapters[0].novelName}</h1>
-                <GrClose className='text-xl cursor-pointer text-gray-500 hover:text-black' onClick={close}/>
+                <GrClose className='md:w-1/12 w-4/12 text-xl cursor-pointer text-gray-500 hover:text-black' onClick={close}/>
               </div>
 
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
