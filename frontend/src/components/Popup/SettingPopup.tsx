@@ -5,15 +5,19 @@ import { SettingsContext } from '../../contexts/SettingsContext';
 import CustomSelection from './CustomSelection';
 import { SelectionKey } from '../../types/key';
 import CustomSelectColor from './CustomSelectColor';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, AppState } from '../../store';
+import { changeAlign, changeFontSize, changeFontStyle, changeLeading } from '../../store/settings';
 
 interface Props {
   close: ()=>void;
 }
 const SettingPopup = ({ close }: Props) => {
-  const { background, color, setColor, 
-    fontSize, setFontSize, fontStyle, setFontStyle,
-    leading, setLeading, align, setAlign, resetSettings } = useContext(SettingsContext)!;
+  const { background, color, setColor, resetSettings } = useContext(SettingsContext)!;
 
+  const settings = useSelector((state: AppState) => state.settings)
+  const dispatch = useDispatch<AppDispatch>()
+  
   return (
     <div className="z-10 fixed left-0 top-0 w-full h-full">
       <div className="mt-1 shadow-2xl p-5 w-11/12 md:w-6/12 mx-auto border rounded-lg border-amber-600"
@@ -40,8 +44,8 @@ const SettingPopup = ({ close }: Props) => {
         <div className='flex justify-between mb-4'>
           <div>Cỡ chữ</div>
           <CustomSelection 
-            value={fontSize} 
-            setValue={setFontSize}
+            value={settings.fontSize} 
+            setValue={(fs: string) => dispatch(changeFontSize(fs))}
             title={SelectionKey.SIZE}
           />
         </div>
@@ -49,8 +53,8 @@ const SettingPopup = ({ close }: Props) => {
         <div className='flex justify-between mb-4'>
           <div>Font chữ</div>
           <CustomSelection 
-            value={fontStyle} 
-            setValue={setFontStyle}
+            value={settings.fontStyle} 
+            setValue={(fs: string) => dispatch(changeFontStyle(fs))}
             title={SelectionKey.FONT}
           />
         </div>
@@ -58,8 +62,8 @@ const SettingPopup = ({ close }: Props) => {
         <div className='flex justify-between mb-4'>
           <div>Chiều cao dòng</div>
           <CustomSelection 
-            value={leading} 
-            setValue={setLeading}
+            value={settings.leading} 
+            setValue={(ld: string) => dispatch(changeLeading(ld))}
             title={SelectionKey.LEADING}
           />
         </div>
@@ -67,8 +71,8 @@ const SettingPopup = ({ close }: Props) => {
         <div className='flex justify-between mb-4'>
           <div>Canh chữ</div>
           <CustomSelection 
-            value={align} 
-            setValue={setAlign}
+            value={settings.align} 
+            setValue={(al: string) => dispatch(changeAlign(al))}
             title={SelectionKey.ALIGN}
           />
         </div>

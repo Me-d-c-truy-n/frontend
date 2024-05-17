@@ -1,6 +1,6 @@
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
-import { Dispatch, SetStateAction, useContext } from "react";
+import { useContext } from "react";
 import data from '../../constants/selection.json';
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
@@ -12,7 +12,7 @@ import { SelectionKey } from "../../types/key";
 
 interface Props {
   value: string;
-  setValue: Dispatch<SetStateAction<string>>;
+  setValue: (newValue: string) => void;
   title: SelectionKey;
 }
 

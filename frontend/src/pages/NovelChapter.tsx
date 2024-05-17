@@ -23,6 +23,8 @@ import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 import ButtonBookmark from "../components/Button/ButtonBookmark";
+import { useSelector } from "react-redux";
+import { AppState } from "../store";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -31,10 +33,12 @@ const NovelChapter = () => {
   const [openSettingPopup, setOpenSettingPopup] = useState<boolean>(false);
   const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
 
-  const { color, background, fontSize, fontStyle, leading, align, server } = useContext(SettingsContext)!;
+  const { color, background } = useContext(SettingsContext)!;
   const { updateNovelReaded, addNovelReaded } = useContext(HistoryContext)!;
   const { setIsOpen } = useContext(ChapterOpenContext)!;
 
+  const settings = useSelector((state: AppState) => state.settings)
+  
   useEffect(() =>{
     setIsOpen(true);
     return () => {
@@ -44,10 +48,10 @@ const NovelChapter = () => {
   },[])
 
   const { isLoading, isError } = useQuery({
-    queryKey: ['chapter', chapterId, novelId, server],
+    queryKey: ['chapter', chapterId, novelId, settings.server],
     queryFn: async () => {
       const data: IResponse<IChapter> = 
-        await ApiGetOneChapter(server, novelId || 'a', chapterId || 'chuong-1');
+        await ApiGetOneChapter(settings.server, novelId || 'a', chapterId || 'chuong-1');
       
       setChapter(data.data);
       
@@ -156,7 +160,7 @@ const NovelChapter = () => {
         </div>
       </div>
       <div className="my-0 md:my-10 px-2" 
-        style={{fontSize:fontSize, color: color, fontFamily: fontStyle, lineHeight: leading, textAlign: align}}
+        style={{fontSize:settings.fontSize, color: color, fontFamily: settings.fontStyle, lineHeight: settings.leading, textAlign: settings.align}}
         dangerouslySetInnerHTML={{__html: chapter.content}}
       >
       </div>
