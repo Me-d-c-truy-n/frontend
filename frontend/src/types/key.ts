@@ -19,7 +19,7 @@ export enum INITIAL_KEY {
   FONTSIZE = '24px',
   FONTSTYLE = 'Palatino Linotype',
   LEADING = '180%',
-  ALIGN = 'left',
+  ALIGN = 'justify',
   SERVER = 'truyenfull',
 }
 

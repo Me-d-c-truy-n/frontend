@@ -20,9 +20,6 @@ const BoxNovelAuthor = ({ novel }: {novel: INovelRoot}) => {
             <HiUser />
             <div className="font-medium">{novel.author.name}</div>
           </div>
-          <div className="text-xs dark:text-slate-200">
-            {novel.total}{" chương"}
-          </div>
         </div>
         <div className="flex mb-5 justify-end items-center">
           <Link to={`/truyen/${novel.novelId}`} className="bg-amber-700 text-white px-2 rounded-md text-sm py-1">

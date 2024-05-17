@@ -1,5 +1,5 @@
 export interface IAuthorRoot {
-  authorId: number;
+  authorId: string;
   name: string;
   id?: number;
 }

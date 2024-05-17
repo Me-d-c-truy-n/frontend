@@ -4,14 +4,14 @@ export interface INovelRoot {
   novelId: string;
   image: string;
   name: string;
-  total: number;
+  firstChapter: string;
   author: IAuthorRoot;
   description: string;
 }
 
 export interface IChapterRoot {
   novelId: string;
-  chapterId: number;
+  chapterId: string;
   name: string;
   novelName: string;
   total: number;
@@ -20,10 +20,11 @@ export interface IChapterRoot {
 
 export interface IChapter {
   novelId: string;
-  chapterId: number;
+  chapterId: string;
   name: string;
   novelName: string;
-  total: number;
+  nextChapterId: string;
+  preChapterId: string;
   time: string;
   author: IAuthorRoot;
   content: string;

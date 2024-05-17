@@ -55,7 +55,7 @@ const NovelInfor = ({ novel, isLoading = false }: Props) => {
         <Link to={`/tac-gia/${novel.author.authorId || novel.author.id}`} className="text-base text-gray-700">{novel.author.name}</Link>
         <div className="flex gap-5 my-5 flex-wrap justify-center">
           <ButtonUtils
-            func={()=>navigate(`/truyen/${novel.novelId}/1`)}
+            func={()=>navigate(`/truyen/${novel.novelId}/${novel.firstChapter}`)}
             de={false}
           >
               <FiBookOpen/>
@@ -69,7 +69,6 @@ const NovelInfor = ({ novel, isLoading = false }: Props) => {
           
           <ButtonUtils
             func={()=>setOpenChapterPopup(true)}
-            count={novel.total}
           >
               <MdOutlineFormatListBulleted/>
               Mục lục

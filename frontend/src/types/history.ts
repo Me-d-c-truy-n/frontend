@@ -2,16 +2,15 @@ export interface IHistoryRoot {
   time: string;
   name: string;
   novelId: string;
-  chapterId: number;
-  totalChapter: number;
+  chapterId: string;
 }
 
 export interface IReaded {
   novelId: string;
-  chapterId: number[];
+  chapterId: string[];
 }
 
 export interface IReadedRoot {
   novelId: string;
-  chapterId: number;
+  chapterId: string;
 }

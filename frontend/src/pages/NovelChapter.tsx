@@ -62,7 +62,6 @@ const NovelChapter = () => {
       name: chapter.novelName,
       novelId: chapter.novelId,
       chapterId: chapter.chapterId,
-      totalChapter: chapter.total
     })
     addNovelReaded({
       novelId: chapter.novelId,
@@ -73,16 +72,14 @@ const NovelChapter = () => {
 
   const handleNextChapter =()=>{
     if (chapter == null || chapterId == null) return;
-    if (chapter.total+'' == chapterId) return;
-    // if (chapterId == '3') return navigate(`/truyen/${novelId}/1`)
-    navigate(`/truyen/${novelId}/${parseInt(chapterId) + 1}`)
+    if (!chapter.nextChapterId || chapter.nextChapterId.length <= 0) return;
+    navigate(`/truyen/${novelId}/${chapter.nextChapterId}`)
   }
 
   const handlePrevChapter =()=>{
     if (chapter == null || chapterId == null) return;
-    if (parseInt(chapterId) <= 1) return;
-        // if (chapterId == '1') return navigate(`/truyen/${novelId}`)
-    navigate(`/truyen/${novelId}/${parseInt(chapterId) - 1}`)
+    if (!chapter.preChapterId|| chapter.preChapterId.length <= 0) return;
+    navigate(`/truyen/${novelId}/${chapter.preChapterId}`)
   }
 
   useEffect(() =>{
@@ -167,14 +164,14 @@ const NovelChapter = () => {
 
       <div className="mt-8 flex gap-14 items-center justify-center">
         {
-          (chapterId && parseInt(chapterId) > 1) &&
+          chapter.preChapterId && chapter.preChapterId.length>=0 &&
           <ButtonChangeChapter func={handlePrevChapter}>
             <RiSkipLeftLine className="text-2xl"/>
             TRƯỚC
           </ButtonChangeChapter>
         }
         {
-          (chapterId && parseInt(chapterId) < chapter.total) &&
+          chapter.nextChapterId && chapter.nextChapterId.length>=0 &&
           <ButtonChangeChapter func={handleNextChapter}>
             <RiSkipRightLine className="text-2xl"/>
             SAU

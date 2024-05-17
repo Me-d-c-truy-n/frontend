@@ -46,7 +46,7 @@ const HistoryProvider: React.FC<HistoryProviderProps> = ({children}) =>{
       setReaded([newReaded, ...filterUnReaded]);
     } else {
       const listChapter = 
-        filterReaded[0].chapterId.filter((chapter: number) => chapter !== novel.chapterId);
+        filterReaded[0].chapterId.filter((chapter: string) => chapter !== novel.chapterId);
 
       const newReaded: IReaded = {
         novelId: novel.novelId,
