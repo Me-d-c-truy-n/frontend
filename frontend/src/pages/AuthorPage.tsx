@@ -10,18 +10,25 @@ import { useContext, useEffect, useState } from "react";
 import ListNovelSkeleton from "../components/Loading/ListNovelSkeleton";
 import TitleTab from "../components/TitleTab";
 import { SettingsContext } from "../contexts/SettingsContext";
+import CustomPagination from "../components/CustomPagination";
 
 const AuthorPage = () => {
   const navigate = useNavigate();
   const { authorId}  = useParams();
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [, setPerPage] = useState<number>(0);
+  const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
   const { server } = useContext(SettingsContext)!;
 
-  const { isLoading, isError } = useQuery({
-    queryKey: ['author', authorId, server],
+  const { isFetching, isError } = useQuery({
+    queryKey: ['author', authorId, server, currentPage],
     queryFn: async () => {
       const data: IResponse<INovelRoot[]> = 
         await ApiGetAllNovelOfAuthor(server, authorId || 'a', 1);
+
+      setPerPage(data.perPage);
+      setTotalPage(data.totalPage);
 
       setNovels(data.data);
 
@@ -34,7 +41,7 @@ const AuthorPage = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[isError])
   
-  if (isLoading || novels.length <= 0) return (
+  if (isFetching || novels.length <= 0) return (
     <>
       <Slider isLoading={true}/>
       <ListNovelSkeleton>
@@ -50,13 +57,18 @@ const AuthorPage = () => {
       <div>
         <TitleTab name={`TRUYỆN CỦA TÁC GIẢ ${novels[0].author.name}`} 
         uppercase={true}/>
-        <div className="grid grid-cols-1 gap-y-10 gap-x-4 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
           {
             novels.map((novel) =>
               <BoxNovelAuthor key={novel.novelId} novel={novel}/>
             )
           }
         </div>
+        <CustomPagination
+          totalPage={totalPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </div>
   )

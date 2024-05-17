@@ -8,7 +8,7 @@ const BoxNovelAuthor = ({ novel }: {novel: INovelRoot}) => {
       <Link to={`/truyen/${novel.novelId}`}>
         <img src={novel.image} alt={novel.name} className="rounded min-h-28 shadow-2xl md:min-h-40" />
       </Link>
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between flex-1">
         <Link to={`/truyen/${novel.novelId}`} className="text-slate-700 font-bold hover:text-amber-700">      
           {novel.name}
         </Link>

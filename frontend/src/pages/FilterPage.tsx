@@ -22,7 +22,7 @@ const FilterPage = () => {
   const { server } = useContext(SettingsContext)!;
 
   const { isFetching } = useQuery({
-    queryKey: ['search', searchParams.get('q'), server],
+    queryKey: ['search', searchParams.get('q'), server, currentPage],
     queryFn: async () => {
       const data: IResponse<INovelRoot[]> = 
         await ApiSearch(server, searchParams.get('q')||'', currentPage);
