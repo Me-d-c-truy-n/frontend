@@ -15,6 +15,14 @@ export enum KEY {
   BOOKMARK = 'bookmark',
 }
 
+export enum INITIAL_KEY {
+  FONTSIZE = '24px',
+  FONTSTYLE = 'Palatino Linotype',
+  LEADING = '180%',
+  ALIGN = 'left',
+  SERVER = 'truyenfull',
+}
+
 export enum SelectionKey {
   SIZE = 'size',
   FONT = 'font',

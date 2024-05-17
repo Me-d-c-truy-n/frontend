@@ -2,7 +2,7 @@ import { Dispatch, ReactNode, SetStateAction, createContext, useContext } from "
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 import { ThemeContext } from "./ThemeContext";
 import { THEME, THEME_DARK, THEME_LIGHT } from "../types/theme";
-import { KEY } from "../types/key";
+import { INITIAL_KEY, KEY } from "../types/key";
 
 interface SettingsContextType {
   color: string;
@@ -33,31 +33,31 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
   
   const [color, setColor] = useLocalStorageState({
     key: KEY.COLOR + theme,
-    initialState: theme == THEME.LIGHT?THEME_LIGHT.COLOR:THEME_DARK.COLOR,
+    initialState: theme == THEME.LIGHT ? THEME_LIGHT.COLOR : THEME_DARK.COLOR,
   });
   const [background, setBackground] = useLocalStorageState({
     key: KEY.BACKGROUND + theme,
-    initialState: theme == THEME.LIGHT?THEME_LIGHT.BACKGROUND:THEME_DARK.BACKGROUND,
+    initialState: theme == THEME.LIGHT ? THEME_LIGHT.BACKGROUND : THEME_DARK.BACKGROUND,
   });
   const [fontSize, setFontSize] = useLocalStorageState({
     key: KEY.FONTSIZE,
-    initialState: '24px',
+    initialState: INITIAL_KEY.FONTSIZE,
   });
   const [fontStyle, setFontStyle] = useLocalStorageState({
     key: KEY.FONTSTYLE,
-    initialState: 'Palatino Linotype',
+    initialState: INITIAL_KEY.FONTSTYLE,
   });
   const [leading, setLeading] = useLocalStorageState({
     key: KEY.LEADING,
-    initialState: '180%',
+    initialState: INITIAL_KEY.LEADING,
   });
   const [align, setAlign] = useLocalStorageState({
     key: KEY.ALIGN,
-    initialState: 'left',
+    initialState: INITIAL_KEY.ALIGN,
   });
   const [server, setServer] = useLocalStorageState({
     key: KEY.SERVER,
-    initialState: 'truyenfull',
+    initialState: INITIAL_KEY.SERVER,
   });
 
   function resetSettings() {
@@ -69,10 +69,10 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
       setColor(THEME_DARK.COLOR);
     }
     
-    setFontSize("24px");
-    setFontStyle("Palatino Linotype");
-    setLeading("180%");
-    setAlign('left');
+    setFontSize(INITIAL_KEY.FONTSIZE);
+    setFontStyle(INITIAL_KEY.FONTSTYLE);
+    setLeading(INITIAL_KEY.LEADING);
+    setAlign(INITIAL_KEY.ALIGN);
   }
 
   return (
