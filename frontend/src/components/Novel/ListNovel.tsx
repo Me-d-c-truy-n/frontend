@@ -3,19 +3,20 @@ import BoxNovel from "../Novel/BoxNovel";
 import TitleTab from "../TitleTab";
 import { IResponse } from "../../types/response";
 import { ApiGetAllNovel } from "../../api/apiNovel";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { INovelRoot } from "../../types/novel";
 import ListNovelSkeleton from "../Loading/ListNovelSkeleton";
 import  '../../assets/style/pagination.css';
 import CustomPagination from "../CustomPagination";
-import { SettingsContext } from "../../contexts/SettingsContext";
+import { useSelector } from "react-redux";
+import { AppState } from "../../store";
 
 const ListNovel = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
-  const { server } = useContext(SettingsContext)!;
+  const server = useSelector((state: AppState) => state.settings.server)
   
   const { isLoading, isFetching } = useQuery({
     queryKey: ['all_novel', currentPage, server],

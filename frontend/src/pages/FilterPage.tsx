@@ -2,8 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import Slider from "../components/Slider"
 
 import BoxNovelAuthor from "../components/Novel/BoxNovelAuthor";
-import { useContext, useState } from "react";
-import { SettingsContext } from "../contexts/SettingsContext";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { IResponse } from "../types/response";
 import { INovelRoot } from "../types/novel";
@@ -11,6 +10,8 @@ import { ApiSearch } from "../api/apiSearch";
 import ListNovelSkeleton from "../components/Loading/ListNovelSkeleton";
 import TitleTab from "../components/TitleTab";
 import CustomPagination from "../components/CustomPagination";
+import { useSelector } from "react-redux";
+import { AppState } from "../store";
 
 const FilterPage = () => {
   const [searchParams] = useSearchParams();
@@ -19,7 +20,8 @@ const FilterPage = () => {
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
-  const { server } = useContext(SettingsContext)!;
+  
+  const server = useSelector((state: AppState) => state.settings.server)
 
   const { isFetching } = useQuery({
     queryKey: ['search', searchParams.get('q'), server, currentPage],

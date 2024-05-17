@@ -4,11 +4,12 @@ import ChapterRow from "./ChapterRow";
 import { useQuery } from "@tanstack/react-query";
 import { IResponse } from "../../types/response";
 import { ApiGetAllChapter } from "../../api/apiNovel";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import ListChapterSkeleton from "../Loading/ListChapterSkeleton";
 import CustomPagination from "../CustomPagination";
-import { SettingsContext } from "../../contexts/SettingsContext";
-import { HistoryContext } from "../../contexts/HistoryContext";
+import { useSelector } from "react-redux";
+import { AppState } from "../../store";
+import { getListChapterReaded } from "../../store/readed/selector";
 
 interface Props {
   close: ()=>void;
@@ -21,10 +22,9 @@ const ChapterPopup = ({ close, novelId, name }: Props) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
-  const [listChapterReaded, setListChapterReaded] = useState<string[]>([])
 
-  const { server } = useContext(SettingsContext)!;
-  const { getListChapterReaded } = useContext(HistoryContext)!;
+  const server = useSelector((state: AppState) => state.settings.server)
+  const listChapterReaded= useSelector(getListChapterReaded(novelId));
 
   const { isFetching } = useQuery({
     queryKey: ['all_chapter', novelId, currentPage, server],
@@ -36,8 +36,6 @@ const ChapterPopup = ({ close, novelId, name }: Props) => {
       setTotalPage(data.totalPage);
       setChapters(data.data);
 
-      setListChapterReaded(getListChapterReaded(novelId));
-      
       return data;
     },
   })

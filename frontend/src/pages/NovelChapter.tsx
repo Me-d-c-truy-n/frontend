@@ -3,17 +3,14 @@ import Slider from "../components/Slider"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { IChapter } from "../types/novel";
 
-
 import ButtonUtils from "../components/Button/ButtonUtils";
 import { SettingsContext } from "../contexts/SettingsContext";
 import SettingPopup from "../components/Popup/SettingPopup";
-import { HistoryContext } from "../contexts/HistoryContext";
 import ChapterPopup from "../components/Popup/ChapterPopup";
 import { IResponse } from "../types/response";
 import { useQuery } from "@tanstack/react-query";
 import { ApiGetOneChapter } from "../api/apiNovel";
 import NovelChapterSkeleton from "../components/Loading/NovelChapterSkeleton";
-import { ChapterOpenContext } from "../contexts/ChapterOpenContext";
 import ButtonChangeChapter from "../components/Button/ButtonChangeChapter";
 
 import { RiSkipLeftLine } from "react-icons/ri";
@@ -23,8 +20,11 @@ import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 import ButtonBookmark from "../components/Button/ButtonBookmark";
-import { useSelector } from "react-redux";
-import { AppState } from "../store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, AppState } from "../store";
+import { updateNovelReaded } from "../store/history";
+import { addNovelReaded } from "../store/readed";
+import { setIsOpen } from "../store/chapterOpen";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -34,15 +34,14 @@ const NovelChapter = () => {
   const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
 
   const { color, background } = useContext(SettingsContext)!;
-  const { updateNovelReaded, addNovelReaded } = useContext(HistoryContext)!;
-  const { setIsOpen } = useContext(ChapterOpenContext)!;
 
   const settings = useSelector((state: AppState) => state.settings)
-  
+  const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() =>{
-    setIsOpen(true);
+    dispatch(setIsOpen(true));
     return () => {
-      setIsOpen(false);
+      dispatch(setIsOpen(false));
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
@@ -61,16 +60,16 @@ const NovelChapter = () => {
 
   useEffect(() =>{
     if (chapter == null) return;
-    updateNovelReaded({
+    dispatch(updateNovelReaded({
       time: (new Date).toString(),
       name: chapter.novelName,
       novelId: chapter.novelId,
       chapterId: chapter.chapterId,
-    })
-    addNovelReaded({
+    }))
+    dispatch(addNovelReaded({
       novelId: chapter.novelId,
       chapterId: chapter.chapterId
-    })
+    }));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[chapter])
 

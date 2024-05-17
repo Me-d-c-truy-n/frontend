@@ -5,7 +5,6 @@ import { CiLight } from "react-icons/ci";
 import { CiDark } from "react-icons/ci";
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { ThemeContext } from '../contexts/ThemeContext';
-import { ChapterOpenContext } from '../contexts/ChapterOpenContext';
 import { THEME } from '../types/theme';
 
 const Header = () => {
@@ -15,7 +14,6 @@ const Header = () => {
   const [searchValue, setSearchValue] = useState<string>(searchParams.get('q') || "");
   
   const { theme, changeTheme } = useContext(ThemeContext)!;
-  const { isOpen } = useContext(ChapterOpenContext)!;
 
   function handlePressEnter(e: React.KeyboardEvent<HTMLInputElement>){
     if (e.key != 'Enter') return;
@@ -34,11 +32,11 @@ const Header = () => {
   }
 
   return (
-    <div className={`flex justify-between items-center pt-3 mb-6 ${!isOpen&&'dark:text-white'} `}>
+    <div className={`flex justify-between items-center pt-3 mb-6`}>
         <Link to={'/'}>
           <img src={logo} alt="logo" width={60}/>
         </Link>
-        <div className={`${!isOpen && 'dark:bg-stone-950'}bg-white dark:border-slate-600 border-slate-300 flex items-center w-72 md:w-96 border p-2 ps-5 rounded-full shadow-sm outline-none ${isSelected?'border-amber-500':''}`}>
+        <div className={`bg-transparent border-slate-300 flex items-center w-72 md:w-96 border p-2 ps-5 rounded-full shadow-sm outline-none ${isSelected?'border-amber-500':''}`}>
           <input className={`dark:text-slate-200 bg-transparent outline-none w-11/12`}placeholder='Tìm kiếm theo tên truyện, tác giả'
           onFocus={() => setIsSelected(true)}
           onBlur={() => setIsSelected(false)}

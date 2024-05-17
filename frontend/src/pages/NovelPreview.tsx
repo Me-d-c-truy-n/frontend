@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { INovelRoot } from "../types/novel";
 import Slider from "../components/Slider";
 import NovelInfor from "../components/Novel/NovelInfor";
@@ -8,11 +8,12 @@ import { useQuery } from "@tanstack/react-query";
 import { ApiGetDetailNovel } from "../api/apiNovel";
 import { IResponse } from "../types/response";
 import Skeleton from 'react-loading-skeleton'
-import { SettingsContext } from "../contexts/SettingsContext";
+import { useSelector } from "react-redux";
+import { AppState } from "../store";
 
 const NovelPreview = () => {
   const navigate = useNavigate();
-  const { server } = useContext(SettingsContext)!;
+  const server = useSelector((state: AppState) => state.settings.server)
   const [novel, setNovel] = useState<INovelRoot | null>(null);
 
   const { novelId }  = useParams();

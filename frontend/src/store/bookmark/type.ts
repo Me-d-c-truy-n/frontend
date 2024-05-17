@@ -5,3 +5,7 @@ export interface IBookmark {
   chapterId?: string;
   chapterName?: string;
 }
+
+export interface IBookmarkRoot {
+  bookmark: IBookmark[];
+}

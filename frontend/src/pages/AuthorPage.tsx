@@ -6,11 +6,12 @@ import { ApiGetAllNovelOfAuthor } from "../api/apiAuthor";
 import { useQuery } from "@tanstack/react-query";
 import { INovelRoot } from "../types/novel";
 import { IResponse } from "../types/response";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ListNovelSkeleton from "../components/Loading/ListNovelSkeleton";
 import TitleTab from "../components/TitleTab";
-import { SettingsContext } from "../contexts/SettingsContext";
 import CustomPagination from "../components/CustomPagination";
+import { useSelector } from "react-redux";
+import { AppState } from "../store";
 
 const AuthorPage = () => {
   const navigate = useNavigate();
@@ -19,7 +20,8 @@ const AuthorPage = () => {
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
-  const { server } = useContext(SettingsContext)!;
+  
+  const server = useSelector((state: AppState) => state.settings.server)
 
   const { isFetching, isError } = useQuery({
     queryKey: ['author', authorId, server, currentPage],

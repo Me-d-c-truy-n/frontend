@@ -1,8 +1,8 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { ISettings } from "./type";
 import { INITIAL_KEY } from "../../types/key";
 import { Store } from "../name";
-import { Align } from "../../types/align";
+import { settingsReducer } from "./reducer";
 
 const initialState: ISettings = {
   fontSize: INITIAL_KEY.FONTSIZE,
@@ -15,30 +15,10 @@ const initialState: ISettings = {
 const settingsSlice = createSlice({
   name: Store.SETTINGS,
   initialState,
-  reducers: {
-    changeFontSize(state, action: PayloadAction<string>) {
-      state.fontSize = action.payload
-    },
-    changeFontStyle(state, action: PayloadAction<string>) {
-      state.fontStyle = action.payload
-    },
-    changeLeading(state, action: PayloadAction<string>) {
-      state.leading = action.payload
-    },
-    changeAlign(state, action: PayloadAction<string>) {
-      state.align = action.payload as Align;
-    },
-    changeServer(state, action: PayloadAction<string>) {
-      state.server = action.payload
-    },
-    resetSettingsText(state) {
-      state.fontSize = INITIAL_KEY.FONTSIZE;
-      state.fontStyle = INITIAL_KEY.FONTSTYLE;
-      state.leading = INITIAL_KEY.LEADING;
-      state.align = INITIAL_KEY.ALIGN;
-    }
-  }
+  reducers: settingsReducer
 })
+
+const { actions, reducer } = settingsSlice;
 
 export const 
   { 
@@ -48,7 +28,6 @@ export const
     changeLeading, 
     changeServer,
     resetSettingsText
-  } 
-  = settingsSlice.actions
+  } = actions
 
-export default settingsSlice.reducer;
+export default reducer;

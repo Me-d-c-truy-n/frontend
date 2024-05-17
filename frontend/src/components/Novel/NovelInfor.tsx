@@ -7,10 +7,11 @@ import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { GrNext } from "react-icons/gr";
 
 import Skeleton from 'react-loading-skeleton'
-import { useContext, useState } from "react";
+import { useState } from "react";
 import ChapterPopup from "../Popup/ChapterPopup";
-import { HistoryContext } from "../../contexts/HistoryContext";
 import ButtonBookmark from "../Button/ButtonBookmark";
+import { getChapterJustReaded } from "../../store/history/selector";
+import { useSelector } from "react-redux";
 
 interface Props {
   novel: INovelRoot | null;
@@ -20,7 +21,8 @@ interface Props {
 const NovelInfor = ({ novel, isLoading = false }: Props) => {
   const navigate = useNavigate();
   const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
-  const { getChapterJustReaded } = useContext(HistoryContext)!;
+
+  const chapterId = useSelector(getChapterJustReaded(novel?.novelId));
 
   if (isLoading || novel == null) 
     return (
@@ -75,9 +77,9 @@ const NovelInfor = ({ novel, isLoading = false }: Props) => {
           </ButtonUtils>
 
           {
-            getChapterJustReaded(novel.novelId) > 0 && (
+            chapterId && chapterId != '0' && (
             <ButtonUtils
-              func={()=>navigate(`/truyen/${novel.novelId}/${getChapterJustReaded(novel.novelId)}`)}
+              func={()=>navigate(`/truyen/${novel.novelId}/${chapterId}`)}
               className="bg-red-600 text-white border-red-600 hover:text-white"
             >
                 Đọc Tiếp

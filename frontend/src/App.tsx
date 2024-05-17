@@ -4,15 +4,17 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-loading-skeleton/dist/skeleton.css'
 import router from './routers/router';
 import { useContext, useEffect } from 'react';
-import { ChapterOpenContext } from './contexts/ChapterOpenContext';
 import { SettingsContext } from './contexts/SettingsContext';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import { ThemeContext } from './contexts/ThemeContext';
 import { THEME } from './types/theme';
 import ScrollButton from './components/Button/ScrollButton';
+import { useSelector } from 'react-redux';
+import { AppState } from './store';
 
 function App() {
-  const { isOpen } = useContext(ChapterOpenContext)!;
+  const isOpen = useSelector((state: AppState) => state.chapterOpen.isOpen);
+
   const { theme } = useContext(ThemeContext)!;
   const { background } = useContext(SettingsContext)!;
 

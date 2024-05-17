@@ -1,27 +1,30 @@
 import ButtonUtils from './ButtonUtils'
 import { SiTicktick } from "react-icons/si";
 import { FaRegBookmark } from "react-icons/fa";
-import { IBookmark } from '../../types/bookmark';
-import { useContext } from 'react';
-import { BookmarkContext } from '../../contexts/BookmarkContext';
 import { toast } from 'react-toastify';
+import { IBookmark } from '../../store/bookmark/type';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from '../../store';
+import { updateBookmark } from '../../store/bookmark';
+import { checkIsBookmark } from '../../store/bookmark/selector';
 
 const ButtonBookmark = ({
     novelId,  novelName,  chapterId,  chapterName
   }: IBookmark) => {
 
-  const { updateBookmark, checkIsBookmark } = useContext(BookmarkContext)!;
+  const dispatch = useDispatch<AppDispatch>();
+  const isBookmarked = useSelector(checkIsBookmark({novelId, novelName, chapterId, time: ''}));
 
   return (
     <ButtonUtils func={()=>{
-      updateBookmark({
+      dispatch(updateBookmark({
         time: (new Date).toString(),  
         novelId,  
         novelName,  
         chapterId,  
         chapterName
-      });
-      if (checkIsBookmark({novelId, novelName, chapterId, time: ''})) {
+      }));
+      if (isBookmarked) {
         if (chapterId) toast.success('Đã bỏ đánh dấu chương này');
         else toast.success('Đã bỏ đánh dấu truyện này');
       } else {
@@ -30,7 +33,7 @@ const ButtonBookmark = ({
       }
     }}>
       {
-        checkIsBookmark({novelId, novelName, chapterId, time: ''}) ?
+        isBookmarked ?
           <SiTicktick className="text-amber-500"/>:
           <FaRegBookmark />
       }

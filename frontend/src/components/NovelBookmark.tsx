@@ -1,12 +1,14 @@
-import { useContext } from "react"
-import { BookmarkContext } from "../contexts/BookmarkContext"
-import { IBookmark } from "../types/bookmark";
 import { Link } from "react-router-dom";
 import { convertDate } from "../utils/helpers";
 import { IoCloseOutline } from "react-icons/io5";
+import { IBookmark } from "../store/bookmark/type";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, AppState } from "../store";
+import { updateBookmark } from "../store/bookmark";
 
 const NovelBookmark = () => {
-  const { bookmark, updateBookmark } = useContext(BookmarkContext)!;
+  const dispatch = useDispatch<AppDispatch>()
+  const bookmark = useSelector((state: AppState) => state.bookmark.bookmark);
 
   return (
     <div className="mt-2">
@@ -22,13 +24,13 @@ const NovelBookmark = () => {
             <div className="truncate hidden md:block text-xs text-gray-600 font-medium w-2/12 dark:text-slate-400">{convertDate(bm.time)}</div>
             <button className="justify-self-end border border-amber-600 text-amber-600 p-1 rounded">
               <IoCloseOutline className="text-base"
-                onClick={() => updateBookmark({
+                onClick={() => dispatch(updateBookmark({
                   time: (new Date).toString(),  
                   novelId: bm.novelId,  
                   novelName: bm.novelName,  
                   chapterId: bm.chapterId,  
                   chapterName: bm.chapterName
-                })}
+                }))}
               />
             </button>
           </div>
