@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
 import { useState } from "react";
 import { changeServerIndex } from "../../store/server";
+import { FaServer } from "react-icons/fa";
 
 const KanbanSelectServer = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -45,8 +46,9 @@ const KanbanSelectServer = () => {
                       {...provided.dragHandleProps}
                       {...provided.draggableProps}
                       ref={provided.innerRef}
-                      className={`outline-none shadow-xl p-2 px-8 text-center rounded  ${srv === server ?"bg-red-600":"bg-yellow-600"}`}
+                      className={` flex gap-2 items-center outline-none shadow-xl p-2 px-8 text-center rounded  ${srv === server ?"bg-red-600":"bg-yellow-600"}`}
                       >
+                        <FaServer />
                         {srv}
                       </div>
                     )}

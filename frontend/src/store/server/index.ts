@@ -5,7 +5,7 @@ import { serverReducer } from "./reducer";
 import { INITIAL_KEY } from "../../types/key";
 
 const initialState: IServer = {
-  listServer: ["truyenfull", "tangthuvien"],
+  listServer: ["truyenfull", "tangthuvien", "metruyencv"],
   server: INITIAL_KEY.SERVER,
 }
 
@@ -18,7 +18,8 @@ const serverSlice = createSlice({
 const { actions, reducer } = serverSlice;
 
 export const { 
-  changeServerIndex
+  changeServerIndex,
+  addNewServer
 } = actions;
 
 export default reducer;
