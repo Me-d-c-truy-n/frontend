@@ -25,7 +25,7 @@ const ExportEBookPopup = ({ close }: Props) => {
 
   return (
     <div className="z-10 px-1 fixed left-0 top-0 w-full h-full flex justify-center items-center shadow-lg">
-      <div className="shadow-2xl py-5 px-4 mx-auto border rounded-lg border-amber-600 bg-white dark:bg-black dark:text-white"
+      <div className="shadow-2xl p-2 md:py-5 md:px-4 mx-auto border rounded-lg border-amber-600 bg-white dark:bg-black dark:text-white"
       >
         <div className='flex justify-between items-center mb-5'>
           <img src={logo} alt='logo' className='w-10'/>
@@ -66,7 +66,7 @@ const ExportEBookPopup = ({ close }: Props) => {
             />
           </div>
           <div className='flex justify-center mt-6'>
-            <button className='border py-2 px-4 rounded-lg gap-3 flex items-center justify-center border-black dark:border-white hover:text-amber-700 hover:border-amber-700'
+            <button className='transition ease-in-out border py-2 px-4 rounded-lg gap-3 flex items-center justify-center border-black dark:border-white hover:text-white hover:border-transparent hover:bg-amber-700'
             onClick={handleDownload}
             >
               <FiDownload/>
