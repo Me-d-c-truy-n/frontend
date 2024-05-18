@@ -16,7 +16,7 @@ const ListNovel = () => {
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
-  const server = useSelector((state: AppState) => state.settings.server)
+  const server = useSelector((state: AppState) => state.server.server)
   
   const { isLoading, isFetching } = useQuery({
     queryKey: ['all_novel', currentPage, server],

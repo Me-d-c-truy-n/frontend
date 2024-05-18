@@ -5,6 +5,7 @@ import historySlice from './history'
 import readedSlice from './readed'
 import bookmarkSlice from './bookmark'
 import chapterOpenSlice from './chapterOpen'
+import serverSlice from './server'
 
 export const combinedReducer = combineReducers({
   settings: settingsSlice,
@@ -12,6 +13,7 @@ export const combinedReducer = combineReducers({
   readed: readedSlice,
   bookmark: bookmarkSlice,
   chapterOpen: chapterOpenSlice,
+  server: serverSlice,
 });
 
 const rootReducer: Reducer = (state: AppState, action: AnyAction) => {

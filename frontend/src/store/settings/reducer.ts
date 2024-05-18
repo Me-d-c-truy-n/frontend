@@ -16,9 +16,6 @@ export const settingsReducer = {
   changeAlign(state: ISettings, action: PayloadAction<string>) {
     state.align = action.payload as Align;
   },
-  changeServer(state: ISettings, action: PayloadAction<string>) {
-    state.server = action.payload
-  },
   resetSettingsText(state: ISettings) {
     state.fontSize = INITIAL_KEY.FONTSIZE;
     state.fontStyle = INITIAL_KEY.FONTSTYLE;

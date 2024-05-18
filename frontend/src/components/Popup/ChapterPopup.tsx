@@ -23,7 +23,7 @@ const ChapterPopup = ({ close, novelId, name }: Props) => {
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
 
-  const server = useSelector((state: AppState) => state.settings.server)
+  const server = useSelector((state: AppState) => state.server.server)
   const listChapterReaded= useSelector(getListChapterReaded(novelId));
 
   const { isFetching } = useQuery({

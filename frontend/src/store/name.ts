@@ -5,4 +5,5 @@ export enum Store {
   READED = 'readed',
   BOOKMARK = 'bookmark',
   CHAPTEROPEN = 'chapter-open',
+  SERVER = 'server',
 }

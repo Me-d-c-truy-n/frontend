@@ -3,5 +3,4 @@ export interface ISettings {
   fontStyle: string;
   leading: string;
   align: 'center' | 'left' | 'right' | 'justify';
-  server: string;
 }

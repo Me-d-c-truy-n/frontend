@@ -21,7 +21,7 @@ const FilterPage = () => {
   const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
   
-  const server = useSelector((state: AppState) => state.settings.server)
+  const server = useSelector((state: AppState) => state.server.server)
 
   const { isFetching } = useQuery({
     queryKey: ['search', searchParams.get('q'), server, currentPage],

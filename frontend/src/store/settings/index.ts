@@ -9,7 +9,6 @@ const initialState: ISettings = {
   fontStyle: INITIAL_KEY.FONTSTYLE,
   leading: INITIAL_KEY.LEADING,
   align: INITIAL_KEY.ALIGN,
-  server: INITIAL_KEY.SERVER,
 }
 
 const settingsSlice = createSlice({
@@ -26,7 +25,6 @@ export const
     changeFontStyle, 
     changeAlign, 
     changeLeading, 
-    changeServer,
     resetSettingsText
   } = actions
 

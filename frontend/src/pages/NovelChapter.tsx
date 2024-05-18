@@ -26,6 +26,7 @@ import { updateNovelReaded } from "../store/history";
 import { addNovelReaded } from "../store/readed";
 import { setIsOpen } from "../store/chapterOpen";
 import { toast } from "react-toastify";
+import KanbanSelectServer from "../components/Button/KanbanSelectServer";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ const NovelChapter = () => {
   const { color, background } = useContext(SettingsContext)!;
 
   const settings = useSelector((state: AppState) => state.settings)
+  const server = useSelector((state: AppState) => state.server.server);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() =>{
@@ -48,10 +50,10 @@ const NovelChapter = () => {
   },[])
 
   const { isLoading, isError } = useQuery({
-    queryKey: ['chapter', chapterId, novelId, settings.server],
+    queryKey: ['chapter', chapterId, novelId, server],
     queryFn: async () => {
       const data: IResponse<IChapter> = 
-        await ApiGetOneChapter(settings.server, novelId || 'a', chapterId || 'chuong-1');
+        await ApiGetOneChapter(server, novelId || 'a', chapterId || 'chuong-1');
       
       setChapter(data.data);
       
@@ -121,7 +123,6 @@ const NovelChapter = () => {
       <div className="flex flex-col justify-center items-center mt-2">
         <Link to={`/truyen/${chapter.novelId}`} className="font-bold text-gray-900 text-xl capitalize hover:text-amber-700 dark:text-slate-500">{chapter.novelName}</Link>
         <Link to={`/tac-gia/${chapter.author.authorId || chapter.author.id}`} className="text-gray-500 dark:text-gray-300">{chapter.author.name}</Link>
-
         <div className="flex mt-6 items-center gap-4">
           <button 
             onClick={handlePrevChapter}
@@ -135,6 +136,7 @@ const NovelChapter = () => {
               <GrNext/>
           </button>
         </div>
+
 
         <div className="mt-6 flex gap-5 mb-5 flex-wrap justify-center">
           <ButtonUtils func={()=>setOpenSettingPopup(true)}>
@@ -164,6 +166,9 @@ const NovelChapter = () => {
           />
 
         </div>
+
+        <KanbanSelectServer/>
+
       </div>
       <div className="my-0 md:my-10 px-2" 
         style={{fontSize:settings.fontSize, color: color, fontFamily: settings.fontStyle, lineHeight: settings.leading, textAlign: settings.align}}

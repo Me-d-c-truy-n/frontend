@@ -13,7 +13,7 @@ import { AppState } from "../store";
 
 const NovelPreview = () => {
   const navigate = useNavigate();
-  const server = useSelector((state: AppState) => state.settings.server)
+  const server = useSelector((state: AppState) => state.server.server)
   const [novel, setNovel] = useState<INovelRoot | null>(null);
 
   const { novelId }  = useParams();

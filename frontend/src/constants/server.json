@@ -1,0 +1,12 @@
+{
+  "server": [
+    {
+      "id": "truyenfull",
+      "name": "truyenfull"
+    },
+    {
+      "id": "tangthuvien",
+      "name": "tangthuvien"
+    }
+  ]
+}
