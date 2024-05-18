@@ -4,6 +4,7 @@ import { FiDownload } from "react-icons/fi";
 import listExport from '../../constants/export.json';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import '../../assets/style/inputNumber.css'
 
 interface Props {
   close: ()=>void;
@@ -50,7 +51,7 @@ const ExportEBookPopup = ({ close }: Props) => {
           <div className='mt-4 mx-auto'>
             <input 
               type="number" 
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-950 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
               placeholder="Từ chương" 
               value={fromChapter}
               onChange={(e) => setFromChapter(parseInt(e.target.value))}
@@ -58,7 +59,7 @@ const ExportEBookPopup = ({ close }: Props) => {
             />
             <input 
               type="number" 
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2" 
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-950 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2" 
               placeholder="Đến chương"
               value={toChapter}
               onChange={(e) => setToChapter(parseInt(e.target.value))}
