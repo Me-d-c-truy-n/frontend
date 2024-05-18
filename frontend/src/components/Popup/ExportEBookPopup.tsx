@@ -24,7 +24,7 @@ const ExportEBookPopup = ({ close }: Props) => {
   }
 
   return (
-    <div className="z-10 px-1 fixed left-0 top-0 w-full h-full flex justify-center items-center shadow-lg">
+    <div className="z-10 px-1 fixed left-0 top-0 w-full h-full flex justify-center items-center shadow-lg backdrop-blur-sm">
       <div className="shadow-2xl p-2 md:py-5 md:px-4 mx-auto border rounded-lg border-amber-600 bg-white dark:bg-black dark:text-white"
       >
         <div className='flex justify-between items-center mb-5'>
