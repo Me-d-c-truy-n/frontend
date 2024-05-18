@@ -23,15 +23,20 @@ const CustomPagination = ({ totalPage, currentPage, setCurrentPage, changeThemeE
   }
 
   return (
-    <div className="mt-5 flex justify-center">
-      <Pagination 
-        count={totalPage} 
-        page={currentPage}
-        color="primary" size="large" 
-        onChange={handleChangePage}  
-        className={`${theme=='dark' && changeThemeEffect && 'dark-pagination' }`}
-      />
-    </div>
+    <>
+      {
+        totalPage > 1 &&
+        <div className="mt-5 flex justify-center">
+          <Pagination 
+            count={totalPage} 
+            page={currentPage}
+            color="primary" size="large" 
+            onChange={handleChangePage}  
+            className={`${theme=='dark' && changeThemeEffect && 'dark-pagination' }`}
+          />
+        </div>
+      }
+    </>
   )
 }
 
