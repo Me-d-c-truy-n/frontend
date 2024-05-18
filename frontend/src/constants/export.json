@@ -1,0 +1,24 @@
+{
+  "export": [
+    {
+      "id": "txt",
+      "image": "https://cdn-icons-png.flaticon.com/512/2656/2656402.png"
+    },
+    {
+      "id": "pdf",
+      "image": "https://cdn-icons-png.flaticon.com/512/136/136522.png "
+    },
+    {
+      "id": "word",
+      "image": "https://cdn-icons-png.flaticon.com/512/2656/2656383.png"
+    },
+    {
+      "id": "prc",
+      "image": "https://cdn-icons-png.flaticon.com/512/14421/14421822.png"
+    },
+    {
+      "id": "epub",
+      "image": "https://cdn-icons-png.flaticon.com/512/180/180838.png"
+    }
+  ]
+}
