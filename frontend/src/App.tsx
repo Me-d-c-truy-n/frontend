@@ -48,7 +48,9 @@ function App() {
         rtl={false}
         pauseOnHover
         theme={theme}
+        pauseOnFocusLoss={false}
         className="w-fit hidden md:block"
+        limit={5}
       />
     </div>
   )

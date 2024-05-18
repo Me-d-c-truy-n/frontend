@@ -25,6 +25,7 @@ import { AppDispatch, AppState } from "../store";
 import { updateNovelReaded } from "../store/history";
 import { addNovelReaded } from "../store/readed";
 import { setIsOpen } from "../store/chapterOpen";
+import { toast } from "react-toastify";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -75,13 +76,21 @@ const NovelChapter = () => {
 
   const handleNextChapter =()=>{
     if (chapter == null || chapterId == null) return;
-    if (!chapter.nextChapterId || chapter.nextChapterId.length <= 0) return;
+    if (!chapter.nextChapterId || chapter.nextChapterId.length <= 0) {
+      toast.error("Hiện tại đây đã là chương cuối");
+      return;
+    }
+    toast.dismiss();
     navigate(`/truyen/${novelId}/${chapter.nextChapterId}`)
   }
 
   const handlePrevChapter =()=>{
     if (chapter == null || chapterId == null) return;
-    if (!chapter.preChapterId|| chapter.preChapterId.length <= 0) return;
+    if (!chapter.preChapterId|| chapter.preChapterId.length <= 0) {
+      toast.error("Đây đã là chương đầu tiên");
+      return;
+    }
+    toast.dismiss();
     navigate(`/truyen/${novelId}/${chapter.preChapterId}`)
   }
 
@@ -115,17 +124,15 @@ const NovelChapter = () => {
 
         <div className="flex mt-6 items-center gap-4">
           <button 
-          onClick={handlePrevChapter}
-          className="border flex items-center justify-center rounded-full p-1 text-amber-600 border-amber-600 hover:bg-amber-600 hover:text-white">
-            <GrPrevious/>
+            onClick={handlePrevChapter}
+            className="border flex items-center justify-center rounded-full p-1 text-amber-600 border-amber-600 hover:bg-amber-600 hover:text-white">
+              <GrPrevious/>
           </button>
-
           <div className="text-gray-700 dark:text-gray-500">{chapter.name}</div>
-          
           <button 
-          onClick={handleNextChapter}
-          className="border flex items-center justify-center rounded-full p-1 text-amber-600 border-amber-600 hover:bg-amber-600 hover:text-white">
-            <GrNext/>
+            onClick={handleNextChapter}
+            className="border flex items-center justify-center rounded-full p-1 text-amber-600 border-amber-600 hover:bg-amber-600 hover:text-white">
+              <GrNext/>
           </button>
         </div>
 
