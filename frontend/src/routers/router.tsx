@@ -8,6 +8,7 @@ import AuthorPage from "../pages/AuthorPage";
 import FilterPage from "../pages/FilterPage";
 import Notfound from "../pages/error/Notfound";
 import Bookcase from "../pages/Bookcase";
+import CheckNewServer from "./CheckNewServer";
 
 const router = createBrowserRouter(
   [
@@ -33,8 +34,13 @@ const router = createBrowserRouter(
                   element: <NovelPreview/>
                 },
                 {
-                  path: ':chapterId',
-                  element: <NovelChapter/>
+                  element: <CheckNewServer/>,
+                  children: [
+                    {
+                      path: ':chapterId',
+                      element: <NovelChapter/>
+                    }
+                  ]
                 }
               ]
             },
