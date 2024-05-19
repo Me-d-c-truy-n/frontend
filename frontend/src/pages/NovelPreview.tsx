@@ -6,43 +6,51 @@ import NovelInfor from "../components/Novel/NovelInfor";
 import TitleTabFull from "../components/TitleTabFull";
 import { useQuery } from "@tanstack/react-query";
 import { ApiGetDetailNovel } from "../api/apiNovel";
-import { IResponse } from "../types/response";
+import { IResponse, STATUS } from "../types/response";
 import Skeleton from 'react-loading-skeleton'
 import { useSelector } from "react-redux";
 import { AppState } from "../store";
 
 const NovelPreview = () => {
   const navigate = useNavigate();
-  const server = useSelector((state: AppState) => state.server.server)
   const [novel, setNovel] = useState<INovelRoot | null>(null);
+  const {server, listServer} = useSelector((state: AppState) => state.server);
+  const [indexServer, setIndexServer] = useState(0);
 
   const { novelId }  = useParams();
 
-  const { isLoading, isError } = useQuery({
-    queryKey: ['preview', novelId, server],
+  const { isFetching, isError } = useQuery({
+    queryKey: ['preview', novelId, server, indexServer],
     queryFn: async () => {
-      const data: IResponse<INovelRoot> = await ApiGetDetailNovel(server, novelId || 'a');
+      const data: IResponse<INovelRoot> = await ApiGetDetailNovel(listServer[indexServer], novelId || 'a');
+
+      if (data.status === STATUS.ERROR) throw new Error();
 
       setNovel(data.data);
 
       return data;
     },
+    retry: 1,
   })
 
   useEffect(() =>{
-    if (isError) navigate('/notfound', { replace: true });
+    if (isError) {
+      if (indexServer == listServer.length - 1)
+        navigate('/notfound', { replace: true });
+      else setIndexServer(indexServer + 1);
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[isError])
 
   return (
     <div>
-      <Slider isLoading={isLoading}/>
-      <NovelInfor novel={novel} isLoading={isLoading}/>
+      <Slider isLoading={isFetching}/>
+      <NovelInfor novel={novel} isLoading={isFetching}/>
 
       <div className="mb-5">
         
         {
-          (isLoading || novel == null) ?
+          (isFetching || novel == null) ?
           <>
             <TitleTabFull>
               <Skeleton width={100}/>
