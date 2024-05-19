@@ -1,9 +1,7 @@
 import logo from '../../assets/images/logo.png';
 import { GrClose } from "react-icons/gr";
 import { useState } from 'react';
-import { toast } from 'react-toastify';
 import '../../assets/style/inputNumber.css'
-import CustomInputNumber from '../Export/CustomInputNumber';
 import SelectionExportType from '../Export/SelectionExportType';
 import ButtonDownload from '../Export/ButtonDownload';
 import { useQuery } from '@tanstack/react-query';
@@ -12,12 +10,13 @@ import DownloadFileSkeleton from '../Loading/DownloadFileSkeleton';
 
 interface Props {
   close: ()=>void;
+  novelId: string;
+  chapterId: string;
+  server: string;
 }
 
-const ExportEBookPopup = ({ close }: Props) => {
+const ExportEBookPopup = ({ close, novelId, chapterId, server }: Props) => {
   const [selectedExport, setSelectedExport] = useState<string>("pdf");
-  const [fromChapter, setFromChapter] = useState<number>();
-  const [toChapter, setToChapter] = useState<number>();
 
   const { isFetching, data: listExport } = useQuery({
     queryKey: ['file_export'],
@@ -29,14 +28,6 @@ const ExportEBookPopup = ({ close }: Props) => {
     retry: 1
   })
 
-  const handleDownload = () =>{
-    if (!fromChapter || fromChapter <= 0) return toast.error("Nhập chương bắt đầu tải");
-    if (!toChapter || toChapter<= 0) return toast.error("Nhập chương cuối cần tải");
-    if (toChapter < fromChapter) return toast.error("Chương đầu không được lớn hơn chương cuối")
-    // TODO: call api tải truyện
-
-    close();
-  }
   
   if (isFetching || !listExport|| listExport?.length <= 0) 
     return <DownloadFileSkeleton close={close}/>
@@ -63,19 +54,13 @@ const ExportEBookPopup = ({ close }: Props) => {
               )
             }
           </div>
-          <div className='mt-4 mx-auto'>
-            <CustomInputNumber
-              placeholder='Từ chương'
-              value={fromChapter}
-              setValue={setFromChapter}
-            />
-            <CustomInputNumber
-              placeholder='Đến chương'
-              value={toChapter}
-              setValue={setToChapter}
-            />
-          </div>
-          <ButtonDownload handleDownload={handleDownload}/>
+          <ButtonDownload 
+            close={close}
+            chapterId={chapterId}
+            novelId={novelId}
+            server={server}
+            file={selectedExport}
+          />
         </div>
       </div>
     </div>

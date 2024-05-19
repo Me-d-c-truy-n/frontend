@@ -5,7 +5,6 @@ import ButtonUtils from "../Button/ButtonUtils"
 import { FiBookOpen } from "react-icons/fi";
 import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { GrNext } from "react-icons/gr";
-import { FiDownload } from "react-icons/fi";
 
 import Skeleton from 'react-loading-skeleton'
 import { useState } from "react";
@@ -13,7 +12,6 @@ import ChapterPopup from "../Popup/ChapterPopup";
 import ButtonBookmark from "../Button/ButtonBookmark";
 import { getChapterJustReaded } from "../../store/history/selector";
 import { useSelector } from "react-redux";
-import ExportEBookPopup from "../Popup/ExportEBookPopup";
 
 interface Props {
   novel: INovelRoot | null;
@@ -23,7 +21,6 @@ interface Props {
 const NovelInfor = ({ novel, isLoading = false }: Props) => {
   const navigate = useNavigate();
   const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
-  const [openExportEBook, setOpenExportEBook] = useState<boolean>(false);
 
   const chapterId = useSelector(getChapterJustReaded(novel?.novelId));
 
@@ -52,12 +49,7 @@ const NovelInfor = ({ novel, isLoading = false }: Props) => {
             name={novel.name}
           />
       }
-      {
-          openExportEBook && 
-          <ExportEBookPopup
-            close ={() => setOpenExportEBook(false)}
-          />
-      }
+      
       <div>
         <img src={novel.image} alt={novel.name} className="w-52 rounded-md shadow-xl"/>
       </div>
@@ -78,13 +70,6 @@ const NovelInfor = ({ novel, isLoading = false }: Props) => {
             time={(new Date()).toString()}
           />
 
-          <ButtonUtils
-            func={()=>setOpenExportEBook(true)}
-          >
-              <FiDownload />
-              Tải truyện
-          </ButtonUtils>
-          
           <ButtonUtils
             func={()=>setOpenChapterPopup(true)}
           >

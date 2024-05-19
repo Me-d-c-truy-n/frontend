@@ -22,9 +22,9 @@ const DownloadFileSkeleton = ({ close }: Props) => {
           <Skeleton width={100} height={120}/>
           <Skeleton width={100} height={120}/>
         </div>
-        <div className='mt-4 mx-auto'>
+        {/* <div className='mt-4 mx-auto'>
           <Skeleton count={2} height={40}/>
-        </div>
+        </div> */}
         <div className='flex justify-center mt-2'>
           <Skeleton height={50} width={110}/>
         </div>

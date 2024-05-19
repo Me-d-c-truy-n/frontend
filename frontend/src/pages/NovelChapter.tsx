@@ -19,6 +19,8 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
+import { FiDownload } from "react-icons/fi";
+
 import ButtonBookmark from "../components/Button/ButtonBookmark";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, AppState } from "../store";
@@ -27,6 +29,7 @@ import { addNovelReaded } from "../store/readed";
 import { setIsOpen } from "../store/chapterOpen";
 import { toast } from "react-toastify";
 import KanbanSelectServer from "../components/Button/KanbanSelectServer";
+import ExportEBookPopup from "../components/Popup/ExportEBookPopup";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -42,6 +45,7 @@ const NovelChapter = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [indexServer, setIndexServer] = useState(0);
   const [flagListServer, setFlagListServer] = useState(listServer);
+  const [openExportEBook, setOpenExportEBook] = useState<boolean>(false);
 
   useEffect(() =>{
     dispatch(setIsOpen(true));
@@ -113,10 +117,19 @@ const NovelChapter = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[isError])
 
-  if (chapter === null || isLoading || novelId == null) return <NovelChapterSkeleton/>;
+  if (chapter === null || isLoading || novelId == null || chapterId == undefined) return <NovelChapterSkeleton/>;
 
   return (
     <div style={{backgroundColor: background }}>
+      {
+          openExportEBook && 
+          <ExportEBookPopup
+            close ={() => setOpenExportEBook(false)}
+            novelId={novelId}
+            chapterId={chapterId}
+            server={listServer[indexServer]}
+          />
+      }
       {
         openSettingPopup && 
       <SettingPopup
@@ -176,6 +189,14 @@ const NovelChapter = () => {
             chapterName={chapter.name}
             time={(new Date).toString()}
           />
+
+          <ButtonUtils
+            func={()=>setOpenExportEBook(true)}
+          >
+              <FiDownload />
+              Tải truyện
+          </ButtonUtils>
+          
 
         </div>
 
