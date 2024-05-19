@@ -1,6 +1,4 @@
 import { FiDownload } from "react-icons/fi";
-import { ApiDownloadChapter } from "../../api/apiDownload";
-import { useMutation } from "@tanstack/react-query";
 
 interface Props {
   chapterId: string;
@@ -10,24 +8,25 @@ interface Props {
   close: () => void;
 }
 
-interface Api {
-  chapterId: string;
-  novelId: string;
-  file: string;
-  server: string;
-}
+// interface Api {
+//   chapterId: string;
+//   novelId: string;
+//   file: string;
+//   server: string;
+// }
 
 const ButtonDownload = ({ chapterId, novelId, file, server, close }: Props) => {
 
-  const callApiDownload = useMutation({
-    mutationFn: 
-      async ({ chapterId, novelId, file, server}: Api) => 
-        ApiDownloadChapter(server, file, novelId, chapterId),
-  })
+  // const callApiDownload = useMutation({
+  //   mutationFn: 
+  //     async ({ chapterId, novelId, file, server}: Api) => 
+  //       ApiDownloadChapter(server, file, novelId, chapterId),
+  // })
 
   const handleDownload = () => {
-    callApiDownload.mutate({server, file, novelId, chapterId});
     close();
+    //callApiDownload.mutate({server, file, novelId, chapterId});
+    window.location.href = `${import.meta.env.VITE_REACT_APP_BASE_URL}/${server}/tai-truyen/${file}/${novelId}/${chapterId}`;
   }
 
   return (
