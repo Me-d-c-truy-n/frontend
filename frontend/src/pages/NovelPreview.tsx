@@ -45,7 +45,7 @@ const NovelPreview = () => {
   return (
     <div>
       <Slider isLoading={isFetching}/>
-      <NovelInfor novel={novel} isLoading={isFetching}/>
+      <NovelInfor novel={novel} isLoading={isFetching} server={listServer[indexServer]}/>
 
       <div className="mb-5">
         

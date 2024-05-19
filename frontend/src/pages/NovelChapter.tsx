@@ -143,6 +143,7 @@ const NovelChapter = () => {
         close ={() => setOpenChapterPopup(false)}
         novelId={novelId}
         name={chapter.novelName}
+        server={listServer[indexServer]}
       />
       }
       <Slider/>

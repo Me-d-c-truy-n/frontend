@@ -8,22 +8,21 @@ import { useState } from "react";
 import ListChapterSkeleton from "../Loading/ListChapterSkeleton";
 import CustomPagination from "../CustomPagination";
 import { useSelector } from "react-redux";
-import { AppState } from "../../store";
 import { getListChapterReaded } from "../../store/readed/selector";
 
 interface Props {
   close: ()=>void;
   novelId: string;
   name: string;
+  server: string;
 }
 
-const ChapterPopup = ({ close, novelId, name }: Props) => {
+const ChapterPopup = ({ close, novelId, name, server }: Props) => {
   const [chapters, setChapters] = useState<IChapterRoot[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
 
-  const server = useSelector((state: AppState) => state.server.server)
   const listChapterReaded= useSelector(getListChapterReaded(novelId));
 
   const { isFetching } = useQuery({

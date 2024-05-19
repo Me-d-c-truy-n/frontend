@@ -16,9 +16,10 @@ import { useSelector } from "react-redux";
 interface Props {
   novel: INovelRoot | null;
   isLoading?: boolean;
+  server: string;
 }
 
-const NovelInfor = ({ novel, isLoading = false }: Props) => {
+const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
   const navigate = useNavigate();
   const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
 
@@ -47,6 +48,7 @@ const NovelInfor = ({ novel, isLoading = false }: Props) => {
             close ={() => setOpenChapterPopup(false)}
             novelId={novel.novelId + ''}
             name={novel.name}
+            server={server}
           />
       }
       
