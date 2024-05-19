@@ -55,9 +55,10 @@ const NovelChapter = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-  const { isLoading, isError } = useQuery({
+  const { isFetching, isError } = useQuery({
     queryKey: ['chapter', chapterId, novelId, server, indexServer, flagListServer],
     queryFn: async () => {
+      console.log(`Call API ${listServer[indexServer]}/${novelId}/${chapterId}`)
       const data: IResponse<IChapter> = 
         await ApiGetOneChapter(listServer[indexServer], novelId || 'a', chapterId || 'chuong-1');
       
@@ -65,7 +66,7 @@ const NovelChapter = () => {
       
       return data;
     },
-    retry: 1
+    retry: 0
   })
 
   useEffect(() =>{
@@ -117,7 +118,7 @@ const NovelChapter = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[isError])
 
-  if (chapter === null || isLoading || novelId == null || chapterId == undefined) return <NovelChapterSkeleton/>;
+  if (chapter === null || isFetching || novelId == null || chapterId == undefined) return <NovelChapterSkeleton/>;
 
   return (
     <div style={{backgroundColor: background }}>

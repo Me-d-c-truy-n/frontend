@@ -35,6 +35,7 @@ const FilterPage = () => {
 
       return data.data;
     },
+    retry: 1
   })
 
   if (isFetching) return (
