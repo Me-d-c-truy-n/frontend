@@ -26,7 +26,7 @@ const ButtonDownload = ({ chapterId, novelId, file, server, close }: Props) => {
   const handleDownload = () => {
     close();
     //callApiDownload.mutate({server, file, novelId, chapterId});
-    window.location.href = `${import.meta.env.VITE_REACT_APP_BASE_URL}/${server}/tai-truyen/${file}/${novelId}/${chapterId}`;
+    window.open(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${server}/tai-truyen/${file}/${novelId}/${chapterId}`);
   }
 
   return (
