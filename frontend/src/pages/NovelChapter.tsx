@@ -38,8 +38,10 @@ const NovelChapter = () => {
   const { color, background } = useContext(SettingsContext)!;
 
   const settings = useSelector((state: AppState) => state.settings)
-  const server = useSelector((state: AppState) => state.server.server);
+  const {server, listServer} = useSelector((state: AppState) => state.server);
   const dispatch = useDispatch<AppDispatch>();
+  const [indexServer, setIndexServer] = useState(0);
+  const [flagListServer, setFlagListServer] = useState(listServer);
 
   useEffect(() =>{
     dispatch(setIsOpen(true));
@@ -50,15 +52,16 @@ const NovelChapter = () => {
   },[])
 
   const { isLoading, isError } = useQuery({
-    queryKey: ['chapter', chapterId, novelId, server],
+    queryKey: ['chapter', chapterId, novelId, server, indexServer, flagListServer],
     queryFn: async () => {
       const data: IResponse<IChapter> = 
-        await ApiGetOneChapter(server, novelId || 'a', chapterId || 'chuong-1');
+        await ApiGetOneChapter(listServer[indexServer], novelId || 'a', chapterId || 'chuong-1');
       
       setChapter(data.data);
       
       return data;
     },
+    retry: 1
   })
 
   useEffect(() =>{
@@ -97,7 +100,16 @@ const NovelChapter = () => {
   }
 
   useEffect(() =>{
-    if (isError) navigate('/notfound', { replace: true });
+    setFlagListServer(listServer);
+    setIndexServer(0);
+  },[listServer])
+
+  useEffect(() =>{
+    if (isError) {
+      if (indexServer == listServer.length - 1)
+        navigate('/notfound', { replace: true });
+      else setIndexServer(indexServer + 1);
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[isError])
 
@@ -167,7 +179,7 @@ const NovelChapter = () => {
 
         </div>
 
-        <KanbanSelectServer/>
+        <KanbanSelectServer successServer={listServer[indexServer]}/>
 
       </div>
       <div className="my-0 md:my-10 px-2" 

@@ -6,9 +6,13 @@ import { useState } from "react";
 import { changeServerIndex } from "../../store/server";
 import { FaServer } from "react-icons/fa";
 
-const KanbanSelectServer = () => {
+interface Props {
+  successServer: string;
+}
+
+
+const KanbanSelectServer = ({ successServer }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
-  const server = useSelector((state: AppState) => state.server.server);
   const listServer = useSelector((state: AppState) => state.server.listServer);
   const [stores, setStores] = useState(listServer);
 
@@ -46,7 +50,7 @@ const KanbanSelectServer = () => {
                       {...provided.dragHandleProps}
                       {...provided.draggableProps}
                       ref={provided.innerRef}
-                      className={` flex gap-2 items-center outline-none shadow-xl p-2 px-8 text-center rounded  ${srv === server ?"bg-red-600":"bg-yellow-600"}`}
+                      className={` flex gap-2 items-center outline-none shadow-xl p-2 px-8 text-center rounded  ${srv === successServer ?"bg-red-600":"bg-yellow-600"}`}
                       >
                         <FaServer />
                         {srv}
