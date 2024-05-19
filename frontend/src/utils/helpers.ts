@@ -1,4 +1,5 @@
 import moment from 'moment'
+import listExport from '../constants/export.json';
 
 export function convertDateToTime(date: string) {
   const convertDate = new Date(date);
@@ -17,4 +18,11 @@ export function convertDateToTime(date: string) {
 export function convertDate(date: string) {
   const convertDate = new Date(date);
   return moment(convertDate).format('YYYY-MM-DD HH:mm:ss');
+}
+
+export function getImageOfExportFile(ep: string) {
+  for (let i = 0; i < listExport.export.length; i++) {
+    if (listExport.export[i].id === ep) return listExport.export[i].image;
+  }
+  return undefined;
 }

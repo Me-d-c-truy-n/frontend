@@ -5,7 +5,7 @@ import { serverReducer } from "./reducer";
 import { INITIAL_KEY } from "../../types/key";
 
 const initialState: IServer = {
-  listServer: ["truyenfull"],
+  listServer: [INITIAL_KEY.SERVER],
   server: INITIAL_KEY.SERVER,
 }
 

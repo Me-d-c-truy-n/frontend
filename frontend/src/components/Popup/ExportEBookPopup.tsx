@@ -1,19 +1,33 @@
 import logo from '../../assets/images/logo.png';
 import { GrClose } from "react-icons/gr";
-import { FiDownload } from "react-icons/fi";
-import listExport from '../../constants/export.json';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import '../../assets/style/inputNumber.css'
+import CustomInputNumber from '../Export/CustomInputNumber';
+import SelectionExportType from '../Export/SelectionExportType';
+import ButtonDownload from '../Export/ButtonDownload';
+import { useQuery } from '@tanstack/react-query';
+import { ApiGetAllExport } from '../../api/apiPlugin';
+import DownloadFileSkeleton from '../Loading/DownloadFileSkeleton';
 
 interface Props {
   close: ()=>void;
 }
 
 const ExportEBookPopup = ({ close }: Props) => {
-  const [selectedExport, setSelectedExport] = useState<string>("txt");
+  const [selectedExport, setSelectedExport] = useState<string>("pdf");
   const [fromChapter, setFromChapter] = useState<number>();
   const [toChapter, setToChapter] = useState<number>();
+
+  const { isFetching, data: listExport } = useQuery({
+    queryKey: ['file_export'],
+    queryFn: async () => {
+      const data: string[] = await ApiGetAllExport();
+
+      return data;
+    },
+    retry: 1
+  })
 
   const handleDownload = () =>{
     if (!fromChapter || fromChapter <= 0) return toast.error("Nhập chương bắt đầu tải");
@@ -23,6 +37,9 @@ const ExportEBookPopup = ({ close }: Props) => {
 
     close();
   }
+  
+  if (isFetching || !listExport|| listExport?.length <= 0) 
+    return <DownloadFileSkeleton close={close}/>
 
   return (
     <div className="z-10 px-1 fixed left-0 top-0 w-full h-full flex justify-center items-center shadow-lg backdrop-blur-sm">
@@ -36,44 +53,29 @@ const ExportEBookPopup = ({ close }: Props) => {
         <div className='px-6'>
           <div className='flex gap-3 items-center justify-center flex-wrap'>
             {
-              listExport["export"].map((ep) =>
-                <button 
-                  key={ep.id} 
-                  onClick={() => setSelectedExport(ep.id)}
-                  className={`transition ease-in-out duration-300 border border-slate-500 p-3 rounded-lg flex flex-col justify-center items-center uppercase ${selectedExport===ep.id?'shadow-lg bg-slate-900 text-white dark:bg-white dark:text-black scale-110':'dark:bg-slate-950 bg-slate-100'}`} 
-                >
-                  <img src={ep.image} alt={ep.id} className='w-14 h-14 mb-1'/>
-                  {ep.id}
-                </button>
+              listExport.map((ep) =>
+                <SelectionExportType
+                  key={ep}
+                  setValue={() => setSelectedExport(ep)}
+                  selectedExport={selectedExport}
+                  id={ep}
+                />
               )
             }
           </div>
           <div className='mt-4 mx-auto'>
-            <input 
-              type="number" 
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-950 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-              placeholder="Từ chương" 
+            <CustomInputNumber
+              placeholder='Từ chương'
               value={fromChapter}
-              onChange={(e) => setFromChapter(parseInt(e.target.value))}
-              required 
+              setValue={setFromChapter}
             />
-            <input 
-              type="number" 
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-950 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2" 
-              placeholder="Đến chương"
+            <CustomInputNumber
+              placeholder='Đến chương'
               value={toChapter}
-              onChange={(e) => setToChapter(parseInt(e.target.value))}
-              required 
+              setValue={setToChapter}
             />
           </div>
-          <div className='flex justify-center mt-6'>
-            <button className='transition ease-in-out border py-2 px-4 rounded-lg gap-3 flex items-center justify-center border-black dark:border-white hover:text-white hover:border-transparent hover:bg-amber-700'
-            onClick={handleDownload}
-            >
-              <FiDownload/>
-              Tải truyện
-            </button>
-          </div>
+          <ButtonDownload handleDownload={handleDownload}/>
         </div>
       </div>
     </div>

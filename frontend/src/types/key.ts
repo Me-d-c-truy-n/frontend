@@ -20,7 +20,7 @@ export enum INITIAL_KEY {
   FONTSTYLE = 'Palatino Linotype',
   LEADING = '180%',
   ALIGN = 'justify',
-  SERVER = 'truyenfull',
+  SERVER = 'metruyencv',
 }
 
 export enum SelectionKey {
