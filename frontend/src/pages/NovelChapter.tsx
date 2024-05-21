@@ -30,6 +30,7 @@ import { setIsOpen } from "../store/chapterOpen";
 import { toast } from "react-toastify";
 import KanbanSelectServer from "../components/Button/KanbanSelectServer";
 import ExportEBookPopup from "../components/Popup/ExportEBookPopup";
+import { useSettingsStore } from "../stores/settingsStore";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const NovelChapter = () => {
 
   const { color, background } = useContext(SettingsContext)!;
 
-  const settings = useSelector((state: AppState) => state.settings)
+  const settings = useSettingsStore();
   const {server, listServer} = useSelector((state: AppState) => state.server);
   const dispatch = useDispatch<AppDispatch>();
   const [indexServer, setIndexServer] = useState(0);

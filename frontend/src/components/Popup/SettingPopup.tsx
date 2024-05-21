@@ -5,9 +5,8 @@ import { SettingsContext } from '../../contexts/SettingsContext';
 import CustomSelection from './CustomSelection';
 import { SelectionKey } from '../../types/key';
 import CustomSelectColor from './CustomSelectColor';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, AppState } from '../../store';
-import { changeAlign, changeFontSize, changeFontStyle, changeLeading } from '../../store/settings';
+import { changeAlign, changeFontSize, changeFontStyle, changeLeading, useSettingsStore } from '../../stores/settingsStore';
+import { Align } from '../../types/align';
 
 interface Props {
   close: ()=>void;
@@ -15,8 +14,7 @@ interface Props {
 const SettingPopup = ({ close }: Props) => {
   const { background, color, setColor, resetSettings } = useContext(SettingsContext)!;
 
-  const settings = useSelector((state: AppState) => state.settings)
-  const dispatch = useDispatch<AppDispatch>()
+  const settings = useSettingsStore();
   
   return (
     <div className="z-10 fixed left-0 top-0 w-full h-full">
@@ -45,7 +43,7 @@ const SettingPopup = ({ close }: Props) => {
           <div>Cỡ chữ</div>
           <CustomSelection 
             value={settings.fontSize} 
-            setValue={(fs: string) => dispatch(changeFontSize(fs))}
+            setValue={(fs: string) => changeFontSize(fs)}
             title={SelectionKey.SIZE}
           />
         </div>
@@ -54,7 +52,7 @@ const SettingPopup = ({ close }: Props) => {
           <div>Font chữ</div>
           <CustomSelection 
             value={settings.fontStyle} 
-            setValue={(fs: string) => dispatch(changeFontStyle(fs))}
+            setValue={(fs: string) => changeFontStyle(fs)}
             title={SelectionKey.FONT}
           />
         </div>
@@ -63,7 +61,7 @@ const SettingPopup = ({ close }: Props) => {
           <div>Chiều cao dòng</div>
           <CustomSelection 
             value={settings.leading} 
-            setValue={(ld: string) => dispatch(changeLeading(ld))}
+            setValue={(ld: string) => changeLeading(ld)}
             title={SelectionKey.LEADING}
           />
         </div>
@@ -72,7 +70,7 @@ const SettingPopup = ({ close }: Props) => {
           <div>Canh chữ</div>
           <CustomSelection 
             value={settings.align} 
-            setValue={(al: string) => dispatch(changeAlign(al))}
+            setValue={(al: string) => changeAlign(al as Align)}
             title={SelectionKey.ALIGN}
           />
         </div>

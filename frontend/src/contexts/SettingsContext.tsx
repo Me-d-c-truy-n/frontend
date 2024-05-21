@@ -3,9 +3,7 @@ import { useLocalStorageState } from "../hooks/useLocalStorageState";
 import { ThemeContext } from "./ThemeContext";
 import { THEME, THEME_DARK, THEME_LIGHT } from "../types/theme";
 import { KEY } from "../types/key";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../store";
-import { resetSettingsText } from "../store/settings";
+import { resetSettingsText } from "../stores/settingsStore";
 
 interface SettingsContextType {
   color: string;
@@ -23,7 +21,6 @@ interface SettingsProviderProps {
 
 const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
   const { theme } = useContext(ThemeContext)!;
-  const dispatch = useDispatch<AppDispatch>()
   
   const [color, setColor] = useLocalStorageState({
     key: KEY.COLOR + theme,
@@ -43,7 +40,7 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({children}) =>{
       setColor(THEME_DARK.COLOR);
     }
 
-    dispatch(resetSettingsText());
+    resetSettingsText();
   }
 
   return (

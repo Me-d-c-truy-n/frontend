@@ -1,3 +1,5 @@
+import { Align } from "./align";
+
 export enum KEY {
   HISTORY = 'history',
   READED = 'readed',
@@ -19,7 +21,7 @@ export enum INITIAL_KEY {
   FONTSIZE = '24px',
   FONTSTYLE = 'Palatino Linotype',
   LEADING = '180%',
-  ALIGN = 'justify',
+  ALIGN = Align.JUSTIFY,
   SERVER = 'metruyencv',
 }
 
