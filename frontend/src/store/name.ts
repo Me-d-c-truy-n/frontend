@@ -4,6 +4,6 @@ export enum Store {
   HISTORY = 'history',
   READED = 'readed',
   BOOKMARK = 'bookmark',
-  CHAPTEROPEN = 'chapter-open',
+  CHAPTEROPEN = 'chapterOpen',
   SERVER = 'server',
 }

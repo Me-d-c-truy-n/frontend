@@ -7,6 +7,7 @@ import { Store } from "./name";
 const persistConfig = {
   key: Store.ROOT,
   storage,
+  blacklist: [Store.CHAPTEROPEN],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
