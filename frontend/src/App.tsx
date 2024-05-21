@@ -9,11 +9,10 @@ import { SkeletonTheme } from 'react-loading-skeleton';
 import { ThemeContext } from './contexts/ThemeContext';
 import { THEME } from './types/theme';
 import ScrollButton from './components/Button/ScrollButton';
-import { useSelector } from 'react-redux';
-import { AppState } from './store';
+import { useChapterOpenStore } from './stores/chapterOpenStore';
 
 function App() {
-  const isOpen = useSelector((state: AppState) => state.chapterOpen.isOpen);
+  const {isOpen} = useChapterOpenStore();
 
   const { theme } = useContext(ThemeContext)!;
   const { background } = useContext(SettingsContext)!;

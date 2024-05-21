@@ -1,10 +1,9 @@
 import TitleTab from "../TitleTab";
 import StoryHistoryRow from "./StoryHistoryRow";
-import { useSelector } from "react-redux";
-import { AppState } from "../../store";
+import { useHistoryStore } from "../../stores/historyStore";
 
 const StoryJustRead = ({ isShowAll }: {isShowAll: boolean}) => {
-  const history = useSelector((state: AppState) => state.history.history);
+  const {history} = useHistoryStore();
 
   return (
       <div className="mb-10 mt-2">

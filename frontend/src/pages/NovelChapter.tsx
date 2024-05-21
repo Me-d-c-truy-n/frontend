@@ -7,7 +7,7 @@ import ButtonUtils from "../components/Button/ButtonUtils";
 import { SettingsContext } from "../contexts/SettingsContext";
 import SettingPopup from "../components/Popup/SettingPopup";
 import ChapterPopup from "../components/Popup/ChapterPopup";
-import { IResponse } from "../types/response";
+import { IResponse, STATUS } from "../types/response";
 import { useQuery } from "@tanstack/react-query";
 import { ApiGetOneChapter } from "../api/apiNovel";
 import NovelChapterSkeleton from "../components/Loading/NovelChapterSkeleton";
@@ -22,9 +22,7 @@ import { GrPrevious } from "react-icons/gr";
 import { FiDownload } from "react-icons/fi";
 
 import ButtonBookmark from "../components/Button/ButtonBookmark";
-import { updateNovelReaded } from "../store/history";
 import { addNovelReaded } from "../store/readed";
-import { setIsOpen } from "../store/chapterOpen";
 import { toast } from "react-toastify";
 import KanbanSelectServer from "../components/Button/KanbanSelectServer";
 import ExportEBookPopup from "../components/Popup/ExportEBookPopup";
@@ -32,6 +30,8 @@ import { useSettingsStore } from "../stores/settingsStore";
 import { useServerStore } from "../stores/serverStore";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store";
+import { setIsOpen } from "../stores/chapterOpenStore";
+import { updateNovelReaded } from "../stores/historyStore";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -51,9 +51,9 @@ const NovelChapter = () => {
   const [openExportEBook, setOpenExportEBook] = useState<boolean>(false);
 
   useEffect(() =>{
-    dispatch(setIsOpen(true));
+    setIsOpen(true);
     return () => {
-      dispatch(setIsOpen(false));
+      setIsOpen(false);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
@@ -65,6 +65,7 @@ const NovelChapter = () => {
       const data: IResponse<IChapter> = 
         await ApiGetOneChapter(listServer[indexServer], novelId || 'a', chapterId || 'chuong-1');
       
+      if (data.status === STATUS.ERROR) throw new Error();
       setChapter(data.data);
       
       return data;
@@ -74,12 +75,12 @@ const NovelChapter = () => {
 
   useEffect(() =>{
     if (chapter == null) return;
-    dispatch(updateNovelReaded({
+    updateNovelReaded({
       time: (new Date).toString(),
       name: chapter.novelName,
       novelId: chapter.novelId,
       chapterId: chapter.chapterId,
-    }))
+    })
     dispatch(addNovelReaded({
       novelId: chapter.novelId,
       chapterId: chapter.chapterId

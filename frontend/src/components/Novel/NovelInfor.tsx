@@ -10,8 +10,7 @@ import Skeleton from 'react-loading-skeleton'
 import { useState } from "react";
 import ChapterPopup from "../Popup/ChapterPopup";
 import ButtonBookmark from "../Button/ButtonBookmark";
-import { getChapterJustReaded } from "../../store/history/selector";
-import { useSelector } from "react-redux";
+import { getChapterJustReaded } from "../../stores/historyStore";
 
 interface Props {
   novel: INovelRoot | null;
@@ -23,7 +22,7 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
   const navigate = useNavigate();
   const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
 
-  const chapterId = useSelector(getChapterJustReaded(novel?.novelId));
+  const chapterId = getChapterJustReaded(novel?.novelId);
 
   if (isLoading || novel == null) 
     return (
