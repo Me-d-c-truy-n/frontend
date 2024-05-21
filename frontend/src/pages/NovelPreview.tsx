@@ -8,13 +8,12 @@ import { useQuery } from "@tanstack/react-query";
 import { ApiGetDetailNovel } from "../api/apiNovel";
 import { IResponse, STATUS } from "../types/response";
 import Skeleton from 'react-loading-skeleton'
-import { useSelector } from "react-redux";
-import { AppState } from "../store";
+import { useServerStore } from "../stores/serverStore";
 
 const NovelPreview = () => {
   const navigate = useNavigate();
   const [novel, setNovel] = useState<INovelRoot | null>(null);
-  const {server, listServer} = useSelector((state: AppState) => state.server);
+  const {server, listServer} = useServerStore();
   const [indexServer, setIndexServer] = useState(0);
 
   const { novelId }  = useParams();

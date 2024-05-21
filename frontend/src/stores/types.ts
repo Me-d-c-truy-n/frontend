@@ -6,3 +6,8 @@ export interface ISettings {
   leading: string;
   align: Align;
 }
+
+export interface IServer {
+  listServer: string[];
+  server: string;
+}

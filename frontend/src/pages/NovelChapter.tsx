@@ -22,8 +22,6 @@ import { GrPrevious } from "react-icons/gr";
 import { FiDownload } from "react-icons/fi";
 
 import ButtonBookmark from "../components/Button/ButtonBookmark";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, AppState } from "../store";
 import { updateNovelReaded } from "../store/history";
 import { addNovelReaded } from "../store/readed";
 import { setIsOpen } from "../store/chapterOpen";
@@ -31,6 +29,9 @@ import { toast } from "react-toastify";
 import KanbanSelectServer from "../components/Button/KanbanSelectServer";
 import ExportEBookPopup from "../components/Popup/ExportEBookPopup";
 import { useSettingsStore } from "../stores/settingsStore";
+import { useServerStore } from "../stores/serverStore";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../store";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -42,7 +43,8 @@ const NovelChapter = () => {
   const { color, background } = useContext(SettingsContext)!;
 
   const settings = useSettingsStore();
-  const {server, listServer} = useSelector((state: AppState) => state.server);
+  const {server, listServer} = useServerStore();
+
   const dispatch = useDispatch<AppDispatch>();
   const [indexServer, setIndexServer] = useState(0);
   const [flagListServer, setFlagListServer] = useState(listServer);

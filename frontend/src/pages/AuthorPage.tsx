@@ -10,8 +10,7 @@ import { useEffect, useState } from "react";
 import ListNovelSkeleton from "../components/Loading/ListNovelSkeleton";
 import TitleTab from "../components/TitleTab";
 import CustomPagination from "../components/CustomPagination";
-import { useSelector } from "react-redux";
-import { AppState } from "../store";
+import { useServerStore } from "../stores/serverStore";
 
 const AuthorPage = () => {
   const navigate = useNavigate();
@@ -21,7 +20,7 @@ const AuthorPage = () => {
   const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
   
-  const server = useSelector((state: AppState) => state.server.server)
+  const {server} = useServerStore();
 
   const { isFetching, isError } = useQuery({
     queryKey: ['author', authorId, server, currentPage],

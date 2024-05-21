@@ -1,10 +1,7 @@
-import { useDispatch } from "react-redux"
-import { AppDispatch, AppState } from "../../store"
-import { useSelector } from "react-redux";
 import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
 import { useState } from "react";
-import { changeServerIndex } from "../../store/server";
 import { FaServer } from "react-icons/fa";
+import { changeServerIndex, useServerStore } from "../../stores/serverStore";
 
 interface Props {
   successServer: string;
@@ -12,8 +9,7 @@ interface Props {
 
 
 const KanbanSelectServer = ({ successServer }: Props) => {
-  const dispatch = useDispatch<AppDispatch>();
-  const listServer = useSelector((state: AppState) => state.server.listServer);
+  const { listServer } = useServerStore();
   const [stores, setStores] = useState(listServer);
 
   const handleDragDrop = (results: DropResult) => {
@@ -31,7 +27,7 @@ const KanbanSelectServer = ({ successServer }: Props) => {
       const [removedStore] = tmpStores.splice(sourceIndex, 1);
       tmpStores.splice(destinationIndex, 0, removedStore);
 
-      dispatch(changeServerIndex(tmpStores));
+      changeServerIndex(tmpStores);
       return setStores(tmpStores);
     }
   }

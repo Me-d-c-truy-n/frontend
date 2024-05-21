@@ -8,15 +8,14 @@ import { INovelRoot } from "../../types/novel";
 import ListNovelSkeleton from "../Loading/ListNovelSkeleton";
 import  '../../assets/style/pagination.css';
 import CustomPagination from "../CustomPagination";
-import { useSelector } from "react-redux";
-import { AppState } from "../../store";
+import { useServerStore } from "../../stores/serverStore";
 
 const ListNovel = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
-  const server = useSelector((state: AppState) => state.server.server)
+  const { server } = useServerStore();
   
   const { isLoading, isFetching } = useQuery({
     queryKey: ['all_novel', currentPage, server],
