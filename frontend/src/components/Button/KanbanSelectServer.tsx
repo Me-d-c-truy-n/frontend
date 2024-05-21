@@ -13,7 +13,7 @@ interface Props {
 
 const KanbanSelectServer = ({ successServer }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
-  const listServer = useSelector((state: AppState) => state.server.listServer);
+  const { listServer } = useSelector((state: AppState) => state.server);
   const [stores, setStores] = useState(listServer);
 
   const handleDragDrop = (results: DropResult) => {
@@ -50,7 +50,7 @@ const KanbanSelectServer = ({ successServer }: Props) => {
                       {...provided.dragHandleProps}
                       {...provided.draggableProps}
                       ref={provided.innerRef}
-                      className={` flex gap-2 items-center outline-none shadow-xl p-2 px-8 text-center rounded  ${srv === successServer ?"bg-red-600":"bg-yellow-600"}`}
+                      className={` flex gap-2 items-center outline-none shadow-xl p-2 px-8 text-center rounded  ${srv === successServer ?"bg-green-600":"bg-sky-600"}`}
                       >
                         <FaServer />
                         {srv}
