@@ -38,38 +38,42 @@ const FilterPage = () => {
     retry: 1
   })
 
-  if (isFetching) return (
-    <ListNovelSkeleton>
-      <TitleTab name={`TÌM KIẾM: ${searchParams.get('q')}`}/>
-    </ListNovelSkeleton>
-  )
-  
   return (
     <div>
       <Slider isLoading={isFetching}/>
-      <div className="mt-3">
-        {/* <h1 className="uppercase text-amber-700 mb-5 mt-2">TÌM KIẾM:{" "}{searchParams.get('q')}</h1> */}
-        <TitleTab name={`TÌM KIẾM: ${searchParams.get('q')}`}/>
-
+      <div className="mt-3" id="pagination-search-novel-list">
         {
-          novels.length <= 0 ?(
-            <div className="dark:text-white text-center text-xl">
-              KHÔNG TÌM THẤY KẾT QUẢ NÀO
-            </div>
+          isFetching ? (
+            <ListNovelSkeleton>
+              <TitleTab name={`TÌM KIẾM: ${searchParams.get('q')}`}/>
+            </ListNovelSkeleton>
           ):(
             <>
-              <div className="grid grid-cols-1 gap-y-10 gap-x-4 lg:grid-cols-2">
-                {
-                  novels.map((novel, idx) =>
-                    <BoxNovelAuthor key={idx} novel={novel}/>
-                  )
-                }
-              </div>
-              <CustomPagination
-                totalPage={totalPage}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-              />
+              <TitleTab name={`TÌM KIẾM: ${searchParams.get('q')}`}/>
+      
+              {
+                novels.length <= 0 ?(
+                  <div className="dark:text-white text-center text-xl">
+                    KHÔNG TÌM THẤY KẾT QUẢ NÀO
+                  </div>
+                ):(
+                  <>
+                    <div className="grid grid-cols-1 gap-y-10 gap-x-4 lg:grid-cols-2">
+                      {
+                        novels.map((novel, idx) =>
+                          <BoxNovelAuthor key={idx} novel={novel}/>
+                        )
+                      }
+                    </div>
+                    <CustomPagination
+                      totalPage={totalPage}
+                      currentPage={currentPage}
+                      setCurrentPage={setCurrentPage}
+                      topList="pagination-search-novel-list"
+                    />
+                  </>
+                )
+              }
             </>
           )
         }

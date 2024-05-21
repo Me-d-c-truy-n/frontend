@@ -40,7 +40,7 @@ const ListNovel = () => {
   )
   
   return (
-    <div>
+    <div id="pagination-list-novel">
       <TitleTab name="DANH SÁCH TRUYỆN" link="/"/>
       <div className="grid grid-cols-1 gap-y-10 gap-x-4 lg:grid-cols-2">
         {
@@ -56,6 +56,7 @@ const ListNovel = () => {
         totalPage={totalPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        topList="pagination-list-novel"
       />
     </div>
   )

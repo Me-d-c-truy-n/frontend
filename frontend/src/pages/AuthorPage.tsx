@@ -43,34 +43,36 @@ const AuthorPage = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[isError])
   
-  if (isFetching || novels.length <= 0) return (
-    <>
-      <Slider isLoading={true}/>
-      <ListNovelSkeleton>
-        <TitleTab name="TRUYỆN CỦA TÁC GIẢ"/>
-      </ListNovelSkeleton>
-    </>
-  )
-
-  
   return (
     <div>
-      <Slider/>
-      <div>
-        <TitleTab name={`TRUYỆN CỦA TÁC GIẢ ${novels[0].author.name}`} 
-        uppercase={true}/>
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-          {
-            novels.map((novel) =>
-              <BoxNovelAuthor key={novel.novelId} novel={novel}/>
-            )
-          }
-        </div>
-        <CustomPagination
-          totalPage={totalPage}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
+      <Slider isLoading={isFetching}/>
+      <div id="pagination-author-novel-list">
+        {
+          isFetching?(
+            <ListNovelSkeleton>
+              <TitleTab name="TRUYỆN CỦA TÁC GIẢ"/>
+            </ListNovelSkeleton>
+          ):(
+            <>
+              <TitleTab name={`TRUYỆN CỦA TÁC GIẢ ${novels[0].author.name}`} 
+              uppercase={true}/>
+              <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+                {
+                  novels.map((novel) =>
+                    <BoxNovelAuthor key={novel.novelId} novel={novel}/>
+                  )
+                }
+              </div>
+              <CustomPagination
+                totalPage={totalPage}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                topList="pagination-author-novel-list"
+              />
+            </>
+          )
+        }
+        
       </div>
     </div>
   )

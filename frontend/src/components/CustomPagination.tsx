@@ -7,9 +7,10 @@ interface Props {
   totalPage: number;
   currentPage: number;
   setCurrentPage: Dispatch<SetStateAction<number>>;
+  topList: string;
 }
 
-const CustomPagination = ({ totalPage, currentPage, setCurrentPage, changeThemeEffect = true }: Props) => {
+const CustomPagination = ({ totalPage, currentPage, setCurrentPage, changeThemeEffect = true, topList }: Props) => {
   const { theme } = useContext(ThemeContext)!;
   
   const handleChangePage = (_e: React.ChangeEvent<unknown>, value: number) =>{
@@ -20,6 +21,10 @@ const CustomPagination = ({ totalPage, currentPage, setCurrentPage, changeThemeE
   const changePage=(page: number)=>{
     if (page > totalPage) setCurrentPage(1);
     setCurrentPage(page);
+    const element = document.getElementById(topList);
+    element?.scrollIntoView({
+      behavior: 'smooth'
+    }); 
   }
 
   return (

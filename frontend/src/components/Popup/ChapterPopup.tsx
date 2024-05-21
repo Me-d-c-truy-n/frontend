@@ -42,6 +42,7 @@ const ChapterPopup = ({ close, novelId, name, server }: Props) => {
   return (
     <div className="fixed left-0 mt-0 z-10 top-0 w-full h-screen bg-gray-400 overflow-y-scroll px-2">
       <div className="shadow-2xl p-2 lg:w-8/12 lg:p-4 mx-auto border rounded-lg border-amber-600 bg-amber-50 pb-5"
+      id="pagination-list-chapter"
       >
         {
           (isFetching ||chapters.length<=0) ?<ListChapterSkeleton name={name} close={close}/>:(
@@ -64,10 +65,11 @@ const ChapterPopup = ({ close, novelId, name, server }: Props) => {
               </div>
 
               <CustomPagination
-                  totalPage={totalPage}
-                  currentPage={currentPage}
-                  setCurrentPage={setCurrentPage}
-                  changeThemeEffect={false}
+                totalPage={totalPage}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                changeThemeEffect={false}
+                topList="pagination-list-chapter"
               />
             </>
           )
