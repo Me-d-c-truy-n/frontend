@@ -20,6 +20,6 @@ export const settingsReducer = {
     state.fontSize = INITIAL_KEY.FONTSIZE;
     state.fontStyle = INITIAL_KEY.FONTSTYLE;
     state.leading = INITIAL_KEY.LEADING;
-    state.align = INITIAL_KEY.ALIGN;
+    state.align = Align.JUSTIFY;
   }
 }

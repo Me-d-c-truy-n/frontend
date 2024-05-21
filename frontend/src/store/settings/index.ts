@@ -3,12 +3,13 @@ import { ISettings } from "./type";
 import { INITIAL_KEY } from "../../types/key";
 import { Store } from "../name";
 import { settingsReducer } from "./reducer";
+import { Align } from "../../types/align";
 
 const initialState: ISettings = {
   fontSize: INITIAL_KEY.FONTSIZE,
   fontStyle: INITIAL_KEY.FONTSTYLE,
   leading: INITIAL_KEY.LEADING,
-  align: INITIAL_KEY.ALIGN,
+  align: Align.JUSTIFY,
 }
 
 const settingsSlice = createSlice({
