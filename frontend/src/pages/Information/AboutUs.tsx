@@ -69,7 +69,7 @@ const AboutUs = () => {
     <div className="font-sans flex flex-col text-black dark:text-white">
       <Slider/>
       <h1 className="text-amber-700 text-lg my-4">NHÓM PHÁT TRIỂN</h1>
-      <div className="flex ps-4 flex-col gap-2 text-lg mt-10">
+      <div className="flex ps-4 flex-col gap-2 text-lg md:mt-8 mt-2">
         <UserCard 
           name="Nguyễn Nhật Hào"
           imageURL={admin_01}

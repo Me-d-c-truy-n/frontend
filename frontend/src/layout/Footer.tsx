@@ -10,7 +10,7 @@ const Footer = () => {
       <div className='flex justify-center mt-2'>
         <img src={logo} alt='logo' width={90}/>
       </div>
-      <div className='mb-3 text-center font-bold dark:text-white'>FIT@HCMUS - 2024 - Bee Group</div>
+      <div className='mb-3 text-center font-bold dark:text-white'>FIT@HCMUS - 2024 - <Link to='/thong-tin/nhom-phat-trien'>Bee Group</Link></div>
       <div className='flex justify-center mt-5 gap-6 text-gray-600'>
         <Link to='/thong-tin/nhom-phat-trien'>Nhóm phát triển</Link>
         <Link to='/thong-tin/dieu-khoan-dich-vu'>Điều khoản dịch vụ</Link>

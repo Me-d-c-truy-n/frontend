@@ -50,7 +50,7 @@ const KanbanSelectServer = ({ successServer }: Props) => {
                       {...provided.dragHandleProps}
                       {...provided.draggableProps}
                       ref={provided.innerRef}
-                      className={`p-1 outline-none shadow-xl text-center rounded ${srv === successServer ?"bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500":"text-gray-300 bg-sky-800"}`}
+                      className={`p-1 shadow-xl outline-none text-center rounded ${srv === successServer ?"animate-border bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-[length:400%_400%]":"text-gray-300 bg-sky-800"}`}
                       >
                         <div className={`h-full w-full flex p-[0.4rem] px-8 gap-2 items-center ${srv === successServer?'bg-gray-950':'bg-sky-600'}`}>
                           <FaServer />
