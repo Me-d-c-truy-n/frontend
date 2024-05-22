@@ -9,6 +9,10 @@ import FilterPage from "../pages/FilterPage";
 import Notfound from "../pages/error/Notfound";
 import Bookcase from "../pages/Bookcase";
 import CheckNewServer from "./CheckNewServer";
+import TermOfService from "../pages/Information/TermOfService";
+import PrivacyPolicy from "../pages/Information/PrivacyPolicy";
+import AboutLicense from "../pages/Information/AboutLicense";
+import AboutUs from "../pages/Information/AboutUs";
 
 const router = createBrowserRouter(
   [
@@ -51,6 +55,27 @@ const router = createBrowserRouter(
             {
               path: '/tim-kiem',
               element: <FilterPage/>
+            },
+            {
+              path: '/thong-tin',
+              children: [
+                {
+                  path: 'dieu-khoan-dich-vu',
+                  element: <TermOfService/>
+                },
+                {
+                  path: 'chinh-sach-bao-mat',
+                  element: <PrivacyPolicy/>
+                },
+                {
+                  path: 've-ban-quyen',
+                  element: <AboutLicense/>
+                },
+                {
+                  path: 'nhom-phat-trien',
+                  element: <AboutUs/>
+                }
+              ]
             }
           ]
         },
