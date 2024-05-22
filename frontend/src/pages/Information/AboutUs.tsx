@@ -1,4 +1,8 @@
 import Slider from "../../components/Slider"
+import admin_01 from "../../assets/images/admin/admin_01.jpg"
+import admin_02 from "../../assets/images/admin/admin_02.jpg"
+import admin_03 from "../../assets/images/admin/admin_03.jpg"
+import admin_04 from "../../assets/images/admin/admin_04.jpg"
 
 interface Props {
   name: string;
@@ -68,7 +72,7 @@ const AboutUs = () => {
       <div className="flex ps-4 flex-col gap-2 text-lg mt-10">
         <UserCard 
           name="Nguyễn Nhật Hào"
-          imageURL="https://avatars.githubusercontent.com/u/92797788?v=4"
+          imageURL={admin_01}
           githubUrl= "https://github.com/nxhawk"
           facebookUrl="https://www.facebook.com/"
           border="border-sky-600"
@@ -80,7 +84,7 @@ const AboutUs = () => {
         />
         <UserCard 
           name="Tô Phương Hiếu"
-          imageURL="https://avatars.githubusercontent.com/u/114677796?v=4"
+          imageURL={admin_02}
           githubUrl= "https://github.com/phuonghieuto"
           facebookUrl="https://www.facebook.com/"
           border="border-red-600"
@@ -92,7 +96,7 @@ const AboutUs = () => {
         />
         <UserCard 
           name="Trương Văn Hoài"
-          imageURL="https://avatars.githubusercontent.com/u/115379857?v=4"
+          imageURL={admin_03}
           githubUrl= "https://github.com/hcdman"
           facebookUrl="https://www.facebook.com/"
           border="border-indigo-600"
@@ -104,7 +108,7 @@ const AboutUs = () => {
         />
         <UserCard 
           name="Lê Minh Hoàng"
-          imageURL="https://avatars.githubusercontent.com/u/114399314?v=4"
+          imageURL={admin_04}
           githubUrl= "https://github.com/mihoag"
           facebookUrl="https://www.facebook.com/"
           border="border-green-600"
