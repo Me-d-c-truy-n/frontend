@@ -55,10 +55,10 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
       <div>
         <img src={novel.image} alt={novel.name} className="w-52 rounded-md shadow-xl"/>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col flex-1">
         <div className="font-bold text-xl mb-3 text-gray-700">{novel.name}</div>
         <Link to={`/tac-gia/${novel.author.authorId || novel.author.id}`} className="text-base text-gray-700">{novel.author.name}</Link>
-        <div className="flex gap-5 my-5 flex-wrap justify-center">
+        <div className="flex gap-5 my-5 flex-wrap justify-center md:justify-start">
           <ButtonUtils
             func={()=>navigate(`/truyen/${novel.novelId}/${novel.firstChapter}`)}
             de={false}
