@@ -39,12 +39,18 @@ cd frontend
 npm install
 npm run dev
 ```
-or with `docker`
+or with `Dockerfile`
+```
+cd frontend
+docker build -t sd_frontend .
+docker run -dp 5173:5173 sd_frontend
+```
+or with `docker-compose` file
 ```
 docker compose up -d 
 ```
 
-Then create a `.env` file with these variables:
+Then edit a `.env` file with these variables:
 
 ```
 VITE_REACT_APP_BASE_URL = http://localhost:8080
