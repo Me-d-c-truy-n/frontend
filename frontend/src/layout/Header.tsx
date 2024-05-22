@@ -3,15 +3,14 @@ import logo from '../assets/images/logo.png';
 import { CiSearch } from "react-icons/ci";
 import { CiLight } from "react-icons/ci";
 import { CiDark } from "react-icons/ci";
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { THEME } from '../types/theme';
 
 const Header = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
   const [isSelected, setIsSelected] = useState<boolean>(false);
-  const [searchValue, setSearchValue] = useState<string>(searchParams.get('q') || "");
+  const [searchValue, setSearchValue] = useState<string>("");
   
   const { theme, changeTheme } = useContext(ThemeContext)!;
 
@@ -22,8 +21,8 @@ const Header = () => {
 
   function handleSearch() {
     if (searchValue.trim().length <= 0) return;
-
     navigate(`/tim-kiem?q=${searchValue}`);
+    setSearchValue("");
   }
 
   function handleChangeTheme() {
