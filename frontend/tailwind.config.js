@@ -9,12 +9,18 @@ export default {
     extend: {
       animation: {
         border: 'border 4s ease infinite',
+        typewriter: "typewriter 2s steps(16) forwards infinite",
       },
       keyframes: {
         border: {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
         },
+        typewriter: {
+          to: {
+            left: "100%"
+          }
+        }
       },
     },
   },

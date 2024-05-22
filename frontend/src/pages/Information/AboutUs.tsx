@@ -69,6 +69,10 @@ const AboutUs = () => {
     <div className="font-sans flex flex-col text-black dark:text-white">
       <Slider/>
       <h1 className="text-amber-700 text-lg my-4">NHÓM PHÁT TRIỂN</h1>
+      <div className="flex justify-center items-center text-center">
+        <h1 className="text-decoration md:text-5xl text-3xl relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-typewriter dark:before:bg-stone-950 before:bg-white mb-5 font-black"
+        >Software Design&nbsp;</h1>
+      </div>
       <div className="flex ps-4 flex-col gap-2 text-lg md:mt-8 mt-2">
         <UserCard 
           name="Nguyễn Nhật Hào"
