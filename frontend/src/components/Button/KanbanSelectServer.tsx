@@ -38,7 +38,7 @@ const KanbanSelectServer = ({ successServer }: Props) => {
 
   return (
     <DragDropContext onDragEnd = {handleDragDrop}>
-      <div className="md:mt-2 flex gap-1 flex-col text-white md:text-base text-sm">
+      <div className="md:mt-2 flex gap-1 flex-col text-white md:text-base text-sm mb-1">
         <Droppable droppableId="ROOT" type="group">
           {(provided) => (
             <div className="flex gap-1 flex-col" {...provided.droppableProps} ref={provided.innerRef}>
@@ -50,10 +50,12 @@ const KanbanSelectServer = ({ successServer }: Props) => {
                       {...provided.dragHandleProps}
                       {...provided.draggableProps}
                       ref={provided.innerRef}
-                      className={` flex gap-2 items-center outline-none shadow-xl p-2 px-8 text-center rounded  ${srv === successServer ?"bg-green-600":"bg-sky-600"}`}
+                      className={`p-1 outline-none shadow-xl text-center rounded ${srv === successServer ?"bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500":"text-gray-300 bg-sky-800"}`}
                       >
-                        <FaServer />
-                        {srv}
+                        <div className={`h-full w-full flex p-[0.4rem] px-8 gap-2 items-center ${srv === successServer?'bg-gray-950':'bg-sky-600'}`}>
+                          <FaServer />
+                          {srv}
+                        </div>
                       </div>
                     )}
                   </Draggable>
