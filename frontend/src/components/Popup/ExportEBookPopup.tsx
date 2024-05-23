@@ -7,7 +7,7 @@ import ButtonDownload from '../Export/ButtonDownload';
 import { useQuery } from '@tanstack/react-query';
 import { ApiGetAllExport } from '../../api/apiPlugin';
 import DownloadFileSkeleton from '../Loading/DownloadFileSkeleton';
-import { useKeyboardShortcut } from '../../hooks/useKeyboardShortcutArgs';
+import { useKeyboardShortcut } from '../../hooks/useKeyboardShortcut';
 
 interface Props {
   close: ()=>void;
