@@ -9,7 +9,7 @@ import ListChapterSkeleton from "../Loading/ListChapterSkeleton";
 import CustomPagination from "../CustomPagination";
 import { useSelector } from "react-redux";
 import { getListChapterReaded } from "../../store/readed/selector";
-import { useKeyboardShortcut } from "../../hooks/UseKeyboardShortcutArgs";
+import { useKeyboardShortcut } from "../../hooks/useKeyboardShortcutArgs";
 
 interface Props {
   close: ()=>void;

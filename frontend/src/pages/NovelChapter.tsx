@@ -30,7 +30,7 @@ import { setIsOpen } from "../store/chapterOpen";
 import { toast } from "react-toastify";
 import KanbanSelectServer from "../components/Button/KanbanSelectServer";
 import ExportEBookPopup from "../components/Popup/ExportEBookPopup";
-import { useKeyboardShortcut } from "../hooks/UseKeyboardShortcutArgs";
+import { useKeyboardShortcut } from "../hooks/useKeyboardShortcutArgs";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
