@@ -1,0 +1,13 @@
+.dark-pagination {
+    &.MuiPagination-root {
+        button, div {
+            color: white !important;
+        }
+    }
+}
+
+.MuiPagination-root {
+    .Mui-selected {
+        background-color: rgb(245 158 11) !important;
+    }
+}

@@ -9,6 +9,7 @@ Application for synthesizing and reading novels online
 - [Usage](#usage)
 - [Features](#features)
 - [Contributing](#contributing)
+- [License](#license)
 
 ## About
 

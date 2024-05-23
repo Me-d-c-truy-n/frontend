@@ -1,12 +1,13 @@
 import logo from '../../assets/images/logo.png';
 import { GrClose } from "react-icons/gr";
 import { useState } from 'react';
-import '../../assets/style/inputNumber.css'
+import '../../assets/style/inputNumber.scss'
 import SelectionExportType from '../Export/SelectionExportType';
 import ButtonDownload from '../Export/ButtonDownload';
 import { useQuery } from '@tanstack/react-query';
 import { ApiGetAllExport } from '../../api/apiPlugin';
 import DownloadFileSkeleton from '../Loading/DownloadFileSkeleton';
+import { useKeyboardShortcut } from '../../hooks/UseKeyboardShortcutArgs';
 
 interface Props {
   close: ()=>void;
@@ -26,6 +27,11 @@ const ExportEBookPopup = ({ close, novelId, chapterId, server }: Props) => {
       return data;
     },
     retry: 1
+  })
+
+  useKeyboardShortcut({
+    key: "Escape",
+    onKeyPressed: () => close(),
   })
 
   

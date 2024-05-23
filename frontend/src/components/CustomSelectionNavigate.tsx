@@ -3,7 +3,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
-import '../assets/style/selection.css'
+import '../assets/style/selection.scss'
 import { THEME } from "../types/theme";
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";

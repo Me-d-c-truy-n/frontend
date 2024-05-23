@@ -6,7 +6,6 @@ import { ApiGetAllNovel } from "../../api/apiNovel";
 import { useState } from "react";
 import { INovelRoot } from "../../types/novel";
 import ListNovelSkeleton from "../Loading/ListNovelSkeleton";
-import  '../../assets/style/pagination.css';
 import CustomPagination from "../CustomPagination";
 import { useSelector } from "react-redux";
 import { AppState } from "../../store";

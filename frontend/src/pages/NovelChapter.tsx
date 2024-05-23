@@ -30,6 +30,7 @@ import { setIsOpen } from "../store/chapterOpen";
 import { toast } from "react-toastify";
 import KanbanSelectServer from "../components/Button/KanbanSelectServer";
 import ExportEBookPopup from "../components/Popup/ExportEBookPopup";
+import { useKeyboardShortcut } from "../hooks/UseKeyboardShortcutArgs";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -118,10 +119,24 @@ const NovelChapter = () => {
       else setIndexServer(indexServer + 1);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[isError])
+  },[isError]);
 
-  if (chapter === null || isFetching || novelId == null || chapterId == undefined) return <NovelChapterSkeleton/>;
+  const isLoading = chapter === null || isFetching || novelId == null || chapterId == undefined;
 
+  useKeyboardShortcut({
+    isActive: (!openChapterPopup && !openExportEBook && !openSettingPopup && !isLoading),
+    key: "ArrowLeft",
+    onKeyPressed: handlePrevChapter,
+  });
+
+  useKeyboardShortcut({
+    isActive: (!openChapterPopup && !openExportEBook && !openSettingPopup && !isLoading),
+    key: "ArrowRight",
+    onKeyPressed: handleNextChapter,
+  });
+  
+  if (isLoading) return <NovelChapterSkeleton/>;
+  
   return (
     <div style={{backgroundColor: background }}>
       {

@@ -1,6 +1,7 @@
 import Pagination from '@mui/material/Pagination';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { Dispatch, SetStateAction, useContext } from 'react';
+import  '../assets/style/pagination.scss';
 
 interface Props {
   changeThemeEffect?: boolean;

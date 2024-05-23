@@ -8,6 +8,7 @@ import CustomSelectColor from './CustomSelectColor';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, AppState } from '../../store';
 import { changeAlign, changeFontSize, changeFontStyle, changeLeading } from '../../store/settings';
+import { useKeyboardShortcut } from '../../hooks/UseKeyboardShortcutArgs';
 
 interface Props {
   close: ()=>void;
@@ -16,7 +17,12 @@ const SettingPopup = ({ close }: Props) => {
   const { background, color, setColor, resetSettings } = useContext(SettingsContext)!;
 
   const settings = useSelector((state: AppState) => state.settings)
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>();
+
+  useKeyboardShortcut({
+    key: "Escape",
+    onKeyPressed: () => close(),
+  })
   
   return (
     <div className="z-10 fixed left-0 top-0 w-full h-full">
