@@ -8,7 +8,7 @@ import CustomSelectColor from './CustomSelectColor';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, AppState } from '../../store';
 import { changeAlign, changeFontSize, changeFontStyle, changeLeading } from '../../store/settings';
-import { useKeyboardShortcut } from '../../hooks/useKeyboardShortcutArgs';
+import { useKeyboardShortcut } from '../../hooks/useKeyboardShortcut';
 
 interface Props {
   close: ()=>void;
