@@ -33,7 +33,7 @@ const Notfound = () => {
       className="flex items-center flex-col justify-center px-2 md:px-10  py-4 w-full h-full"
     >
       <TypewriterEffect words={words}/>
-      <Link to={'/'} replace className="flex gap-2 items-center text-slate-200 mt-10 text-lg hover:text-slate-100 border px-4 py-2 rounded-3xl hover:bg-sky-500 shadow-4xl hover:border-sky-500">
+      <Link to={'/'} replace className="flex gap-2 items-center text-slate-200 mt-5 md:mt-10 text-sm md:text-lg hover:text-slate-100 border px-4 py-2 rounded-3xl hover:bg-sky-500 shadow-4xl hover:border-sky-500">
         <AiOutlineHome />
         Về trang chủ
       </Link>
