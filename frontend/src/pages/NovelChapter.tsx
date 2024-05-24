@@ -90,7 +90,7 @@ const NovelChapter = () => {
   const handleNextChapter =()=>{
     if (chapter == null || chapterId == null) return;
     if (!chapter.nextChapterId || chapter.nextChapterId.length <= 0) {
-      toast.error("Hiện tại đây đã là chương cuối");
+      toast.error("Hiện tại đây đã là chương cuối",{ toastId: 'last-chapter'});
       return;
     }
     toast.dismiss();
@@ -100,7 +100,7 @@ const NovelChapter = () => {
   const handlePrevChapter =()=>{
     if (chapter == null || chapterId == null) return;
     if (!chapter.preChapterId|| chapter.preChapterId.length <= 0) {
-      toast.error("Đây đã là chương đầu tiên");
+      toast.error("Đây đã là chương đầu tiên",{ toastId: 'first-chapter'});
       return;
     }
     toast.dismiss();
