@@ -9,6 +9,7 @@ import ListNovelSkeleton from "../Loading/ListNovelSkeleton";
 import CustomPagination from "../CustomPagination";
 import { useSelector } from "react-redux";
 import { AppState } from "../../store";
+import EmptyResult from "../EmptyResult";
 
 const ListNovel = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -17,7 +18,7 @@ const ListNovel = () => {
   const [novels, setNovels] = useState<INovelRoot[]>([]);
   const server = useSelector((state: AppState) => state.server.server)
   
-  const { isLoading, isFetching } = useQuery({
+  const { isLoading, isFetching, isError } = useQuery({
     queryKey: ['all_novel', currentPage, server],
     queryFn: async () => {
         const data: IResponse<INovelRoot[]> = 
@@ -29,9 +30,16 @@ const ListNovel = () => {
           return data.data;
     },
     placeholderData: keepPreviousData,
-  })
+  });
 
-  if (isLoading || isFetching || novels.length == 0) return (
+  if (isError) 
+    return (
+  <div>
+    <TitleTab name="DANH SÁCH TRUYỆN" link="/"/>
+    <EmptyResult title="Có vấn đề xảy ra, vui lòng kiểm tra kết nối"/>
+  </div>);
+
+  if (isLoading || isFetching || novels?.length == 0) return (
     <ListNovelSkeleton>
       <TitleTab name="DANH SÁCH TRUYỆN" link="/"/>
     </ListNovelSkeleton>

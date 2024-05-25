@@ -12,6 +12,7 @@ import TitleTab from "../components/TitleTab";
 import CustomPagination from "../components/CustomPagination";
 import { useSelector } from "react-redux";
 import { AppState } from "../store";
+import EmptyResult from "../components/EmptyResult";
 
 const AuthorPage = () => {
   const navigate = useNavigate();
@@ -53,6 +54,7 @@ const AuthorPage = () => {
               <TitleTab name="TRUYỆN CỦA TÁC GIẢ"/>
             </ListNovelSkeleton>
           ):(
+            novels.length > 0 ?
             <>
               <TitleTab name={`TRUYỆN CỦA TÁC GIẢ ${novels[0].author.name}`} 
               uppercase={true}/>
@@ -69,7 +71,7 @@ const AuthorPage = () => {
                 setCurrentPage={setCurrentPage}
                 topList="pagination-author-novel-list"
               />
-            </>
+            </>: <EmptyResult title="Tác giả này không tồn tại"/>
           )
         }
         

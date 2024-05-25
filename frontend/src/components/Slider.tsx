@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import slider_const from "../constants/slider.json"
 import Skeleton from 'react-loading-skeleton'
 
@@ -8,10 +9,13 @@ function getRandomInt(max: number) {
 interface Props {
   isLoading?: boolean;
 }
-
 const Slider = ({ isLoading = false }: Props) => {
-  const slider = slider_const["slider"][getRandomInt(slider_const["slider"].length)];
-
+  const [slider, setSlider] = useState("");
+  
+  useEffect(()=>{
+      setSlider(slider_const["slider"][getRandomInt(slider_const["slider"].length)]);
+  },[])
+  
   return (
     <div className='w-full'>
       {

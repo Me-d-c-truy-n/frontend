@@ -12,6 +12,7 @@ import TitleTab from "../components/TitleTab";
 import CustomPagination from "../components/CustomPagination";
 import { useSelector } from "react-redux";
 import { AppState } from "../store";
+import EmptyResult from "../components/EmptyResult";
 
 const FilterPage = () => {
   const [searchParams] = useSearchParams();
@@ -53,9 +54,7 @@ const FilterPage = () => {
       
               {
                 novels.length <= 0 ?(
-                  <div className="dark:text-white text-center text-xl">
-                    KHÔNG TÌM THẤY KẾT QUẢ NÀO
-                  </div>
+                  <EmptyResult title="KHÔNG TÌM THẤY KẾT QUẢ NÀO"/>
                 ):(
                   <>
                     <div className="grid grid-cols-1 gap-y-10 gap-x-4 lg:grid-cols-2">
