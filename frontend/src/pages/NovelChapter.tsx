@@ -121,21 +121,21 @@ const NovelChapter = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[isError]);
 
-  const isLoading = chapter === null || isFetching || novelId == null || chapterId == undefined;
+  const _isLoading = chapter === null || isFetching || novelId == null || chapterId == undefined;
 
   useKeyboardShortcut({
-    isActive: (!openChapterPopup && !openExportEBook && !openSettingPopup && !isLoading),
+    isActive: (!openChapterPopup && !openExportEBook && !openSettingPopup && !_isLoading),
     key: "ArrowLeft",
     onKeyPressed: handlePrevChapter,
   });
 
   useKeyboardShortcut({
-    isActive: (!openChapterPopup && !openExportEBook && !openSettingPopup && !isLoading),
+    isActive: (!openChapterPopup && !openExportEBook && !openSettingPopup && !_isLoading),
     key: "ArrowRight",
     onKeyPressed: handleNextChapter,
   });
   
-  if (isLoading) return <NovelChapterSkeleton/>;
+  if (_isLoading) return <NovelChapterSkeleton/>;
   
   return (
     <div style={{backgroundColor: background }}>

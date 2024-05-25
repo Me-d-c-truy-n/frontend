@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setupInterceptors } from "./interceptors";
 
 const AxiosClient = axios.create({
   baseURL: import.meta.env.VITE_REACT_APP_BASE_URL,
@@ -7,5 +8,7 @@ const AxiosClient = axios.create({
     "Access-Control-Allow-Origin": "*",
   },
 })
+
+setupInterceptors(AxiosClient);
 
 export default AxiosClient;

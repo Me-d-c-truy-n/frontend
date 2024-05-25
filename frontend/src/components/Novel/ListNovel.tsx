@@ -20,14 +20,13 @@ const ListNovel = () => {
   const { isLoading, isFetching } = useQuery({
     queryKey: ['all_novel', currentPage, server],
     queryFn: async () => {
-      const data: IResponse<INovelRoot[]> = 
-        await ApiGetAllNovel(server, currentPage);
-      
-      setPerPage(data.perPage);
-      setNovels(data.data);
-      setTotalPage(data.totalPage);
-
-      return data.data;
+        const data: IResponse<INovelRoot[]> = 
+          await ApiGetAllNovel(server, currentPage);
+          setPerPage(data.perPage);
+          setNovels(data.data);
+          setTotalPage(data.totalPage);
+    
+          return data.data;
     },
     placeholderData: keepPreviousData,
   })
