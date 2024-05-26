@@ -32,7 +32,7 @@ const SettingPopup = ({ close }: Props) => {
         <div className='flex justify-between items-center mb-10'>
           <img src={logo} alt='logo' className='w-10'/>
           <h1 className='text-xl font-bold'>Cài đặt đọc truyện</h1>
-          <GrClose className='text-xl cursor-pointer' onClick={close}/>
+          <GrClose className='text-xl cursor-pointer text-gray-500 hover:text-black' onClick={close}/>
         </div>
         <div className='flex justify-between mb-4'>
           <div>Màu nền</div>

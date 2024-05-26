@@ -5,7 +5,7 @@ import BoxNovelAuthor from "../components/Novel/BoxNovelAuthor";
 import { ApiGetAllNovelOfAuthor } from "../api/apiAuthor";
 import { useQuery } from "@tanstack/react-query";
 import { INovelRoot } from "../types/novel";
-import { IResponse } from "../types/response";
+import { IResponse, STATUS } from "../types/response";
 import { useEffect, useState } from "react";
 import ListNovelSkeleton from "../components/Loading/ListNovelSkeleton";
 import TitleTab from "../components/TitleTab";
@@ -21,14 +21,16 @@ const AuthorPage = () => {
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
+  const {server, listServer} = useSelector((state: AppState) => state.server);
+  const [indexServer, setIndexServer] = useState(0);
   
-  const server = useSelector((state: AppState) => state.server.server)
-
   const { isFetching, isError } = useQuery({
-    queryKey: ['author', authorId, server, currentPage],
+    queryKey: ['author', authorId, server, currentPage, indexServer],
     queryFn: async () => {
       const data: IResponse<INovelRoot[]> = 
-        await ApiGetAllNovelOfAuthor(server, authorId || 'a', 1);
+        await ApiGetAllNovelOfAuthor(listServer[indexServer], authorId || 'a', 1);
+
+      if (data.status === STATUS.ERROR || data.data.length <= 0) throw new Error();
 
       setPerPage(data.perPage);
       setTotalPage(data.totalPage);
@@ -37,12 +39,17 @@ const AuthorPage = () => {
 
       return data;
     },
+    retry: 0
   })
 
   useEffect(() =>{
-    if (isError) navigate('/notfound', { replace: true });
+    if (isError) {
+      if (indexServer == listServer.length - 1)
+        navigate('/notfound', { replace: true });
+      else setIndexServer(indexServer + 1);
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[isError])
+  },[isError]);
   
   return (
     <div>
@@ -54,7 +61,7 @@ const AuthorPage = () => {
               <TitleTab name="TRUYỆN CỦA TÁC GIẢ"/>
             </ListNovelSkeleton>
           ):(
-            novels.length > 0 ?
+            novels?.length > 0 ?
             <>
               <TitleTab name={`TRUYỆN CỦA TÁC GIẢ ${novels[0].author.name}`} 
               uppercase={true}/>

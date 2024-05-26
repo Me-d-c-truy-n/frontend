@@ -45,7 +45,7 @@ const ExportEBookPopup = ({ close, novelId, chapterId, server }: Props) => {
         <div className='flex justify-between items-center mb-5'>
           <img src={logo} alt='logo' className='w-10'/>
           <h1 className='text-xl font-bold'>Tải truyện</h1>
-          <GrClose className='text-xl cursor-pointer' onClick={close}/>
+          <GrClose className='text-lg cursor-pointer text-gray-500 hover:text-black' onClick={close}/>
         </div>
         <div className='px-6'>
           <div className='flex gap-3 items-center justify-center flex-wrap'>

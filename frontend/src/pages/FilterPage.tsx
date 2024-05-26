@@ -24,7 +24,7 @@ const FilterPage = () => {
   
   const server = useSelector((state: AppState) => state.server.server)
 
-  const { isFetching, isError } = useQuery({
+  const { isFetching } = useQuery({
     queryKey: ['search', searchParams.get('q'), server, currentPage],
     queryFn: async () => {
       const data: IResponse<INovelRoot[]> = 
@@ -53,13 +53,9 @@ const FilterPage = () => {
               <TitleTab name={`TÌM KIẾM: ${searchParams.get('q')}`}/>
       
               {
-                novels.length <= 0 ?(
+                !novels || novels.length <= 0 ?(
                   <EmptyResult 
-                    title={
-                      isError?
-                      "CÓ VẤN ĐỀ XẢY RA, VUI LÒNG KIỂM TRA KẾT NỐI"
-                      :"KHÔNG TÌM THẤY KẾT QUẢ NÀO"
-                    }
+                    title="KHÔNG TÌM THẤY KẾT QUẢ NÀO"
                   />
                 ):(
                   <>
