@@ -71,7 +71,14 @@ const AuthorPage = () => {
                 setCurrentPage={setCurrentPage}
                 topList="pagination-author-novel-list"
               />
-            </>: <EmptyResult title="Tác giả này không tồn tại"/>
+            </>: 
+            <EmptyResult
+              title={
+                isError?
+                "CÓ VẤN ĐỀ XẢY RA, VUI LÒNG KIỂM TRA KẾT NỐI"
+                :"Tác giả này không tồn tại"
+              }
+            />
           )
         }
         

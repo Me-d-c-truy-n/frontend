@@ -4,6 +4,7 @@ import { AppDispatch } from "../store";
 import { useQuery } from "@tanstack/react-query";
 import { ApiGetAllServer } from "../api/apiPlugin";
 import { addNewServer } from "../store/server";
+import LoadingSpinner from "../components/Loading/LoadingSpinner";
 
 const CheckNewServer = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -20,7 +21,7 @@ const CheckNewServer = () => {
     retry: 1
   })
   
-  if (isLoading) return <div>Loading....</div>
+  if (isLoading) return <LoadingSpinner/>;
 
   return <Outlet/>
 }
