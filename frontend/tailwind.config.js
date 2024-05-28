@@ -10,6 +10,7 @@ export default {
       animation: {
         border: 'border 4s ease infinite',
         typewriter: "typewriter 2s steps(16) forwards infinite",
+        shine: 'shine 0.75s'
       },
       keyframes: {
         border: {
@@ -19,6 +20,11 @@ export default {
         typewriter: {
           to: {
             left: "100%"
+          }
+        },
+        shine: {
+          '100%': {
+            left: "125%"
           }
         }
       },

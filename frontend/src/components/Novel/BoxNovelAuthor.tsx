@@ -6,9 +6,9 @@ import no_image from "../../assets/images/no-image.jpg";
 const BoxNovelAuthor = ({ novel }: {novel: INovelRoot}) => {
   return (
     <div className="flex gap-2 hover:bg-gray-100 dark:hover:bg-gray-900 border bg-slate-50 dark:border-gray-700 dark:bg-gray-950 p-2 rounded shadow dark:shadow-gray-800">
-      <Link to={`/truyen/${novel.novelId}`} className="overflow-hidden rounded w-24 !h-32">
+      <Link to={`/truyen/${novel.novelId}`} className="overflow-hidden rounded w-24 !h-32 flash relative">
         <img src={novel.image} alt={novel.name}  className=
-        "h-full w-full object-cover transition-all duration-300 hover:scale-110" 
+        "h-full w-full object-cover" 
         onError={({ currentTarget }) => {
           currentTarget.onerror = null;
           currentTarget.src=no_image;

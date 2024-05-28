@@ -45,59 +45,59 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
 
   return (
     <div className="flex gap-4 my-6 flex-col md:flex-row items-center md:items-start">
-      {
-            openChapterPopup && 
-          <ChapterPopup
-            close ={() => setOpenChapterPopup(false)}
-            novelId={novel.novelId + ''}
-            name={novel.name}
-            server={server}
-          />
-      }
-      
-      <CustomImageAsBook image={novel.image} name={novel.name}/>
+    {
+          openChapterPopup && 
+        <ChapterPopup
+          close ={() => setOpenChapterPopup(false)}
+          novelId={novel.novelId + ''}
+          name={novel.name}
+          server={server}
+        />
+    }
+    
+    <CustomImageAsBook image={novel.image} name={novel.name}/>
 
-      <div className="ml-5 flex flex-col flex-1 rounded">
-        <div className="font-bold text-xl mb-3 text-gray-700 dark:text-white">{novel.name}</div>
-        <Link to={`/tac-gia/${novel.author.authorId || novel.author.id}`} className="text-base text-gray-700 flex gap-1 items-center">
-          <HiUser/>
-          {novel.author.name}
-        </Link>
-        <div className="flex gap-5 my-5 flex-wrap justify-center md:justify-start">
+    <div className="ml-5 flex flex-col flex-1 rounded">
+      <div className="z-10 font-bold text-xl mb-3 text-gray-700 dark:text-white">{novel.name}</div>
+      <Link to={`/tac-gia/${novel.author.authorId || novel.author.id}`} className="z-10 text-base text-gray-700 flex gap-1 items-center">
+        <HiUser/>
+        {novel.author.name}
+      </Link>
+      <div className="flex gap-5 my-5 flex-wrap justify-center md:justify-start">
+        <ButtonUtils
+          func={()=>navigate(`/truyen/${novel.novelId}/${novel.firstChapter}`)}
+          de={false}
+        >
+            <FiBookOpen/>
+            Đọc Truyện
+        </ButtonUtils>
+        <ButtonBookmark 
+          novelId={novel.novelId}
+          novelName={novel.name}
+          time={(new Date()).toString()}
+        />
+
+        <ButtonUtils
+          func={()=>setOpenChapterPopup(true)}
+        >
+            <MdOutlineFormatListBulleted/>
+            Mục lục
+        </ButtonUtils>
+
+        {
+          chapterId && chapterId != '0' && (
           <ButtonUtils
-            func={()=>navigate(`/truyen/${novel.novelId}/${novel.firstChapter}`)}
-            de={false}
+            func={()=>navigate(`/truyen/${novel.novelId}/${chapterId}`)}
+            className="bg-red-600 text-white border-red-600 hover:text-white"
           >
-              <FiBookOpen/>
-              Đọc Truyện
+              Đọc Tiếp
+              <GrNext/>
           </ButtonUtils>
-          <ButtonBookmark 
-            novelId={novel.novelId}
-            novelName={novel.name}
-            time={(new Date()).toString()}
-          />
-
-          <ButtonUtils
-            func={()=>setOpenChapterPopup(true)}
-          >
-              <MdOutlineFormatListBulleted/>
-              Mục lục
-          </ButtonUtils>
-
-          {
-            chapterId && chapterId != '0' && (
-            <ButtonUtils
-              func={()=>navigate(`/truyen/${novel.novelId}/${chapterId}`)}
-              className="bg-red-600 text-white border-red-600 hover:text-white"
-            >
-                Đọc Tiếp
-                <GrNext/>
-            </ButtonUtils>
-            )
-          }
-        </div>
+          )
+        }
       </div>
     </div>
+  </div>
   )
 }
 
