@@ -28,9 +28,9 @@ const BoxNovel = ({ novel, isLoading = false }: {novel?: INovelRoot, isLoading?:
       <Link to={`/truyen/${novel.novelId}`} className="overflow-hidden rounded">
         <img src={novel.image} alt={novel.name} 
         className=
-        "min-w-28 max-w-28 max-h-40 min-h-40 md:min-w-40 md:max-w-40 md:max-h-60 md:min-h-60 shadow-2xl object-cover transition-all duration-300 hover:scale-110"/>
+        "w-28 md:w-40 shadow-2xl h-full object-cover transition-all duration-300 hover:scale-110"/>
       </Link>
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between w-8/12">
         <Link to={`/truyen/${novel.novelId}`} className="text-slate-700 font-bold hover:text-amber-700">      
           {novel.name}
         </Link>
