@@ -5,6 +5,7 @@ import ButtonUtils from "../Button/ButtonUtils"
 import { FiBookOpen } from "react-icons/fi";
 import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { GrNext } from "react-icons/gr";
+import { HiUser } from "react-icons/hi2";
 
 import Skeleton from 'react-loading-skeleton'
 import { useState } from "react";
@@ -58,7 +59,10 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
 
       <div className="ml-5 flex flex-col flex-1 rounded">
         <div className="font-bold text-xl mb-3 text-gray-700 dark:text-white">{novel.name}</div>
-        <Link to={`/tac-gia/${novel.author.authorId || novel.author.id}`} className="text-base text-gray-700">{novel.author.name}</Link>
+        <Link to={`/tac-gia/${novel.author.authorId || novel.author.id}`} className="text-base text-gray-700 flex gap-1 items-center">
+          <HiUser/>
+          {novel.author.name}
+        </Link>
         <div className="flex gap-5 my-5 flex-wrap justify-center md:justify-start">
           <ButtonUtils
             func={()=>navigate(`/truyen/${novel.novelId}/${novel.firstChapter}`)}

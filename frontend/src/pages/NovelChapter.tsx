@@ -21,6 +21,7 @@ import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 import { FiDownload } from "react-icons/fi";
 import { FaInfoCircle } from "react-icons/fa";
+import { HiUser } from "react-icons/hi2";
 
 import ButtonBookmark from "../components/Button/ButtonBookmark";
 import { useDispatch, useSelector } from "react-redux";
@@ -166,25 +167,28 @@ const NovelChapter = () => {
       }
       <Slider/>
       <div className="flex flex-col justify-center items-center mt-2">
-        <Link to={`/truyen/${chapter.novelId}`} className="font-bold text-gray-900 text-lg md:text-xl capitalize hover:text-amber-700 dark:text-stone-300 text-center">{chapter.novelName}</Link>
-        <Link to={`/tac-gia/${chapter.author.authorId || chapter.author.id}`} className="mt-1 text-gray-500 dark:text-gray-300">{chapter.author.name}</Link>
-        <i className="text-base hidden md:flex mt-1 font-semibold gap-1 text-sky-500 items-center text-center">
-          <FaInfoCircle />
-          Sử dụng mũi tên trái (←) hoặc phải (→) để chuyển chương
-        </i>
-        <div className="flex mt-2 items-center gap-4">
-          <button 
-            onClick={handlePrevChapter}
-            className="border flex items-center justify-center rounded-full p-1 text-amber-600 border-amber-600 hover:bg-amber-600 hover:text-white">
-              <GrPrevious/>
-          </button>
-          <div className="text-gray-700 dark:text-stone-300">{chapter.name}</div>
-          <button 
-            onClick={handleNextChapter}
-            className="border flex items-center justify-center rounded-full p-1 text-amber-600 border-amber-600 hover:bg-amber-600 hover:text-white">
-              <GrNext/>
-          </button>
-        </div>
+      <Link to={`/truyen/${chapter.novelId}`} className="font-bold text-gray-900 text-lg md:text-xl capitalize hover:text-amber-700 dark:text-stone-300 text-center">{chapter.novelName}</Link>
+          <Link to={`/tac-gia/${chapter.author.authorId || chapter.author.id}`} className="mt-1 text-gray-500 dark:text-gray-300 flex gap-1 items-center">
+            <HiUser />
+            {chapter.author.name}
+          </Link>
+          <i className="text-base hidden md:flex mt-1 font-semibold gap-1 text-sky-500 items-center text-center">
+            <FaInfoCircle />
+            Sử dụng mũi tên trái (←) hoặc phải (→) để chuyển chương
+          </i>
+          <div className="flex mt-2 items-center gap-4">
+            <button 
+              onClick={handlePrevChapter}
+              className="border flex items-center justify-center rounded-full p-1 text-amber-600 border-amber-600 hover:bg-amber-600 hover:text-white">
+                <GrPrevious/>
+            </button>
+            <div className="text-gray-700 dark:text-stone-300">{chapter.name}</div>
+            <button 
+              onClick={handleNextChapter}
+              className="border flex items-center justify-center rounded-full p-1 text-amber-600 border-amber-600 hover:bg-amber-600 hover:text-white">
+                <GrNext/>
+            </button>
+          </div>
 
 
         <div className="mt-6 flex md:gap-5 gap-3 mb-4 flex-wrap justify-center">
@@ -219,7 +223,7 @@ const NovelChapter = () => {
         <KanbanSelectServer successServer={listServer[indexServer]}/>
 
       </div>
-      <div className="my-0 md:my-10 px-2" 
+      <div className="mt-8 mb-4 px-2" 
         style={{fontSize:settings.fontSize, color: color, fontFamily: settings.fontStyle, lineHeight: settings.leading, textAlign: settings.align}}
         dangerouslySetInnerHTML={{__html: chapter.content}}
       >
