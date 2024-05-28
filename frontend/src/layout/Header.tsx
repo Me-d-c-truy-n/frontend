@@ -31,7 +31,7 @@ const Header = () => {
   }
 
   return (
-    <div className={`flex justify-between items-center pt-3 mb-6`}>
+    <div className={`flex justify-between items-center pt-3 mb-4`}>
         <Link to={'/'}>
           <img src={logo} alt="logo" width={60}/>
         </Link>

@@ -13,7 +13,7 @@ import ButtonBookmark from "../Button/ButtonBookmark";
 import { getChapterJustReaded } from "../../store/history/selector";
 import { useSelector } from "react-redux";
 
-import no_image from "../../assets/images/no-image.jpg";
+import CustomImageAsBook from "./CustomImageAsBook";
 
 interface Props {
   novel: INovelRoot | null;
@@ -54,15 +54,9 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
           />
       }
       
-      <div>
-        <img src={novel.image} alt={novel.name} className="w-52 rounded-md shadow-xl"
-        onError={({ currentTarget }) => {
-          currentTarget.onerror = null;
-          currentTarget.src=no_image;
-        }}
-        />
-      </div>
-      <div className="flex flex-col flex-1 rounded">
+      <CustomImageAsBook image={novel.image} name={novel.name}/>
+
+      <div className="ml-5 flex flex-col flex-1 rounded">
         <div className="font-bold text-xl mb-3 text-gray-700 dark:text-white">{novel.name}</div>
         <Link to={`/tac-gia/${novel.author.authorId || novel.author.id}`} className="text-base text-gray-700">{novel.author.name}</Link>
         <div className="flex gap-5 my-5 flex-wrap justify-center md:justify-start">

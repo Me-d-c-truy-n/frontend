@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import { INovelRoot } from "../types/novel";
 import Slider from "../components/Slider";
 import NovelInfor from "../components/Novel/NovelInfor";
-import TitleTabFull from "../components/TitleTabFull";
 import { useQuery } from "@tanstack/react-query";
 import { ApiGetDetailNovel } from "../api/apiNovel";
 import { IResponse, STATUS } from "../types/response";
 import Skeleton from 'react-loading-skeleton'
 import { useSelector } from "react-redux";
 import { AppState } from "../store";
+import TitleTabFull from "../components/TitleTabFull";
 
 const NovelPreview = () => {
   const navigate = useNavigate();

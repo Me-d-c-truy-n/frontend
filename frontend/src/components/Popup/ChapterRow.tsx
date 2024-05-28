@@ -20,7 +20,7 @@ const ChapterRow = ({ chapter, close, isReaded = false }: Props) => {
       onClick={handleNavigate}
     >
       <div 
-      className={`font-medium text-lg ${isReaded?'text-slate-400':'text-amber-700'} `}>
+      className={`hover:underline font-medium text-lg ${isReaded?'text-slate-400':'text-amber-700'} `}>
         {chapter.name}
       </div>
       <p className="text-sm text-gray-400">{chapter.time}</p>
