@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { INovelRoot } from "../../types/novel"
 import { HiUser } from "react-icons/hi2";
 import Skeleton from "react-loading-skeleton";
+import no_image from "../../assets/images/no-image.jpg";
 
 const BoxNovel = ({ novel, isLoading = false }: {novel?: INovelRoot, isLoading?: boolean}) => {
   
@@ -28,7 +29,12 @@ const BoxNovel = ({ novel, isLoading = false }: {novel?: INovelRoot, isLoading?:
       <Link to={`/truyen/${novel.novelId}`} className="overflow-hidden rounded w-24 !h-32">
         <img src={novel.image} alt={novel.name} 
         className=
-        "h-full w-full object-cover transition-all duration-300 hover:scale-110"/>
+        "h-full w-full object-cover transition-all duration-300 hover:scale-110"
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src=no_image;
+        }}
+        />
       </Link>
       <div className="flex flex-col justify-between w-9/12">
         <Link to={`/truyen/${novel.novelId}`} className="text-slate-700 font-bold hover:text-amber-700 max-h-12 line-clamp-2">      

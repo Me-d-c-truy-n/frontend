@@ -13,6 +13,8 @@ import ButtonBookmark from "../Button/ButtonBookmark";
 import { getChapterJustReaded } from "../../store/history/selector";
 import { useSelector } from "react-redux";
 
+import no_image from "../../assets/images/no-image.jpg";
+
 interface Props {
   novel: INovelRoot | null;
   isLoading?: boolean;
@@ -53,7 +55,12 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
       }
       
       <div>
-        <img src={novel.image} alt={novel.name} className="w-52 rounded-md shadow-xl"/>
+        <img src={novel.image} alt={novel.name} className="w-52 rounded-md shadow-xl"
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src=no_image;
+        }}
+        />
       </div>
       <div className="flex flex-col flex-1 rounded">
         <div className="font-bold text-xl mb-3 text-gray-700 dark:text-white">{novel.name}</div>
