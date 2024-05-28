@@ -30,7 +30,7 @@ Back-end:
 ## Installation
 
 ```
-git clone https://github.com/Me-d-c-truy-n/TKPM-frontend.git
+git clone https://github.com/Me-d-c-truy-n/Frontend.git
 ```
 
 ## Usage
