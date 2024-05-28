@@ -19,7 +19,7 @@ const { actions, reducer } = serverSlice;
 
 export const { 
   changeServerIndex,
-  addNewServer
+  updateListServer
 } = actions;
 
 export default reducer;

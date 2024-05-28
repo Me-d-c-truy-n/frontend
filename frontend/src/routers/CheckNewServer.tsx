@@ -1,20 +1,23 @@
 import { useDispatch } from "react-redux";
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import { AppDispatch } from "../store";
 import { useQuery } from "@tanstack/react-query";
 import { ApiGetAllServer } from "../api/apiPlugin";
-import { addNewServer } from "../store/server";
+import { updateListServer } from "../store/server";
 import LoadingSpinner from "../components/Loading/LoadingSpinner";
 
 const CheckNewServer = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
-  const { isLoading } = useQuery({
+  const { isLoading, isError } = useQuery({
     queryKey: ['server'],
     queryFn: async () => {
       const data: string[] = await ApiGetAllServer();
 
-      dispatch(addNewServer(data));
+      if (data.length === 0) throw new Error();
+
+      dispatch(updateListServer(data));
 
       return data;
     },
@@ -22,6 +25,7 @@ const CheckNewServer = () => {
   })
   
   if (isLoading) return <LoadingSpinner/>;
+  if (isError) navigate('/notfound', { replace: true });
 
   return <Outlet/>
 }

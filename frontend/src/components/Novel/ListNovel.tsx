@@ -48,7 +48,7 @@ const ListNovel = () => {
   return (
     <div id="pagination-list-novel">
       <TitleTab name="DANH SÁCH TRUYỆN" link="/"/>
-      <div className="grid grid-cols-1 gap-y-10 gap-x-4 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-y-5 gap-x-5 lg:grid-cols-2">
         {
           novels.map((novel, idx) =>
             <BoxNovel

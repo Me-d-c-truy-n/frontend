@@ -58,12 +58,12 @@ const NovelPreview = () => {
             <Skeleton height={300}/>
           </>
           :
-          <>
+          <div className="border rounded dark:border-slate-800">
             <TitleTabFull>
               GIỚI THIỆU
             </TitleTabFull>
-            <p className="px-2 pt-3 text-lg leading-10 text-gray-700" dangerouslySetInnerHTML={{__html: novel.description}}></p>
-          </>
+            <p className="px-2 pt-3 text-lg leading-10 text-gray-700 dark:text-white" dangerouslySetInnerHTML={{__html: novel.description}}></p>
+          </div>
         }
       </div>
     </div>
