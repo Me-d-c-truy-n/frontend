@@ -20,7 +20,7 @@ const Slider = ({ isLoading = false }: Props) => {
   return (
     <div className='w-full'>
       {
-        isLoading ?
+        (isLoading || !slider) ?
         <Skeleton className="h-20 lg:h-48"/> 
         :
         <img src={slider} alt="slider" className='w-full cursor-pointer'/>

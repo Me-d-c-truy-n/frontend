@@ -13,7 +13,7 @@ const BoxNovelAuthor = ({ novel }: {novel: INovelRoot}) => {
           className="h-full w-full object-cover"
         />
       </Link>
-      <div className="flex flex-col justify-between w-9/12">
+      <div className="flex-1 flex flex-col justify-between w-9/12">
         <Link to={`/truyen/${novel.novelId}`} className="text-slate-700 font-bold hover:text-amber-700 max-h-12 line-clamp-2">      
           {novel.name}
         </Link>
@@ -22,13 +22,12 @@ const BoxNovelAuthor = ({ novel }: {novel: INovelRoot}) => {
         ></div>
         <div className="flex justify-between items-center mt-2 gap-2">
           <div className="text-slate-600 flex gap-2 items-center text-sm">
-            <HiUser />
+            <HiUser/>
             <div className="font-medium">{novel.author.name}</div>
           </div>
-        </div>
-        <div className="flex justify-end items-center">
+
           <Link to={`/truyen/${novel.novelId}`} 
-          className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-2 rounded-md text-sm py-1">
+          className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-2 rounded-md text-sm py-1 text-nowrap">
             Đọc thử
           </Link>
         </div>

@@ -33,11 +33,11 @@ const BoxNovel = ({ novel, isLoading = false }: {novel?: INovelRoot, isLoading?:
           className="h-full w-full object-cover"
         />
       </Link>
-      <div className="flex flex-col justify-between w-9/12">
+      <div className="flex-1 flex flex-col justify-between w-9/12">
         <Link to={`/truyen/${novel.novelId}`} className="text-slate-700 font-bold hover:text-amber-700 max-h-12 line-clamp-2">      
           {novel.name}
         </Link>
-        <div className="font-normal text-slate-500 max-w-72 h-12 line-clamp-2"
+        <div className="font-normal text-slate-500 h-12 line-clamp-2"
         dangerouslySetInnerHTML={{__html: novel.description}}
         ></div>
         <div className="flex justify-between items-center">
