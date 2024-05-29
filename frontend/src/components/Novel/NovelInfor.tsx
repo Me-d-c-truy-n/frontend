@@ -58,12 +58,12 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
     <CustomImageAsBook image={novel.image} name={novel.name}/>
 
     <div className="ml-5 flex flex-col flex-1 rounded">
-      <div className="z-10 font-bold text-xl mb-3 text-gray-700 dark:text-white">{novel.name}</div>
-      <Link to={`/tac-gia/${novel.author.authorId || novel.author.id}`} className="z-10 text-base text-gray-700 flex gap-1 items-center">
+      <div className="font-bold text-3xl md:mb-3 mb-1 text-gray-700 dark:text-white w-fit">{novel.name}</div>
+      <Link to={`/tac-gia/${novel.author.authorId || novel.author.id}`} className="text-base text-gray-700 flex gap-1 items-center hover:underline w-fit">
         <HiUser/>
         {novel.author.name}
       </Link>
-      <div className="flex gap-5 my-5 flex-wrap justify-center md:justify-start">
+      <div className="flex gap-5 md:mt-5 mt-3 flex-wrap justify-center md:justify-start">
         <ButtonUtils
           func={()=>navigate(`/truyen/${novel.novelId}/${novel.firstChapter}`)}
           de={false}
@@ -88,7 +88,7 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
           chapterId && chapterId != '0' && (
           <ButtonUtils
             func={()=>navigate(`/truyen/${novel.novelId}/${chapterId}`)}
-            className="bg-red-600 text-white border-red-600 hover:text-white"
+            className="bg-red-600 text-white border-none shadow hover:text-white"
           >
               Đọc Tiếp
               <GrNext/>

@@ -42,15 +42,21 @@ const FilterPage = () => {
   return (
     <div>
       <Slider isLoading={isFetching}/>
-      <div className="mt-3" id="pagination-search-novel-list">
+      <div className="mt-1" id="pagination-search-novel-list">
         {
           isFetching ? (
             <ListNovelSkeleton>
-              <TitleTab name={`TÌM KIẾM: ${searchParams.get('q')}`}/>
+              <TitleTab 
+                name="TÌM KIẾM:"
+                highlight="Loading"
+              />
             </ListNovelSkeleton>
           ):(
             <>
-              <TitleTab name={`TÌM KIẾM: ${searchParams.get('q')}`}/>
+              <TitleTab 
+                name="TÌM KIẾM:"
+                highlight={searchParams.get('q') || ""}
+              />
       
               {
                 !novels || novels.length <= 0 ?(
@@ -59,7 +65,7 @@ const FilterPage = () => {
                   />
                 ):(
                   <>
-                    <div className="grid grid-cols-1 gap-y-10 gap-x-4 lg:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                       {
                         novels.map((novel, idx) =>
                           <BoxNovelAuthor key={idx} novel={novel}/>

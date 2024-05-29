@@ -58,14 +58,18 @@ const AuthorPage = () => {
         {
           isFetching?(
             <ListNovelSkeleton>
-              <TitleTab name="TRUYỆN CỦA TÁC GIẢ"/>
+              <TitleTab name="Truyện Của Tác Giả "
+              highlight="Loading"
+              />
             </ListNovelSkeleton>
           ):(
             novels?.length > 0 ?
             <>
-              <TitleTab name={`TRUYỆN CỦA TÁC GIẢ ${novels[0].author.name}`} 
-              uppercase={true}/>
-              <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+              <TitleTab 
+                name="Truyện Của Tác Giả "
+                highlight={novels[0].author.name}
+              />
+              <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                 {
                   novels.map((novel) =>
                     <BoxNovelAuthor key={novel.novelId} novel={novel}/>

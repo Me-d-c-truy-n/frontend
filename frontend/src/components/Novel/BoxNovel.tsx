@@ -25,7 +25,7 @@ const BoxNovel = ({ novel, isLoading = false }: {novel?: INovelRoot, isLoading?:
   );
 
   return (
-    <div className="flex gap-2 border hover:bg-gray-100 dark:hover:bg-gray-900 bg-slate-50 dark:border-gray-700 dark:bg-gray-950 p-2 rounded shadow dark:shadow-gray-800">
+    <div className="flex gap-2 border hover:bg-gray-100 dark:hover:bg-gray-900 bg-slate-50 dark:border-neutral-800 dark:bg-gray-950 p-2 rounded shadow dark:shadow-gray-800">
       <Link to={`/truyen/${novel.novelId}`} className="overflow-hidden rounded w-24 !h-32 flash relative">
         <img src={novel.image} alt={novel.name} 
         className=

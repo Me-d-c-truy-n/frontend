@@ -9,7 +9,7 @@ interface Props {
 const TitleTabFull = ({more = false, func, children}: Props) => {
   return (
     <div className="w-full dark:text-white dark:bg-slate-700 bg-zinc-200 p-2 flex items-center justify-between">
-      <h1 className="uppercase">
+      <h1 className="uppercase font-mono text-lg">
         {children}
       </h1>
       {

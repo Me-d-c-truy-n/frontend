@@ -12,7 +12,7 @@
     box-shadow: 5px 5px 20px #333;
   }
   .book::before {
-    @apply content-[''] absolute w-full left-[7.4%] bg-black top-[2%] h-[96%]
+    @apply content-[''] absolute w-full left-[7.4%] bg-black dark:bg-neutral-700 top-[2%] h-[96%]
   }
   .book::after {
     background-color: #efefef;

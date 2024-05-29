@@ -10,7 +10,7 @@ const StoryJustRead = ({ isShowAll }: {isShowAll: boolean}) => {
       <div className="mb-10 mt-2">
         {
           !isShowAll && history.length > 0 &&
-        <TitleTab name="TRUYỆN VỪA ĐỌC" link="/tu-truyen"/>
+        <TitleTab name="Truyện Vừa Đọc" link="/tu-truyen"/>
         }
         {
           history.map((hs,idx) =>

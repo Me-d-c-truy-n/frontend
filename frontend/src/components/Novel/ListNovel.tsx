@@ -41,14 +41,14 @@ const ListNovel = () => {
 
   if (isLoading || isFetching || novels?.length == 0) return (
     <ListNovelSkeleton>
-      <TitleTab name="DANH SÁCH TRUYỆN" link="/"/>
+      <TitleTab name="Danh Sách Truyện"/>
     </ListNovelSkeleton>
   )
   
   return (
     <div id="pagination-list-novel">
-      <TitleTab name="DANH SÁCH TRUYỆN" link="/"/>
-      <div className="grid grid-cols-1 gap-y-5 gap-x-5 lg:grid-cols-2">
+      <TitleTab name="Danh Sách Truyện"/>
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         {
           novels.map((novel, idx) =>
             <BoxNovel
