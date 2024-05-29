@@ -77,6 +77,7 @@ const FilterPage = () => {
                       currentPage={currentPage}
                       setCurrentPage={setCurrentPage}
                       topList="pagination-search-novel-list"
+                      isDelay={true}
                     />
                   </>
                 )

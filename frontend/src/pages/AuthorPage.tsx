@@ -85,6 +85,7 @@ const AuthorPage = () => {
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
                 topList="pagination-author-novel-list"
+                isDelay={true}
               />
             </>: 
             <EmptyResult

@@ -9,11 +9,12 @@ interface Props {
   currentPage: number;
   setCurrentPage: Dispatch<SetStateAction<number>>;
   topList: string;
+  isDelay?: boolean;
 }
 
-const CustomPagination = ({ totalPage, currentPage, setCurrentPage, changeThemeEffect = true, topList }: Props) => {
+const CustomPagination = ({ totalPage, currentPage, setCurrentPage, changeThemeEffect = true, topList, isDelay=false }: Props) => {
   const { theme } = useContext(ThemeContext)!;
-  
+
   const handleChangePage = (_e: React.ChangeEvent<unknown>, value: number) =>{
     setCurrentPage(value);
     changePage(value);
@@ -22,10 +23,19 @@ const CustomPagination = ({ totalPage, currentPage, setCurrentPage, changeThemeE
   const changePage=(page: number)=>{
     if (page > totalPage) setCurrentPage(1);
     setCurrentPage(page);
-    const element = document.getElementById(topList);
-    element?.scrollIntoView({
-      behavior: 'smooth'
-    }); 
+    if (isDelay) {
+      setTimeout(()=>{
+        const element = document.getElementById(topList);
+        element?.scrollIntoView({
+          behavior: 'smooth'
+        }); 
+      }, 10)
+    } else {
+      const element = document.getElementById(topList);
+      element?.scrollIntoView({
+        behavior: 'smooth'
+      }); 
+    }
   }
 
   return (
