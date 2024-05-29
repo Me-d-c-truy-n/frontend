@@ -31,11 +31,15 @@ const ButtonDownload = ({ chapterId, novelId, file, server, close }: Props) => {
 
   return (
     <div className='flex justify-center mt-6'>
-      <button className='transition ease-in-out border py-2 px-4 rounded-lg gap-3 flex items-center justify-center border-black dark:border-white hover:text-white hover:border-transparent hover:bg-amber-700'
-      onClick={handleDownload}
-      >
-        <FiDownload/>
-        Tải truyện
+      <button className="p-[3px] relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg shadow-[1px_2px_14px_2px_rgb(255,154,0,40%)]"/>
+        <div 
+          className="px-4 py-2 bg-slate-950 text-white rounded-[6px] relative group transition duration-200 hover:bg-transparent flex gap-3 items-center"
+          onClick={handleDownload}
+        >
+          <FiDownload/>
+          Tải truyện
+        </div>
       </button>
     </div>
   )

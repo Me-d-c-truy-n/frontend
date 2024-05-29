@@ -7,7 +7,7 @@ import ButtonDownload from '../Export/ButtonDownload';
 import { useQuery } from '@tanstack/react-query';
 import { ApiGetAllExport } from '../../api/apiPlugin';
 import DownloadFileSkeleton from '../Loading/DownloadFileSkeleton';
-import { useKeyboardShortcut } from '../../hooks/useKeyboardShortcut';
+import { useModal } from '../../hooks/useModal';
 
 interface Props {
   close: ()=>void;
@@ -27,19 +27,18 @@ const ExportEBookPopup = ({ close, novelId, chapterId, server }: Props) => {
       return data;
     },
     retry: 1
-  })
+  });
 
-  useKeyboardShortcut({
-    key: "Escape",
-    onKeyPressed: () => close(),
-  })
+  const { modalRef, handleClickOutside } = useModal(close);
 
-  
   if (isFetching || !listExport|| listExport?.length <= 0) 
     return <DownloadFileSkeleton close={close}/>
 
   return (
-    <div className="z-10 px-1 fixed left-0 top-0 w-full h-full flex justify-center items-center shadow-lg backdrop-blur-sm">
+    <div 
+    ref={modalRef}
+    onClick={handleClickOutside}
+    className="z-10 px-1 fixed left-0 top-0 w-full h-full flex justify-center items-center shadow-lg backdrop-blur-sm">
       <div className="shadow-2xl p-2 md:py-5 md:px-4 mx-auto border rounded-lg border-amber-600 bg-white dark:bg-black dark:text-white"
       >
         <div className='flex justify-between items-center mb-5'>

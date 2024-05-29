@@ -69,7 +69,7 @@ const AuthorPage = () => {
                 name="Truyện Của Tác Giả "
                 highlight={novels[0].author.name}
               />
-              <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+              <div className="grid grid-cols-1 md:gap-5 gap-3 lg:grid-cols-2">
                 {
                   novels.map((novel) =>
                     <BoxNovelAuthor 

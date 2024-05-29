@@ -1,10 +1,11 @@
 import Slider from "../../components/Slider";
+import TitleTabScroll from "../../components/TitleTabScroll";
 
 const PrivacyPolicy = () => {
   return (
     <div className="font-sans flex flex-col text-black dark:text-white">
       <Slider/>
-      <h1 className="text-amber-700 text-lg my-4">CHÍNH SÁCH BẢO MẬT</h1>
+      <TitleTabScroll id="privacy_policy" title="CHÍNH SÁCH BẢO MẬT"/>
       <div className="flex flex-col gap-8 text-[1.05rem]">
         <p>Nền tảng đảm bảo các điều sau về tính riêng tư của người tham gia hoạt động tại tất cả các website trong hệ thống:</p>
         <ul className="list-decimal ps-6 text-justify flex flex-col gap-2">

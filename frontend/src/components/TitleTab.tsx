@@ -13,16 +13,23 @@ interface Props {
 const TitleTab = ({ name, link, uppercase=false, highlight}: Props) => {
   if (link)
     return (
-      <Link to={link} className="p-2 flex items-center justify-between mb-4 gap-2 font-mono">
+      <Link to={link} className="p-2 pl-0 flex items-center justify-between mb-4 gap-2 font-mono">
           <h2 className={`text-xl text-amber-700 ${uppercase&&'uppercase'} `}
-          >{name}</h2> 
+          >
+            {name}
+            {highlight === 'Loading' ?<Skeleton width={180}/>:highlight&&
+              <Highlight className="text-white">
+                {highlight}
+              </Highlight>
+            }  
+          </h2> 
           <hr className="flex-1 border-amber-700"/>
           <MdOutlineKeyboardDoubleArrowRight  className="text-amber-700 text-xl"/>
       </Link>
     )
 
     return (
-      <div className="p-2 flex items-center justify-between mb-4 gap-2 font-mono">
+      <div className="p-2 pl-0 flex items-center justify-between mb-4 gap-2 font-mono">
           <h2 className={`text-xl text-amber-700 ${uppercase&&'uppercase'} gap-1`}>
             {name}
             {highlight === 'Loading' ?<Skeleton width={180}/>:highlight&&

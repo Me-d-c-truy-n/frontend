@@ -1,10 +1,11 @@
 import Slider from "../../components/Slider"
+import TitleTabScroll from "../../components/TitleTabScroll";
 
 const AboutLicense = () => {
   return (
     <div className="font-sans flex flex-col text-black dark:text-white">
       <Slider/>
-      <h1 className="text-amber-700 text-lg my-4">VỀ BẢN QUYỀN</h1>
+      <TitleTabScroll id="about_license" title="VỀ BẢN QUYỀN"/>
       <div className="flex flex-col gap-8 text-[1.05rem]">
         <ul className="list-decimal ps-6 text-justify flex flex-col gap-2">
           <li>Nền tảng và các website trong hệ thống luôn ý thức rõ ràng về việc tôn trọng bản quyền của các tác giả, tác phẩm, các sản phẩm trí tuệ.</li>

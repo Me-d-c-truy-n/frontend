@@ -3,7 +3,7 @@ import admin_01 from "../../assets/images/admin/admin_01.jpg"
 import admin_02 from "../../assets/images/admin/admin_02.jpg"
 import admin_03 from "../../assets/images/admin/admin_03.jpg"
 import admin_04 from "../../assets/images/admin/admin_04.jpg"
-import { useEffect } from "react"
+import TitleTabScroll from "../../components/TitleTabScroll"
 
 interface Props {
   name: string;
@@ -66,25 +66,15 @@ const UserCard = ({name, imageURL, githubUrl, facebookUrl, border, shadow, color
 }
 
 const AboutUs = () => {
-  useEffect(()=>{
-    setTimeout(()=>{
-      const element = document.getElementById("about_us");
-      element?.scrollIntoView({
-        behavior: 'smooth'
-      }); 
-    }, 200)
-  },[]);
-
   return (
     <div className="font-sans flex flex-col text-black dark:text-white">
       <Slider/>
-      <h1 className="text-amber-700 text-lg my-4" id="about_us">
-        NHÓM PHÁT TRIỂN
-      </h1>
+      <TitleTabScroll id="about_us" title="NHÓM PHÁT TRIỂN"/>
       <div className="flex justify-center items-center text-center" >
         <h1 className="text-decoration md:text-5xl text-3xl relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-typewriter dark:before:bg-stone-950 before:bg-white mb-5 font-black"
         >Software Design&nbsp;</h1>
       </div>
+
       <div className="flex ps-4 flex-col gap-2 text-lg md:mt-8 mt-2">
         <UserCard 
           name="Nguyễn Nhật Hào"

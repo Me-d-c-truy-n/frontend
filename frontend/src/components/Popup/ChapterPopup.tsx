@@ -9,7 +9,7 @@ import ListChapterSkeleton from "../Loading/ListChapterSkeleton";
 import CustomPagination from "../CustomPagination";
 import { useSelector } from "react-redux";
 import { getListChapterReaded } from "../../store/readed/selector";
-import { useKeyboardShortcut } from "../../hooks/useKeyboardShortcut";
+import { useModal } from "../../hooks/useModal";
 
 interface Props {
   close: ()=>void;
@@ -40,13 +40,14 @@ const ChapterPopup = ({ close, novelId, name, server }: Props) => {
     },
   });
 
-  useKeyboardShortcut({
-    key: "Escape",
-    onKeyPressed: () => close(),
-  })
+  const { modalRef, handleClickOutside } = useModal(close);
 
   return (
-    <div className="fixed left-0 mt-0 z-10 top-0 w-full h-screen bg-gray-400 overflow-y-scroll px-2">
+    <div 
+      ref={modalRef}
+      onClick={handleClickOutside}
+      className="fixed left-0 mt-0 z-10 top-0 w-full h-screen bg-gray-400 overflow-y-scroll px-2"
+    >
       <div className="shadow-2xl p-2 lg:w-8/12 lg:p-4 mx-auto border rounded-lg border-amber-600 bg-amber-50 pb-5"
       id="pagination-list-chapter"
       >

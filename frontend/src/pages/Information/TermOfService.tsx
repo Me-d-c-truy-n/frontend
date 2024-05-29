@@ -1,4 +1,5 @@
 import Slider from "../../components/Slider"
+import TitleTabScroll from "../../components/TitleTabScroll";
 
 const APP_NAME = 
   <b className="capitalize">{import.meta.env.VITE_REACT_APP_NAME}</b>;
@@ -8,7 +9,7 @@ const TermOfService = () => {
   return (
     <div className="font-sans flex flex-col text-black dark:text-white">
       <Slider/>
-      <h1 className="text-amber-700 text-lg my-4">ĐIỀU KHOẢN DỊCH VỤ</h1>
+      <TitleTabScroll id="term_of_service" title="ĐIỀU KHOẢN DỊCH VỤ"/>
       <div className="flex flex-col gap-8 text-[1.05rem]">
         <p>Khi tham gia sử dụng dịch vụ cung cấp bởi {APP_NAME}, bạn phải đồng ý và tuân thủ các quy định sau.</p>
         <p>Quy định này áp dụng cho mọi đối tượng tham gia hoạt động tại website, không kể là khách, thành viên, tác giả, dịch giả, biên tập viên, quản trị viên, admin hay bất cứ thành viên nào khác.</p>
