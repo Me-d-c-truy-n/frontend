@@ -8,7 +8,7 @@ interface Props {
 const CustomImageAsBook = ({ image, name }: Props) => {
   return (
       <div className="book relative">
-        <span className="!z-10 absolute">
+        <span className="!z-10 absolute flash overflow-hidden">
           <LoadingImage
             name={name}
             imageUrl={image}
