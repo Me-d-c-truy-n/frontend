@@ -72,7 +72,11 @@ const AuthorPage = () => {
               <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                 {
                   novels.map((novel) =>
-                    <BoxNovelAuthor key={novel.novelId} novel={novel}/>
+                    <BoxNovelAuthor 
+                      key={novel.novelId} 
+                      novel={novel} 
+                      isActive={false}
+                    />
                   )
                 }
               </div>

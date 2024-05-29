@@ -3,7 +3,7 @@ import { INovelRoot } from "../../types/novel"
 import { HiUser } from "react-icons/hi2";
 import LoadingImage from "../Loading/LoadingImage";
 
-const BoxNovelAuthor = ({ novel }: {novel: INovelRoot}) => {
+const BoxNovelAuthor = ({ novel, isActive=true }: {novel: INovelRoot, isActive?: boolean}) => {
   return (
     <div className="flex gap-2 hover:bg-gray-100 dark:hover:bg-gray-900 border bg-slate-50 dark:border-neutral-800 dark:bg-gray-950 p-2 rounded shadow dark:shadow-gray-800">
       <Link to={`/truyen/${novel.novelId}`} className="overflow-hidden rounded w-24 !h-32 flash relative">
@@ -23,7 +23,18 @@ const BoxNovelAuthor = ({ novel }: {novel: INovelRoot}) => {
         <div className="flex justify-between items-center mt-2 gap-2">
           <div className="text-slate-600 flex gap-2 items-center text-sm">
             <HiUser/>
-            <div className="font-medium">{novel.author.name}</div>
+            {
+              isActive ?
+              <Link 
+                to={`/tac-gia/${novel.author.authorId}`}    
+                className="font-medium hover:text-amber-700">
+                {novel.author.name}
+              </Link>
+              :
+              <div className="font-medium">
+                {novel.author.name}
+              </div>
+            }
           </div>
 
           <Link to={`/truyen/${novel.novelId}`} 
