@@ -16,11 +16,11 @@ const ChapterRow = ({ chapter, close, isReaded = false }: Props) => {
   }
 
   return (
-    <div className="pb-5 border-b cursor-pointer"
+    <div className="border-b cursor-pointer py-3"
       onClick={handleNavigate}
     >
       <div 
-      className={`hover:underline font-medium text-lg ${isReaded?'text-slate-400':'text-amber-700'} `}>
+      className={`hover:underline font-medium md:text-lg text-base ${isReaded?'text-slate-400':'text-amber-700'} `}>
         {chapter.name}
       </div>
       <p className="text-sm text-gray-400">{chapter.time}</p>

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { AnimatedTooltip } from '../components/ui/animated-tooltip';
 import admin_01 from "../assets/images/admin/admin_01.jpg";
 import admin_02 from "../assets/images/admin/admin_02.jpg";
 import admin_03 from "../assets/images/admin/admin_03.jpg";
 import admin_04 from "../assets/images/admin/admin_04.jpg";
 import logo from "../assets/images/logo.png";
+import { AnimatedTooltip } from '../components/ui/animated-tooltip';
 
 const APP_NAME = 
   <span className="capitalize">{import.meta.env.VITE_REACT_APP_NAME}</span>;
