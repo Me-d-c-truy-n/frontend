@@ -33,9 +33,12 @@ const Notfound = () => {
       className="flex items-center flex-col justify-center px-2 md:px-10  py-4 w-full h-full"
     >
       <TypewriterEffect words={words}/>
-      <Link to={'/'} replace className="flex gap-2 items-center text-slate-200 mt-5 md:mt-10 text-sm md:text-lg hover:text-slate-100 border px-4 py-2 rounded-3xl hover:bg-sky-500 shadow-4xl hover:border-sky-500">
-        <AiOutlineHome />
-        Về trang chủ
+      <Link to={'/'} replace className="mt-5 relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+        <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full hover:bg-slate-900 px-3 py-1 font-medium text-white backdrop-blur-3xl gap-2 text-sm md:text-lg bg-black">
+          <AiOutlineHome />
+          Về trang chủ
+        </span>
       </Link>
     </Vortex>
   </div>
