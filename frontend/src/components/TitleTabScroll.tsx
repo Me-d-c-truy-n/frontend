@@ -4,9 +4,10 @@ import TitleTab from './TitleTab';
 interface Props {
   id: string;
   title: string;
+  name?: string;
 }
 
-const TitleTabScroll = ({ id, title }: Props) => {
+const TitleTabScroll = ({ id, title, name }: Props) => {
   useEffect(()=>{
     setTimeout(()=>{
       const element = document.getElementById(id);
@@ -20,7 +21,7 @@ const TitleTabScroll = ({ id, title }: Props) => {
   return (
     <div id={id} className="mt-1">
       <TitleTab
-        name=""
+        name={name?name:""}
         highlight={title}
       />
     </div>

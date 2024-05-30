@@ -13,6 +13,7 @@ import CustomPagination from "../components/CustomPagination";
 import { useSelector } from "react-redux";
 import { AppState } from "../store";
 import EmptyResult from "../components/EmptyResult";
+import TitleTabScroll from "../components/TitleTabScroll";
 
 const FilterPage = () => {
   const [searchParams] = useSearchParams();
@@ -53,9 +54,10 @@ const FilterPage = () => {
             </ListNovelSkeleton>
           ):(
             <>
-              <TitleTab 
+              <TitleTabScroll 
+                id="filter_novel"
                 name="TÌM KIẾM:"
-                highlight={searchParams.get('q') || ""}
+                title={searchParams.get('q') || ""}
               />
       
               {

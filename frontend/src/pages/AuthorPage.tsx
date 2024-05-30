@@ -13,6 +13,7 @@ import CustomPagination from "../components/CustomPagination";
 import { useSelector } from "react-redux";
 import { AppState } from "../store";
 import EmptyResult from "../components/EmptyResult";
+import TitleTabScroll from "../components/TitleTabScroll";
 
 const AuthorPage = () => {
   const navigate = useNavigate();
@@ -65,10 +66,14 @@ const AuthorPage = () => {
           ):(
             novels?.length > 0 ?
             <>
-              <TitleTab 
+              {/* <TitleTab 
                 name="Truyện Của Tác Giả "
                 highlight={novels[0].author.name}
-              />
+              /> */}
+              <TitleTabScroll 
+                id="novel_author" 
+                name="Truyện Của Tác Giả "
+                title={novels[0].author.name}/>
               <div className="grid grid-cols-1 md:gap-5 gap-3 lg:grid-cols-2">
                 {
                   novels.map((novel) =>
