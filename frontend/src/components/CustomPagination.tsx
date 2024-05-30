@@ -1,6 +1,7 @@
 import Pagination from '@mui/material/Pagination';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { Dispatch, SetStateAction, useContext } from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import  '../assets/style/pagination.scss';
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
 
 const CustomPagination = ({ totalPage, currentPage, setCurrentPage, changeThemeEffect = true, topList, isDelay=false }: Props) => {
   const { theme } = useContext(ThemeContext)!;
+  const matches = useMediaQuery('(min-width:480px)');
 
   const handleChangePage = (_e: React.ChangeEvent<unknown>, value: number) =>{
     setCurrentPage(value);
@@ -46,9 +48,9 @@ const CustomPagination = ({ totalPage, currentPage, setCurrentPage, changeThemeE
           <Pagination 
             count={totalPage} 
             page={currentPage}
-            color="primary" size="large" 
+            color="primary" size={matches?"large":"small"}
             onChange={handleChangePage}  
-            className={`${theme=='dark' && changeThemeEffect && 'dark-pagination' }`}
+            className={`${theme=='dark' && changeThemeEffect && 'dark-pagination'}`}
           />
         </div>
       }
