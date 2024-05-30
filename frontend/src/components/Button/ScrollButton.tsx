@@ -28,7 +28,7 @@ const ScrollButton = () => {
   window.addEventListener('scroll', toggleVisible); 
 
   return (
-    <button className={`${!visible&&'hidden'} shadow-xl font-black fixed flex items-center justify-center text-2xl text-white bottom-8 right-8 rounded-full w-10 h-10 bg-amber-700`}
+    <button className={`${!visible&&'hidden'} shadow-xl font-black fixed flex items-center justify-center text-2xl text-white bottom-8 right-8 rounded-full w-10 h-10 bg-gradient-to-r from-yellow-500 to-orange-500`}
     onClick={scrollToTop}
     >
       ↑

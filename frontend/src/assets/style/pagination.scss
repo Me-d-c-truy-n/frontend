@@ -3,6 +3,9 @@
         button, div {
             color: white !important;
         }
+        button:hover {
+            background-color: rgba(80, 80, 80, 0.1) !important;
+        }
     }
 }
 
