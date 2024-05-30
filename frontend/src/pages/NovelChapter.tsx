@@ -20,7 +20,6 @@ import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 import { FiDownload } from "react-icons/fi";
-import { FaInfoCircle } from "react-icons/fa";
 import { HiUser } from "react-icons/hi2";
 
 import ButtonBookmark from "../components/Button/ButtonBookmark";
@@ -33,6 +32,7 @@ import { toast } from "react-toastify";
 import KanbanSelectServer from "../components/Button/KanbanSelectServer";
 import ExportEBookPopup from "../components/Popup/ExportEBookPopup";
 import { useKeyboardShortcut } from "../hooks/useKeyboardShortcut";
+import GuideText from "../components/Reading/GuideText";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -40,6 +40,7 @@ const NovelChapter = () => {
   const [chapter, setChapter] = useState<IChapter | null>(null);
   const [openSettingPopup, setOpenSettingPopup] = useState<boolean>(false);
   const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
+  const [successServer, setSuccessServer] = useState<string>("");
 
   const { color, background } = useContext(SettingsContext)!;
 
@@ -49,6 +50,14 @@ const NovelChapter = () => {
   const [indexServer, setIndexServer] = useState(0);
   const [flagListServer, setFlagListServer] = useState(listServer);
   const [openExportEBook, setOpenExportEBook] = useState<boolean>(false);
+
+  function DoubleClickChangeServerSuccess(
+    data: IResponse<IChapter>, 
+    server: string
+  ) {
+    setChapter(data.data);
+    setSuccessServer(server);
+  }
 
   useEffect(() =>{
     dispatch(setIsOpen(true));
@@ -67,12 +76,13 @@ const NovelChapter = () => {
       
       if (data.status === STATUS.ERROR) throw new Error();
       
+      setSuccessServer(listServer[indexServer]);
       setChapter(data.data);
       
       return data;
     },
     retry: 0
-  })
+  });
 
   useEffect(() =>{
     if (chapter == null) return;
@@ -172,10 +182,7 @@ const NovelChapter = () => {
             <HiUser />
             {chapter.author.name}
           </Link>
-          <i className="text-base hidden md:flex mt-1 font-semibold gap-1 text-sky-500 items-center text-center">
-            <FaInfoCircle />
-            Sử dụng mũi tên trái (←) hoặc phải (→) để chuyển chương
-          </i>
+          <GuideText/>
           <div className="flex mt-2 items-center gap-4">
             <button 
               onClick={handlePrevChapter}
@@ -220,7 +227,12 @@ const NovelChapter = () => {
 
         </div>
 
-        <KanbanSelectServer successServer={listServer[indexServer]}/>
+        <KanbanSelectServer 
+          successServer={successServer}
+          chapterId={chapterId}
+          novelId={chapter.novelId}
+          func={DoubleClickChangeServerSuccess}
+        />
 
       </div>
       <div className="mt-8 mb-4 px-2" 

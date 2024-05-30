@@ -4,17 +4,26 @@ import { useSelector } from "react-redux";
 import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
 import { useState } from "react";
 import { changeServerIndex } from "../../store/server";
-import { FaServer } from "react-icons/fa";
+import ButtonServer from "./ButtonServer";
+import { IResponse } from "../../types/response";
+import { IChapter } from "../../types/novel";
 
-interface Props {
+export interface CheckServerChapter {
+  chapterId: string;
+  novelId: string;
+}
+
+interface Props extends CheckServerChapter {
   successServer: string;
+  func: (data: IResponse<IChapter>, server: string) => void;
 }
 
 
-const KanbanSelectServer = ({ successServer }: Props) => {
+const KanbanSelectServer = ({ successServer, chapterId, novelId, func }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const { listServer } = useSelector((state: AppState) => state.server);
   const [stores, setStores] = useState(listServer);
+  const [isChecking, setIsChecking] = useState<string>("");
 
   const handleDragDrop = (results: DropResult) => {
     const {source, destination, type} = results;
@@ -46,17 +55,16 @@ const KanbanSelectServer = ({ successServer }: Props) => {
                 stores.map((srv, index) => 
                   <Draggable draggableId={srv} key={srv} index={index}>
                     {(provided) => (
-                      <div 
-                      {...provided.dragHandleProps}
-                      {...provided.draggableProps}
-                      ref={provided.innerRef}
-                      className={`p-1 shadow-xl outline-none text-center rounded ${srv === successServer ?"animate-border bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-[length:400%_400%]":"text-gray-300 bg-sky-800"}`}
-                      >
-                        <div className={`h-full w-full flex p-[0.4rem] px-8 gap-2 items-center ${srv === successServer?'bg-gray-950':'bg-sky-600'}`}>
-                          <FaServer />
-                          {srv}
-                        </div>
-                      </div>
+                      <ButtonServer
+                        successServer={successServer}
+                        srv={srv}
+                        provided={provided}
+                        isCheking={isChecking}
+                        setIsChecking={setIsChecking}
+                        chapterId={chapterId}
+                        novelId={novelId}
+                        func={func}
+                      />
                     )}
                   </Draggable>
                 )
