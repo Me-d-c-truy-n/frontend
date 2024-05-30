@@ -26,3 +26,11 @@ export function getImageOfExportFile(ep: string) {
   }
   return undefined;
 }
+
+export function subSlugChapter(slug: string) {
+  return slug
+    .replace("chuong", "chương")
+    .replace("hoi", "hồi")
+    .replace("quyen", "quyển")
+    .split("-").join(" ");
+}

@@ -1,6 +1,6 @@
 import logo from '../../assets/images/logo.png';
 import { GrClose } from "react-icons/gr";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../../assets/style/inputNumber.scss'
 import SelectionExportType from '../Export/SelectionExportType';
 import ButtonDownload from '../Export/ButtonDownload';
@@ -30,6 +30,12 @@ const ExportEBookPopup = ({ close, novelId, chapterId, server }: Props) => {
   });
 
   const { modalRef, handleClickOutside } = useModal(close);
+  useEffect(()=>{
+    document.body.style.overflowY = 'hidden';
+    return () => {
+      document.body.style.overflowY = 'scroll';
+    }
+  },[]);
 
   if (isFetching || !listExport|| listExport?.length <= 0) 
     return <DownloadFileSkeleton close={close}/>
@@ -44,9 +50,9 @@ const ExportEBookPopup = ({ close, novelId, chapterId, server }: Props) => {
         <div className='flex justify-between items-center mb-5'>
           <img src={logo} alt='logo' className='w-10'/>
           <h1 className='text-xl font-bold'>Tải truyện</h1>
-          <GrClose className='text-lg cursor-pointer text-gray-500 hover:text-black' onClick={close}/>
+          <GrClose className='text-lg cursor-pointer text-gray-500 hover:text-black dark:hover:text-slate-400' onClick={close}/>
         </div>
-        <div className='px-6'>
+        <div className='px-4'>
           <div className='flex gap-3 items-center justify-center flex-wrap'>
             {
               listExport.map((ep) =>
