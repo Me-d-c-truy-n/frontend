@@ -51,12 +51,12 @@ const Footer = () => {
       <div className="flex flex-row items-center justify-center mt-4 mb-2 w-full">
         <AnimatedTooltip items={people} />
       </div>
-      <div className='-mr-4 mb-3 text-center font-bold dark:text-white'>FIT@HCMUS - 2024 - <Link to='/thong-tin/nhom-phat-trien'>Group 04</Link></div>
+      <div className='-mr-4 mb-3 text-center font-bold dark:text-white'>FIT@HCMUS - 2024 - <Link to='/thong-tin/nhom-phat-trien' className='hover:underline'>Group 04</Link></div>
       <div className='flex justify-center mt-5 gap-6 text-gray-600'>
-        <Link to='/thong-tin/nhom-phat-trien'>Nhóm phát triển</Link>
-        <Link to='/thong-tin/dieu-khoan-dich-vu'>Điều khoản dịch vụ</Link>
-        <Link to='/thong-tin/chinh-sach-bao-mat'>Chính sách bảo mật</Link>
-        <Link to='/thong-tin/ve-ban-quyen'>Về bản quyền</Link>
+        <Link to='/thong-tin/nhom-phat-trien' className='hover:underline'>Nhóm phát triển</Link>
+        <Link to='/thong-tin/dieu-khoan-dich-vu' className='hover:underline'>Điều khoản dịch vụ</Link>
+        <Link to='/thong-tin/chinh-sach-bao-mat' className='hover:underline'>Chính sách bảo mật</Link>
+        <Link to='/thong-tin/ve-ban-quyen' className='hover:underline'>Về bản quyền</Link>
       </div>
     </div>
   )
