@@ -1,7 +1,7 @@
 import { FiDownload } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 interface Props {
-  chapterId: string;
   novelId: string;
   file: string;
   server: string;
@@ -15,7 +15,7 @@ interface Props {
 //   server: string;
 // }
 
-const ButtonDownload = ({ chapterId, novelId, file, server, close }: Props) => {
+const ButtonDownload = ({ novelId, file, server, close }: Props) => {
 
   // const callApiDownload = useMutation({
   //   mutationFn: 
@@ -26,8 +26,9 @@ const ButtonDownload = ({ chapterId, novelId, file, server, close }: Props) => {
   const handleDownload = () => {
     close();
     //callApiDownload.mutate({server, file, novelId, chapterId});
-    window.open(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${server}/tai-truyen/${file}/${novelId}/${chapterId}`);
-    // window.open(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${server}/tai-truyen/${novelId}/${file}`);
+    // window.open(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${server}/tai-truyen/${file}/${novelId}/${chapterId}`);
+    toast.info("Truyện đang được tải");
+    window.open(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${server}/tai-truyen/${novelId}/${file}`);
   }
 
   return (

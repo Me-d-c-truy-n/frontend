@@ -12,11 +12,10 @@ import { useModal } from '../../hooks/useModal';
 interface Props {
   close: ()=>void;
   novelId: string;
-  chapterId: string;
   server: string;
 }
 
-const ExportEBookPopup = ({ close, novelId, chapterId, server }: Props) => {
+const ExportEBookPopup = ({ close, novelId, server }: Props) => {
   const [selectedExport, setSelectedExport] = useState<string>("pdf");
 
   const { isFetching, data: listExport } = useQuery({
@@ -67,7 +66,6 @@ const ExportEBookPopup = ({ close, novelId, chapterId, server }: Props) => {
           </div>
           <ButtonDownload 
             close={close}
-            chapterId={chapterId}
             novelId={novelId}
             server={server}
             file={selectedExport}

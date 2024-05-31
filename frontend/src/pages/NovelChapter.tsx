@@ -19,7 +19,6 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
-import { FiDownload } from "react-icons/fi";
 import { HiUser } from "react-icons/hi2";
 
 import ButtonBookmark from "../components/Button/ButtonBookmark";
@@ -30,7 +29,6 @@ import { addNovelReaded } from "../store/readed";
 import { setIsOpen } from "../store/chapterOpen";
 import { toast } from "react-toastify";
 import KanbanSelectServer from "../components/Button/KanbanSelectServer";
-import ExportEBookPopup from "../components/Popup/ExportEBookPopup";
 import { useKeyboardShortcut } from "../hooks/useKeyboardShortcut";
 import GuideText from "../components/Reading/GuideText";
 
@@ -49,7 +47,6 @@ const NovelChapter = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [indexServer, setIndexServer] = useState(0);
   const [flagListServer, setFlagListServer] = useState(listServer);
-  const [openExportEBook, setOpenExportEBook] = useState<boolean>(false);
 
   function DoubleClickChangeServerSuccess(
     data: IResponse<IChapter>, 
@@ -136,13 +133,13 @@ const NovelChapter = () => {
   const _isLoading = chapter === null || isFetching || novelId == null || chapterId == undefined;
 
   useKeyboardShortcut({
-    isActive: (!openChapterPopup && !openExportEBook && !openSettingPopup && !_isLoading),
+    isActive: (!openChapterPopup && !openSettingPopup && !_isLoading),
     key: "ArrowLeft",
     onKeyPressed: handlePrevChapter,
   });
 
   useKeyboardShortcut({
-    isActive: (!openChapterPopup && !openExportEBook && !openSettingPopup && !_isLoading),
+    isActive: (!openChapterPopup && !openSettingPopup && !_isLoading),
     key: "ArrowRight",
     onKeyPressed: handleNextChapter,
   });
@@ -151,15 +148,7 @@ const NovelChapter = () => {
   
   return (
     <div style={{backgroundColor: background }}>
-      {
-          openExportEBook && 
-          <ExportEBookPopup
-            close ={() => setOpenExportEBook(false)}
-            novelId={novelId}
-            chapterId={chapterId}
-            server={successServer}
-          />
-      }
+      
       {
         openSettingPopup && 
       <SettingPopup
@@ -216,14 +205,6 @@ const NovelChapter = () => {
             chapterName={chapter.name}
             time={(new Date).toString()}
           />
-
-          <ButtonUtils
-            func={()=>setOpenExportEBook(true)}
-          >
-              <FiDownload />
-              Tải truyện
-          </ButtonUtils>
-          
 
         </div>
 
