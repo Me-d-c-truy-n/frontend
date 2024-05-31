@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { AppState } from "../store";
 import EmptyResult from "../components/EmptyResult";
 import TitleTabScroll from "../components/TitleTabScroll";
+import SelectChangeServer from "../components/Filter/SelectChangeServer";
 
 const FilterPage = () => {
   const [searchParams] = useSearchParams();
@@ -22,14 +23,14 @@ const FilterPage = () => {
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
-  
-  const server = useSelector((state: AppState) => state.server.server)
+  const server = useSelector((state: AppState) => state.server.server);
+  const [myServer, setMyServer] = useState<string>(server);
 
   const { isFetching } = useQuery({
-    queryKey: ['search', searchParams.get('q'), server, currentPage],
+    queryKey: ['search', searchParams.get('q'), myServer, currentPage],
     queryFn: async () => {
       const data: IResponse<INovelRoot[]> = 
-        await ApiSearch(server, searchParams.get('q')||'', currentPage);
+        await ApiSearch(myServer, searchParams.get('q')||'', currentPage);
       
       setPerPage(data.perPage);
       setNovels(data.data);
@@ -58,7 +59,14 @@ const FilterPage = () => {
                 id="filter_novel"
                 name="TÌM KIẾM:"
                 title={searchParams.get('q') || ""}
+                isMb={false}
               />
+              <span className="flex mb-1 md:mb-0 md:justify-end justify-center">
+                <SelectChangeServer
+                  setMyServer={setMyServer}
+                  myServer={myServer}
+                />
+              </span>
       
               {
                 !novels || novels.length <= 0 ?(
@@ -67,7 +75,7 @@ const FilterPage = () => {
                   />
                 ):(
                   <>
-                    <div className="grid grid-cols-1 md:gap-5 gap-3 lg:grid-cols-2">
+                    <div className="grid grid-cols-1 md:gap-5 gap-3 lg:grid-cols-2 mt-2">
                       {
                         novels.map((novel, idx) =>
                           <BoxNovelAuthor key={idx} novel={novel}/>

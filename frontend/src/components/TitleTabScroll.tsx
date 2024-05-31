@@ -5,9 +5,10 @@ interface Props {
   id: string;
   title: string;
   name?: string;
+  isMb?: boolean;
 }
 
-const TitleTabScroll = ({ id, title, name }: Props) => {
+const TitleTabScroll = ({ id, title, name, isMb=true }: Props) => {
   useEffect(()=>{
     setTimeout(()=>{
       const element = document.getElementById(id);
@@ -23,6 +24,7 @@ const TitleTabScroll = ({ id, title, name }: Props) => {
       <TitleTab
         name={name?name:""}
         highlight={title}
+        isMb={isMb}
       />
     </div>
   )

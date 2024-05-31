@@ -36,7 +36,7 @@ const ButtonServer = (props: Props) => {
     onSuccess: (data: IResponse<IChapter>) => {
       props.setIsChecking("");
       props.func(data, props.srv);
-      toast.success(`Đã đổi sang nguồn ${props.srv}`)
+      toast.success(`Đã chuyển sang nguồn ${props.srv}`)
     },
     retry: 0,
   })
