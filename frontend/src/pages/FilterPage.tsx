@@ -61,7 +61,7 @@ const FilterPage = () => {
                 title={searchParams.get('q') || ""}
                 isMb={false}
               />
-              <span className="flex mb-1 md:mb-0 md:justify-end justify-center">
+              <span className="flex mb-1 mt-[0.2rem] md:mb-0 md:justify-end justify-center">
                 <SelectChangeServer
                   setMyServer={setMyServer}
                   myServer={myServer}
