@@ -29,6 +29,7 @@ export function getImageOfExportFile(ep: string) {
 
 export function subSlugChapter(slug: string) {
   return slug
+    .replace(/^\d+/, '')
     .replace("chuong", "chương")
     .replace("hoi", "hồi")
     .replace("quyen", "quyển")
