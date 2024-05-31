@@ -66,10 +66,6 @@ const AuthorPage = () => {
           ):(
             novels?.length > 0 ?
             <>
-              {/* <TitleTab 
-                name="Truyện Của Tác Giả "
-                highlight={novels[0].author.name}
-              /> */}
               <TitleTabScroll 
                 id="novel_author" 
                 name="Truyện Của Tác Giả "

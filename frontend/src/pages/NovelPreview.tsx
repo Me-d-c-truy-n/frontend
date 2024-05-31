@@ -10,6 +10,7 @@ import Skeleton from 'react-loading-skeleton'
 import { useSelector } from "react-redux";
 import { AppState } from "../store";
 import TitleTabFull from "../components/TitleTabFull";
+import NovelDescription from "../components/Novel/NovelDescription";
 
 const NovelPreview = () => {
   const navigate = useNavigate();
@@ -58,12 +59,7 @@ const NovelPreview = () => {
             <Skeleton height={300}/>
           </>
           :
-          <div className="border rounded dark:border-slate-800">
-            <TitleTabFull>
-              GIỚI THIỆU
-            </TitleTabFull>
-            <p className="px-2 pt-3 text-lg leading-10 text-gray-700 dark:text-white" dangerouslySetInnerHTML={{__html: novel.description}}></p>
-          </div>
+          <NovelDescription description={novel.description}/>
         }
       </div>
     </div>
