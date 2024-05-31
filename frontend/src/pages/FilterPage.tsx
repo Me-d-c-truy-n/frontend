@@ -39,7 +39,12 @@ const FilterPage = () => {
       return data.data;
     },
     retry: 1
-  })
+  });
+
+  function changeServerByHand(srv: string) {
+    setMyServer(srv);
+    setCurrentPage(1);
+  }
 
   return (
     <div>
@@ -63,7 +68,7 @@ const FilterPage = () => {
               />
               <span className="flex mb-1 mt-[0.2rem] md:mb-0 md:justify-end justify-center">
                 <SelectChangeServer
-                  setMyServer={setMyServer}
+                  func={changeServerByHand}
                   myServer={myServer}
                 />
               </span>
