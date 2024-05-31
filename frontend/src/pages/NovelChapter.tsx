@@ -81,7 +81,7 @@ const NovelChapter = () => {
       
       return data;
     },
-    retry: 0
+    retry: 1
   });
 
   useEffect(() =>{
