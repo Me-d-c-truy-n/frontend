@@ -157,7 +157,7 @@ const NovelChapter = () => {
             close ={() => setOpenExportEBook(false)}
             novelId={novelId}
             chapterId={chapterId}
-            server={listServer[indexServer]}
+            server={successServer}
           />
       }
       {
@@ -172,13 +172,13 @@ const NovelChapter = () => {
         close ={() => setOpenChapterPopup(false)}
         novelId={novelId}
         name={chapter.novelName}
-        server={listServer[indexServer]}
+        server={successServer}
       />
       }
       <Slider/>
       <div className="flex flex-col justify-center items-center mt-2">
       <Link to={`/truyen/${chapter.novelId}`} className="font-bold text-gray-900 text-lg md:text-xl capitalize hover:text-amber-700 dark:text-stone-300 text-center">{chapter.novelName}</Link>
-          <Link to={`/tac-gia/${chapter.author.authorId || chapter.author.id}`} className="mt-1 text-gray-500 dark:text-gray-300 flex gap-1 items-center hover:underline">
+          <Link to={`/tac-gia/${chapter.author.authorId || chapter.author.id}?server=${successServer}`} className="mt-1 text-gray-500 dark:text-gray-300 flex gap-1 items-center hover:underline">
             <HiUser />
             {chapter.author.name}
           </Link>
