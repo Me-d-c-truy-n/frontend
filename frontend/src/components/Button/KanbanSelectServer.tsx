@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { AppDispatch, AppState } from "../../store"
 import { useSelector } from "react-redux";
-import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
+import { DragDropContext, Droppable, Draggable, DropResult } from "@hello-pangea/dnd";
 import { useState } from "react";
 import { changeServerIndex } from "../../store/server";
 import ButtonServer from "./ButtonServer";
@@ -69,6 +69,7 @@ const KanbanSelectServer = ({ successServer, chapterId, novelId, func }: Props) 
                   </Draggable>
                 )
               }
+              {provided.placeholder}
             </div>
           )}
         </Droppable>

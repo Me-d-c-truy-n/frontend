@@ -70,7 +70,7 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
 
     <div className="ml-5 flex flex-col flex-1 rounded">
       <div className="font-bold text-xl md:text-3xl md:mb-3 mb-1 text-gray-700 dark:text-white w-fit">{novel.name}</div>
-      <Link to={`/tac-gia/${novel.author.authorId || novel.author.id}?server=${server}`} className="text-base text-gray-700 flex gap-1 items-center hover:underline w-fit">
+      <Link to={`/tac-gia/${novel.author.authorId || novel.author.id}?server=${server}`} className="text-base dark:text-slate-400 text-slate-600 flex gap-1 items-center hover:underline w-fit">
         <HiUser/>
         {novel.author.name}
       </Link>

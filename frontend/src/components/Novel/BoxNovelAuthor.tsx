@@ -14,7 +14,7 @@ const BoxNovelAuthor = ({ novel, isActive=true }: {novel: INovelRoot, isActive?:
         />
       </Link>
       <div className="flex-1 flex flex-col justify-between w-9/12">
-        <Link to={`/truyen/${novel.novelId}`} className="text-slate-700 font-bold hover:text-amber-700 max-h-12 line-clamp-2">      
+        <Link to={`/truyen/${novel.novelId}`} className="text-slate-700 dark:text-gray-200 font-bold hover:text-amber-700 max-h-12 line-clamp-2">      
           {novel.name}
         </Link>
         <div className="font-normal text-slate-500 h-12 line-clamp-2"
@@ -31,7 +31,7 @@ const BoxNovelAuthor = ({ novel, isActive=true }: {novel: INovelRoot, isActive?:
                 {novel.author.name}
               </Link>
               :
-              <div className="font-medium">
+              <div className="font-medium dark:text-slate-400">
                 {novel.author.name}
               </div>
             }

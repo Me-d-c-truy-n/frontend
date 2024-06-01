@@ -16,7 +16,7 @@ const ChapterRow = ({ chapter, close, isReaded = false }: Props) => {
   }
 
   return (
-    <div className="border-b cursor-pointer py-3"
+    <div className="border-b dark:dark:border-b-gray-700 cursor-pointer py-3"
       onClick={handleNavigate}
     >
       <div 

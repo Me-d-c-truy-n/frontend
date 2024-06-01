@@ -7,7 +7,7 @@ const GuideText = () => {
         <FaInfoCircle />
         Sử dụng mũi tên trái (←) hoặc phải (→) để chuyển chương
       </i>
-      <i className="text-base hidden md:flex font-semibold text-rose-500 items-center justify-center">
+      <i className="md:text-base w-full flex flex-wrap font-semibold text-rose-500 items-center justify-center text-sm">
         <b>Kéo thả</b>&nbsp;hoặc&nbsp;<b>nháy đúp chuột</b>&nbsp;để thay đổi nguồn truyện
       </i>
     </div>

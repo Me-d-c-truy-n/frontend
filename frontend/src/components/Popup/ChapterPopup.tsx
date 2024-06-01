@@ -1,4 +1,3 @@
-import { GrClose } from "react-icons/gr";
 import { IChapterRoot } from "../../types/novel";
 import ChapterRow from "./ChapterRow";
 import { useQuery } from "@tanstack/react-query";
@@ -11,6 +10,7 @@ import { useSelector } from "react-redux";
 import { getListChapterReaded } from "../../store/readed/selector";
 import { useModal } from "../../hooks/useModal";
 import EmptyResult from "../EmptyResult";
+import ButtonClose from "../Button/ButtonClose";
 
 interface Props {
   close: ()=>void;
@@ -56,24 +56,24 @@ const ChapterPopup = ({ close, novelId, name, server }: Props) => {
     <div 
       ref={modalRef}
       onClick={handleClickOutside}
-      className="fixed left-0 mt-0 z-10 top-0 w-full h-screen bg-gray-400 px-2"
+      className="fixed left-0 mt-0 z-10 top-0 w-full h-screen bg-gray-400 dark:bg-gray-800 px-2"
     >
-      <div className="shadow-2xl py-1 lg:w-8/12 mx-auto border rounded-lg border-amber-600 bg-amber-50 h-full"
+      <div className="shadow-2xl py-1 lg:w-8/12 mx-auto border rounded-lg border-amber-600 bg-amber-50 dark:bg-stone-950 h-full"
       id="pagination-list-chapter"
       >
         {
           ((isFetching ||chapters.length<=0) && !isError) ?<ListChapterSkeleton name={name} close={close}/>:(
             <div className="flex flex-col h-full">
-              <div className='flex justify-between items-center border-b shadow-sm pb-3 px-2'>
-                <h1 className='text-lg md:text-xl font-bold'>
+              <div className='flex justify-between items-center border-b shadow-sm pb-3 px-2 dark:border-b-gray-800'>
+                <h1 className='text-lg md:text-xl font-bold dark:text-white'>
                   {!isError ? chapters[0].novelName : name}
                 </h1>
-                <GrClose className='md:w-1/12 w-4/12 text-xl cursor-pointer text-gray-500 hover:text-black' onClick={close}/>
+                <ButtonClose close={close}/>
               </div>
 
               {
                 !isError ?
-                <div className="grid grid-cols-1 md:gap-4 gap-2 md:grid-cols-2 overflow-y-auto flex-1 md:px-4 px-2">
+                <div className="grid grid-cols-1 md:gap-4 gap-2 md:grid-cols-2 overflow-y-auto custom_scroll flex-1 md:px-4 px-2">
                 {
                   chapters.map(chapter => 
                   <ChapterRow 
@@ -90,12 +90,12 @@ const ChapterPopup = ({ close, novelId, name, server }: Props) => {
                 </div>
               }
 
-                <div className="border-t md:px-4 px-2">
+                <div className="border-t dark:border-t-gray-700 md:px-4 px-2">
                   <CustomPagination
                     totalPage={totalPage}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
-                    changeThemeEffect={false}
+                    changeThemeEffect={true}
                     topList="pagination-list-chapter"
                   />
                 </div>

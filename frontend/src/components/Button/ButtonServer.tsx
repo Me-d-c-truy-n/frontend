@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { DraggableProvided } from "react-beautiful-dnd";
+import { DraggableProvided } from "@hello-pangea/dnd";
 import { FaServer } from "react-icons/fa";
 import LoadingCircle from "../Loading/LoadingCircle";
 import { useMutation } from "@tanstack/react-query";

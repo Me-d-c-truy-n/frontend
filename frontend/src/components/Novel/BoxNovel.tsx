@@ -34,14 +34,14 @@ const BoxNovel = ({ novel, isLoading = false }: {novel?: INovelRoot, isLoading?:
         />
       </Link>
       <div className="flex-1 flex flex-col justify-between w-9/12">
-        <Link to={`/truyen/${novel.novelId}`} className="text-slate-700 font-bold hover:text-amber-700 max-h-12 line-clamp-2">      
+        <Link to={`/truyen/${novel.novelId}`} className="text-slate-700 dark:text-gray-200 font-bold hover:text-amber-700 max-h-12 line-clamp-2">      
           {novel.name}
         </Link>
         <div className="font-normal text-slate-500 h-12 line-clamp-2"
         dangerouslySetInnerHTML={{__html: novel.description}}
         ></div>
         <div className="flex justify-between items-center">
-          <div className="text-slate-600 flex gap-2 items-center">
+          <div className="text-slate-600 dark:text-slate-400 flex gap-2 items-center">
             <HiUser />
             <Link to={`/tac-gia/${novel.author.authorId}`} className="font-medium hover:text-amber-700">{novel.author.name}</Link>
           </div>

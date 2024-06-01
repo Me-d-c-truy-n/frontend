@@ -46,3 +46,24 @@ body {
   -webkit-box-reflect: below 1px linear-gradient(transparent, #0002);
   overflow: hidden;
 }
+
+/* custom scrollbar chapter popup */
+.custom_scroll {
+  /* width */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  &::-webkit-scrollbar-track {
+    @apply bg-[#f1f1f1] rounded-[5px] dark:bg-[#686868]
+  }
+  
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    @apply bg-[#aaa] rounded-[5px] dark:bg-[#252525]
+    hover:bg-[#999] dark:hover:bg-[#1d1d1d]
+    /* Handle on hover */
+
+  }
+}
