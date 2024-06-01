@@ -15,6 +15,7 @@ const APP_NAME =
       name: import.meta.env.VITE_REACT_APP_NAME,
       designation: "Group 04",
       image: logo,
+      url: "/",
     },
     {
       id: 2,

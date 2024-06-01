@@ -71,11 +71,11 @@ const AboutUs = () => {
       <Slider/>
       <TitleTabScroll id="about_us" title="NHÓM PHÁT TRIỂN"/>
       <div className="flex justify-center items-center text-center" >
-        <h1 className="text-decoration md:text-5xl text-3xl relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-typewriter dark:before:bg-stone-950 before:bg-white mb-5 font-black"
+        <h1 className="text-decoration md:text-5xl text-3xl relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-typewriter dark:before:bg-stone-950 before:bg-white mb-5 font-black pb-1"
         >Software Design&nbsp;</h1>
       </div>
 
-      <div className="flex ps-4 flex-col gap-2 text-lg md:mt-8 mt-2">
+      <div className="flex flex-col gap-2 text-lg md:mt-6 mt-2">
         <UserCard 
           name="Nguyễn Nhật Hào"
           imageURL={admin_01}

@@ -5,7 +5,7 @@ import Slider from "../components/Slider";
 import NovelInfor from "../components/Novel/NovelInfor";
 import { useQuery } from "@tanstack/react-query";
 import { ApiGetDetailNovel } from "../api/apiNovel";
-import { IResponse, STATUS } from "../types/response";
+import { IResponse } from "../types/response";
 import Skeleton from 'react-loading-skeleton'
 import { useSelector } from "react-redux";
 import { AppState } from "../store";
@@ -24,8 +24,6 @@ const NovelPreview = () => {
     queryKey: ['preview', novelId, server, indexServer],
     queryFn: async () => {
       const data: IResponse<INovelRoot> = await ApiGetDetailNovel(listServer[indexServer], novelId || 'a');
-
-      if (data.status === STATUS.ERROR) throw new Error();
 
       setNovel(data.data);
 

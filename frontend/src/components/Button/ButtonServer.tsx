@@ -4,7 +4,7 @@ import { FaServer } from "react-icons/fa";
 import LoadingCircle from "../Loading/LoadingCircle";
 import { useMutation } from "@tanstack/react-query";
 import { CheckServerChapter } from "./KanbanSelectServer";
-import { IResponse, STATUS } from "../../types/response";
+import { IResponse } from "../../types/response";
 import { IChapter } from "../../types/novel";
 import { ApiGetOneChapter } from "../../api/apiNovel";
 import { toast } from "react-toastify";
@@ -24,8 +24,6 @@ const ButtonServer = (props: Props) => {
     mutationFn: async ({novelId, chapterId}: CheckServerChapter) => {
       const data: IResponse<IChapter> = 
         await ApiGetOneChapter(props.srv, novelId, chapterId);
-      
-      if (data.status === STATUS.ERROR) throw new Error();
       
       return data;
     },

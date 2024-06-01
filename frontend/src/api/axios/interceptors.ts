@@ -1,7 +1,11 @@
 import { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
+import { STATUS } from "../../types/response";
 
 const onResponse = (res: AxiosResponse): AxiosResponse => {
+  if (res?.data?.status === STATUS.ERROR) 
+    throw new Error(res?.data?.message || "Internal Server Error");
+
   return res;
 };
 

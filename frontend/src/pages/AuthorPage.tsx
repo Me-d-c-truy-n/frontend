@@ -5,7 +5,7 @@ import BoxNovelAuthor from "../components/Novel/BoxNovelAuthor";
 import { ApiGetAllNovelOfAuthor } from "../api/apiAuthor";
 import { useQuery } from "@tanstack/react-query";
 import { INovelRoot } from "../types/novel";
-import { IResponse, STATUS } from "../types/response";
+import { IResponse } from "../types/response";
 import { useEffect, useState } from "react";
 import ListNovelSkeleton from "../components/Loading/ListNovelSkeleton";
 import TitleTab from "../components/TitleTab";
@@ -36,7 +36,7 @@ const AuthorPage = () => {
       const data: IResponse<INovelRoot[]> = 
         await ApiGetAllNovelOfAuthor(myServer, authorId || 'a', 1);
 
-      if (data.status === STATUS.ERROR || data.data.length <= 0) throw new Error();
+      if (data.data.length <= 0) throw new Error();
 
       setPerPage(data.perPage);
       setTotalPage(data.totalPage);

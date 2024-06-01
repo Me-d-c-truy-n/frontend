@@ -1,7 +1,7 @@
 import { IChapterRoot } from "../../types/novel";
 import ChapterRow from "./ChapterRow";
 import { useQuery } from "@tanstack/react-query";
-import { IResponse, STATUS } from "../../types/response";
+import { IResponse } from "../../types/response";
 import { ApiGetAllChapter } from "../../api/apiNovel";
 import { useEffect, useState } from "react";
 import ListChapterSkeleton from "../Loading/ListChapterSkeleton";
@@ -33,7 +33,6 @@ const ChapterPopup = ({ close, novelId, name, server }: Props) => {
       const data: IResponse<IChapterRoot[]> = 
         await ApiGetAllChapter(server, novelId, currentPage);
 
-      if (data.status === STATUS.ERROR) throw new Error();
       setPerPage(data.perPage);
       setTotalPage(data.totalPage);
       setChapters(data.data);

@@ -7,7 +7,7 @@ import ButtonUtils from "../components/Button/ButtonUtils";
 import { SettingsContext } from "../contexts/SettingsContext";
 import SettingPopup from "../components/Popup/SettingPopup";
 import ChapterPopup from "../components/Popup/ChapterPopup";
-import { IResponse, STATUS } from "../types/response";
+import { IResponse } from "../types/response";
 import { useQuery } from "@tanstack/react-query";
 import { ApiGetOneChapter } from "../api/apiNovel";
 import NovelChapterSkeleton from "../components/Loading/NovelChapterSkeleton";
@@ -70,8 +70,6 @@ const NovelChapter = () => {
       console.log(`Call API ${listServer[indexServer]}/${novelId}/${chapterId}`)
       const data: IResponse<IChapter> = 
         await ApiGetOneChapter(listServer[indexServer], novelId || 'a', chapterId || 'chuong-1');
-      
-      if (data.status === STATUS.ERROR) throw new Error();
       
       setSuccessServer(listServer[indexServer]);
       setChapter(data.data);

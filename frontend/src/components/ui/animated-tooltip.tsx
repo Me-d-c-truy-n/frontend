@@ -6,6 +6,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export const AnimatedTooltip = ({
   items,
@@ -15,8 +16,10 @@ export const AnimatedTooltip = ({
     name: string;
     designation: string;
     image: string;
+    url?: string;
   }[];
 }) => {
+  const navigate = useNavigate();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const springConfig = { stiffness: 100, damping: 5 };
   const x = useMotionValue(0); // going to set this value on mouse move
@@ -36,14 +39,19 @@ export const AnimatedTooltip = ({
     x.set(event.nativeEvent.offsetX - halfWidth); // set the x value, which is then used in transform and rotate
   };
 
+  function handleClick(url: string | undefined) {
+    if (url) navigate(url);
+  }
+
   return (
     <>
       {items.map((item) => (
         <div
-          className="-mr-4  relative group"
+          className={`-mr-4 relative group ${item.url&&'cursor-pointer'}`}
           key={item.name}
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}
+          onClick={() => handleClick(item.url)}
         >
           <AnimatePresence>
             {hoveredIndex === item.id && (
