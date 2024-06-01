@@ -22,17 +22,19 @@ const NovelBookmark = () => {
               <div className="mt-2 dark:text-gray-300">{bm.chapterName}</div>
             </Link>
             <div className="truncate hidden md:block text-xs text-gray-600 font-medium w-2/12 dark:text-slate-400">{convertDate(bm.time)}</div>
-            <button className="justify-self-end border border-amber-600 text-amber-600 p-1 rounded">
-              <IoCloseOutline className="text-base"
-                onClick={() => dispatch(updateBookmark({
-                  time: (new Date).toString(),  
-                  novelId: bm.novelId,  
-                  novelName: bm.novelName,  
-                  chapterId: bm.chapterId,  
-                  chapterName: bm.chapterName
-                }))}
-              />
-            </button>
+            <div className="flex-1 flex justify-end">
+              <button className="mr-1 border border-amber-600 text-amber-600 p-1 rounded">
+                <IoCloseOutline className="text-base"
+                  onClick={() => dispatch(updateBookmark({
+                    time: (new Date).toString(),  
+                    novelId: bm.novelId,  
+                    novelName: bm.novelName,  
+                    chapterId: bm.chapterId,  
+                    chapterName: bm.chapterName
+                  }))}
+                />
+              </button>
+            </div>
           </div>
         )
       }

@@ -68,13 +68,13 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
     
     <CustomImageAsBook image={novel.image} name={novel.name}/>
 
-    <div className="ml-5 flex flex-col flex-1 rounded">
+    <div className="md:ml-5 ml-1 flex flex-col flex-1 rounded">
       <div className="font-bold text-xl md:text-3xl md:mb-3 mb-1 text-gray-700 dark:text-white w-fit">{novel.name}</div>
       <Link to={`/tac-gia/${novel.author.authorId || novel.author.id}?server=${server}`} className="text-base dark:text-slate-400 text-slate-600 flex gap-1 items-center hover:underline w-fit">
         <HiUser/>
         {novel.author.name}
       </Link>
-      <div className="flex md:gap-5 gap-2 md:mt-5 mt-3 flex-wrap justify-center md:justify-start">
+      <div className="flex lg:gap-5 gap-2 md:mt-5 mt-3 flex-wrap justify-center md:justify-start">
         <ButtonUtils
           func={()=>navigate(`/truyen/${novel.novelId}/${novel.firstChapter}`)}
           de={false}

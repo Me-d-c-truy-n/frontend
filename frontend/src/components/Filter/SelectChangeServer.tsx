@@ -10,7 +10,7 @@ const SelectChangeServer = ({ myServer, func }: Props) => {
   const listServer = useSelector((state: AppState) => state.server.listServer);
 
   return (
-  <form className="mr-2">
+  <form className="mr-2 mt-1 md:mb-0">
     <div className="flex">
         <label id="states-button" data-dropdown-toggle="dropdown-states" className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-slate-950 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:text-white dark:border-gray-700" htmlFor="states">
             Nguồn

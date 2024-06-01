@@ -7,7 +7,7 @@ const StoryJustRead = ({ isShowAll }: {isShowAll: boolean}) => {
   const history = useSelector((state: AppState) => state.history.history);
 
   return (
-      <div className="mb-10 mt-2">
+      <div className="mb-6 mt-2">
         {
           !isShowAll && history.length > 0 &&
         <TitleTab name="Truyện Vừa Đọc" link="/tu-truyen"/>

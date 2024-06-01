@@ -14,11 +14,13 @@ const StoryHistoryRow = ({ data, color }: {data: IHistoryRoot,color: boolean}) =
       <div className="w-1/12 truncate hidden md:block">{convertDateToTime(data.time)}</div>
       <Link to={`/truyen/${data.novelId}/${data.chapterId}`} className="w-8/12 md:text-base text-sm font-bold text-slate-700 dark:text-neutral-300 truncate hover:text-amber-800">{data.name}</Link>
       <div className="w-2/12">Đã đọc {subSlugChapter(data.chapterId)}</div>
-      <button className="justify-self-end border border-amber-600 text-amber-600 p-1 rounded">
-        <IoCloseOutline className="text-base"
-          onClick={() => dispatch(removeNovelReaded(data.novelId))}
-        />
-      </button>
+      <div className="flex-1 flex justify-end">
+        <button className="mr-1 border border-amber-600 text-amber-600 p-1 rounded">
+          <IoCloseOutline className="text-base"
+            onClick={() => dispatch(removeNovelReaded(data.novelId))}
+          />
+        </button>
+      </div>
     </div>
   )
 }

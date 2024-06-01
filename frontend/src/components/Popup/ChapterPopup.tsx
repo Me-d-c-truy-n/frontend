@@ -63,7 +63,7 @@ const ChapterPopup = ({ close, novelId, name, server }: Props) => {
         {
           ((isFetching ||chapters.length<=0) && !isError) ?<ListChapterSkeleton name={name} close={close}/>:(
             <div className="flex flex-col h-full">
-              <div className='flex justify-between items-center border-b shadow-sm pb-3 px-2 dark:border-b-gray-800'>
+              <div className='flex justify-between items-center border-b shadow-sm pb-3 md:px-2 px-1 dark:border-b-gray-800'>
                 <h1 className='text-lg md:text-xl font-bold dark:text-white'>
                   {!isError ? chapters[0].novelName : name}
                 </h1>

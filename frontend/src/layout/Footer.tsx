@@ -45,7 +45,7 @@ const APP_NAME =
 
 const Footer = () => {
   return (
-    <div className="border-t-2 mt-4 md:p-5 p-3 pb-4">
+    <div className="border-t-2 mt-4 p-3 pb-4">
       <div className="md:text-lg text-base text-center text-gray-600">
         {APP_NAME} là nền tảng mở trực tuyến, miễn phí đọc truyện chữ được đóng góp nội dung từ các tác giả viết truyện và các dịch giả convert, dịch truyện, rất nhiều truyện hay và nổi bật được cập nhật nhanh nhất với đủ các thể loại tiên hiệp, kiếm hiệp, huyền ảo ...
       </div>

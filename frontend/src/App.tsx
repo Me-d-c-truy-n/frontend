@@ -24,7 +24,7 @@ function App() {
   },[isOpen, background])
   
   return (
-    <div className={`${isOpen?'':'bg-white dark:bg-stone-950 '}`}>
+    <div className={`${isOpen?'':'bg-white dark:bg-stone-950'}`}>
       {
         theme === THEME.LIGHT ?(
         <SkeletonTheme baseColor="#c9c9c9" highlightColor="#a3a0a0">

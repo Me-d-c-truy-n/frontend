@@ -15,7 +15,7 @@ const TitleTab = ({ name, link, uppercase=false, highlight, isMb=true}: Props) =
   if (link)
     return (
       <Link to={link} className="p-2 pl-0 flex items-center justify-between mb-3 gap-2 font-mono">
-          <h2 className={`text-xl text-amber-700 ${uppercase&&'uppercase'} `}
+          <h2 className={`text-xl text-amber-700 ${uppercase&&'uppercase'} gap-1`}
           >
             {name}
             {highlight === 'Loading' ?<Skeleton width={180}/>:highlight&&
@@ -31,7 +31,7 @@ const TitleTab = ({ name, link, uppercase=false, highlight, isMb=true}: Props) =
 
     return (
       <div className={`p-2 pl-0 pb-0 flex items-center justify-between ${isMb&&"mb-3 pb-2"} gap-2 font-mono`}>
-          <h2 className={`text-xl text-amber-700 ${uppercase&&'uppercase'} gap-1`}>
+          <h2 className={`text-xl text-amber-700 ${uppercase&&'uppercase'} gap-1 leading-[1.9rem]`}>
             {name}
             {highlight === 'Loading' ?<Skeleton width={180}/>:highlight&&
               <Highlight className="text-white">
