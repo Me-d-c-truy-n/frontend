@@ -223,7 +223,7 @@ const NovelChapter = () => {
       </div>
       <Slider/>
 
-      <div className="mt-8 flex gap-14 items-center justify-center">
+      <div className="mt-6 flex gap-14 items-center justify-center">
         {
           chapter.preChapterId && chapter.preChapterId.length>=0 &&
           <ButtonChangeChapter func={handlePrevChapter}>

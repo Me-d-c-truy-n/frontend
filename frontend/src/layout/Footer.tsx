@@ -44,15 +44,15 @@ const APP_NAME =
 
 const Footer = () => {
   return (
-    <div className="border-t-2 mt-5 p-5 pb-4">
-      <div className="text-lg text-center text-gray-600">
+    <div className="border-t-2 mt-4 md:p-5 p-3 pb-4">
+      <div className="md:text-lg text-base text-center text-gray-600">
         {APP_NAME} là nền tảng mở trực tuyến, miễn phí đọc truyện chữ được đóng góp nội dung từ các tác giả viết truyện và các dịch giả convert, dịch truyện, rất nhiều truyện hay và nổi bật được cập nhật nhanh nhất với đủ các thể loại tiên hiệp, kiếm hiệp, huyền ảo ...
       </div>
       <div className="flex flex-row items-center justify-center mt-4 mb-2 w-full">
         <AnimatedTooltip items={people} />
       </div>
       <div className='-mr-4 mb-3 text-center font-bold dark:text-white'>FIT@HCMUS - 2024 - <Link to='/thong-tin/nhom-phat-trien' className='hover:underline'>Group 04</Link></div>
-      <div className='flex justify-center mt-5 gap-6 text-gray-600'>
+      <div className='text-center flex flex-col justify-center md:mt-5 mt-2 md:gap-6 gap-1 text-gray-600 md:flex-row'>
         <Link to='/thong-tin/nhom-phat-trien' className='hover:underline'>Nhóm phát triển</Link>
         <Link to='/thong-tin/dieu-khoan-dich-vu' className='hover:underline'>Điều khoản dịch vụ</Link>
         <Link to='/thong-tin/chinh-sach-bao-mat' className='hover:underline'>Chính sách bảo mật</Link>
