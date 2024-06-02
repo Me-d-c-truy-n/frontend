@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <MyHelmet 
-        title={import.meta.env.VITE_REACT_APP_NAME}
+        title={`${import.meta.env.VITE_REACT_APP_NAME} - Web tổng hợp và đọc tiểu thuyết trực tuyến`}
         description={'Web tổng hợp và đọc tiểu thuyết trực tuyến'}
       />
       <Slider/>

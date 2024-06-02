@@ -48,7 +48,9 @@ const ExportEBookPopup = ({ close, novelId, server }: Props) => {
       >
         <div className='flex justify-between items-center mb-5'>
           <img src={logo} alt='logo' className='w-10'/>
-          <h1 className='text-xl font-bold'>Tải truyện</h1>
+          <h1 className='text-xl font-bold'>
+            Tải truyện - {selectedExport}
+          </h1>
           <ButtonClose close={close}/>
         </div>
         <div className='px-4'>

@@ -14,7 +14,7 @@ interface Props {
 const TitleTab = ({ name, link, uppercase=false, highlight, isMb=true}: Props) => {
   if (link)
     return (
-      <Link to={link} className="p-2 px-0 flex items-center justify-between mb-3 gap-2 font-mono">
+      <Link to={link} className="p-2 px-0 flex items-center justify-between mb-1 gap-2 font-mono">
           <h2 className={`text-xl text-amber-700 ${uppercase&&'uppercase'} gap-1`}
           >
             {name}
