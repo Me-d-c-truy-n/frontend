@@ -1,3 +1,4 @@
+import MyHelmet from "../../components/MyHelmet";
 import Slider from "../../components/Slider"
 import TitleTabScroll from "../../components/TitleTabScroll";
 
@@ -8,6 +9,10 @@ const TermOfService = () => {
 
   return (
     <div className="font-sans flex flex-col text-black dark:text-white">
+      <MyHelmet 
+        title={'Điều Khoản Dịch Vụ'}
+        description={'Web tổng hợp và đọc tiểu thuyết trực tuyến'}
+      />
       <Slider/>
       <TitleTabScroll id="term_of_service" title="ĐIỀU KHOẢN DỊCH VỤ"/>
       <div className="flex flex-col gap-8 text-[1.05rem]">

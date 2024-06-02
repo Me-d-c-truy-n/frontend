@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { AppState } from "../store";
 import TitleTabFull from "../components/TitleTabFull";
 import NovelDescription from "../components/Novel/NovelDescription";
+import MyHelmet from "../components/MyHelmet";
 
 const NovelPreview = () => {
   const navigate = useNavigate();
@@ -57,7 +58,13 @@ const NovelPreview = () => {
             <Skeleton height={300}/>
           </>
           :
-          <NovelDescription description={novel.description}/>
+          <>
+          <MyHelmet 
+            title={`${novel.name} - nguồn ${listServer[indexServer]}`}
+            description={`Truyện của tác giả ${novel.author} - nguồn ${listServer[indexServer]}`}
+          />
+            <NovelDescription description={novel.description}/>
+          </>
         }
       </div>
     </div>

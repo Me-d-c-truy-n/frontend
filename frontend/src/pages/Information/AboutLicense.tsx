@@ -1,9 +1,14 @@
+import MyHelmet from "../../components/MyHelmet";
 import Slider from "../../components/Slider"
 import TitleTabScroll from "../../components/TitleTabScroll";
 
 const AboutLicense = () => {
   return (
     <div className="font-sans flex flex-col text-black dark:text-white">
+      <MyHelmet 
+        title={'Về Bản Quyền'}
+        description={'Web tổng hợp và đọc tiểu thuyết trực tuyến'}
+      />
       <Slider/>
       <TitleTabScroll id="about_license" title="VỀ BẢN QUYỀN"/>
       <div className="flex flex-col gap-8 text-[1.05rem]">

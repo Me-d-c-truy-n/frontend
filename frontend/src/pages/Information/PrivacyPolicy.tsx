@@ -1,9 +1,14 @@
+import MyHelmet from "../../components/MyHelmet";
 import Slider from "../../components/Slider";
 import TitleTabScroll from "../../components/TitleTabScroll";
 
 const PrivacyPolicy = () => {
   return (
     <div className="font-sans flex flex-col text-black dark:text-white">
+      <MyHelmet 
+        title={'Chính Sách Bảo Mật'}
+        description={'Web tổng hợp và đọc tiểu thuyết trực tuyến'}
+      />
       <Slider/>
       <TitleTabScroll id="privacy_policy" title="CHÍNH SÁCH BẢO MẬT"/>
       <div className="flex flex-col gap-8 text-[1.05rem]">

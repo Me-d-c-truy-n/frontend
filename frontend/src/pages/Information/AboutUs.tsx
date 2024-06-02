@@ -4,6 +4,7 @@ import admin_02 from "../../assets/images/admin/admin_02.jpg"
 import admin_03 from "../../assets/images/admin/admin_03.jpg"
 import admin_04 from "../../assets/images/admin/admin_04.jpg"
 import TitleTabScroll from "../../components/TitleTabScroll"
+import MyHelmet from "../../components/MyHelmet"
 
 interface Props {
   name: string;
@@ -68,6 +69,10 @@ const UserCard = ({name, imageURL, githubUrl, facebookUrl, border, shadow, color
 const AboutUs = () => {
   return (
     <div className="font-sans flex flex-col text-black dark:text-white">
+      <MyHelmet 
+        title={'Nhóm Phát Triển'}
+        description={'Web tổng hợp và đọc tiểu thuyết trực tuyến'}
+      />
       <Slider/>
       <TitleTabScroll id="about_us" title="NHÓM PHÁT TRIỂN"/>
       <div className="flex justify-center items-center text-center" >

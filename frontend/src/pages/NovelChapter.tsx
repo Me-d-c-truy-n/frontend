@@ -31,6 +31,8 @@ import { toast } from "react-toastify";
 import KanbanSelectServer from "../components/Button/KanbanSelectServer";
 import { useKeyboardShortcut } from "../hooks/useKeyboardShortcut";
 import GuideText from "../components/Reading/GuideText";
+import MyHelmet from "../components/MyHelmet";
+import { subSlugChapter } from "../utils/helpers";
 
 const NovelChapter = () => {
   const navigate = useNavigate();
@@ -162,6 +164,10 @@ const NovelChapter = () => {
         server={successServer}
       />
       }
+      <MyHelmet 
+        title={`${chapter.novelName} - ${subSlugChapter(chapter.chapterId)} - nguồn ${successServer}`}
+        description={`Truyện của tác giả ${chapter.author} - nguồn ${successServer}`}
+      />
       <Slider/>
       <div className="flex flex-col justify-center items-center mt-2">
       <Link to={`/truyen/${chapter.novelId}`} className="font-bold text-gray-900 text-lg md:text-xl capitalize hover:text-amber-700 dark:text-stone-300 text-center">{chapter.novelName}</Link>

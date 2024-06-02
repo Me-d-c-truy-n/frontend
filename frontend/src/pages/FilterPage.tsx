@@ -15,6 +15,7 @@ import { AppState } from "../store";
 import EmptyResult from "../components/EmptyResult";
 import TitleTabScroll from "../components/TitleTabScroll";
 import SelectChangeServer from "../components/Filter/SelectChangeServer";
+import MyHelmet from "../components/MyHelmet";
 
 const FilterPage = () => {
   const [searchParams] = useSearchParams();
@@ -48,6 +49,10 @@ const FilterPage = () => {
 
   return (
     <div>
+      <MyHelmet 
+        title={`Tìm kiếm: ${searchParams.get('q') || ""} - nguồn ${myServer}`}
+        description="Tìm kiếm thông tin truyện theo tên truyện, tác giả"
+      />
       <Slider isLoading={isFetching}/>
       <div className="mt-1" id="pagination-search-novel-list">
         {

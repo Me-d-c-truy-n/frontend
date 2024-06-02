@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { AppState } from "../store";
 import EmptyResult from "../components/EmptyResult";
 import TitleTabScroll from "../components/TitleTabScroll";
+import MyHelmet from "../components/MyHelmet";
 
 const AuthorPage = () => {
   const [searchParams] = useSearchParams();
@@ -74,10 +75,15 @@ const AuthorPage = () => {
           ):(
             novels?.length > 0 ?
             <>
+              <MyHelmet 
+                title={`Truyện của tác giả ${novels[0].author.name} - nguồn ${myServer}`}
+                description={`Danh sách truyện của tác giả ${novels[0].author.name} - nguồn ${myServer}`}
+              />
               <TitleTabScroll 
                 id="novel_author" 
                 name="Truyện Của Tác Giả "
-                title={novels[0].author.name}/>
+                title={novels[0].author.name}
+              />
               <div className="grid grid-cols-1 md:gap-5 gap-3 lg:grid-cols-2">
                 {
                   novels.map((novel) =>

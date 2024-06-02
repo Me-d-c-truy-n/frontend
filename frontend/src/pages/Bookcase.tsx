@@ -3,12 +3,17 @@ import Nav from "../components/Nav"
 import Slider from "../components/Slider"
 import StoryJustRead from "../components/History/StoryJustRead";
 import NovelBookmark from "../components/NovelBookmark";
+import MyHelmet from "../components/MyHelmet";
 
 const Bookcase = () => {
   const [tabIndex, setTabIndex] = useState<number>(1);
 
   return (
     <>
+      <MyHelmet 
+        title={'Tủ truyện'}
+        description={'Web tổng hợp và đọc tiểu thuyết trực tuyến'}
+      />
       <Slider/>
       <Nav tabIndex={tabIndex} setTabIndex={setTabIndex}/>
       {
