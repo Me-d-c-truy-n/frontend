@@ -16,7 +16,7 @@ interface Props {
 }
 
 const ExportEBookPopup = ({ close, novelId, server }: Props) => {
-  const [selectedExport, setSelectedExport] = useState<string>("pdf");
+  const [selectedExport, setSelectedExport] = useState<string>("epub");
 
   const { isFetching, data: listExport } = useQuery({
     queryKey: ['file_export'],

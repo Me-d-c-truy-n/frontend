@@ -7,6 +7,7 @@ const AxiosClient = axios.create({
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
   },
+  timeout: 10000 * 5,// Wait for 5 seconds
 })
 
 setupInterceptors(AxiosClient);
