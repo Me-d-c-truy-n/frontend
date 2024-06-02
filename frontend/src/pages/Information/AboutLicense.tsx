@@ -14,7 +14,14 @@ const AboutLicense = () => {
           <li>Nền tảng không đại diện cho nhóm dịch, người dịch là thành viên trên các website hệ thống.</li>
           <li>Nền tảng không có trách nhiệm truy cứu, kiện tụng và phân giải đối với các tác phẩm không do nền tảng sở hữu bản quyền.</li>
         </ul>
-        <i className="text-lg">Tất cả các vấn đề liên quan tới bản quyền, vui lòng liên hệ trực tiếp qua email <span className="font-black">group04@truyen.onl</span></i>
+        <i className="text-lg">Tất cả các vấn đề liên quan tới bản quyền, vui lòng liên hệ trực tiếp qua email{" "}
+          <a 
+            href="mailto:group04@truyen.onl" 
+            className="font-black hover:underline"
+          >
+            group04@truyen.onl
+          </a>
+        </i>
       </div>
     </div>
   )

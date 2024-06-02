@@ -14,16 +14,15 @@ const Slider = ({ isLoading = false }: Props) => {
   const [slider, setSlider] = useState("");
   
   useEffect(()=>{
-      setSlider(slider_const["slider"][getRandomInt(slider_const["slider"].length)]);
+    setSlider(slider_const["slider"][getRandomInt(slider_const["slider"].length)]);
   },[])
 
   return (
     <div className='w-full'>
       {
-        (isLoading || !slider) ?
-        <Skeleton className="h-20 lg:h-48"/> 
-        :
-        <img src={slider} alt="slider" className='w-full cursor-pointer'/>
+        (isLoading || !slider || slider.trim().length <= 0) 
+        ?<Skeleton className="h-20 lg:h-48"/> 
+        :<img src={slider} alt="slider" className='w-full cursor-pointer'/>
       }
     </div>
   )

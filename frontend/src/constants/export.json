@@ -19,6 +19,10 @@
     {
       "id": "epub",
       "image": "https://cdn-icons-png.flaticon.com/512/180/180838.png"
+    },
+    {
+      "id": "audio",
+      "image": "https://cdn-icons-png.flaticon.com/512/10259/10259928.png"
     }
   ]
 }

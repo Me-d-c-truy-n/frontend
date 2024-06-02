@@ -22,7 +22,8 @@ export function convertDate(date: string) {
 
 export function getImageOfExportFile(ep: string) {
   for (let i = 0; i < listExport.export.length; i++) {
-    if (listExport.export[i].id === ep) return listExport.export[i].image;
+    if (listExport.export[i].id === ep.toLocaleLowerCase()) 
+      return listExport.export[i].image;
   }
   return 'https://cdn-icons-png.flaticon.com/512/6301/6301689.png';
 }

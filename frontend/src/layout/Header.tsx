@@ -31,23 +31,27 @@ const Header = () => {
   }
 
   return (
-    <div className={`flex justify-between items-center pt-3 mb-2`}>
+    <div className={`flex justify-between items-center pt-2 mb-1`}>
         <Link to={'/'}>
           <img src={logo} alt="logo" width={60}/>
         </Link>
         <div className={`bg-transparent border-slate-300 flex items-center w-72 md:w-96 border p-2 ps-5 rounded-full shadow-sm outline-none ${isSelected?'border-amber-500':''}`}>
-          <input className={`dark:text-slate-200 bg-transparent outline-none w-11/12`}placeholder='Tìm kiếm theo tên truyện, tác giả'
-          onFocus={() => setIsSelected(true)}
-          onBlur={() => setIsSelected(false)}
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-          onKeyDown={handlePressEnter}
-          ></input>
-          <CiSearch className='text-xl text-amber-600 font-bold cursor-pointer'
+          <input 
+            className={`dark:text-slate-200 bg-transparent outline-none w-11/12`}placeholder='Tìm kiếm theo tên truyện, tác giả'
+            onFocus={() => setIsSelected(true)}
+            onBlur={() => setIsSelected(false)}
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onKeyDown={handlePressEnter}
+          />
+          <CiSearch 
+            className='text-xl text-amber-600 font-bold cursor-pointer'
             onClick={handleSearch}
           />
         </div>
-        <button className='outline-none hover:shadow-md p-1 rounded-lg hover:-translate-y-1 transform transition duration-200' onClick={handleChangeTheme}>
+        <button 
+          className='outline-none hover:shadow-md p-1 rounded-lg hover:-translate-y-1 transform transition duration-200' 
+          onClick={handleChangeTheme}>
           {
             theme =='light' ?
             <CiLight className='text-2xl text-black' />
