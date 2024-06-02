@@ -162,6 +162,7 @@ const NovelChapter = () => {
         novelId={novelId}
         name={chapter.novelName}
         server={successServer}
+        chapterId={chapterId || "1"}
       />
       }
       <MyHelmet 

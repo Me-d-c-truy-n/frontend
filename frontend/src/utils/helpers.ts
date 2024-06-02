@@ -1,5 +1,6 @@
 import moment from 'moment'
 import listExport from '../constants/export.json';
+import listPerpage from '../constants/perpage.json';
 
 export function convertDateToTime(date: string) {
   const convertDate = new Date(date);
@@ -34,6 +35,7 @@ export function subSlugChapter(slug: string) {
     .replace("chuong", "chương")
     .replace("hoi", "hồi")
     .replace("quyen", "quyển")
+    .replace("tap", "tập")
     .split("-").join(" ");
 }
 
@@ -42,4 +44,28 @@ export function easeInOutCubic(t: number, b: number, c: number, d: number) {
   if (t < 1) return (c / 2) * t * t * t + b;
   t -= 2;
   return (c / 2) * (t * t * t + 2) + b;
+}
+
+export function getCurrentPageByChapterId(server: string, chapterId: string) {
+  // check is simple chapter (only chapterId: chuong-[number])
+  let page = 1;
+  try {
+    const chapter = parseInt(
+      chapterId.replace(/^\d+/, '').replace("chuong-", "").split(" ").join("")
+    );
+
+    if (isNaN(chapter) || chapter <= 0) throw new Error();
+
+    let perpage = 0; 
+    listPerpage.perpage.map((srv) =>{
+      if (srv.name === server)
+        return perpage = srv.perpage;
+    });
+
+    page = perpage === 0? 1 : Math.ceil(chapter / perpage);
+  } catch (error) {
+    return 1;
+  }
+
+  return page <= 0 ? 1 : page;
 }

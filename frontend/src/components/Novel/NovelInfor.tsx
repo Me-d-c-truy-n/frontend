@@ -63,6 +63,7 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
           novelId={novel.novelId + ''}
           name={novel.name}
           server={server}
+          chapterId={chapterId || "1"}
         />
     }
     

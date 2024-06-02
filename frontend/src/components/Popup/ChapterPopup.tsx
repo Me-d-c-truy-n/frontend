@@ -11,17 +11,22 @@ import { getListChapterReaded } from "../../store/readed/selector";
 import { useModal } from "../../hooks/useModal";
 import EmptyResult from "../EmptyResult";
 import ButtonClose from "../Button/ButtonClose";
+import { getCurrentPageByChapterId } from "../../utils/helpers";
 
 interface Props {
   close: ()=>void;
   novelId: string;
   name: string;
   server: string;
+  chapterId?: string;
 }
 
-const ChapterPopup = ({ close, novelId, name, server }: Props) => {
+const ChapterPopup = ({ close, novelId, name, server, chapterId }: Props) => {
   const [chapters, setChapters] = useState<IChapterRoot[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  
+  const [currentPage, setCurrentPage] = 
+    useState<number>(getCurrentPageByChapterId(server, chapterId || "1"));
+  
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
 

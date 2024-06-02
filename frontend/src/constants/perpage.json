@@ -1,0 +1,16 @@
+{
+  "perpage": [
+    {
+      "name": "metruyencv",
+      "perpage": 30
+    },
+    {
+      "name": "tangthuvien",
+      "perpage": 70
+    },
+    {
+      "name": "truyenfull",
+      "perpage": 50
+    }
+  ]
+}
