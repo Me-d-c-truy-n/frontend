@@ -63,7 +63,9 @@ export function getCurrentScrollByChapterId(
         return perpage = srv.perpage;
     });
 
-    const currentChapter = chapter % perpage - 2;
+    let currentChapter = chapter % perpage;
+    if (currentChapter === 0) currentChapter = perpage;
+    currentChapter -= 2;
 
     console.log(currentChapter);
     scroll = perpage <= 0 ? 0 
