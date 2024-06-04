@@ -18,9 +18,11 @@ const DownloadFileSkeleton = ({ close }: Props) => {
       </div>
       <div className='px-4'>
         <div className='flex gap-3 items-center justify-center flex-wrap'>
-          <Skeleton width={100} height={120}/>
-          <Skeleton width={100} height={120}/>
-          <Skeleton width={100} height={120}/>
+          {
+            [...Array(3)].map((_, idx)=>
+                <Skeleton width={100} height={120} key={idx}/>
+            )
+          }
         </div>
         {/* <div className='mt-4 mx-auto'>
           <Skeleton count={2} height={40}/>

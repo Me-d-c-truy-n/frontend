@@ -13,7 +13,11 @@ const NovelBookmark = () => {
   return (
     <div className="mt-2">
       {
-        bookmark.map((bm:IBookmark, idx:number) => 
+        bookmark.length <= 0
+        ? <div className="dark:text-white text-center text-lg">
+            <i>Không có truyện nào</i>
+          </div>
+        :bookmark.map((bm:IBookmark, idx:number) => 
           <div key={idx} className={`flex mb-2 text-slate-500 text-sm items-center gap-2 p-2 md:px-2 px-1 ${idx%2==1&&'bg-slate-50 dark:bg-stone-900 border-b'}`}>
             <Link to={bm.chapterId?`/truyen/${bm.novelId}/${bm.chapterId}`:`/truyen/${bm.novelId}/`}
               className="w-9/12"

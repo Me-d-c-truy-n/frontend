@@ -6,7 +6,7 @@ const ListNovelSkeleton = ({ children }: {children: React.ReactNode}) => {
       {children}
       <div className="grid grid-cols-1 gap-y-5 gap-x-5 lg:grid-cols-2">
         {
-          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((idx) =>
+          [...Array(10)].map((_, idx) =>
             <BoxNovel isLoading={true} key={idx}/>
           )
         }

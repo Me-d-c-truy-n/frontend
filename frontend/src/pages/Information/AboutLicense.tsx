@@ -11,7 +11,7 @@ const AboutLicense = () => {
       />
       <Slider/>
       <TitleTabScroll id="about_license" title="VỀ BẢN QUYỀN"/>
-      <div className="flex flex-col gap-8 text-[1.05rem]">
+      <div className="flex flex-col gap-8 text-[1.05rem] px-1 text-justify">
         <ul className="list-decimal ps-6 text-justify flex flex-col gap-2">
           <li>Nền tảng và các website trong hệ thống luôn ý thức rõ ràng về việc tôn trọng bản quyền của các tác giả, tác phẩm, các sản phẩm trí tuệ.</li>
           <li>Website là một nền tảng mở, nguồn truyện được lấy từ nhiều trang truyện khác nhau.</li>

@@ -46,6 +46,35 @@ export function easeInOutCubic(t: number, b: number, c: number, d: number) {
   return (c / 2) * (t * t * t + 2) + b;
 }
 
+export function getCurrentScrollByChapterId(
+  server: string, chapterId: string, fullHeight: number, scrollHeight: number
+) {
+  let scroll = 0;
+  try {
+    const chapter = parseInt(
+      chapterId.replace(/^\d+/, '').replace("chuong-", "").split(" ").join("")
+    );
+
+    if (isNaN(chapter) || chapter <= 0) throw new Error();
+
+    let perpage = 0; 
+    listPerpage.perpage.map((srv) =>{
+      if (srv.name === server)
+        return perpage = srv.perpage;
+    });
+
+    const currentChapter = chapter % perpage - 2;
+
+    console.log(currentChapter);
+    scroll = perpage <= 0 ? 0 
+      :fullHeight * scrollHeight * currentChapter / (scrollHeight * perpage);
+  } catch (error) {
+    return 0;
+  }
+
+  return scroll;
+}
+
 export function getCurrentPageByChapterId(server: string, chapterId: string) {
   // check is simple chapter (only chapterId: chuong-[number])
   let page = 1;

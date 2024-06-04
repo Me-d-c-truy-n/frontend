@@ -15,7 +15,7 @@ const TermOfService = () => {
       />
       <Slider/>
       <TitleTabScroll id="term_of_service" title="ĐIỀU KHOẢN DỊCH VỤ"/>
-      <div className="flex flex-col gap-8 text-[1.05rem]">
+      <div className="flex flex-col gap-8 text-[1.05rem] px-1 text-justify">
         <p>Khi tham gia sử dụng dịch vụ cung cấp bởi {APP_NAME}, bạn phải đồng ý và tuân thủ các quy định sau.</p>
         <p>Quy định này áp dụng cho mọi đối tượng tham gia hoạt động tại website, không kể là khách, thành viên, tác giả, dịch giả, biên tập viên, quản trị viên, admin hay bất cứ thành viên nào khác.</p>
         <p>Quy định này gồm 2 bên:</p>

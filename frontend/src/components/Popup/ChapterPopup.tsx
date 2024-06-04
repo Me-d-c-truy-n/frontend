@@ -11,7 +11,7 @@ import { getListChapterReaded } from "../../store/readed/selector";
 import { useModal } from "../../hooks/useModal";
 import EmptyResult from "../EmptyResult";
 import ButtonClose from "../Button/ButtonClose";
-import { getCurrentPageByChapterId } from "../../utils/helpers";
+import { getCurrentPageByChapterId, getCurrentScrollByChapterId } from "../../utils/helpers";
 
 interface Props {
   close: ()=>void;
@@ -23,10 +23,10 @@ interface Props {
 
 const ChapterPopup = ({ close, novelId, name, server, chapterId }: Props) => {
   const [chapters, setChapters] = useState<IChapterRoot[]>([]);
-  
   const [currentPage, setCurrentPage] = 
-    useState<number>(getCurrentPageByChapterId(server, chapterId || "1"));
-  
+  useState<number>(getCurrentPageByChapterId(server, chapterId || "1"));
+  const [firstSelectedPage] = useState(currentPage);
+
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
 
@@ -56,6 +56,23 @@ const ChapterPopup = ({ close, novelId, name, server, chapterId }: Props) => {
     }
   },[]);
 
+  const isLoading = isFetching || chapters.length <= 0;
+
+  useEffect(() => {
+    const container = document.getElementById("scroll_chapter");
+    if (!container || isLoading || currentPage != firstSelectedPage) return;
+
+    const fullHeight = container.scrollHeight;
+    const screenHeight = container.offsetHeight;
+
+    console.log(getCurrentScrollByChapterId(server, chapterId||'1', fullHeight, screenHeight));
+    container.scrollTo({ 
+      top: getCurrentScrollByChapterId(server, chapterId||'1', fullHeight, screenHeight),  
+      behavior: 'smooth'
+    }); 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[isLoading]);
+
   return (
     <div 
       ref={modalRef}
@@ -67,7 +84,7 @@ const ChapterPopup = ({ close, novelId, name, server, chapterId }: Props) => {
       id="pagination-list-chapter"
       >
         {
-          ((isFetching ||chapters.length<=0) && !isError) ?<ListChapterSkeleton name={name} close={close}/>:(
+          (isLoading && !isError) ?<ListChapterSkeleton name={name} close={close}/>:(
             <div className="flex flex-col h-full">
               <div className='flex justify-between items-center border-b shadow-sm pb-3 md:px-2 px-1 dark:border-b-gray-800'>
                 <h1 className='text-lg md:text-xl font-bold dark:text-white'>
@@ -78,7 +95,8 @@ const ChapterPopup = ({ close, novelId, name, server, chapterId }: Props) => {
 
               {
                 !isError ?
-                <div className="grid grid-cols-1 md:gap-4 gap-2 md:grid-cols-2 overflow-y-auto custom_scroll flex-1 md:px-4 px-2">
+                <div className="grid grid-cols-1 md:gap-4 gap-2 md:grid-cols-2 overflow-y-auto custom_scroll flex-1 md:px-4 px-2"
+                id="scroll_chapter">
                 {
                   chapters.map(chapter => 
                   <ChapterRow 
