@@ -15,7 +15,10 @@ export const AnimatedTooltip = ({
 }) => {
   const navigate = useNavigate()
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-  const springConfig = { stiffness: 100, damping: 5 }
+  const springConfig = {
+    stiffness: 100,
+    damping: 5,
+  }
   const x = useMotionValue(0) // going to set this value on mouse move
   // rotate the tooltip
   const rotate = useSpring(useTransform(x, [-100, 100], [-45, 45]), springConfig)
@@ -43,7 +46,11 @@ export const AnimatedTooltip = ({
           <AnimatePresence>
             {hoveredIndex === item.id && (
               <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.6 }}
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                  scale: 0.6,
+                }}
                 animate={{
                   opacity: 1,
                   y: 0,
@@ -54,7 +61,11 @@ export const AnimatedTooltip = ({
                     damping: 10,
                   },
                 }}
-                exit={{ opacity: 0, y: 20, scale: 0.6 }}
+                exit={{
+                  opacity: 0,
+                  y: 20,
+                  scale: 0.6,
+                }}
                 style={{
                   translateX: translateX,
                   rotate: rotate,

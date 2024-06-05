@@ -37,7 +37,9 @@ const BoxNovel = ({ novel, isLoading = false }: { novel?: INovelRoot; isLoading?
         </Link>
         <div
           className="font-normal text-slate-500 h-12 line-clamp-2"
-          dangerouslySetInnerHTML={{ __html: novel.description }}
+          dangerouslySetInnerHTML={{
+            __html: novel.description,
+          }}
         ></div>
         <div className="flex justify-between items-center">
           <div className="text-slate-600 dark:text-slate-400 flex gap-2 items-center">

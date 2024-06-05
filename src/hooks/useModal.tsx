@@ -15,5 +15,8 @@ export function useModal(close: () => void) {
     onKeyPressed: () => close(),
   })
 
-  return { modalRef, handleClickOutside }
+  return {
+    modalRef,
+    handleClickOutside,
+  }
 }

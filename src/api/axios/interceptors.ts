@@ -10,7 +10,9 @@ const onResponse = (res: AxiosResponse): AxiosResponse => {
 
 const onResponseError = async (err: AxiosError): Promise<AxiosError | undefined> => {
   if (err.code === "ERR_NETWORK") {
-    toast.error("Có một vấn đề nhỏ với máy chủ.", { toastId: "server_error" })
+    toast.error("Có một vấn đề nhỏ với máy chủ.", {
+      toastId: "server_error",
+    })
   }
 
   return Promise.reject(err.code)

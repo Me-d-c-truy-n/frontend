@@ -64,7 +64,9 @@ const ChapterPopup = ({ close, novelId, name, server, chapterId }: Props) => {
 
     const scrollTo = getCurrentScrollByChapterId(server, chapterId || "1", fullHeight)
 
-    container.scrollTo({ top: scrollTo })
+    container.scrollTo({
+      top: scrollTo,
+    })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading])
@@ -74,7 +76,9 @@ const ChapterPopup = ({ close, novelId, name, server, chapterId }: Props) => {
       ref={modalRef}
       onClick={handleClickOutside}
       className="fixed left-0 mt-0 z-10 top-0 w-full h-screen px-2"
-      style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
+      style={{
+        backgroundColor: "rgba(0, 0, 0, 0.6)",
+      }}
     >
       <div
         className="shadow-2xl py-1 lg:w-8/12 mx-auto border rounded-lg border-amber-600 bg-amber-50 dark:bg-stone-950 h-full"

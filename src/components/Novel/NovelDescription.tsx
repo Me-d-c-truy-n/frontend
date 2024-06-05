@@ -12,7 +12,9 @@ const NovelDescription = ({ description }: { description: string }) => {
       <TitleTabFull>GIỚI THIỆU</TitleTabFull>
       <p
         className={`${!isShowFull && "line-clamp-5"} px-2 pt-3 text-lg leading-10 text-gray-700 dark:text-white`}
-        dangerouslySetInnerHTML={{ __html: description }}
+        dangerouslySetInnerHTML={{
+          __html: description,
+        }}
       ></p>
       <div className="md:p-3 p-2 mt-2">
         {isShowFull ? (

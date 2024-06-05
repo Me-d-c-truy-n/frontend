@@ -49,7 +49,10 @@ const AuthorPage = () => {
 
   useEffect(() => {
     if (isError) {
-      if (indexServer == listServer.length - 1) navigate("/notfound", { replace: true })
+      if (indexServer == listServer.length - 1)
+        navigate("/notfound", {
+          replace: true,
+        })
       else {
         setMyServer(listServer[indexServer + 1])
         setIndexServer(indexServer + 1)

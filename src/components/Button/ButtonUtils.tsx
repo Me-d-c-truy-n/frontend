@@ -19,7 +19,9 @@ const ButtonUtils = ({ de = true, func, children, count = 0, className = "" }: P
       {count > 0 && (
         <div
           className="absolute rounded-full bg-amber-700 text-white -top-3 -right-3 flex items-center justify-center w-6 h-6"
-          style={{ fontSize: "11px" }}
+          style={{
+            fontSize: "11px",
+          }}
         >
           {count}
         </div>

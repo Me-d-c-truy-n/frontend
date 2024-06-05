@@ -35,7 +35,10 @@ const NovelPreview = () => {
 
   useEffect(() => {
     if (isError) {
-      if (indexServer == listServer.length - 1) navigate("/notfound", { replace: true })
+      if (indexServer == listServer.length - 1)
+        navigate("/notfound", {
+          replace: true,
+        })
       else setIndexServer(indexServer + 1)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

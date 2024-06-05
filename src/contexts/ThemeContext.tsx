@@ -34,7 +34,16 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     }
   }, [theme])
 
-  return <ThemeContext.Provider value={{ theme, changeTheme }}>{children}</ThemeContext.Provider>
+  return (
+    <ThemeContext.Provider
+      value={{
+        theme,
+        changeTheme,
+      }}
+    >
+      {children}
+    </ThemeContext.Provider>
+  )
 }
 
 export { ThemeContext, ThemeProvider }

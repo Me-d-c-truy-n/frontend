@@ -26,11 +26,16 @@ const SettingPopup = ({ close }: Props) => {
       ref={modalRef}
       onClick={handleClickOutside}
       className="z-10 fixed left-0 top-0 w-full h-full"
-      style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+      style={{
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+      }}
     >
       <div
         className="mt-1 shadow-2xl p-5 w-11/12 md:w-6/12 mx-auto border rounded-lg border-amber-600"
-        style={{ backgroundColor: background, color: color }}
+        style={{
+          backgroundColor: background,
+          color: color,
+        }}
       >
         <div className="flex justify-between items-center mb-10">
           <img src={logo} alt="logo" className="w-10" />

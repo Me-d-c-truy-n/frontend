@@ -10,7 +10,14 @@ import { checkIsBookmark } from "../../store/bookmark/selector"
 
 const ButtonBookmark = ({ novelId, novelName, chapterId, chapterName }: IBookmark) => {
   const dispatch = useDispatch<AppDispatch>()
-  const isBookmarked = useSelector(checkIsBookmark({ novelId, novelName, chapterId, time: "" }))
+  const isBookmarked = useSelector(
+    checkIsBookmark({
+      novelId,
+      novelName,
+      chapterId,
+      time: "",
+    })
+  )
 
   return (
     <ButtonUtils

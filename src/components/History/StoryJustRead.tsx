@@ -20,7 +20,13 @@ const StoryJustRead = ({ isShowAll }: { isShowAll: boolean }) => {
         ) : idx < 5 ? (
           <StoryHistoryRow key={idx} data={hs} color={idx % 2 == 1} />
         ) : (
-          <span key={idx} style={{ visibility: "hidden" }} hidden></span>
+          <span
+            key={idx}
+            style={{
+              visibility: "hidden",
+            }}
+            hidden
+          ></span>
         )
       )}
     </div>

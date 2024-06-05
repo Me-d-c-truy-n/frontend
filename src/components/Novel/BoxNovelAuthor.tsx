@@ -18,7 +18,9 @@ const BoxNovelAuthor = ({ novel, isActive = true }: { novel: INovelRoot; isActiv
         </Link>
         <div
           className="font-normal text-slate-500 h-12 line-clamp-2"
-          dangerouslySetInnerHTML={{ __html: novel.description }}
+          dangerouslySetInnerHTML={{
+            __html: novel.description,
+          }}
         ></div>
         <div className="flex justify-between items-center mt-2 gap-2">
           <div className="text-slate-600 flex gap-2 items-center text-sm">

@@ -25,7 +25,10 @@ const CheckNewServer = () => {
   })
 
   if (isLoading) return <LoadingSpinner />
-  if (isError) navigate("/notfound", { replace: true })
+  if (isError)
+    navigate("/notfound", {
+      replace: true,
+    })
 
   return <Outlet />
 }

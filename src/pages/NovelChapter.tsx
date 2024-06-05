@@ -116,7 +116,9 @@ const NovelChapter = () => {
   const handlePrevChapter = () => {
     if (chapter == null || chapterId == null) return
     if (!chapter.preChapterId || chapter.preChapterId.length <= 0) {
-      toast.error("Đây đã là chương đầu tiên", { toastId: "first-chapter" })
+      toast.error("Đây đã là chương đầu tiên", {
+        toastId: "first-chapter",
+      })
       return
     }
     toast.dismiss()
@@ -130,7 +132,10 @@ const NovelChapter = () => {
 
   useEffect(() => {
     if (isError) {
-      if (indexServer == listServer.length - 1) navigate("/notfound", { replace: true })
+      if (indexServer == listServer.length - 1)
+        navigate("/notfound", {
+          replace: true,
+        })
       else setIndexServer(indexServer + 1)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -153,7 +158,11 @@ const NovelChapter = () => {
   if (_isLoading) return <NovelChapterSkeleton />
 
   return (
-    <div style={{ backgroundColor: background }}>
+    <div
+      style={{
+        backgroundColor: background,
+      }}
+    >
       {openSettingPopup && <SettingPopup close={() => setOpenSettingPopup(false)} />}
       {openChapterPopup && (
         <ChapterPopup
@@ -236,7 +245,9 @@ const NovelChapter = () => {
           lineHeight: settings.leading,
           textAlign: settings.align,
         }}
-        dangerouslySetInnerHTML={{ __html: chapter.content }}
+        dangerouslySetInnerHTML={{
+          __html: chapter.content,
+        }}
       ></div>
       <Slider />
 
