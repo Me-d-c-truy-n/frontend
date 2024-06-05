@@ -67,3 +67,14 @@ body {
 
   }
 }
+
+
+// custom text selection
+::-moz-selection { 
+  /* Code for Firefox */
+  @apply text-white bg-[#fdb071]
+}
+
+::selection {
+  @apply text-white bg-[#fdb071]
+}

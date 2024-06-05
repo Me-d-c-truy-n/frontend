@@ -63,13 +63,12 @@ const ChapterPopup = ({ close, novelId, name, server, chapterId }: Props) => {
     if (!container || isLoading || currentPage != firstSelectedPage) return;
 
     const fullHeight = container.scrollHeight;
-    const screenHeight = container.offsetHeight;
 
-    const scrollTo = getCurrentScrollByChapterId(server, chapterId||'1', fullHeight, screenHeight);
-    console.log(scrollTo);
-    container.scrollTo({ 
-      top: scrollTo,  
-    }); 
+    const scrollTo = 
+      getCurrentScrollByChapterId(server, chapterId||'1', fullHeight);
+
+    container.scrollTo({ top: scrollTo }); 
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[isLoading]);
 

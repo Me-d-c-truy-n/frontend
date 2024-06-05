@@ -13,7 +13,7 @@ export function convertDateToTime(date: string) {
         .replace('day ago', 'ngày trước')
         .replace('days ago', 'ngày trước')
         .replace('an', '1')
-        .replace('a ', '1 ');  
+        .replace('a', '1');  
 }
 
 export function convertDate(date: string) {
@@ -31,7 +31,7 @@ export function getImageOfExportFile(ep: string) {
 
 export function subSlugChapter(slug: string) {
   return slug
-    .replace(/^\d+/, '')
+    .replace(/^\d+/, "")
     .replace("chuong", "chương")
     .replace("hoi", "hồi")
     .replace("quyen", "quyển")
@@ -47,12 +47,12 @@ export function easeInOutCubic(t: number, b: number, c: number, d: number) {
 }
 
 export function getCurrentScrollByChapterId(
-  server: string, chapterId: string, fullHeight: number, scrollHeight: number
+  server: string, chapterId: string, fullHeight: number
 ) {
   let scroll = 0;
   try {
     const chapter = parseInt(
-      chapterId.replace(/^\d+/, '').replace("chuong-", "").split(" ").join("")
+      chapterId.replace(/^\d+/, "").replace("chuong-", "").split(" ").join("")
     );
 
     if (isNaN(chapter) || chapter <= 0) throw new Error();
@@ -67,9 +67,8 @@ export function getCurrentScrollByChapterId(
     if (currentChapter === 0) currentChapter = perpage;
     currentChapter -= 2;
 
-    console.log(currentChapter);
     scroll = perpage <= 0 ? 0 
-      :fullHeight * scrollHeight * currentChapter / (scrollHeight * perpage);
+      :fullHeight * currentChapter / perpage;
   } catch (error) {
     return 0;
   }
@@ -82,7 +81,7 @@ export function getCurrentPageByChapterId(server: string, chapterId: string) {
   let page = 1;
   try {
     const chapter = parseInt(
-      chapterId.replace(/^\d+/, '').replace("chuong-", "").split(" ").join("")
+      chapterId.replace(/^\d+/, "").replace("chuong-", "").split(" ").join("")
     );
 
     if (isNaN(chapter) || chapter <= 0) throw new Error();
