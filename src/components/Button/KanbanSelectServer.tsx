@@ -1,12 +1,12 @@
-import { useDispatch } from 'react-redux'
-import { AppDispatch, AppState } from '../../store'
-import { useSelector } from 'react-redux'
-import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd'
-import { useState } from 'react'
-import { changeServerIndex } from '../../store/server'
-import ButtonServer from './ButtonServer'
-import { IResponse } from '../../types/response'
-import { IChapter } from '../../types/novel'
+import { useDispatch } from "react-redux"
+import { AppDispatch, AppState } from "../../store"
+import { useSelector } from "react-redux"
+import { DragDropContext, Droppable, Draggable, DropResult } from "@hello-pangea/dnd"
+import { useState } from "react"
+import { changeServerIndex } from "../../store/server"
+import ButtonServer from "./ButtonServer"
+import { IResponse } from "../../types/response"
+import { IChapter } from "../../types/novel"
 
 export interface CheckServerChapter {
   chapterId: string
@@ -23,7 +23,7 @@ const KanbanSelectServer = ({ successServer, chapterId, novelId, func }: Props) 
   const dispatch = useDispatch<AppDispatch>()
   const { listServer } = useSelector((state: AppState) => state.server)
   const [stores, setStores] = useState(listServer)
-  const [isChecking, setIsChecking] = useState<string>('')
+  const [isChecking, setIsChecking] = useState<string>("")
 
   const handleDragDrop = (results: DropResult) => {
     const { source, destination, type } = results
@@ -31,7 +31,7 @@ const KanbanSelectServer = ({ successServer, chapterId, novelId, func }: Props) 
 
     if (source.droppableId === destination.droppableId && source.index === destination.index) return
 
-    if (type === 'group') {
+    if (type === "group") {
       const tmpStores = [...stores]
       const sourceIndex = source.index
       const destinationIndex = destination.index
@@ -46,10 +46,10 @@ const KanbanSelectServer = ({ successServer, chapterId, novelId, func }: Props) 
 
   return (
     <DragDropContext onDragEnd={handleDragDrop}>
-      <div className='md:mt-2 flex gap-1 flex-col text-white md:text-base text-sm mb-1'>
-        <Droppable droppableId='ROOT' type='group'>
+      <div className="md:mt-2 flex gap-1 flex-col text-white md:text-base text-sm mb-1">
+        <Droppable droppableId="ROOT" type="group">
           {(provided) => (
-            <div className='flex gap-1 flex-col' {...provided.droppableProps} ref={provided.innerRef}>
+            <div className="flex gap-1 flex-col" {...provided.droppableProps} ref={provided.innerRef}>
               {stores.map((srv, index) => (
                 <Draggable draggableId={srv} key={srv} index={index}>
                   {(provided) => (

@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { easeInOutCubic } from '../../utils/helpers'
+import { useState } from "react"
+import { easeInOutCubic } from "../../utils/helpers"
 
 const ScrollButton = () => {
   const [visible, setVisible] = useState<boolean>(false)
@@ -26,14 +26,14 @@ const ScrollButton = () => {
       } else {
         window.scrollTo({
           top: 0,
-          behavior: 'smooth'
+          behavior: "smooth",
         })
       }
     } catch (error) {
       console.log(error)
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: "smooth",
       })
     }
 
@@ -53,11 +53,11 @@ const ScrollButton = () => {
     setLastScrollTop(scrolled <= 0 ? 0 : scrolled)
   }
 
-  window.addEventListener('scroll', toggleVisible)
+  window.addEventListener("scroll", toggleVisible)
 
   return (
     <button
-      className={`${!visible && 'hidden'} shadow-xl font-black fixed flex items-center justify-center text-2xl text-white bottom-8 md:right-8 right-2 rounded-full w-10 h-10 bg-gradient-to-r from-yellow-500 to-orange-500`}
+      className={`${!visible && "hidden"} shadow-xl font-black fixed flex items-center justify-center text-2xl text-white bottom-8 md:right-8 right-2 rounded-full w-10 h-10 bg-gradient-to-r from-yellow-500 to-orange-500`}
       onClick={scrollToTop}
     >
       ↑

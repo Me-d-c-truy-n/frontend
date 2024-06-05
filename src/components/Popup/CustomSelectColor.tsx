@@ -1,6 +1,6 @@
-import { useContext } from 'react'
-import listColor from '../../constants/selection.json'
-import { SettingsContext } from '../../contexts/SettingsContext'
+import { useContext } from "react"
+import listColor from "../../constants/selection.json"
+import { SettingsContext } from "../../contexts/SettingsContext"
 
 const CustomSelectColor = () => {
   const { background, setBackground } = useContext(SettingsContext)!
@@ -8,14 +8,14 @@ const CustomSelectColor = () => {
   return (
     <>
       <input
-        type='color'
-        className='w-32 dark:text-black bg-white'
+        type="color"
+        className="w-32 dark:text-black bg-white"
         value={background}
         onChange={(e) => setBackground(e.target.value)}
-        list='presetColors'
+        list="presetColors"
       />
-      <datalist id='presetColors'>
-        {listColor['color'].map((color) => (
+      <datalist id="presetColors">
+        {listColor["color"].map((color) => (
           <option key={color} value={color}>
             {color}
           </option>

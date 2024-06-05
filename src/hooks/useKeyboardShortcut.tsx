@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect } from "react"
 
 interface UseKeyboardShortcutArgs {
   isActive?: boolean
@@ -17,10 +17,10 @@ export function useKeyboardShortcut({ isActive = true, key, onKeyPressed }: UseK
       }
     }
 
-    document.addEventListener('keydown', keyDownHandler)
+    document.addEventListener("keydown", keyDownHandler)
 
     return () => {
-      document.removeEventListener('keydown', keyDownHandler)
+      document.removeEventListener("keydown", keyDownHandler)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive])

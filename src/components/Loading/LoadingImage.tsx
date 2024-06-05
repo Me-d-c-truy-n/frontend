@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import { cn } from '../../utils/cn'
-import image_loading from '../../assets/images/image-loading.gif'
-import no_image from '../../assets/images/no-image.jpg'
+import { useState } from "react"
+import { cn } from "../../utils/cn"
+import image_loading from "../../assets/images/image-loading.gif"
+import no_image from "../../assets/images/no-image.jpg"
 
 interface Props {
   name: string

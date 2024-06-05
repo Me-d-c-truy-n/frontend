@@ -1,19 +1,19 @@
-import MyHelmet from '../../components/MyHelmet'
-import Slider from '../../components/Slider'
-import TitleTabScroll from '../../components/TitleTabScroll'
+import MyHelmet from "../../components/MyHelmet"
+import Slider from "../../components/Slider"
+import TitleTabScroll from "../../components/TitleTabScroll"
 
 const PrivacyPolicy = () => {
   return (
-    <div className='font-sans flex flex-col text-black dark:text-white'>
-      <MyHelmet title={'Chính Sách Bảo Mật'} description={'Web tổng hợp và đọc tiểu thuyết trực tuyến'} />
+    <div className="font-sans flex flex-col text-black dark:text-white">
+      <MyHelmet title={"Chính Sách Bảo Mật"} description={"Web tổng hợp và đọc tiểu thuyết trực tuyến"} />
       <Slider />
-      <TitleTabScroll id='privacy_policy' title='CHÍNH SÁCH BẢO MẬT' />
-      <div className='flex flex-col gap-8 text-[1.05rem] px-1 text-justify'>
+      <TitleTabScroll id="privacy_policy" title="CHÍNH SÁCH BẢO MẬT" />
+      <div className="flex flex-col gap-8 text-[1.05rem] px-1 text-justify">
         <p>
           Nền tảng đảm bảo các điều sau về tính riêng tư của người tham gia hoạt động tại tất cả các website trong hệ
           thống:
         </p>
-        <ul className='list-decimal ps-6 text-justify flex flex-col gap-2'>
+        <ul className="list-decimal ps-6 text-justify flex flex-col gap-2">
           <li>
             Không tiết lộ địa chỉ email, hay các thông tin cần bảo mật khác cho bên thứ 3, trừ khi bạn vi phạm nội quy.
           </li>

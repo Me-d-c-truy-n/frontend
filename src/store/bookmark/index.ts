@@ -1,16 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { IBookmarkRoot } from './type'
-import { Store } from '../name'
-import { bookmarkReducer } from './reducer'
+import { createSlice } from "@reduxjs/toolkit"
+import { IBookmarkRoot } from "./type"
+import { Store } from "../name"
+import { bookmarkReducer } from "./reducer"
 
 const initialState: IBookmarkRoot = {
-  bookmark: []
+  bookmark: [],
 }
 
 const bookmarkSlice = createSlice({
   name: Store.BOOKMARK,
   initialState,
-  reducers: bookmarkReducer
+  reducers: bookmarkReducer,
 })
 
 const { actions, reducer } = bookmarkSlice

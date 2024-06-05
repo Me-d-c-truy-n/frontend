@@ -1,5 +1,5 @@
-import { PayloadAction } from '@reduxjs/toolkit'
-import { IServer } from './type'
+import { PayloadAction } from "@reduxjs/toolkit"
+import { IServer } from "./type"
 
 export const serverReducer = {
   changeServerIndex(state: IServer, action: PayloadAction<string[]>) {
@@ -15,6 +15,6 @@ export const serverReducer = {
 
     state.listServer = state.listServer.filter((srv) => action.payload.includes(srv))
 
-    state.server = state.listServer[0] || 'metruyencv'
-  }
+    state.server = state.listServer[0] || "metruyencv"
+  },
 }

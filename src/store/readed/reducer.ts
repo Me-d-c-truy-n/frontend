@@ -1,5 +1,5 @@
-import { PayloadAction } from '@reduxjs/toolkit'
-import { IReaded, IReadedData, IReadedRoot } from './type'
+import { PayloadAction } from "@reduxjs/toolkit"
+import { IReaded, IReadedData, IReadedRoot } from "./type"
 
 export const readedReducer = {
   addNovelReaded(state: IReadedData, action: PayloadAction<IReadedRoot>) {
@@ -9,7 +9,7 @@ export const readedReducer = {
     if (filterReaded.length <= 0) {
       const newReaded: IReaded = {
         novelId: action.payload.novelId,
-        chapterId: [action.payload.chapterId]
+        chapterId: [action.payload.chapterId],
       }
 
       state.readed = [newReaded, ...filterUnReaded]
@@ -18,10 +18,10 @@ export const readedReducer = {
 
       const newReaded: IReaded = {
         novelId: action.payload.novelId,
-        chapterId: [...listChapter, action.payload.chapterId]
+        chapterId: [...listChapter, action.payload.chapterId],
       }
 
       state.readed = [newReaded, ...filterUnReaded]
     }
-  }
+  },
 }

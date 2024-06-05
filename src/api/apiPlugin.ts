@@ -1,4 +1,4 @@
-import AxiosClient from './axios'
+import AxiosClient from "./axios"
 
 export const ApiGetAllServer = async () => {
   const res = await AxiosClient.get(`/server`)

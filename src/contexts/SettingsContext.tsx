@@ -1,11 +1,11 @@
-import { Dispatch, ReactNode, SetStateAction, createContext, useContext } from 'react'
-import { useLocalStorageState } from '../hooks/useLocalStorageState'
-import { ThemeContext } from './ThemeContext'
-import { THEME, THEME_DARK, THEME_LIGHT } from '../types/theme'
-import { KEY } from '../types/key'
-import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../store'
-import { resetSettingsText } from '../store/settings'
+import { Dispatch, ReactNode, SetStateAction, createContext, useContext } from "react"
+import { useLocalStorageState } from "../hooks/useLocalStorageState"
+import { ThemeContext } from "./ThemeContext"
+import { THEME, THEME_DARK, THEME_LIGHT } from "../types/theme"
+import { KEY } from "../types/key"
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "../store"
+import { resetSettingsText } from "../store/settings"
 
 interface SettingsContextType {
   color: string
@@ -28,11 +28,11 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) => {
 
   const [color, setColor] = useLocalStorageState({
     key: KEY.COLOR + theme,
-    initialState: theme == THEME.LIGHT ? THEME_LIGHT.COLOR : THEME_DARK.COLOR
+    initialState: theme == THEME.LIGHT ? THEME_LIGHT.COLOR : THEME_DARK.COLOR,
   })
   const [background, setBackground] = useLocalStorageState({
     key: KEY.BACKGROUND + theme,
-    initialState: theme == THEME.LIGHT ? THEME_LIGHT.BACKGROUND : THEME_DARK.BACKGROUND
+    initialState: theme == THEME.LIGHT ? THEME_LIGHT.BACKGROUND : THEME_DARK.BACKGROUND,
   })
 
   function resetSettings() {
@@ -54,7 +54,7 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) => {
         background,
         setColor,
         setBackground,
-        resetSettings
+        resetSettings,
       }}
     >
       {children}

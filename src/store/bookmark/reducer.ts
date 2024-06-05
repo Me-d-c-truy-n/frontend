@@ -1,5 +1,5 @@
-import { PayloadAction } from '@reduxjs/toolkit'
-import { IBookmark, IBookmarkRoot } from './type'
+import { PayloadAction } from "@reduxjs/toolkit"
+import { IBookmark, IBookmarkRoot } from "./type"
 
 export const bookmarkReducer = {
   updateBookmark(state: IBookmarkRoot, action: PayloadAction<IBookmark>) {
@@ -26,5 +26,5 @@ export const bookmarkReducer = {
         state.bookmark = [...restData]
       }
     }
-  }
+  },
 }

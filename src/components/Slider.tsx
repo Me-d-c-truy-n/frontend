@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import slider_const from '../constants/slider.json'
-import Skeleton from 'react-loading-skeleton'
+import { useEffect, useState } from "react"
+import slider_const from "../constants/slider.json"
+import Skeleton from "react-loading-skeleton"
 
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max)
@@ -11,18 +11,18 @@ interface Props {
 }
 
 const Slider = ({ isLoading = false }: Props) => {
-  const [slider, setSlider] = useState('')
+  const [slider, setSlider] = useState("")
 
   useEffect(() => {
-    setSlider(slider_const['slider'][getRandomInt(slider_const['slider'].length)])
+    setSlider(slider_const["slider"][getRandomInt(slider_const["slider"].length)])
   }, [])
 
   return (
-    <div className='w-full'>
+    <div className="w-full">
       {isLoading || !slider || slider.trim().length <= 0 ? (
-        <Skeleton className='h-20 lg:h-48' />
+        <Skeleton className="h-20 lg:h-48" />
       ) : (
-        <img src={slider} alt='slider' className='w-full cursor-pointer' />
+        <img src={slider} alt="slider" className="w-full cursor-pointer" />
       )}
     </div>
   )

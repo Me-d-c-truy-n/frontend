@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { useKeyboardShortcut } from './useKeyboardShortcut'
+import { useRef } from "react"
+import { useKeyboardShortcut } from "./useKeyboardShortcut"
 
 export function useModal(close: () => void) {
   const modalRef = useRef<HTMLDivElement | null>(null)
@@ -11,8 +11,8 @@ export function useModal(close: () => void) {
   }
 
   useKeyboardShortcut({
-    key: 'Escape',
-    onKeyPressed: () => close()
+    key: "Escape",
+    onKeyPressed: () => close(),
   })
 
   return { modalRef, handleClickOutside }

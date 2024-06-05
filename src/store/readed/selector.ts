@@ -1,6 +1,6 @@
-import { createSelector } from '@reduxjs/toolkit'
-import { AppState } from '..'
-import { IReaded } from './type'
+import { createSelector } from "@reduxjs/toolkit"
+import { AppState } from ".."
+import { IReaded } from "./type"
 
 export const getListChapterReaded = (novelId: string | undefined) =>
   createSelector(

@@ -1,15 +1,15 @@
-import MyHelmet from '../../components/MyHelmet'
-import Slider from '../../components/Slider'
-import TitleTabScroll from '../../components/TitleTabScroll'
+import MyHelmet from "../../components/MyHelmet"
+import Slider from "../../components/Slider"
+import TitleTabScroll from "../../components/TitleTabScroll"
 
 const AboutLicense = () => {
   return (
-    <div className='font-sans flex flex-col text-black dark:text-white'>
-      <MyHelmet title={'Về Bản Quyền'} description={'Web tổng hợp và đọc tiểu thuyết trực tuyến'} />
+    <div className="font-sans flex flex-col text-black dark:text-white">
+      <MyHelmet title={"Về Bản Quyền"} description={"Web tổng hợp và đọc tiểu thuyết trực tuyến"} />
       <Slider />
-      <TitleTabScroll id='about_license' title='VỀ BẢN QUYỀN' />
-      <div className='flex flex-col gap-8 text-[1.05rem] px-1 text-justify'>
-        <ul className='list-decimal ps-6 text-justify flex flex-col gap-2'>
+      <TitleTabScroll id="about_license" title="VỀ BẢN QUYỀN" />
+      <div className="flex flex-col gap-8 text-[1.05rem] px-1 text-justify">
+        <ul className="list-decimal ps-6 text-justify flex flex-col gap-2">
           <li>
             Nền tảng và các website trong hệ thống luôn ý thức rõ ràng về việc tôn trọng bản quyền của các tác giả, tác
             phẩm, các sản phẩm trí tuệ.
@@ -25,9 +25,9 @@ const AboutLicense = () => {
             bản quyền.
           </li>
         </ul>
-        <i className='text-lg'>
-          Tất cả các vấn đề liên quan tới bản quyền, vui lòng liên hệ trực tiếp qua email{' '}
-          <a href='mailto:group04@truyen.onl' className='font-black hover:underline'>
+        <i className="text-lg">
+          Tất cả các vấn đề liên quan tới bản quyền, vui lòng liên hệ trực tiếp qua email{" "}
+          <a href="mailto:group04@truyen.onl" className="font-black hover:underline">
             group04@truyen.onl
           </a>
         </i>

@@ -1,8 +1,8 @@
-import Pagination from '@mui/material/Pagination'
-import { ThemeContext } from '../contexts/ThemeContext'
-import { Dispatch, SetStateAction, useContext } from 'react'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import '../assets/style/pagination.scss'
+import Pagination from "@mui/material/Pagination"
+import { ThemeContext } from "../contexts/ThemeContext"
+import { Dispatch, SetStateAction, useContext } from "react"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import "../assets/style/pagination.scss"
 
 interface Props {
   changeThemeEffect?: boolean
@@ -19,10 +19,10 @@ const CustomPagination = ({
   setCurrentPage,
   changeThemeEffect = true,
   topList,
-  isDelay = false
+  isDelay = false,
 }: Props) => {
   const { theme } = useContext(ThemeContext)!
-  const matches = useMediaQuery('(min-width:480px)')
+  const matches = useMediaQuery("(min-width:480px)")
 
   const handleChangePage = (_e: React.ChangeEvent<unknown>, value: number) => {
     setCurrentPage(value)
@@ -36,13 +36,13 @@ const CustomPagination = ({
       setTimeout(() => {
         const element = document.getElementById(topList)
         element?.scrollIntoView({
-          behavior: 'smooth'
+          behavior: "smooth",
         })
       }, 10)
     } else {
       const element = document.getElementById(topList)
       element?.scrollIntoView({
-        behavior: 'smooth'
+        behavior: "smooth",
       })
     }
   }
@@ -50,14 +50,14 @@ const CustomPagination = ({
   return (
     <>
       {totalPage > 1 && (
-        <div className='mt-5 flex justify-center'>
+        <div className="mt-5 flex justify-center">
           <Pagination
             count={totalPage}
             page={currentPage}
-            color='primary'
-            size={matches ? 'large' : 'small'}
+            color="primary"
+            size={matches ? "large" : "small"}
             onChange={handleChangePage}
-            className={`${theme == 'dark' && changeThemeEffect && 'dark-pagination'}`}
+            className={`${theme == "dark" && changeThemeEffect && "dark-pagination"}`}
           />
         </div>
       )}

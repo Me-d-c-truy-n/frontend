@@ -1,4 +1,4 @@
-import AxiosClient from './axios'
+import AxiosClient from "./axios"
 
 export const ApiGetAllNovel = async (server: string, page: number) => {
   const res = await AxiosClient.get(`/${server}/ds-truyen?page=${page}`)

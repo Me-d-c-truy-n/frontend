@@ -1,11 +1,11 @@
-import { cn } from '../../utils/cn'
-import { motion, stagger, useAnimate, useInView } from 'framer-motion'
-import { useEffect } from 'react'
+import { cn } from "../../utils/cn"
+import { motion, stagger, useAnimate, useInView } from "framer-motion"
+import { useEffect } from "react"
 
 export const TypewriterEffect = ({
   words,
   className,
-  cursorClassName
+  cursorClassName,
 }: {
   words: {
     text: string
@@ -18,7 +18,7 @@ export const TypewriterEffect = ({
   const wordsArray = words.map((word) => {
     return {
       ...word,
-      text: word.text.split('')
+      text: word.text.split(""),
     }
   })
 
@@ -27,16 +27,16 @@ export const TypewriterEffect = ({
   useEffect(() => {
     if (isInView) {
       animate(
-        'span',
+        "span",
         {
-          display: 'inline-block',
+          display: "inline-block",
           opacity: 1,
-          width: 'fit-content'
+          width: "fit-content",
         },
         {
           duration: 0.3,
           delay: stagger(0.1),
-          ease: 'easeInOut'
+          ease: "easeInOut",
         }
       )
     }
@@ -45,10 +45,10 @@ export const TypewriterEffect = ({
 
   const renderWords = () => {
     return (
-      <motion.div ref={scope} className='inline'>
+      <motion.div ref={scope} className="inline">
         {wordsArray.map((word, idx) => {
           return (
-            <div key={`word-${idx}`} className='inline-block'>
+            <div key={`word-${idx}`} className="inline-block">
               {word.text.map((char, index) => (
                 <motion.span
                   initial={{}}
@@ -66,21 +66,21 @@ export const TypewriterEffect = ({
     )
   }
   return (
-    <div className={cn('text-2xl md:text-5xl font-bold text-center', className)}>
+    <div className={cn("text-2xl md:text-5xl font-bold text-center", className)}>
       {renderWords()}
       <motion.span
         initial={{
-          opacity: 0
+          opacity: 0,
         }}
         animate={{
-          opacity: 1
+          opacity: 1,
         }}
         transition={{
           duration: 0.8,
           repeat: Infinity,
-          repeatType: 'reverse'
+          repeatType: "reverse",
         }}
-        className={cn('inline-block rounded-sm w-[4px] h-5 md:h-9 bg-white', cursorClassName)}
+        className={cn("inline-block rounded-sm w-[4px] h-5 md:h-9 bg-white", cursorClassName)}
       ></motion.span>
     </div>
   )

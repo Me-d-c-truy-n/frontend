@@ -1,43 +1,43 @@
-import moment from 'moment'
-import listExport from '../constants/export.json'
-import listPerpage from '../constants/perpage.json'
+import moment from "moment"
+import listExport from "../constants/export.json"
+import listPerpage from "../constants/perpage.json"
 
 export function convertDateToTime(date: string) {
   const convertDate = new Date(date)
   return moment(convertDate)
     .fromNow()
-    .replace('a few seconds', 'vài giây trước')
-    .replace('minute ago', 'phút trước')
-    .replace('minutes ago', 'phút trước')
-    .replace('hour ago', 'giờ trước')
-    .replace('hours ago', 'giờ trước')
-    .replace('day ago', 'ngày trước')
-    .replace('days ago', 'ngày trước')
-    .replace('an', '1')
-    .replace('a', '1')
+    .replace("a few seconds", "vài giây trước")
+    .replace("minute ago", "phút trước")
+    .replace("minutes ago", "phút trước")
+    .replace("hour ago", "giờ trước")
+    .replace("hours ago", "giờ trước")
+    .replace("day ago", "ngày trước")
+    .replace("days ago", "ngày trước")
+    .replace("an", "1")
+    .replace("a", "1")
 }
 
 export function convertDate(date: string) {
   const convertDate = new Date(date)
-  return moment(convertDate).format('YYYY-MM-DD HH:mm:ss')
+  return moment(convertDate).format("YYYY-MM-DD HH:mm:ss")
 }
 
 export function getImageOfExportFile(ep: string) {
   for (let i = 0; i < listExport.export.length; i++) {
     if (listExport.export[i].id === ep.toLocaleLowerCase()) return listExport.export[i].image
   }
-  return 'https://cdn-icons-png.flaticon.com/512/6301/6301689.png'
+  return "https://cdn-icons-png.flaticon.com/512/6301/6301689.png"
 }
 
 export function subSlugChapter(slug: string) {
   return slug
-    .replace(/^\d+/, '')
-    .replace('chuong', 'chương')
-    .replace('hoi', 'hồi')
-    .replace('quyen', 'quyển')
-    .replace('tap', 'tập')
-    .split('-')
-    .join(' ')
+    .replace(/^\d+/, "")
+    .replace("chuong", "chương")
+    .replace("hoi", "hồi")
+    .replace("quyen", "quyển")
+    .replace("tap", "tập")
+    .split("-")
+    .join(" ")
 }
 
 export function easeInOutCubic(t: number, b: number, c: number, d: number) {
@@ -50,7 +50,7 @@ export function easeInOutCubic(t: number, b: number, c: number, d: number) {
 export function getCurrentScrollByChapterId(server: string, chapterId: string, fullHeight: number) {
   let scroll = 0
   try {
-    const chapter = parseInt(chapterId.replace(/^\d+/, '').replace('chuong-', '').split(' ').join(''))
+    const chapter = parseInt(chapterId.replace(/^\d+/, "").replace("chuong-", "").split(" ").join(""))
 
     if (isNaN(chapter) || chapter <= 0) throw new Error()
 
@@ -75,7 +75,7 @@ export function getCurrentPageByChapterId(server: string, chapterId: string) {
   // check is simple chapter (only chapterId: chuong-[number])
   let page = 1
   try {
-    const chapter = parseInt(chapterId.replace(/^\d+/, '').replace('chuong-', '').split(' ').join(''))
+    const chapter = parseInt(chapterId.replace(/^\d+/, "").replace("chuong-", "").split(" ").join(""))
 
     if (isNaN(chapter) || chapter <= 0) throw new Error()
 

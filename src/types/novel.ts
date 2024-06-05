@@ -1,4 +1,4 @@
-import { IAuthorRoot } from './author'
+import { IAuthorRoot } from "./author"
 
 export interface INovelRoot {
   novelId: string

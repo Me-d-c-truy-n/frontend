@@ -1,5 +1,5 @@
-import { PayloadAction } from '@reduxjs/toolkit'
-import { IHistory, IHistoryRoot } from './type'
+import { PayloadAction } from "@reduxjs/toolkit"
+import { IHistory, IHistoryRoot } from "./type"
 
 export const historyReducer = {
   updateNovelReaded(state: IHistory, action: PayloadAction<IHistoryRoot>) {
@@ -11,5 +11,5 @@ export const historyReducer = {
     const filterNovel = state.history.filter((nov: IHistoryRoot) => action.payload !== nov.novelId)
 
     state.history = [...filterNovel]
-  }
+  },
 }

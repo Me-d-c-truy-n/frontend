@@ -1,6 +1,6 @@
-import { createSelector } from '@reduxjs/toolkit'
-import { IBookmark } from './type'
-import { AppState } from '..'
+import { createSelector } from "@reduxjs/toolkit"
+import { IBookmark } from "./type"
+import { AppState } from ".."
 
 export const checkIsBookmark = (currentBookmark: IBookmark) =>
   createSelector(

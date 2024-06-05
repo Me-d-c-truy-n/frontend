@@ -1,31 +1,31 @@
 /* eslint-disable no-unused-vars */
 export enum KEY {
-  HISTORY = 'history',
-  READED = 'readed',
+  HISTORY = "history",
+  READED = "readed",
 
-  COLOR = 'color-',
-  BACKGROUND = 'background-',
-  FONTSIZE = 'fontSize',
-  FONTSTYLE = 'fontStyle',
-  LEADING = 'leading',
-  ALIGN = 'align',
-  SERVER = 'server',
+  COLOR = "color-",
+  BACKGROUND = "background-",
+  FONTSIZE = "fontSize",
+  FONTSTYLE = "fontStyle",
+  LEADING = "leading",
+  ALIGN = "align",
+  SERVER = "server",
 
-  THEME = 'theme',
+  THEME = "theme",
 
-  BOOKMARK = 'bookmark'
+  BOOKMARK = "bookmark",
 }
 
 export enum INITIAL_KEY {
-  FONTSIZE = '24px',
-  FONTSTYLE = 'Palatino Linotype',
-  LEADING = '180%',
-  SERVER = 'metruyencv'
+  FONTSIZE = "24px",
+  FONTSTYLE = "Palatino Linotype",
+  LEADING = "180%",
+  SERVER = "metruyencv",
 }
 
 export enum SelectionKey {
-  SIZE = 'size',
-  FONT = 'font',
-  LEADING = 'leading',
-  ALIGN = 'align'
+  SIZE = "size",
+  FONT = "font",
+  LEADING = "leading",
+  ALIGN = "align",
 }
