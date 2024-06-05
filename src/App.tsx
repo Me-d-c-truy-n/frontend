@@ -20,7 +20,6 @@ function App() {
 
   useEffect(() => {
     document.body.style.backgroundColor = background
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, background])
 
   return (
