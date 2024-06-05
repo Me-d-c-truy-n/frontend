@@ -1,31 +1,27 @@
-import { useEffect } from "react";
+import { useEffect } from 'react'
 
 interface UseKeyboardShortcutArgs {
-  isActive?: boolean;
-  key: string;
-  onKeyPressed: () => void;
+  isActive?: boolean
+  key: string
+  onKeyPressed: () => void
 }
 
-export function useKeyboardShortcut({
-  isActive = true,
-  key,
-  onKeyPressed
-}: UseKeyboardShortcutArgs) {
+export function useKeyboardShortcut({ isActive = true, key, onKeyPressed }: UseKeyboardShortcutArgs) {
   useEffect(() => {
-    if (!isActive) return;
-    
+    if (!isActive) return
+
     function keyDownHandler(e: globalThis.KeyboardEvent) {
       if (e.key === key) {
-        e.preventDefault();
-        onKeyPressed();
+        e.preventDefault()
+        onKeyPressed()
       }
     }
 
-    document.addEventListener("keydown", keyDownHandler);
+    document.addEventListener('keydown', keyDownHandler)
 
     return () => {
-      document.removeEventListener("keydown", keyDownHandler);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isActive]);
+      document.removeEventListener('keydown', keyDownHandler)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isActive])
 }

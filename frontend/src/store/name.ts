@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export enum Store {
   ROOT = 'root',
   SETTINGS = 'settings',
@@ -5,5 +6,5 @@ export enum Store {
   READED = 'readed',
   BOOKMARK = 'bookmark',
   CHAPTEROPEN = 'chapterOpen',
-  SERVER = 'server',
+  SERVER = 'server'
 }

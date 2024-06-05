@@ -1,7 +1,7 @@
-import { PayloadAction } from "@reduxjs/toolkit";
-import { ISettings } from "./type";
-import { Align } from "../../types/align";
-import { INITIAL_KEY } from "../../types/key";
+import { PayloadAction } from '@reduxjs/toolkit'
+import { ISettings } from './type'
+import { Align } from '../../types/align'
+import { INITIAL_KEY } from '../../types/key'
 
 export const settingsReducer = {
   changeFontSize(state: ISettings, action: PayloadAction<string>) {
@@ -14,12 +14,12 @@ export const settingsReducer = {
     state.leading = action.payload
   },
   changeAlign(state: ISettings, action: PayloadAction<string>) {
-    state.align = action.payload as Align;
+    state.align = action.payload as Align
   },
   resetSettingsText(state: ISettings) {
-    state.fontSize = INITIAL_KEY.FONTSIZE;
-    state.fontStyle = INITIAL_KEY.FONTSTYLE;
-    state.leading = INITIAL_KEY.LEADING;
-    state.align = Align.JUSTIFY;
+    state.fontSize = INITIAL_KEY.FONTSIZE
+    state.fontStyle = INITIAL_KEY.FONTSTYLE
+    state.leading = INITIAL_KEY.LEADING
+    state.align = Align.JUSTIFY
   }
 }

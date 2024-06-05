@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export enum KEY {
   HISTORY = 'history',
   READED = 'readed',
@@ -12,19 +13,19 @@ export enum KEY {
 
   THEME = 'theme',
 
-  BOOKMARK = 'bookmark',
+  BOOKMARK = 'bookmark'
 }
 
 export enum INITIAL_KEY {
   FONTSIZE = '24px',
   FONTSTYLE = 'Palatino Linotype',
   LEADING = '180%',
-  SERVER = 'metruyencv',
+  SERVER = 'metruyencv'
 }
 
 export enum SelectionKey {
   SIZE = 'size',
   FONT = 'font',
   LEADING = 'leading',
-  ALIGN = 'align',
+  ALIGN = 'align'
 }

@@ -1,5 +1,5 @@
-import { AnyAction, combineReducers, Reducer } from "redux";
-import { AppState } from ".";
+import { AnyAction, combineReducers, Reducer } from 'redux'
+import { AppState } from '.'
 import settingsSlice from './settings'
 import historySlice from './history'
 import readedSlice from './readed'
@@ -13,11 +13,11 @@ export const combinedReducer = combineReducers({
   readed: readedSlice,
   bookmark: bookmarkSlice,
   chapterOpen: chapterOpenSlice,
-  server: serverSlice,
-});
+  server: serverSlice
+})
 
 const rootReducer: Reducer = (state: AppState, action: AnyAction) => {
-  return combinedReducer(state, action);
-};
+  return combinedReducer(state, action)
+}
 
-export default rootReducer;
+export default rootReducer

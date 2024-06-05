@@ -1,4 +1,4 @@
 export interface IServer {
-  listServer: string[];
-  server: string;
+  listServer: string[]
+  server: string
 }
