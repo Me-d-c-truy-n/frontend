@@ -1,5 +1,5 @@
-import { createHashRouter } from "react-router-dom";
 import Layout from "../layout/Layout";
+import { createHashRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import NovelPreview from "../pages/NovelPreview";
 import ScrollToTop from "../hooks/useScrollToTop";
