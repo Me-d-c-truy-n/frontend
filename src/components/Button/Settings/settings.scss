@@ -1,0 +1,49 @@
+.setting {
+  position: fixed;
+  right: -60px;
+  bottom: -50px;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-20deg);
+  z-index: 1000;
+  .toggle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    transition: transform 1.2s;
+  }
+  .notranslate {
+    transform: rotate(calc(-130deg / 3 * var(--i)));
+  }
+  &.active {
+    .action-item {
+      transform: rotate(calc(160deg / 3 * var(--i)));
+      opacity: 1;
+    }
+    .toggle {
+      transform: rotate(180deg);
+    }
+  }
+  .action-item {
+    position: absolute;
+    left: 0;
+    transform-origin: 100px;
+    transition: 0.2s;
+    transition-delay: calc(0.1s * var(--i));
+    transform: rotate(0deg) translateX(75px);
+    z-index: -1;
+    opacity: 0;
+  }
+}
+
+.v-icon-svg {
+  fill: currentColor;
+  outline: none;
+}

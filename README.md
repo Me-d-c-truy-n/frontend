@@ -23,7 +23,7 @@ Software Design
 
 ## Deployment
 
-Front-end:
+Front-end: https://me-d-c-truy-n.github.io/Frontend/
 
 Back-end: 
 

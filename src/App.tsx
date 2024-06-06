@@ -6,7 +6,6 @@ import { SettingsContext } from "./contexts/SettingsContext";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { ThemeContext } from "./contexts/ThemeContext";
 import { THEME } from "./types/theme";
-import ScrollButton from "./components/Button/ScrollButton";
 import { useSelector } from "react-redux";
 import { AppState } from "./store";
 import "react-toastify/dist/ReactToastify.css";
@@ -33,8 +32,6 @@ function App() {
           <RouterProvider router={router} />
         </SkeletonTheme>
       )}
-
-      <ScrollButton />
 
       <ToastContainer
         position="top-right"
