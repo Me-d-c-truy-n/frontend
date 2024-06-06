@@ -9,12 +9,15 @@ import { useNavigate } from "react-router-dom";
 import { easeInOutCubic } from "../../../utils/helpers";
 import { AppState } from "../../../store";
 import { useSelector } from "react-redux";
+import PriorityServerPopup from "../../Popup/PriorityServerPopup";
 
 const ButtonSettings = () => {
   const navigate = useNavigate();
   const isOpen = useSelector((state: AppState) => state.chapterOpen.isOpen);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [visible, setVisible] = useState<boolean>(false);
+  const [isShowPriorityServer, setIsShowPriorityServer] = useState<boolean>(false);
+
   let lastScrollTop = 0;
 
   const handleClickToHome = () => {
@@ -73,39 +76,45 @@ const ButtonSettings = () => {
   useEffect(() => {
     if (isOpen) {
       window.addEventListener("scroll", toggleVisible);
-      console.log("add");
     } else {
       window.removeEventListener("scroll", toggleVisible);
-      console.log("remove");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   return (
-    <div className={`setting ${isActive && "active"} ${!visible && isOpen && "hidden"}`}>
-      <div className="toggle">
-        <button
-          type="button"
-          className="nav-btn btn-default-icon !w-9 !h-9 cursor-pointer"
-          onClick={() => setIsActive(!isActive)}
-        >
-          <IconSetting />
-        </button>
-      </div>
-      <div className="action-item" style={{ "--i": 0 } as React.CSSProperties}>
-        <ButtonChild func={handleClickToHome}>
-          <IoMdHome className="rotate-[18deg] text-sky-400 text-lg" />
-        </ButtonChild>
-      </div>
-      <div className="action-item" style={{ "--i": 1 } as React.CSSProperties}>
-        <ButtonChild func={() => {}}>
-          <FaServer className="rotate-[10deg] text-green-700" />
-        </ButtonChild>
-      </div>
-      <div className="action-item" style={{ "--i": 2 } as React.CSSProperties}>
-        <ButtonChild func={scrollToTop}>
-          <FaLongArrowAltUp className="text-red-600 text-xl" />
-        </ButtonChild>
+    <div>
+      {isShowPriorityServer && <PriorityServerPopup close={() => setIsShowPriorityServer(false)} />}
+      <div className={`setting ${isActive && "active"} ${!visible && isOpen && "hidden"}`}>
+        <div className="toggle">
+          <button
+            type="button"
+            className="nav-btn btn-default-icon !w-9 !h-9 cursor-pointer outline-none"
+            onClick={() => setIsActive(!isActive)}
+          >
+            <IconSetting />
+          </button>
+        </div>
+        <div className="action-item" style={{ "--i": 0 } as React.CSSProperties}>
+          <ButtonChild func={handleClickToHome}>
+            <IoMdHome className="rotate-[20deg] text-sky-400 text-lg" />
+          </ButtonChild>
+        </div>
+        <div className="action-item" style={{ "--i": 1 } as React.CSSProperties}>
+          <ButtonChild
+            func={() => {
+              setIsShowPriorityServer(true);
+              setIsActive(false);
+            }}
+          >
+            <FaServer className="rotate-[10deg] text-green-700" />
+          </ButtonChild>
+        </div>
+        <div className="action-item" style={{ "--i": 2 } as React.CSSProperties}>
+          <ButtonChild func={scrollToTop}>
+            <FaLongArrowAltUp className="text-red-600 text-xl" />
+          </ButtonChild>
+        </div>
       </div>
     </div>
   );

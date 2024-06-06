@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   transform: rotate(-20deg);
-  z-index: 1000;
+  z-index: 10;
   .toggle {
     position: absolute;
     width: 60px;
@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99;
+    z-index: 10;
     transition: transform 1.2s;
   }
   .notranslate {

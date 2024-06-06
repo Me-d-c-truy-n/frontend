@@ -75,7 +75,7 @@ const ChapterPopup = ({ close, novelId, name, server, chapterId }: Props) => {
     <div
       ref={modalRef}
       onClick={handleClickOutside}
-      className="fixed left-0 mt-0 z-10 top-0 w-full h-screen px-2"
+      className="fixed left-0 mt-0 z-[1000] top-0 w-full h-screen px-2"
       style={{
         backgroundColor: "rgba(0, 0, 0, 0.6)",
       }}

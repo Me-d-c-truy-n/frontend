@@ -25,7 +25,7 @@ const SettingPopup = ({ close }: Props) => {
     <div
       ref={modalRef}
       onClick={handleClickOutside}
-      className="z-10 fixed left-0 top-0 w-full h-full"
+      className="z-[1000] fixed left-0 top-0 w-full h-full"
       style={{
         backgroundColor: "rgba(0, 0, 0, 0.5)",
       }}

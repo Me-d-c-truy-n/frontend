@@ -8,10 +8,11 @@ const Layout = () => {
     <div className={`md:px-4 lg:px-6 px-0 w-full relative overflow-x-hidden`}>
       <Header />
       <main className="p-1">
-        <ButtonSettings />
         <Outlet />
       </main>
       <Footer />
+
+      <ButtonSettings />
     </div>
   );
 };

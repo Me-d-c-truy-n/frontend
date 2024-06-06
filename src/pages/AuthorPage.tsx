@@ -24,14 +24,14 @@ const AuthorPage = () => {
   const [, setPerPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [novels, setNovels] = useState<INovelRoot[]>([]);
-  const { server, listServer } = useSelector((state: AppState) => state.server);
+  const { listServer } = useSelector((state: AppState) => state.server);
   const [indexServer, setIndexServer] = useState(0);
   const [myServer, setMyServer] = useState<string>(
     listServer.includes(searchParams.get("server") || "a") ? searchParams.get("server") || "a" : listServer[0],
   );
 
   const { isFetching, isError } = useQuery({
-    queryKey: ["author", authorId, server, currentPage, indexServer],
+    queryKey: ["author", authorId, currentPage, indexServer],
     queryFn: async () => {
       const data: IResponse<INovelRoot[]> = await ApiGetAllNovelOfAuthor(myServer, authorId || "a", 1);
 
