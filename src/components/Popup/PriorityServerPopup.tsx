@@ -6,6 +6,7 @@ import { DragDropContext, Droppable, Draggable, DropResult } from "@hello-pangea
 import ButtonClose from "../Button/ButtonClose";
 import { changeServerIndex } from "../../store/server";
 import { toast } from "react-toastify";
+import { FaInfoCircle } from "react-icons/fa";
 
 interface Props {
   close: () => void;
@@ -92,6 +93,10 @@ const PriorityServerPopup = ({ close }: Props) => {
               </Droppable>
             </div>
           </DragDropContext>
+          <i className="md:text-base w-full flex flex-wrap font-semibold text-rose-500 items-center justify-center text-sm gap-1">
+            <FaInfoCircle />
+            Kéo thả để thay đổi độ ưu tiên
+          </i>
         </div>
 
         <div className="flex mt-5 gap-3 justify-around pb-1">
