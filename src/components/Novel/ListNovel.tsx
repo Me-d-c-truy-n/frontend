@@ -35,7 +35,7 @@ const ListNovel = () => {
   if (isError)
     return (
       <div>
-        <TitleTab name="DANH SÁCH TRUYỆN" link="/" />
+        <TitleTab name="Danh Sách Truyện" />
         <EmptyResult title="Có vấn đề xảy ra, vui lòng kiểm tra kết nối" />
       </div>
     );
