@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import Layout from "../layout/Layout";
 import Home from "../pages/Home";
 import NovelPreview from "../pages/NovelPreview";
@@ -14,7 +14,7 @@ import PrivacyPolicy from "../pages/Information/PrivacyPolicy";
 import AboutLicense from "../pages/Information/AboutLicense";
 import AboutUs from "../pages/Information/AboutUs";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     element: <ScrollToTop />,
     children: [
