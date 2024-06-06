@@ -76,7 +76,7 @@ This project was created and is actively maintained by:
 - [21120455 Trương Văn Hoài](https://github.com/hcdman)
 - [21120457 Lê Minh Hoàng](https://github.com/mihoag)
 
-Detail: https://me-d-c-truy-n.github.io/Frontend/#/thong-tin/nhom-phat-trien
+Detail: https://me-d-c-truy-n.github.io/Frontend/thong-tin/nhom-phat-trien
 # License
 
 MIT license [@nxhawk](https://github.com/nxhawk/)
