@@ -91,7 +91,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/Frontend",
+    basename: "/",
   },
 );
 
