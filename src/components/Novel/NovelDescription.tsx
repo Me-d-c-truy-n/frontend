@@ -1,11 +1,11 @@
-import { useState } from "react"
-import TitleTabFull from "../TitleTabFull"
+import { useState } from "react";
+import TitleTabFull from "../TitleTabFull";
 
-import { IoIosArrowDown } from "react-icons/io"
-import { IoIosArrowUp } from "react-icons/io"
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 
 const NovelDescription = ({ description }: { description: string }) => {
-  const [isShowFull, setIsShowFull] = useState<boolean>(false)
+  const [isShowFull, setIsShowFull] = useState<boolean>(false);
 
   return (
     <div className="border rounded dark:border-slate-800">
@@ -36,7 +36,7 @@ const NovelDescription = ({ description }: { description: string }) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NovelDescription
+export default NovelDescription;

@@ -1,75 +1,75 @@
-import { IChapterRoot } from "../../types/novel"
-import ChapterRow from "./ChapterRow"
-import { useQuery } from "@tanstack/react-query"
-import { IResponse } from "../../types/response"
-import { ApiGetAllChapter } from "../../api/apiNovel"
-import { useEffect, useState } from "react"
-import ListChapterSkeleton from "../Loading/ListChapterSkeleton"
-import CustomPagination from "../CustomPagination"
-import { useSelector } from "react-redux"
-import { getListChapterReaded } from "../../store/readed/selector"
-import { useModal } from "../../hooks/useModal"
-import EmptyResult from "../EmptyResult"
-import ButtonClose from "../Button/ButtonClose"
-import { getCurrentPageByChapterId, getCurrentScrollByChapterId } from "../../utils/helpers"
+import { IChapterRoot } from "../../types/novel";
+import ChapterRow from "./ChapterRow";
+import { useQuery } from "@tanstack/react-query";
+import { IResponse } from "../../types/response";
+import { ApiGetAllChapter } from "../../api/apiNovel";
+import { useEffect, useState } from "react";
+import ListChapterSkeleton from "../Loading/ListChapterSkeleton";
+import CustomPagination from "../CustomPagination";
+import { useSelector } from "react-redux";
+import { getListChapterReaded } from "../../store/readed/selector";
+import { useModal } from "../../hooks/useModal";
+import EmptyResult from "../EmptyResult";
+import ButtonClose from "../Button/ButtonClose";
+import { getCurrentPageByChapterId, getCurrentScrollByChapterId } from "../../utils/helpers";
 
 interface Props {
-  close: () => void
-  novelId: string
-  name: string
-  server: string
-  chapterId?: string
+  close: () => void;
+  novelId: string;
+  name: string;
+  server: string;
+  chapterId?: string;
 }
 
 const ChapterPopup = ({ close, novelId, name, server, chapterId }: Props) => {
-  const [chapters, setChapters] = useState<IChapterRoot[]>([])
-  const [currentPage, setCurrentPage] = useState<number>(getCurrentPageByChapterId(server, chapterId || "1"))
-  const [firstSelectedPage] = useState(currentPage)
+  const [chapters, setChapters] = useState<IChapterRoot[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(getCurrentPageByChapterId(server, chapterId || "1"));
+  const [firstSelectedPage] = useState(currentPage);
 
-  const [, setPerPage] = useState<number>(0)
-  const [totalPage, setTotalPage] = useState<number>(1)
+  const [, setPerPage] = useState<number>(0);
+  const [totalPage, setTotalPage] = useState<number>(1);
 
-  const listChapterReaded = useSelector(getListChapterReaded(novelId))
+  const listChapterReaded = useSelector(getListChapterReaded(novelId));
 
   const { isFetching, isError } = useQuery({
     queryKey: ["all_chapter", novelId, currentPage, server],
     queryFn: async () => {
-      const data: IResponse<IChapterRoot[]> = await ApiGetAllChapter(server, novelId, currentPage)
+      const data: IResponse<IChapterRoot[]> = await ApiGetAllChapter(server, novelId, currentPage);
 
-      setPerPage(data.perPage)
-      setTotalPage(data.totalPage)
-      setChapters(data.data)
+      setPerPage(data.perPage);
+      setTotalPage(data.totalPage);
+      setChapters(data.data);
 
-      return data
+      return data;
     },
     retry: 1,
-  })
+  });
 
-  const { modalRef, handleClickOutside } = useModal(close)
+  const { modalRef, handleClickOutside } = useModal(close);
 
   useEffect(() => {
-    document.body.style.overflowY = "hidden"
+    document.body.style.overflowY = "hidden";
     return () => {
-      document.body.style.overflowY = "scroll"
-    }
-  }, [])
+      document.body.style.overflowY = "scroll";
+    };
+  }, []);
 
-  const isLoading = isFetching || chapters.length <= 0
+  const isLoading = isFetching || chapters.length <= 0;
 
   useEffect(() => {
-    const container = document.getElementById("scroll_chapter")
-    if (!container || isLoading || currentPage != firstSelectedPage) return
+    const container = document.getElementById("scroll_chapter");
+    if (!container || isLoading || currentPage != firstSelectedPage) return;
 
-    const fullHeight = container.scrollHeight
+    const fullHeight = container.scrollHeight;
 
-    const scrollTo = getCurrentScrollByChapterId(server, chapterId || "1", fullHeight)
+    const scrollTo = getCurrentScrollByChapterId(server, chapterId || "1", fullHeight);
 
     container.scrollTo({
       top: scrollTo,
-    })
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading])
+  }, [isLoading]);
 
   return (
     <div
@@ -127,7 +127,7 @@ const ChapterPopup = ({ close, novelId, name, server, chapterId }: Props) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ChapterPopup
+export default ChapterPopup;

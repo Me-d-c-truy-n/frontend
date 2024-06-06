@@ -1,9 +1,9 @@
-import logo from "../../assets/images/logo.png"
-import Skeleton from "react-loading-skeleton"
-import ButtonClose from "../Button/ButtonClose"
+import logo from "../../assets/images/logo.png";
+import Skeleton from "react-loading-skeleton";
+import ButtonClose from "../Button/ButtonClose";
 
 interface Props {
-  close: () => void
+  close: () => void;
 }
 
 const DownloadFileSkeleton = ({ close }: Props) => {
@@ -30,7 +30,7 @@ const DownloadFileSkeleton = ({ close }: Props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DownloadFileSkeleton
+export default DownloadFileSkeleton;

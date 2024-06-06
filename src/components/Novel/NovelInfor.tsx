@@ -1,35 +1,35 @@
-import { Link, useNavigate } from "react-router-dom"
-import { INovelRoot } from "../../types/novel"
-import ButtonUtils from "../Button/ButtonUtils"
+import { Link, useNavigate } from "react-router-dom";
+import { INovelRoot } from "../../types/novel";
+import ButtonUtils from "../Button/ButtonUtils";
 
-import { FiBookOpen } from "react-icons/fi"
-import { MdOutlineFormatListBulleted } from "react-icons/md"
-import { GrNext } from "react-icons/gr"
-import { HiUser } from "react-icons/hi2"
-import { FiDownload } from "react-icons/fi"
+import { FiBookOpen } from "react-icons/fi";
+import { MdOutlineFormatListBulleted } from "react-icons/md";
+import { GrNext } from "react-icons/gr";
+import { HiUser } from "react-icons/hi2";
+import { FiDownload } from "react-icons/fi";
 
-import Skeleton from "react-loading-skeleton"
-import { useState } from "react"
-import ChapterPopup from "../Popup/ChapterPopup"
-import ButtonBookmark from "../Button/ButtonBookmark"
-import { getChapterJustReaded } from "../../store/history/selector"
-import { useSelector } from "react-redux"
+import Skeleton from "react-loading-skeleton";
+import { useState } from "react";
+import ChapterPopup from "../Popup/ChapterPopup";
+import ButtonBookmark from "../Button/ButtonBookmark";
+import { getChapterJustReaded } from "../../store/history/selector";
+import { useSelector } from "react-redux";
 
-import CustomImageAsBook from "./CustomImageAsBook"
-import ExportEBookPopup from "../Popup/ExportEBookPopup"
+import CustomImageAsBook from "./CustomImageAsBook";
+import ExportEBookPopup from "../Popup/ExportEBookPopup";
 
 interface Props {
-  novel: INovelRoot | null
-  isLoading?: boolean
-  server: string
+  novel: INovelRoot | null;
+  isLoading?: boolean;
+  server: string;
 }
 
 const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
-  const navigate = useNavigate()
-  const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false)
-  const [openExportEBook, setOpenExportEBook] = useState<boolean>(false)
+  const navigate = useNavigate();
+  const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
+  const [openExportEBook, setOpenExportEBook] = useState<boolean>(false);
 
-  const chapterId = useSelector(getChapterJustReaded(novel?.novelId))
+  const chapterId = useSelector(getChapterJustReaded(novel?.novelId));
 
   if (isLoading || novel == null)
     return (
@@ -44,7 +44,7 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
           <Skeleton />
         </div>
       </div>
-    )
+    );
 
   return (
     <div className="flex gap-4 my-6 flex-col md:flex-row items-center md:items-start">
@@ -103,7 +103,7 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NovelInfor
+export default NovelInfor;

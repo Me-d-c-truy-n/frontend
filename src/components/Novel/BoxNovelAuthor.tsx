@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom"
-import { INovelRoot } from "../../types/novel"
-import { HiUser } from "react-icons/hi2"
-import LoadingImage from "../Loading/LoadingImage"
+import { Link } from "react-router-dom";
+import { INovelRoot } from "../../types/novel";
+import { HiUser } from "react-icons/hi2";
+import LoadingImage from "../Loading/LoadingImage";
 
 const BoxNovelAuthor = ({ novel, isActive = true }: { novel: INovelRoot; isActive?: boolean }) => {
   return (
@@ -43,7 +43,7 @@ const BoxNovelAuthor = ({ novel, isActive = true }: { novel: INovelRoot; isActiv
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BoxNovelAuthor
+export default BoxNovelAuthor;

@@ -1,13 +1,13 @@
-import ReactDOM from "react-dom/client"
-import App from "./App.tsx"
-import { SettingsProvider } from "./contexts/SettingsContext.tsx"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { ThemeProvider } from "./contexts/ThemeContext.tsx"
-import { Provider } from "react-redux"
-import { persistor, store } from "./store/index.ts"
-import { PersistGate } from "redux-persist/integration/react"
-import "./font.scss"
-import "./index.scss"
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import { SettingsProvider } from "./contexts/SettingsContext.tsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "./contexts/ThemeContext.tsx";
+import { Provider } from "react-redux";
+import { persistor, store } from "./store/index.ts";
+import { PersistGate } from "redux-persist/integration/react";
+import "./font.scss";
+import "./index.scss";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,7 +15,7 @@ const queryClient = new QueryClient({
       refetchOnWindowFocus: false, // default: true
     },
   },
-})
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <ThemeProvider>
@@ -28,5 +28,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </SettingsProvider>
       </PersistGate>
     </Provider>
-  </ThemeProvider>
-)
+  </ThemeProvider>,
+);

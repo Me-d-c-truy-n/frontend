@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom"
-import { AiOutlineHome } from "react-icons/ai"
-import { Vortex } from "../../components/ui/vortex"
-import { TypewriterEffect } from "../../components/ui/typewriter-effect"
+import { Link } from "react-router-dom";
+import { AiOutlineHome } from "react-icons/ai";
+import { Vortex } from "../../components/ui/vortex";
+import { TypewriterEffect } from "../../components/ui/typewriter-effect";
 
 const Notfound = () => {
   const words = [
@@ -21,7 +21,7 @@ const Notfound = () => {
       text: "FOUND",
       className: "text-white",
     },
-  ]
+  ];
 
   return (
     <div className="w-full mx-auto rounded-md  h-screen overflow-hidden">
@@ -46,7 +46,7 @@ const Notfound = () => {
         </Link>
       </Vortex>
     </div>
-  )
-}
+  );
+};
 
-export default Notfound
+export default Notfound;

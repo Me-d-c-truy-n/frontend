@@ -1,22 +1,22 @@
-import Slider from "../../components/Slider"
-import admin_01 from "../../assets/images/admin/admin_01.jpg"
-import admin_02 from "../../assets/images/admin/admin_02.jpg"
-import admin_03 from "../../assets/images/admin/admin_03.jpg"
-import admin_04 from "../../assets/images/admin/admin_04.jpg"
-import TitleTabScroll from "../../components/TitleTabScroll"
-import MyHelmet from "../../components/MyHelmet"
+import Slider from "../../components/Slider";
+import admin_01 from "../../assets/images/admin/admin_01.jpg";
+import admin_02 from "../../assets/images/admin/admin_02.jpg";
+import admin_03 from "../../assets/images/admin/admin_03.jpg";
+import admin_04 from "../../assets/images/admin/admin_04.jpg";
+import TitleTabScroll from "../../components/TitleTabScroll";
+import MyHelmet from "../../components/MyHelmet";
 
 interface Props {
-  name: string
-  imageURL: string
-  githubUrl: string
-  facebookUrl: string
-  border: string
-  shadow: string
-  color_1: string
-  color_2: string
-  hover_color_2: string
-  isEnd: boolean
+  name: string;
+  imageURL: string;
+  githubUrl: string;
+  facebookUrl: string;
+  border: string;
+  shadow: string;
+  color_1: string;
+  color_2: string;
+  hover_color_2: string;
+  isEnd: boolean;
 }
 
 const UserCard = ({
@@ -81,8 +81,8 @@ const UserCard = ({
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const AboutUs = () => {
   return (
@@ -147,7 +147,7 @@ const AboutUs = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AboutUs
+export default AboutUs;

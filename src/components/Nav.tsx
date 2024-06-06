@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react"
+import { Dispatch, SetStateAction } from "react";
 
 const Nav = ({ tabIndex, setTabIndex }: { tabIndex: number; setTabIndex: Dispatch<SetStateAction<number>> }) => {
   return (
@@ -16,7 +16,7 @@ const Nav = ({ tabIndex, setTabIndex }: { tabIndex: number; setTabIndex: Dispatc
         truyện đánh dấu
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

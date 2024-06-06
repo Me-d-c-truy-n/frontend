@@ -1,8 +1,8 @@
-import MyHelmet from "../../components/MyHelmet"
-import Slider from "../../components/Slider"
-import TitleTabScroll from "../../components/TitleTabScroll"
+import MyHelmet from "../../components/MyHelmet";
+import Slider from "../../components/Slider";
+import TitleTabScroll from "../../components/TitleTabScroll";
 
-const APP_NAME = <b className="capitalize">{import.meta.env.VITE_REACT_APP_NAME}</b>
+const APP_NAME = <b className="capitalize">{import.meta.env.VITE_REACT_APP_NAME}</b>;
 
 const TermOfService = () => {
   return (
@@ -38,7 +38,7 @@ const TermOfService = () => {
         <i className="font-medium">Cập nhật lần cuối ngày 22/05/2024</i>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TermOfService
+export default TermOfService;

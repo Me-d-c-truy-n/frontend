@@ -1,6 +1,6 @@
-import { cn } from "../../utils/cn"
-import { motion, stagger, useAnimate, useInView } from "framer-motion"
-import { useEffect } from "react"
+import { cn } from "../../utils/cn";
+import { motion, stagger, useAnimate, useInView } from "framer-motion";
+import { useEffect } from "react";
 
 export const TypewriterEffect = ({
   words,
@@ -8,22 +8,22 @@ export const TypewriterEffect = ({
   cursorClassName,
 }: {
   words: {
-    text: string
-    className?: string
-  }[]
-  className?: string
-  cursorClassName?: string
+    text: string;
+    className?: string;
+  }[];
+  className?: string;
+  cursorClassName?: string;
 }) => {
   // split text inside of words into array of characters
   const wordsArray = words.map((word) => {
     return {
       ...word,
       text: word.text.split(""),
-    }
-  })
+    };
+  });
 
-  const [scope, animate] = useAnimate()
-  const isInView = useInView(scope)
+  const [scope, animate] = useAnimate();
+  const isInView = useInView(scope);
   useEffect(() => {
     if (isInView) {
       animate(
@@ -37,11 +37,11 @@ export const TypewriterEffect = ({
           duration: 0.3,
           delay: stagger(0.1),
           ease: "easeInOut",
-        }
-      )
+        },
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInView])
+  }, [isInView]);
 
   const renderWords = () => {
     return (
@@ -60,11 +60,11 @@ export const TypewriterEffect = ({
               ))}
               &nbsp;
             </div>
-          )
+          );
         })}
       </motion.div>
-    )
-  }
+    );
+  };
   return (
     <div className={cn("text-2xl md:text-5xl font-bold text-center", className)}>
       {renderWords()}
@@ -83,5 +83,5 @@ export const TypewriterEffect = ({
         className={cn("inline-block rounded-sm w-[4px] h-5 md:h-9 bg-white", cursorClassName)}
       ></motion.span>
     </div>
-  )
-}
+  );
+};

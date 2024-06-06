@@ -1,11 +1,11 @@
-import { FiDownload } from "react-icons/fi"
-import { toast } from "react-toastify"
+import { FiDownload } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 interface Props {
-  novelId: string
-  file: string
-  server: string
-  close: () => void
+  novelId: string;
+  file: string;
+  server: string;
+  close: () => void;
 }
 
 // interface Api {
@@ -23,12 +23,12 @@ const ButtonDownload = ({ novelId, file, server, close }: Props) => {
   // })
 
   const handleDownload = () => {
-    close()
+    close();
     //callApiDownload.mutate({server, file, novelId, chapterId});
     // window.open(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${server}/tai-truyen/${file}/${novelId}/${chapterId}`);
-    toast.info("Truyện đang được tải")
-    window.open(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${server}/tai-truyen/${novelId}/${file}`)
-  }
+    toast.info("Truyện đang được tải");
+    window.open(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${server}/tai-truyen/${novelId}/${file}`);
+  };
 
   return (
     <div className="flex justify-center mt-6">
@@ -43,7 +43,7 @@ const ButtonDownload = ({ novelId, file, server, close }: Props) => {
         </div>
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonDownload
+export default ButtonDownload;

@@ -1,12 +1,12 @@
-import { useState } from "react"
-import Nav from "../components/Nav"
-import Slider from "../components/Slider"
-import StoryJustRead from "../components/History/StoryJustRead"
-import NovelBookmark from "../components/NovelBookmark"
-import MyHelmet from "../components/MyHelmet"
+import { useState } from "react";
+import Nav from "../components/Nav";
+import Slider from "../components/Slider";
+import StoryJustRead from "../components/History/StoryJustRead";
+import NovelBookmark from "../components/NovelBookmark";
+import MyHelmet from "../components/MyHelmet";
 
 const Bookcase = () => {
-  const [tabIndex, setTabIndex] = useState<number>(1)
+  const [tabIndex, setTabIndex] = useState<number>(1);
 
   return (
     <>
@@ -26,7 +26,7 @@ const Bookcase = () => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Bookcase
+export default Bookcase;

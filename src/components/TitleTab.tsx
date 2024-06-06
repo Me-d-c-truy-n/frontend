@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom"
-import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md"
-import Skeleton from "react-loading-skeleton"
-import { Highlight } from "./ui/hero-highlight"
+import { Link } from "react-router-dom";
+import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import Skeleton from "react-loading-skeleton";
+import { Highlight } from "./ui/hero-highlight";
 
 interface Props {
-  name: string
-  link?: string
-  uppercase?: boolean
-  highlight?: string
-  isMb?: boolean
+  name: string;
+  link?: string;
+  uppercase?: boolean;
+  highlight?: string;
+  isMb?: boolean;
 }
 
 const TitleTab = ({ name, link, uppercase = false, highlight, isMb = true }: Props) => {
@@ -26,7 +26,7 @@ const TitleTab = ({ name, link, uppercase = false, highlight, isMb = true }: Pro
         <hr className="flex-1 border-amber-700" />
         <MdOutlineKeyboardDoubleArrowRight className="text-amber-700 text-xl" />
       </Link>
-    )
+    );
 
   return (
     <div className={`p-2 px-0 pb-0 flex items-center justify-between ${isMb && "mb-3 pb-2"} gap-2 font-mono`}>
@@ -36,7 +36,7 @@ const TitleTab = ({ name, link, uppercase = false, highlight, isMb = true }: Pro
       </h2>
       <hr className="flex-1 border-amber-700" />
     </div>
-  )
-}
+  );
+};
 
-export default TitleTab
+export default TitleTab;

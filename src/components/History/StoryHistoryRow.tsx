@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom"
-import { IoCloseOutline } from "react-icons/io5"
-import { convertDateToTime, subSlugChapter } from "../../utils/helpers"
-import { useDispatch } from "react-redux"
-import { AppDispatch } from "../../store"
-import { removeNovelReaded } from "../../store/history"
-import { IHistoryRoot } from "../../store/history/type"
+import { Link } from "react-router-dom";
+import { IoCloseOutline } from "react-icons/io5";
+import { convertDateToTime, subSlugChapter } from "../../utils/helpers";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store";
+import { removeNovelReaded } from "../../store/history";
+import { IHistoryRoot } from "../../store/history/type";
 
 const StoryHistoryRow = ({ data, color }: { data: IHistoryRoot; color: boolean }) => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <div
@@ -27,7 +27,7 @@ const StoryHistoryRow = ({ data, color }: { data: IHistoryRoot; color: boolean }
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default StoryHistoryRow
+export default StoryHistoryRow;

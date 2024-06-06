@@ -1,25 +1,25 @@
-import { useContext } from "react"
-import logo from "../../assets/images/logo.png"
-import { GrClose } from "react-icons/gr"
-import { SettingsContext } from "../../contexts/SettingsContext"
-import CustomSelection from "./CustomSelection"
-import { SelectionKey } from "../../types/key"
-import CustomSelectColor from "./CustomSelectColor"
-import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, AppState } from "../../store"
-import { changeAlign, changeFontSize, changeFontStyle, changeLeading } from "../../store/settings"
-import { useModal } from "../../hooks/useModal"
+import { useContext } from "react";
+import logo from "../../assets/images/logo.png";
+import { GrClose } from "react-icons/gr";
+import { SettingsContext } from "../../contexts/SettingsContext";
+import CustomSelection from "./CustomSelection";
+import { SelectionKey } from "../../types/key";
+import CustomSelectColor from "./CustomSelectColor";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, AppState } from "../../store";
+import { changeAlign, changeFontSize, changeFontStyle, changeLeading } from "../../store/settings";
+import { useModal } from "../../hooks/useModal";
 
 interface Props {
-  close: () => void
+  close: () => void;
 }
 const SettingPopup = ({ close }: Props) => {
-  const { background, color, setColor, resetSettings } = useContext(SettingsContext)!
+  const { background, color, setColor, resetSettings } = useContext(SettingsContext)!;
 
-  const settings = useSelector((state: AppState) => state.settings)
-  const dispatch = useDispatch<AppDispatch>()
+  const settings = useSelector((state: AppState) => state.settings);
+  const dispatch = useDispatch<AppDispatch>();
 
-  const { modalRef, handleClickOutside } = useModal(close)
+  const { modalRef, handleClickOutside } = useModal(close);
 
   return (
     <div
@@ -96,7 +96,7 @@ const SettingPopup = ({ close }: Props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SettingPopup
+export default SettingPopup;

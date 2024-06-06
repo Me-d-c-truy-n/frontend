@@ -1,8 +1,8 @@
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet";
 
 interface Props {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
 const MyHelmet = ({ title, description }: Props) => {
@@ -11,7 +11,7 @@ const MyHelmet = ({ title, description }: Props) => {
       <title>{title}</title>
       <meta name="description" content={description} />
     </Helmet>
-  )
-}
+  );
+};
 
-export default MyHelmet
+export default MyHelmet;

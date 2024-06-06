@@ -1,10 +1,10 @@
-import TitleTab from "../TitleTab"
-import StoryHistoryRow from "./StoryHistoryRow"
-import { useSelector } from "react-redux"
-import { AppState } from "../../store"
+import TitleTab from "../TitleTab";
+import StoryHistoryRow from "./StoryHistoryRow";
+import { useSelector } from "react-redux";
+import { AppState } from "../../store";
 
 const StoryJustRead = ({ isShowAll }: { isShowAll: boolean }) => {
-  const history = useSelector((state: AppState) => state.history.history)
+  const history = useSelector((state: AppState) => state.history.history);
 
   return (
     <div className="mb-6 mt-2">
@@ -27,10 +27,10 @@ const StoryJustRead = ({ isShowAll }: { isShowAll: boolean }) => {
             }}
             hidden
           ></span>
-        )
+        ),
       )}
     </div>
-  )
-}
+  );
+};
 
-export default StoryJustRead
+export default StoryJustRead;

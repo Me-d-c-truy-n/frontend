@@ -23,8 +23,8 @@ module.exports = {
       'warn',
       {
         arrowParens: 'always',
-        semi: false,
-        trailingComma: 'es5',
+        semi: true,
+        trailingComma: 'all',
         tabWidth: 2,
         endOfLine: 'auto',
         useTabs: false,

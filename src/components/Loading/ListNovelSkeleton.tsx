@@ -1,4 +1,4 @@
-import BoxNovel from "../Novel/BoxNovel"
+import BoxNovel from "../Novel/BoxNovel";
 
 const ListNovelSkeleton = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -10,7 +10,7 @@ const ListNovelSkeleton = ({ children }: { children: React.ReactNode }) => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ListNovelSkeleton
+export default ListNovelSkeleton;

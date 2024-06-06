@@ -1,26 +1,26 @@
-import { RouterProvider } from "react-router-dom"
-import { ToastContainer } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
-import "react-loading-skeleton/dist/skeleton.css"
-import router from "./routers/router"
-import { useContext, useEffect } from "react"
-import { SettingsContext } from "./contexts/SettingsContext"
-import { SkeletonTheme } from "react-loading-skeleton"
-import { ThemeContext } from "./contexts/ThemeContext"
-import { THEME } from "./types/theme"
-import ScrollButton from "./components/Button/ScrollButton"
-import { useSelector } from "react-redux"
-import { AppState } from "./store"
+import { RouterProvider } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "react-loading-skeleton/dist/skeleton.css";
+import router from "./routers/router";
+import { useContext, useEffect } from "react";
+import { SettingsContext } from "./contexts/SettingsContext";
+import { SkeletonTheme } from "react-loading-skeleton";
+import { ThemeContext } from "./contexts/ThemeContext";
+import { THEME } from "./types/theme";
+import ScrollButton from "./components/Button/ScrollButton";
+import { useSelector } from "react-redux";
+import { AppState } from "./store";
 
 function App() {
-  const isOpen = useSelector((state: AppState) => state.chapterOpen.isOpen)
+  const isOpen = useSelector((state: AppState) => state.chapterOpen.isOpen);
 
-  const { theme } = useContext(ThemeContext)!
-  const { background } = useContext(SettingsContext)!
+  const { theme } = useContext(ThemeContext)!;
+  const { background } = useContext(SettingsContext)!;
 
   useEffect(() => {
-    document.body.style.backgroundColor = background
-  }, [isOpen, background])
+    document.body.style.backgroundColor = background;
+  }, [isOpen, background]);
 
   return (
     <div className={`${isOpen ? "" : "bg-white dark:bg-stone-950"}`}>
@@ -50,7 +50,7 @@ function App() {
         limit={5}
       />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

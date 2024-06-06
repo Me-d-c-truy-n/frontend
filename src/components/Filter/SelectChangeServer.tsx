@@ -1,14 +1,14 @@
-import { AppState } from "../../store"
-import { useSelector } from "react-redux"
+import { AppState } from "../../store";
+import { useSelector } from "react-redux";
 
 interface Props {
-  myServer: string
+  myServer: string;
   // eslint-disable-next-line no-unused-vars
-  func: (srv: string) => void
+  func: (srv: string) => void;
 }
 
 const SelectChangeServer = ({ myServer, func }: Props) => {
-  const listServer = useSelector((state: AppState) => state.server.listServer)
+  const listServer = useSelector((state: AppState) => state.server.listServer);
 
   return (
     <form className="mr-2 mt-1 md:mb-0">
@@ -36,7 +36,7 @@ const SelectChangeServer = ({ myServer, func }: Props) => {
         </select>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default SelectChangeServer
+export default SelectChangeServer;

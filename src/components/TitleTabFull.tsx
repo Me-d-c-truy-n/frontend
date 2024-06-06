@@ -1,9 +1,9 @@
-import { GrNext } from "react-icons/gr"
+import { GrNext } from "react-icons/gr";
 
 interface Props {
-  more?: boolean
-  func?: () => void
-  children: React.ReactNode
+  more?: boolean;
+  func?: () => void;
+  children: React.ReactNode;
 }
 
 const TitleTabFull = ({ more = false, func, children }: Props) => {
@@ -17,7 +17,7 @@ const TitleTabFull = ({ more = false, func, children }: Props) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default TitleTabFull
+export default TitleTabFull;

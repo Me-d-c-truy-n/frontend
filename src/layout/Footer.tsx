@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom"
-import admin_01 from "../assets/images/admin/admin_01.jpg"
-import admin_02 from "../assets/images/admin/admin_02.jpg"
-import admin_03 from "../assets/images/admin/admin_03.jpg"
-import admin_04 from "../assets/images/admin/admin_04.jpg"
-import logo from "../assets/images/logo.png"
-import { AnimatedTooltip } from "../components/ui/animated-tooltip"
+import { Link } from "react-router-dom";
+import admin_01 from "../assets/images/admin/admin_01.jpg";
+import admin_02 from "../assets/images/admin/admin_02.jpg";
+import admin_03 from "../assets/images/admin/admin_03.jpg";
+import admin_04 from "../assets/images/admin/admin_04.jpg";
+import logo from "../assets/images/logo.png";
+import { AnimatedTooltip } from "../components/ui/animated-tooltip";
 
-const APP_NAME = <span className="capitalize">{import.meta.env.VITE_REACT_APP_NAME}</span>
+const APP_NAME = <span className="capitalize">{import.meta.env.VITE_REACT_APP_NAME}</span>;
 
 const people = [
   {
@@ -40,7 +40,7 @@ const people = [
     designation: "Backend Developer",
     image: admin_04,
   },
-]
+];
 
 const Footer = () => {
   return (
@@ -74,7 +74,7 @@ const Footer = () => {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

@@ -1,9 +1,9 @@
 interface Props {
-  func: () => void
-  de?: boolean
-  children: React.ReactNode
-  count?: number
-  className?: string
+  func: () => void;
+  de?: boolean;
+  children: React.ReactNode;
+  count?: number;
+  className?: string;
 }
 
 const ButtonUtils = ({ de = true, func, children, count = 0, className = "" }: Props) => {
@@ -27,7 +27,7 @@ const ButtonUtils = ({ de = true, func, children, count = 0, className = "" }: P
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ButtonUtils
+export default ButtonUtils;

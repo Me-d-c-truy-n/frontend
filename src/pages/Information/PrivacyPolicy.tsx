@@ -1,6 +1,6 @@
-import MyHelmet from "../../components/MyHelmet"
-import Slider from "../../components/Slider"
-import TitleTabScroll from "../../components/TitleTabScroll"
+import MyHelmet from "../../components/MyHelmet";
+import Slider from "../../components/Slider";
+import TitleTabScroll from "../../components/TitleTabScroll";
 
 const PrivacyPolicy = () => {
   return (
@@ -32,7 +32,7 @@ const PrivacyPolicy = () => {
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PrivacyPolicy
+export default PrivacyPolicy;

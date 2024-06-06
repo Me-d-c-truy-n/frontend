@@ -5,11 +5,11 @@ export enum STATUS {
 }
 
 export interface IResponse<T> {
-  status: STATUS
-  message: string
-  totalPage: number
-  currentPage: number
-  perPage: number
-  searchValue: string
-  data: T
+  status: STATUS;
+  message: string;
+  totalPage: number;
+  currentPage: number;
+  perPage: number;
+  searchValue: string;
+  data: T;
 }

@@ -1,4 +1,4 @@
-import { FaInfoCircle } from "react-icons/fa"
+import { FaInfoCircle } from "react-icons/fa";
 
 const GuideText = () => {
   return (
@@ -14,7 +14,7 @@ const GuideText = () => {
         &nbsp;để thay đổi nguồn truyện
       </i>
     </div>
-  )
-}
+  );
+};
 
-export default GuideText
+export default GuideText;

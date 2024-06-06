@@ -1,10 +1,10 @@
-import { getImageOfExportFile } from "../../utils/helpers"
-import LoadingImage from "../Loading/LoadingImage"
+import { getImageOfExportFile } from "../../utils/helpers";
+import LoadingImage from "../Loading/LoadingImage";
 
 interface Props {
-  setValue: () => void
-  selectedExport: string
-  id: string
+  setValue: () => void;
+  selectedExport: string;
+  id: string;
 }
 
 const SelectionExportType = ({ setValue, selectedExport, id }: Props) => {
@@ -16,7 +16,7 @@ const SelectionExportType = ({ setValue, selectedExport, id }: Props) => {
       <LoadingImage className="w-14 h-14 mb-1" name={id} imageUrl={getImageOfExportFile(id)} />
       {id}
     </button>
-  )
-}
+  );
+};
 
-export default SelectionExportType
+export default SelectionExportType;

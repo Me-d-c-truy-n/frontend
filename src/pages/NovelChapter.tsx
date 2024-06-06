@@ -1,161 +1,161 @@
-import { useContext, useEffect, useState } from "react"
-import Slider from "../components/Slider"
-import { Link, useNavigate, useParams } from "react-router-dom"
-import { IChapter } from "../types/novel"
+import { useContext, useEffect, useState } from "react";
+import Slider from "../components/Slider";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { IChapter } from "../types/novel";
 
-import ButtonUtils from "../components/Button/ButtonUtils"
-import { SettingsContext } from "../contexts/SettingsContext"
-import SettingPopup from "../components/Popup/SettingPopup"
-import ChapterPopup from "../components/Popup/ChapterPopup"
-import { IResponse } from "../types/response"
-import { useQuery } from "@tanstack/react-query"
-import { ApiGetOneChapter } from "../api/apiNovel"
-import NovelChapterSkeleton from "../components/Loading/NovelChapterSkeleton"
-import ButtonChangeChapter from "../components/Button/ButtonChangeChapter"
+import ButtonUtils from "../components/Button/ButtonUtils";
+import { SettingsContext } from "../contexts/SettingsContext";
+import SettingPopup from "../components/Popup/SettingPopup";
+import ChapterPopup from "../components/Popup/ChapterPopup";
+import { IResponse } from "../types/response";
+import { useQuery } from "@tanstack/react-query";
+import { ApiGetOneChapter } from "../api/apiNovel";
+import NovelChapterSkeleton from "../components/Loading/NovelChapterSkeleton";
+import ButtonChangeChapter from "../components/Button/ButtonChangeChapter";
 
-import { RiSkipLeftLine } from "react-icons/ri"
-import { RiSkipRightLine } from "react-icons/ri"
-import { IoSettingsOutline } from "react-icons/io5"
-import { MdOutlineFormatListBulleted } from "react-icons/md"
-import { GrNext } from "react-icons/gr"
-import { GrPrevious } from "react-icons/gr"
-import { HiUser } from "react-icons/hi2"
+import { RiSkipLeftLine } from "react-icons/ri";
+import { RiSkipRightLine } from "react-icons/ri";
+import { IoSettingsOutline } from "react-icons/io5";
+import { MdOutlineFormatListBulleted } from "react-icons/md";
+import { GrNext } from "react-icons/gr";
+import { GrPrevious } from "react-icons/gr";
+import { HiUser } from "react-icons/hi2";
 
-import ButtonBookmark from "../components/Button/ButtonBookmark"
-import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, AppState } from "../store"
-import { updateNovelReaded } from "../store/history"
-import { addNovelReaded } from "../store/readed"
-import { setIsOpen } from "../store/chapterOpen"
-import { toast } from "react-toastify"
-import KanbanSelectServer from "../components/Button/KanbanSelectServer"
-import { useKeyboardShortcut } from "../hooks/useKeyboardShortcut"
-import GuideText from "../components/Reading/GuideText"
-import MyHelmet from "../components/MyHelmet"
-import { subSlugChapter } from "../utils/helpers"
+import ButtonBookmark from "../components/Button/ButtonBookmark";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, AppState } from "../store";
+import { updateNovelReaded } from "../store/history";
+import { addNovelReaded } from "../store/readed";
+import { setIsOpen } from "../store/chapterOpen";
+import { toast } from "react-toastify";
+import KanbanSelectServer from "../components/Button/KanbanSelectServer";
+import { useKeyboardShortcut } from "../hooks/useKeyboardShortcut";
+import GuideText from "../components/Reading/GuideText";
+import MyHelmet from "../components/MyHelmet";
+import { subSlugChapter } from "../utils/helpers";
 
 const NovelChapter = () => {
-  const navigate = useNavigate()
-  const { novelId, chapterId } = useParams()
-  const [chapter, setChapter] = useState<IChapter | null>(null)
-  const [openSettingPopup, setOpenSettingPopup] = useState<boolean>(false)
-  const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false)
-  const [successServer, setSuccessServer] = useState<string>("")
+  const navigate = useNavigate();
+  const { novelId, chapterId } = useParams();
+  const [chapter, setChapter] = useState<IChapter | null>(null);
+  const [openSettingPopup, setOpenSettingPopup] = useState<boolean>(false);
+  const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
+  const [successServer, setSuccessServer] = useState<string>("");
 
-  const { color, background } = useContext(SettingsContext)!
+  const { color, background } = useContext(SettingsContext)!;
 
-  const settings = useSelector((state: AppState) => state.settings)
-  const { server, listServer } = useSelector((state: AppState) => state.server)
-  const dispatch = useDispatch<AppDispatch>()
-  const [indexServer, setIndexServer] = useState(0)
-  const [flagListServer, setFlagListServer] = useState(listServer)
+  const settings = useSelector((state: AppState) => state.settings);
+  const { server, listServer } = useSelector((state: AppState) => state.server);
+  const dispatch = useDispatch<AppDispatch>();
+  const [indexServer, setIndexServer] = useState(0);
+  const [flagListServer, setFlagListServer] = useState(listServer);
 
   function DoubleClickChangeServerSuccess(data: IResponse<IChapter>, server: string) {
-    setChapter(data.data)
-    setSuccessServer(server)
+    setChapter(data.data);
+    setSuccessServer(server);
   }
 
   useEffect(() => {
-    dispatch(setIsOpen(true))
+    dispatch(setIsOpen(true));
     return () => {
-      dispatch(setIsOpen(false))
-    }
+      dispatch(setIsOpen(false));
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   const { isFetching, isError } = useQuery({
     queryKey: ["chapter", chapterId, novelId, server, indexServer, flagListServer],
     queryFn: async () => {
-      console.log(`Call API ${listServer[indexServer]}/${novelId}/${chapterId}`)
+      console.log(`Call API ${listServer[indexServer]}/${novelId}/${chapterId}`);
       const data: IResponse<IChapter> = await ApiGetOneChapter(
         listServer[indexServer],
         novelId || "a",
-        chapterId || "chuong-1"
-      )
+        chapterId || "chuong-1",
+      );
 
-      setSuccessServer(listServer[indexServer])
-      setChapter(data.data)
+      setSuccessServer(listServer[indexServer]);
+      setChapter(data.data);
 
-      return data
+      return data;
     },
     retry: 1,
-  })
+  });
 
   useEffect(() => {
-    if (chapter == null) return
+    if (chapter == null) return;
     dispatch(
       updateNovelReaded({
         time: new Date().toString(),
         name: chapter.novelName,
         novelId: chapter.novelId,
         chapterId: chapter.chapterId,
-      })
-    )
+      }),
+    );
 
     dispatch(
       addNovelReaded({
         novelId: chapter.novelId,
         chapterId: chapter.chapterId,
-      })
-    )
+      }),
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chapter])
+  }, [chapter]);
 
   const handleNextChapter = () => {
-    if (chapter == null || chapterId == null) return
+    if (chapter == null || chapterId == null) return;
     if (!chapter.nextChapterId || chapter.nextChapterId.length <= 0) {
       toast.error("Hiện tại đây đã là chương cuối", {
         toastId: "last-chapter",
-      })
-      return
+      });
+      return;
     }
-    toast.dismiss()
-    navigate(`/truyen/${novelId}/${chapter.nextChapterId}`)
-  }
+    toast.dismiss();
+    navigate(`/truyen/${novelId}/${chapter.nextChapterId}`);
+  };
 
   const handlePrevChapter = () => {
-    if (chapter == null || chapterId == null) return
+    if (chapter == null || chapterId == null) return;
     if (!chapter.preChapterId || chapter.preChapterId.length <= 0) {
       toast.error("Đây đã là chương đầu tiên", {
         toastId: "first-chapter",
-      })
-      return
+      });
+      return;
     }
-    toast.dismiss()
-    navigate(`/truyen/${novelId}/${chapter.preChapterId}`)
-  }
+    toast.dismiss();
+    navigate(`/truyen/${novelId}/${chapter.preChapterId}`);
+  };
 
   useEffect(() => {
-    setFlagListServer(listServer)
-    setIndexServer(0)
-  }, [listServer])
+    setFlagListServer(listServer);
+    setIndexServer(0);
+  }, [listServer]);
 
   useEffect(() => {
     if (isError) {
       if (indexServer == listServer.length - 1)
         navigate("/notfound", {
           replace: true,
-        })
-      else setIndexServer(indexServer + 1)
+        });
+      else setIndexServer(indexServer + 1);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isError])
+  }, [isError]);
 
-  const _isLoading = chapter === null || isFetching || novelId == null || chapterId == undefined
+  const _isLoading = chapter === null || isFetching || novelId == null || chapterId == undefined;
 
   useKeyboardShortcut({
     isActive: !openChapterPopup && !openSettingPopup && !_isLoading,
     key: "ArrowLeft",
     onKeyPressed: handlePrevChapter,
-  })
+  });
 
   useKeyboardShortcut({
     isActive: !openChapterPopup && !openSettingPopup && !_isLoading,
     key: "ArrowRight",
     onKeyPressed: handleNextChapter,
-  })
+  });
 
-  if (_isLoading) return <NovelChapterSkeleton />
+  if (_isLoading) return <NovelChapterSkeleton />;
 
   return (
     <div
@@ -266,7 +266,7 @@ const NovelChapter = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NovelChapter
+export default NovelChapter;

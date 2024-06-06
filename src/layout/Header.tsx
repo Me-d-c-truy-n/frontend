@@ -1,33 +1,33 @@
-import { useContext, useState } from "react"
-import logo from "../assets/images/logo.png"
-import { CiSearch } from "react-icons/ci"
-import { CiLight } from "react-icons/ci"
-import { CiDark } from "react-icons/ci"
-import { Link, useNavigate } from "react-router-dom"
-import { ThemeContext } from "../contexts/ThemeContext"
-import { THEME } from "../types/theme"
+import { useContext, useState } from "react";
+import logo from "../assets/images/logo.png";
+import { CiSearch } from "react-icons/ci";
+import { CiLight } from "react-icons/ci";
+import { CiDark } from "react-icons/ci";
+import { Link, useNavigate } from "react-router-dom";
+import { ThemeContext } from "../contexts/ThemeContext";
+import { THEME } from "../types/theme";
 
 const Header = () => {
-  const navigate = useNavigate()
-  const [isSelected, setIsSelected] = useState<boolean>(false)
-  const [searchValue, setSearchValue] = useState<string>("")
+  const navigate = useNavigate();
+  const [isSelected, setIsSelected] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState<string>("");
 
-  const { theme, changeTheme } = useContext(ThemeContext)!
+  const { theme, changeTheme } = useContext(ThemeContext)!;
 
   function handlePressEnter(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key != "Enter") return
-    handleSearch()
+    if (e.key != "Enter") return;
+    handleSearch();
   }
 
   function handleSearch() {
-    if (searchValue.trim().length <= 0) return
-    navigate(`/tim-kiem?q=${searchValue}`)
-    setSearchValue("")
+    if (searchValue.trim().length <= 0) return;
+    navigate(`/tim-kiem?q=${searchValue}`);
+    setSearchValue("");
   }
 
   function handleChangeTheme() {
-    if (theme === THEME.LIGHT) changeTheme(THEME.DARK)
-    else changeTheme(THEME.LIGHT)
+    if (theme === THEME.LIGHT) changeTheme(THEME.DARK);
+    else changeTheme(THEME.LIGHT);
   }
 
   return (
@@ -56,7 +56,7 @@ const Header = () => {
         {theme == "light" ? <CiLight className="text-2xl text-black" /> : <CiDark className="text-2xl text-white" />}
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

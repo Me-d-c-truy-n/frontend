@@ -1,6 +1,6 @@
-import MyHelmet from "../../components/MyHelmet"
-import Slider from "../../components/Slider"
-import TitleTabScroll from "../../components/TitleTabScroll"
+import MyHelmet from "../../components/MyHelmet";
+import Slider from "../../components/Slider";
+import TitleTabScroll from "../../components/TitleTabScroll";
 
 const AboutLicense = () => {
   return (
@@ -33,7 +33,7 @@ const AboutLicense = () => {
         </i>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AboutLicense
+export default AboutLicense;

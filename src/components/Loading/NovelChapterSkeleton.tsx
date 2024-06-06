@@ -1,5 +1,5 @@
-import Slider from "../Slider"
-import Skeleton from "react-loading-skeleton"
+import Slider from "../Slider";
+import Skeleton from "react-loading-skeleton";
 
 const NovelChapterSkeleton = () => {
   return (
@@ -17,7 +17,7 @@ const NovelChapterSkeleton = () => {
       </div>
       <Slider isLoading={true} />
     </div>
-  )
-}
+  );
+};
 
-export default NovelChapterSkeleton
+export default NovelChapterSkeleton;

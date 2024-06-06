@@ -1,6 +1,6 @@
-import { cn } from "../../utils/cn"
-import { motion } from "framer-motion"
-import React from "react"
+import { cn } from "../../utils/cn";
+import { motion } from "framer-motion";
+import React from "react";
 
 export const Highlight = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   return (
@@ -23,10 +23,10 @@ export const Highlight = ({ children, className }: { children: React.ReactNode; 
       }}
       className={cn(
         `relative inline-block p-[0.15rem] rounded-lg bg-gradient-to-r from-pink-500 to-yellow-500`,
-        className
+        className,
       )}
     >
       {children}
     </motion.span>
-  )
-}
+  );
+};

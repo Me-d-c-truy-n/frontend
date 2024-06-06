@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom"
-import { convertDate } from "../utils/helpers"
-import { IoCloseOutline } from "react-icons/io5"
-import { IBookmark } from "../store/bookmark/type"
-import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, AppState } from "../store"
-import { updateBookmark } from "../store/bookmark"
+import { Link } from "react-router-dom";
+import { convertDate } from "../utils/helpers";
+import { IoCloseOutline } from "react-icons/io5";
+import { IBookmark } from "../store/bookmark/type";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, AppState } from "../store";
+import { updateBookmark } from "../store/bookmark";
 
 const NovelBookmark = () => {
-  const dispatch = useDispatch<AppDispatch>()
-  const bookmark = useSelector((state: AppState) => state.bookmark.bookmark)
+  const dispatch = useDispatch<AppDispatch>();
+  const bookmark = useSelector((state: AppState) => state.bookmark.bookmark);
 
   return (
     <div className="mt-2">
@@ -44,7 +44,7 @@ const NovelBookmark = () => {
                         novelName: bm.novelName,
                         chapterId: bm.chapterId,
                         chapterName: bm.chapterName,
-                      })
+                      }),
                     )
                   }
                 />
@@ -54,7 +54,7 @@ const NovelBookmark = () => {
         ))
       )}
     </div>
-  )
-}
+  );
+};
 
-export default NovelBookmark
+export default NovelBookmark;

@@ -1,8 +1,8 @@
-import { Align } from "../../types/align"
+import { Align } from "../../types/align";
 
 export interface ISettings {
-  fontSize: string
-  fontStyle: string
-  leading: string
-  align: Align
+  fontSize: string;
+  fontStyle: string;
+  leading: string;
+  align: Align;
 }

@@ -1,9 +1,9 @@
-import { Dispatch, SetStateAction } from "react"
+import { Dispatch, SetStateAction } from "react";
 
 interface Props {
-  placeholder: string
-  value: number | undefined
-  setValue: Dispatch<SetStateAction<number | undefined>>
+  placeholder: string;
+  value: number | undefined;
+  setValue: Dispatch<SetStateAction<number | undefined>>;
 }
 
 const CustomInputNumber = ({ placeholder, value, setValue }: Props) => {
@@ -16,7 +16,7 @@ const CustomInputNumber = ({ placeholder, value, setValue }: Props) => {
       onChange={(e) => setValue(parseInt(e.target.value))}
       required
     />
-  )
-}
+  );
+};
 
-export default CustomInputNumber
+export default CustomInputNumber;

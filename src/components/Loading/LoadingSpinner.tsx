@@ -20,7 +20,7 @@ const LoadingSpinner = () => {
         </h1>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoadingSpinner
+export default LoadingSpinner;

@@ -1,18 +1,18 @@
-import { ReactNode, createContext, useEffect } from "react"
-import { useLocalStorageState } from "../hooks/useLocalStorageState"
-import { THEME } from "../types/theme"
-import { KEY } from "../types/key"
+import { ReactNode, createContext, useEffect } from "react";
+import { useLocalStorageState } from "../hooks/useLocalStorageState";
+import { THEME } from "../types/theme";
+import { KEY } from "../types/key";
 
 interface ThemeContextType {
-  theme: THEME
+  theme: THEME;
   // eslint-disable-next-line no-unused-vars
-  changeTheme: (newTheme: THEME) => void
+  changeTheme: (newTheme: THEME) => void;
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 interface ThemeProviderProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 // eslint-disable-next-line react/prop-types
@@ -20,19 +20,19 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useLocalStorageState({
     key: KEY.THEME,
     initialState: THEME.LIGHT,
-  })
+  });
 
   function changeTheme(newTheme: THEME) {
-    setTheme(newTheme)
+    setTheme(newTheme);
   }
 
   useEffect(() => {
     if (theme === THEME.DARK) {
-      document.documentElement.classList.add(THEME.DARK)
+      document.documentElement.classList.add(THEME.DARK);
     } else {
-      document.documentElement.classList.remove(THEME.DARK)
+      document.documentElement.classList.remove(THEME.DARK);
     }
-  }, [theme])
+  }, [theme]);
 
   return (
     <ThemeContext.Provider
@@ -43,7 +43,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     >
       {children}
     </ThemeContext.Provider>
-  )
-}
+  );
+};
 
-export { ThemeContext, ThemeProvider }
+export { ThemeContext, ThemeProvider };

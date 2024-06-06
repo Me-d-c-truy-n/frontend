@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom"
-import { INovelRoot } from "../../types/novel"
-import { HiUser } from "react-icons/hi2"
-import Skeleton from "react-loading-skeleton"
-import LoadingImage from "../Loading/LoadingImage"
+import { Link } from "react-router-dom";
+import { INovelRoot } from "../../types/novel";
+import { HiUser } from "react-icons/hi2";
+import Skeleton from "react-loading-skeleton";
+import LoadingImage from "../Loading/LoadingImage";
 
 const BoxNovel = ({ novel, isLoading = false }: { novel?: INovelRoot; isLoading?: boolean }) => {
   if (isLoading || novel == null)
@@ -21,7 +21,7 @@ const BoxNovel = ({ novel, isLoading = false }: { novel?: INovelRoot; isLoading?
           </div>
         </div>
       </div>
-    )
+    );
 
   return (
     <div className="flex gap-2 border hover:bg-gray-100 dark:hover:bg-gray-900 bg-slate-50 dark:border-slate-900 dark:bg-gray-950 p-2 rounded dark:shadow-[1px_1px_12px_2px_rgb(0,0,0,40%)] shadow">
@@ -51,7 +51,7 @@ const BoxNovel = ({ novel, isLoading = false }: { novel?: INovelRoot; isLoading?
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BoxNovel
+export default BoxNovel;

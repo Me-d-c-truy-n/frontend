@@ -1,9 +1,9 @@
-import { useContext } from "react"
-import listColor from "../../constants/selection.json"
-import { SettingsContext } from "../../contexts/SettingsContext"
+import { useContext } from "react";
+import listColor from "../../constants/selection.json";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 const CustomSelectColor = () => {
-  const { background, setBackground } = useContext(SettingsContext)!
+  const { background, setBackground } = useContext(SettingsContext)!;
 
   return (
     <>
@@ -22,7 +22,7 @@ const CustomSelectColor = () => {
         ))}
       </datalist>
     </>
-  )
-}
+  );
+};
 
-export default CustomSelectColor
+export default CustomSelectColor;

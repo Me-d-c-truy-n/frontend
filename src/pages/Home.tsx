@@ -1,7 +1,7 @@
-import StoryJustRead from "../components/History/StoryJustRead"
-import MyHelmet from "../components/MyHelmet"
-import ListNovel from "../components/Novel/ListNovel"
-import Slider from "../components/Slider"
+import StoryJustRead from "../components/History/StoryJustRead";
+import MyHelmet from "../components/MyHelmet";
+import ListNovel from "../components/Novel/ListNovel";
+import Slider from "../components/Slider";
 
 const Home = () => {
   return (
@@ -14,7 +14,7 @@ const Home = () => {
       <StoryJustRead isShowAll={false} />
       <ListNovel />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

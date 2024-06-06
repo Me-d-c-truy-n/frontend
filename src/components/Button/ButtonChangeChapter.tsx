@@ -1,6 +1,6 @@
 interface Props {
-  children: React.ReactNode
-  func: () => void
+  children: React.ReactNode;
+  func: () => void;
 }
 
 const ButtonChangeChapter = ({ children, func }: Props) => {
@@ -12,7 +12,7 @@ const ButtonChangeChapter = ({ children, func }: Props) => {
     >
       {children}
     </button>
-  )
-}
+  );
+};
 
-export default ButtonChangeChapter
+export default ButtonChangeChapter;

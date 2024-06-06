@@ -1,52 +1,52 @@
-import { Dispatch, SetStateAction } from "react"
-import { DraggableProvided } from "@hello-pangea/dnd"
-import { FaServer } from "react-icons/fa"
-import LoadingCircle from "../Loading/LoadingCircle"
-import { useMutation } from "@tanstack/react-query"
-import { CheckServerChapter } from "./KanbanSelectServer"
-import { IResponse } from "../../types/response"
-import { IChapter } from "../../types/novel"
-import { ApiGetOneChapter } from "../../api/apiNovel"
-import { toast } from "react-toastify"
+import { Dispatch, SetStateAction } from "react";
+import { DraggableProvided } from "@hello-pangea/dnd";
+import { FaServer } from "react-icons/fa";
+import LoadingCircle from "../Loading/LoadingCircle";
+import { useMutation } from "@tanstack/react-query";
+import { CheckServerChapter } from "./KanbanSelectServer";
+import { IResponse } from "../../types/response";
+import { IChapter } from "../../types/novel";
+import { ApiGetOneChapter } from "../../api/apiNovel";
+import { toast } from "react-toastify";
 
 interface Props extends CheckServerChapter {
-  successServer: string
-  srv: string
-  provided: DraggableProvided
-  isCheking: string
-  setIsChecking: Dispatch<SetStateAction<string>>
+  successServer: string;
+  srv: string;
+  provided: DraggableProvided;
+  isCheking: string;
+  setIsChecking: Dispatch<SetStateAction<string>>;
   // eslint-disable-next-line no-unused-vars
-  func: (data: IResponse<IChapter>, server: string) => void
+  func: (data: IResponse<IChapter>, server: string) => void;
 }
 
 const ButtonServer = (props: Props) => {
   const checkChapterMutation = useMutation({
     mutationFn: async ({ novelId, chapterId }: CheckServerChapter) => {
-      const data: IResponse<IChapter> = await ApiGetOneChapter(props.srv, novelId, chapterId)
+      const data: IResponse<IChapter> = await ApiGetOneChapter(props.srv, novelId, chapterId);
 
-      return data
+      return data;
     },
     onError: () => {
-      props.setIsChecking("")
-      toast.error(`Nguồn ${props.srv} không có`)
+      props.setIsChecking("");
+      toast.error(`Nguồn ${props.srv} không có`);
     },
     onSuccess: (data: IResponse<IChapter>) => {
-      props.setIsChecking("")
-      props.func(data, props.srv)
-      toast.success(`Đã chuyển sang nguồn ${props.srv}`)
+      props.setIsChecking("");
+      props.func(data, props.srv);
+      toast.success(`Đã chuyển sang nguồn ${props.srv}`);
     },
     retry: 0,
-  })
+  });
 
   const handleClickChangeServer = () => {
-    if (props.srv === props.successServer || props.isCheking) return
+    if (props.srv === props.successServer || props.isCheking) return;
 
-    props.setIsChecking(props.srv)
+    props.setIsChecking(props.srv);
     checkChapterMutation.mutate({
       novelId: props.novelId,
       chapterId: props.chapterId,
-    })
-  }
+    });
+  };
 
   return (
     <div
@@ -63,7 +63,7 @@ const ButtonServer = (props: Props) => {
         {props.srv}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonServer
+export default ButtonServer;

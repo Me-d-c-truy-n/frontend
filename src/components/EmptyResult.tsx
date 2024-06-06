@@ -1,13 +1,13 @@
-import { useContext } from "react"
-import { THEME } from "../types/theme"
-import { ThemeContext } from "../contexts/ThemeContext"
+import { useContext } from "react";
+import { THEME } from "../types/theme";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 interface Props {
-  title: string
+  title: string;
 }
 
 const EmptyResult = ({ title }: Props) => {
-  const { theme } = useContext(ThemeContext)!
+  const { theme } = useContext(ThemeContext)!;
 
   return (
     <div className="w-full flex items-center flex-wrap justify-center mt-6">
@@ -69,7 +69,7 @@ const EmptyResult = ({ title }: Props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EmptyResult
+export default EmptyResult;

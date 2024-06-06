@@ -1,5 +1,5 @@
-import Skeleton from "react-loading-skeleton"
-import ButtonClose from "../Button/ButtonClose"
+import Skeleton from "react-loading-skeleton";
+import ButtonClose from "../Button/ButtonClose";
 
 const ListChapterSkeleton = ({ name, close }: { name: string; close: () => void }) => {
   return (
@@ -15,7 +15,7 @@ const ListChapterSkeleton = ({ name, close }: { name: string; close: () => void 
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ListChapterSkeleton
+export default ListChapterSkeleton;
