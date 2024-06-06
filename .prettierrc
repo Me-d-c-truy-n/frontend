@@ -3,9 +3,10 @@
   "tabWidth": 2,
   "arrowParens": "always",
   "semi": true,
-  "endOfLine": "auto",
+  "endOfLine": "lf",
   "useTabs": false,
   "singleQuote": false,
   "printWidth": 120,
-  "jsxSingleQuote": false
+  "jsxSingleQuote": false,
+  "proseWrap": "always",
 }

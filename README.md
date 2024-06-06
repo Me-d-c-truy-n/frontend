@@ -36,13 +36,11 @@ git clone https://github.com/Me-d-c-truy-n/Frontend.git
 ## Usage
 
 ```
-cd frontend
 npm install
 npm run dev
 ```
 or with `Dockerfile`
 ```
-cd frontend
 docker build -t sd_frontend .
 docker run -dp 5173:5173 sd_frontend
 ```

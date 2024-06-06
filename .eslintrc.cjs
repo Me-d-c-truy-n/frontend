@@ -8,6 +8,11 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
   ],
+  settings: {
+    react: {
+      version: "detect"
+    }
+  },
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'react', 'react-hooks', '@typescript-eslint'],
@@ -17,20 +22,21 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-    'no-unused-vars': 'warn',
+    'no-unused-vars': 'error',
     'react/react-in-jsx-scope': 'off',
     'prettier/prettier': [
-      'warn',
+      'error',
       {
         arrowParens: 'always',
         semi: true,
         trailingComma: 'all',
         tabWidth: 2,
-        endOfLine: 'auto',
+        endOfLine: 'lf',
         useTabs: false,
         singleQuote: false,
         printWidth: 120,
-        jsxSingleQuote: false
+        jsxSingleQuote: false,
+        proseWrap: "always"
       },
     ],
   },

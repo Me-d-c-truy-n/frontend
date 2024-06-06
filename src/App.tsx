@@ -1,7 +1,5 @@
 import { RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "react-loading-skeleton/dist/skeleton.css";
 import router from "./routers/router";
 import { useContext, useEffect } from "react";
 import { SettingsContext } from "./contexts/SettingsContext";
@@ -11,6 +9,8 @@ import { THEME } from "./types/theme";
 import ScrollButton from "./components/Button/ScrollButton";
 import { useSelector } from "react-redux";
 import { AppState } from "./store";
+import "react-toastify/dist/ReactToastify.css";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function App() {
   const isOpen = useSelector((state: AppState) => state.chapterOpen.isOpen);
