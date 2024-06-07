@@ -61,9 +61,7 @@ const PriorityServerPopup = ({ close }: Props) => {
     >
       <div className="shadow-2xl p-2 mx-auto border rounded-lg border-amber-600 bg-amber-50 dark:bg-stone-950 w-fit">
         <div className="flex justify-between items-center border-b shadow-sm pb-3 md:px-2 px-1 dark:border-b-gray-800">
-          <h1 className="text-lg md:text-xl mr-5 text-nowrap font-bold dark:text-white">
-            Thay đổi độ ưu tiên nguồn truyện
-          </h1>
+          <h1 className="text-lg md:text-xl mr-5 font-bold dark:text-white">Thay đổi độ ưu tiên</h1>
           <ButtonClose close={close} />
         </div>
 
@@ -93,6 +91,9 @@ const PriorityServerPopup = ({ close }: Props) => {
               </Droppable>
             </div>
           </DragDropContext>
+          {stores.length <= 0 && (
+            <div className="text-red-600 font-bold text-center text-xl  mb-2 ">Không có nguồn truyện nào</div>
+          )}
           <i className="md:text-base w-full flex flex-wrap font-semibold text-sky-500 items-center justify-center text-sm gap-1">
             <FaInfoCircle />
             Kéo thả để thay đổi độ ưu tiên

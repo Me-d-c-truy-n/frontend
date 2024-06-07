@@ -26,7 +26,10 @@ const CheckNewServer = () => {
   });
 
   if (isLoading) return <LoadingSpinner />;
-  if (isError) toast.error("Không thể tải nguồn truyền");
+  if (isError) {
+    dispatch(updateListServer([]));
+    toast.error("Không thể tải nguồn truyền");
+  }
 
   return <Outlet />;
 };
