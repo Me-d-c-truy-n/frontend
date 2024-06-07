@@ -19,60 +19,60 @@ const router = createHashRouter([
     element: <ScrollToTop />,
     children: [
       {
-        element: <Layout />,
+        element: <CheckNewServer />,
         children: [
           {
-            path: "/",
-            element: <Home />,
-          },
-          {
-            path: "/tu-truyen",
-            element: <Bookcase />,
-          },
-          {
-            path: "/truyen/:novelId",
+            element: <Layout />,
             children: [
               {
-                path: "",
-                element: <NovelPreview />,
+                path: "/",
+                element: <Home />,
               },
               {
-                element: <CheckNewServer />,
+                path: "/tu-truyen",
+                element: <Bookcase />,
+              },
+              {
+                path: "/truyen/:novelId",
                 children: [
+                  {
+                    path: "",
+                    element: <NovelPreview />,
+                  },
                   {
                     path: ":chapterId",
                     element: <NovelChapter />,
                   },
                 ],
               },
-            ],
-          },
-          {
-            path: "/tac-gia/:authorId",
-            element: <AuthorPage />,
-          },
-          {
-            path: "/tim-kiem",
-            element: <FilterPage />,
-          },
-          {
-            path: "/thong-tin",
-            children: [
               {
-                path: "dieu-khoan-dich-vu",
-                element: <TermOfService />,
+                path: "/tac-gia/:authorId",
+                element: <AuthorPage />,
               },
               {
-                path: "chinh-sach-bao-mat",
-                element: <PrivacyPolicy />,
+                path: "/tim-kiem",
+                element: <FilterPage />,
               },
               {
-                path: "ve-ban-quyen",
-                element: <AboutLicense />,
-              },
-              {
-                path: "nhom-phat-trien",
-                element: <AboutUs />,
+                path: "/thong-tin",
+                children: [
+                  {
+                    path: "dieu-khoan-dich-vu",
+                    element: <TermOfService />,
+                  },
+                  {
+                    path: "chinh-sach-bao-mat",
+                    element: <PrivacyPolicy />,
+                  },
+                  {
+                    path: "ve-ban-quyen",
+                    element: <AboutLicense />,
+                  },
+                  {
+                    path: "nhom-phat-trien",
+                    element: <AboutUs />,
+                  },
+                ],
               },
             ],
           },

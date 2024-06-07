@@ -93,7 +93,7 @@ const PriorityServerPopup = ({ close }: Props) => {
               </Droppable>
             </div>
           </DragDropContext>
-          <i className="md:text-base w-full flex flex-wrap font-semibold text-rose-500 items-center justify-center text-sm gap-1">
+          <i className="md:text-base w-full flex flex-wrap font-semibold text-sky-500 items-center justify-center text-sm gap-1">
             <FaInfoCircle />
             Kéo thả để thay đổi độ ưu tiên
           </i>

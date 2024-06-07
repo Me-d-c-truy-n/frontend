@@ -8,10 +8,13 @@ import { ThemeContext } from "./contexts/ThemeContext";
 import { THEME } from "./types/theme";
 import { useSelector } from "react-redux";
 import { AppState } from "./store";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import "react-toastify/dist/ReactToastify.css";
 import "react-loading-skeleton/dist/skeleton.css";
 
 function App() {
+  const position = useMediaQuery("(max-width:500px)") ? "top-center" : "top-right";
+  console.log(position);
   const isOpen = useSelector((state: AppState) => state.chapterOpen.isOpen);
 
   const { theme } = useContext(ThemeContext)!;
@@ -34,7 +37,7 @@ function App() {
       )}
 
       <ToastContainer
-        position="top-right"
+        position={position}
         autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -43,7 +46,7 @@ function App() {
         pauseOnHover
         theme={theme}
         pauseOnFocusLoss={false}
-        className="w-fit hidden md:block"
+        className="w-fit"
         limit={5}
       />
     </div>

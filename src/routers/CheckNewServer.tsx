@@ -1,17 +1,18 @@
 import { useDispatch } from "react-redux";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { AppDispatch } from "../store";
 import { useQuery } from "@tanstack/react-query";
 import { ApiGetAllServer } from "../api/apiPlugin";
 import { updateListServer } from "../store/server";
 import LoadingSpinner from "../components/Loading/LoadingSpinner";
+import { toast } from "react-toastify";
 
 const CheckNewServer = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
+  const location = useLocation();
 
   const { isLoading, isError } = useQuery({
-    queryKey: ["server"],
+    queryKey: ["server", location.pathname],
     queryFn: async () => {
       const data: string[] = await ApiGetAllServer();
 
@@ -21,14 +22,11 @@ const CheckNewServer = () => {
 
       return data;
     },
-    retry: 1,
+    retry: 0,
   });
 
   if (isLoading) return <LoadingSpinner />;
-  if (isError)
-    navigate("/notfound", {
-      replace: true,
-    });
+  if (isError) toast.error("Không thể tải nguồn truyền");
 
   return <Outlet />;
 };
