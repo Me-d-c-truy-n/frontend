@@ -45,8 +45,10 @@ const PriorityServerPopup = ({ close }: Props) => {
   };
 
   const handleSaveNewPriority = () => {
-    dispatch(changeServerIndex(stores));
-    toast.success("Đã cập nhật độ ưu tiên nguồn truyện");
+    if (stores.length > 0) {
+      dispatch(changeServerIndex(stores));
+      toast.success("Đã cập nhật độ ưu tiên nguồn truyện");
+    }
     close();
   };
 

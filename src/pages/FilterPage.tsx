@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import Slider from "../components/Slider";
 
 import BoxNovelAuthor from "../components/Novel/BoxNovelAuthor";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { IResponse } from "../types/response";
 import { INovelRoot } from "../types/novel";
@@ -40,6 +40,10 @@ const FilterPage = () => {
     },
     retry: 1,
   });
+
+  useEffect(() => {
+    changeServerByHand(server);
+  }, [server]);
 
   function changeServerByHand(srv: string) {
     setMyServer(srv);
