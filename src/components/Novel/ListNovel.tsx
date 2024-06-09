@@ -1,36 +1,12 @@
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import BoxNovel from "../Novel/BoxNovel";
 import TitleTab from "../TitleTab";
-import { IResponse } from "../../types/response";
-import { ApiGetAllNovel } from "../../api/apiNovel";
-import { useState } from "react";
-import { INovelRoot } from "../../types/novel";
 import ListNovelSkeleton from "../Loading/ListNovelSkeleton";
 import CustomPagination from "../CustomPagination";
-import { useSelector } from "react-redux";
-import { AppState } from "../../store";
 import EmptyResult from "../EmptyResult";
+import useListNovel from "../../hooks/query/useListNovel";
 
 const ListNovel = () => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [, setPerPage] = useState<number>(0);
-  const [totalPage, setTotalPage] = useState<number>(1);
-  const [novels, setNovels] = useState<INovelRoot[]>([]);
-  const server = useSelector((state: AppState) => state.server.server);
-
-  const { isLoading, isFetching, isError } = useQuery({
-    queryKey: ["all_novel", currentPage, server],
-    queryFn: async () => {
-      const data: IResponse<INovelRoot[]> = await ApiGetAllNovel(server, currentPage);
-
-      setPerPage(data.perPage);
-      setNovels(data.data);
-      setTotalPage(data.totalPage);
-
-      return data.data;
-    },
-    placeholderData: keepPreviousData,
-  });
+  const { isLoading, isFetching, isError, novels, totalPage, currentPage, setCurrentPage } = useListNovel();
 
   if (isError)
     return (
