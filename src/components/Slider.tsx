@@ -23,7 +23,7 @@ const Slider = ({ isLoading = false }: Props) => {
       {isLoading || !slider || slider.trim().length <= 0 ? (
         <Skeleton className="h-20 lg:h-48" />
       ) : (
-        <LoadingImage name="slider" imageUrl={slider} className="w-full cursor-pointer" />
+        <LoadingImage name="slider" imageUrl={slider} className="w-full cursor-pointer max-h-[320px]" />
       )}
     </div>
   );
