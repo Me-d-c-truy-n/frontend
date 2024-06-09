@@ -6,7 +6,7 @@ export function convertDateToTime(date: string) {
   const convertDate = new Date(date);
   return moment(convertDate)
     .fromNow()
-    .replace("a few seconds", "vài giây trước")
+    .replace("a few seconds ago", "vài giây trước")
     .replace("minute ago", "phút trước")
     .replace("minutes ago", "phút trước")
     .replace("hour ago", "giờ trước")
