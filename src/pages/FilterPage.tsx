@@ -1,54 +1,18 @@
-import { useSearchParams } from "react-router-dom";
 import Slider from "../components/Slider";
 
 import BoxNovelAuthor from "../components/Novel/BoxNovelAuthor";
-import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { IResponse } from "../types/response";
-import { INovelRoot } from "../types/novel";
-import { ApiSearch } from "../api/apiSearch";
 import ListNovelSkeleton from "../components/Loading/ListNovelSkeleton";
 import TitleTab from "../components/TitleTab";
 import CustomPagination from "../components/CustomPagination";
-import { useSelector } from "react-redux";
-import { AppState } from "../store";
 import EmptyResult from "../components/EmptyResult";
 import TitleTabScroll from "../components/TitleTabScroll";
 import SelectChangeServer from "../components/Filter/SelectChangeServer";
 import MyHelmet from "../components/MyHelmet";
+import useFilterPage from "../hooks/query/useFilterPage";
 
 const FilterPage = () => {
-  const [searchParams] = useSearchParams();
-
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [, setPerPage] = useState<number>(0);
-  const [totalPage, setTotalPage] = useState<number>(1);
-  const [novels, setNovels] = useState<INovelRoot[]>([]);
-  const server = useSelector((state: AppState) => state.server.server);
-  const [myServer, setMyServer] = useState<string>(server);
-
-  const { isFetching } = useQuery({
-    queryKey: ["search", searchParams.get("q"), myServer, currentPage],
-    queryFn: async () => {
-      const data: IResponse<INovelRoot[]> = await ApiSearch(myServer, searchParams.get("q") || "", currentPage);
-
-      setPerPage(data.perPage);
-      setNovels(data.data);
-      setTotalPage(data.totalPage);
-
-      return data.data;
-    },
-    retry: 1,
-  });
-
-  useEffect(() => {
-    changeServerByHand(server);
-  }, [server]);
-
-  function changeServerByHand(srv: string) {
-    setMyServer(srv);
-    setCurrentPage(1);
-  }
+  const { searchParams, myServer, isFetching, novels, changeServerByHand, totalPage, currentPage, setCurrentPage } =
+    useFilterPage();
 
   return (
     <div>
