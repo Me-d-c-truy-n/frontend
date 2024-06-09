@@ -20,11 +20,11 @@
     transition: transform 1.2s;
   }
   .notranslate {
-    transform: rotate(calc(-130deg / 3 * var(--i)));
+    transform: rotate(calc(-130deg / 4 * var(--i)));
   }
   &.active {
     .action-item {
-      transform: rotate(calc(160deg / 3 * var(--i)));
+      transform: rotate(calc(160deg / 4 * var(--i)));
       opacity: 1;
     }
     .toggle {

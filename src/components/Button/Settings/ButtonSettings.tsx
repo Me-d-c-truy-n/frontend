@@ -4,6 +4,7 @@ import ButtonChild from "./ButtonChild";
 import { IoMdHome } from "react-icons/io";
 import { FaServer } from "react-icons/fa";
 import { FaLongArrowAltUp } from "react-icons/fa";
+import { MdFavorite } from "react-icons/md";
 import IconSetting from "./IconSetting";
 import { useNavigate } from "react-router-dom";
 import { easeInOutCubic } from "../../../utils/helpers";
@@ -22,6 +23,11 @@ const ButtonSettings = () => {
 
   const handleClickToHome = () => {
     navigate("/");
+    setIsActive(false);
+  };
+
+  const handleClickToBookmark = () => {
+    navigate("/tu-truyen");
     setIsActive(false);
   };
 
@@ -101,18 +107,23 @@ const ButtonSettings = () => {
           </ButtonChild>
         </div>
         <div className="action-item" style={{ "--i": 1 } as React.CSSProperties}>
+          <ButtonChild func={handleClickToBookmark}>
+            <MdFavorite className="rotate-[13deg] text-red-600 text-xl" />
+          </ButtonChild>
+        </div>
+        <div className="action-item" style={{ "--i": 2 } as React.CSSProperties}>
           <ButtonChild
             func={() => {
               setIsShowPriorityServer(true);
               setIsActive(false);
             }}
           >
-            <FaServer className="rotate-[10deg] text-green-700" />
+            <FaServer className="rotate-[5deg] text-green-700" />
           </ButtonChild>
         </div>
-        <div className="action-item" style={{ "--i": 2 } as React.CSSProperties}>
+        <div className="action-item" style={{ "--i": 3 } as React.CSSProperties}>
           <ButtonChild func={scrollToTop}>
-            <FaLongArrowAltUp className="text-red-600 text-xl" />
+            <FaLongArrowAltUp className="text-amber-500 text-xl -rotate-[3deg]" />
           </ButtonChild>
         </div>
       </div>

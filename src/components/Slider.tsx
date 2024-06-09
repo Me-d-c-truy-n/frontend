@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import slider_const from "../constants/slider.json";
 import Skeleton from "react-loading-skeleton";
-import LoadingImage from "./Loading/LoadingImage";
 
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
@@ -23,7 +22,7 @@ const Slider = ({ isLoading = false }: Props) => {
       {isLoading || !slider || slider.trim().length <= 0 ? (
         <Skeleton className="h-20 lg:h-48" />
       ) : (
-        <LoadingImage name="slider" imageUrl={slider} className="w-full cursor-pointer max-h-[320px]" />
+        <img src={slider} alt="slider" className="w-full cursor-pointer" />
       )}
     </div>
   );
