@@ -49,7 +49,12 @@ const NovelInfor = ({ novel, isLoading = false, server }: Props) => {
   return (
     <div className="flex gap-4 my-6 flex-col md:flex-row items-center md:items-start">
       {openExportEBook && (
-        <ExportEBookPopup close={() => setOpenExportEBook(false)} novelId={novel.novelId} server={server} />
+        <ExportEBookPopup
+          close={() => setOpenExportEBook(false)}
+          novelId={novel.novelId}
+          server={server}
+          chapterId={novel.firstChapter}
+        />
       )}
       {openChapterPopup && (
         <ChapterPopup

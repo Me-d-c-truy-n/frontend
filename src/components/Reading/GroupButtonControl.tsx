@@ -3,12 +3,14 @@ import ButtonBookmark from "../Button/ButtonBookmark";
 import ButtonUtils from "../Button/ButtonUtils";
 
 import { IoSettingsOutline } from "react-icons/io5";
+import { FiDownload } from "react-icons/fi";
 import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { IChapter } from "../../types/novel";
 
 interface Props {
   setOpenSettingPopup: Dispatch<SetStateAction<boolean>>;
   setOpenChapterPopup: Dispatch<SetStateAction<boolean>>;
+  setOpenExportEBook: Dispatch<SetStateAction<boolean>>;
   chapter: IChapter;
 }
 
@@ -32,6 +34,11 @@ const GroupButtonControl = (props: Props) => {
         chapterName={props.chapter.name}
         time={new Date().toString()}
       />
+
+      <ButtonUtils func={() => props.setOpenExportEBook(true)}>
+        <FiDownload />
+        Tải truyện
+      </ButtonUtils>
     </div>
   );
 };

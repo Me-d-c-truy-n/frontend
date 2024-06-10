@@ -8,15 +8,20 @@ import { ApiGetAllExport } from "../../api/apiPlugin";
 import DownloadFileSkeleton from "../Loading/DownloadFileSkeleton";
 import { useModal } from "../../hooks/useModal";
 import ButtonClose from "../Button/ButtonClose";
+import GroupInputDownload from "../Export/GroupInputDownload";
+import { FaInfoCircle } from "react-icons/fa";
 
 interface Props {
   close: () => void;
   novelId: string;
   server: string;
+  chapterId: string;
 }
 
-const ExportEBookPopup = ({ close, novelId, server }: Props) => {
+const ExportEBookPopup = ({ close, novelId, server, chapterId }: Props) => {
   const [selectedExport, setSelectedExport] = useState<string>("epub");
+  const [numberChapters, setNumberChapters] = useState<number | "">(1);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const { isFetching, data: listExport } = useQuery({
     queryKey: ["file_export"],
@@ -35,6 +40,15 @@ const ExportEBookPopup = ({ close, novelId, server }: Props) => {
       document.body.style.overflowY = "scroll";
     };
   }, []);
+
+  function changeNumberOfChapters(number: string) {
+    if (isNaN(parseInt(number))) {
+      setNumberChapters("");
+    } else {
+      setNumberChapters(parseInt(number));
+    }
+    setErrorMessage("");
+  }
 
   if (isFetching || !listExport || listExport?.length <= 0) return <DownloadFileSkeleton close={close} />;
 
@@ -61,7 +75,26 @@ const ExportEBookPopup = ({ close, novelId, server }: Props) => {
               />
             ))}
           </div>
-          <ButtonDownload close={close} novelId={novelId} server={server} file={selectedExport} />
+          <GroupInputDownload
+            chapterId={chapterId}
+            numberChapters={numberChapters}
+            setNumberChapters={changeNumberOfChapters}
+          />
+          <p
+            className={`text-red-600 text-sm font-semibold ${errorMessage.length <= 0 && "hidden"} flex items-center gap-1`}
+          >
+            <FaInfoCircle />
+            {errorMessage}
+          </p>
+          <ButtonDownload
+            close={close}
+            novelId={novelId}
+            server={server}
+            file={selectedExport}
+            chapterId={chapterId}
+            numberChapters={numberChapters}
+            setErrorMessage={setErrorMessage}
+          />
         </div>
       </div>
     </div>

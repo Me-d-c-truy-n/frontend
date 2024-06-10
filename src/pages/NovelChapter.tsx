@@ -17,11 +17,13 @@ import GroupHandleChapterTop from "../components/Reading/GroupHandleChapterTop";
 import GroupButtonControl from "../components/Reading/GroupButtonControl";
 import GroupHandleChapterBottom from "../components/Reading/GroupHandleChapterBottom";
 import useNovelChapter from "../hooks/query/useNovelChapter";
+import ExportEBookPopup from "../components/Popup/ExportEBookPopup";
 
 const NovelChapter = () => {
   const { novelId, chapterId } = useParams();
   const [openSettingPopup, setOpenSettingPopup] = useState<boolean>(false);
   const [openChapterPopup, setOpenChapterPopup] = useState<boolean>(false);
+  const [openExportEBook, setOpenExportEBook] = useState<boolean>(false);
 
   const { background } = useContext(SettingsContext)!;
 
@@ -52,6 +54,14 @@ const NovelChapter = () => {
           chapterId={chapterId || "1"}
         />
       )}
+      {openExportEBook && (
+        <ExportEBookPopup
+          close={() => setOpenExportEBook(false)}
+          novelId={novelId}
+          server={successServer}
+          chapterId={chapterId}
+        />
+      )}
       <MyHelmet
         title={`${chapter.novelName} - ${subSlugChapter(chapter.chapterId)} - nguồn ${successServer}`}
         description={`Truyện của tác giả ${chapter.author} - nguồn ${successServer}`}
@@ -68,6 +78,7 @@ const NovelChapter = () => {
         <GroupButtonControl
           setOpenChapterPopup={setOpenChapterPopup}
           setOpenSettingPopup={setOpenSettingPopup}
+          setOpenExportEBook={setOpenExportEBook}
           chapter={chapter}
         />
 

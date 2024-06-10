@@ -13,7 +13,6 @@ const NovelPreview = () => {
     <div>
       <Slider isLoading={isFetching} />
       <NovelInfor novel={novel} isLoading={isFetching} server={currentServer} />
-
       <div className="mb-5">
         {isFetching || novel == null ? (
           <>
