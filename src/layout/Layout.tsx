@@ -5,7 +5,7 @@ import ButtonSettings from "../components/Button/Settings/ButtonSettings";
 
 const Layout = () => {
   return (
-    <div className={`max-w-5xl mx-auto relative overflow-x-hidden`}>
+    <div className={`max-w-5xl min-h-screen mx-auto relative overflow-x-hidden`}>
       <Header />
       <main className="p-1">
         <Outlet />
