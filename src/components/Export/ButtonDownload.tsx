@@ -8,24 +8,9 @@ interface Props {
   close: () => void;
 }
 
-// interface Api {
-//   chapterId: string;
-//   novelId: string;
-//   file: string;
-//   server: string;
-// }
-
 const ButtonDownload = ({ novelId, file, server, close }: Props) => {
-  // const callApiDownload = useMutation({
-  //   mutationFn:
-  //     async ({ chapterId, novelId, file, server}: Api) =>
-  //       ApiDownloadChapter(server, file, novelId, chapterId),
-  // })
-
   const handleDownload = () => {
     close();
-    //callApiDownload.mutate({server, file, novelId, chapterId});
-    // window.open(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${server}/tai-truyen/${file}/${novelId}/${chapterId}`);
     toast.info("Truyện đang được tải");
     window.open(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${server}/tai-truyen/${novelId}/${file}`);
   };

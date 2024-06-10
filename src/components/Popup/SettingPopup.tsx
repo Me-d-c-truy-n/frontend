@@ -13,6 +13,7 @@ import { useModal } from "../../hooks/useModal";
 interface Props {
   close: () => void;
 }
+
 const SettingPopup = ({ close }: Props) => {
   const { background, color, setColor, resetSettings } = useContext(SettingsContext)!;
 

@@ -1,17 +1,12 @@
-import { IChapterRoot } from "../../types/novel";
+import { useEffect } from "react";
+import { useModal } from "../../hooks/useModal";
+import { getCurrentScrollByChapterId } from "../../utils/helpers";
 import ChapterRow from "./ChapterRow";
-import { useQuery } from "@tanstack/react-query";
-import { IResponse } from "../../types/response";
-import { ApiGetAllChapter } from "../../api/apiNovel";
-import { useEffect, useState } from "react";
 import ListChapterSkeleton from "../Loading/ListChapterSkeleton";
 import CustomPagination from "../CustomPagination";
-import { useSelector } from "react-redux";
-import { getListChapterReaded } from "../../store/readed/selector";
-import { useModal } from "../../hooks/useModal";
 import EmptyResult from "../EmptyResult";
 import ButtonClose from "../Button/ButtonClose";
-import { getCurrentPageByChapterId, getCurrentScrollByChapterId } from "../../utils/helpers";
+import useGetAllChapter from "../../hooks/query/useGetAllChapter";
 
 interface Props {
   close: () => void;
@@ -22,29 +17,12 @@ interface Props {
 }
 
 const ChapterPopup = ({ close, novelId, name, server, chapterId }: Props) => {
-  const [chapters, setChapters] = useState<IChapterRoot[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(getCurrentPageByChapterId(server, chapterId || "1"));
-  const [firstSelectedPage] = useState(currentPage);
-
-  const [, setPerPage] = useState<number>(0);
-  const [totalPage, setTotalPage] = useState<number>(1);
-
-  const listChapterReaded = useSelector(getListChapterReaded(novelId));
-
-  const { isFetching, isError } = useQuery({
-    queryKey: ["all_chapter", novelId, currentPage, server],
-    queryFn: async () => {
-      const data: IResponse<IChapterRoot[]> = await ApiGetAllChapter(server, novelId, currentPage);
-
-      setPerPage(data.perPage);
-      setTotalPage(data.totalPage);
-      setChapters(data.data);
-
-      return data;
-    },
-    retry: 1,
-  });
-
+  const { isLoading, isError, totalPage, currentPage, setCurrentPage, firstSelectedPage, chapters, listChapterReaded } =
+    useGetAllChapter({
+      server,
+      chapterId,
+      novelId,
+    });
   const { modalRef, handleClickOutside } = useModal(close);
 
   useEffect(() => {
@@ -53,8 +31,6 @@ const ChapterPopup = ({ close, novelId, name, server, chapterId }: Props) => {
       document.body.style.overflowY = "scroll";
     };
   }, []);
-
-  const isLoading = isFetching || chapters.length <= 0;
 
   useEffect(() => {
     const container = document.getElementById("scroll_chapter");

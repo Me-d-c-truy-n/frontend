@@ -5,10 +5,10 @@ import data from "../../constants/selection.json";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
-import "../../assets/style/selection.scss";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { THEME } from "../../types/theme";
 import { SelectionKey } from "../../types/key";
+import "../../assets/style/selection.scss";
 
 interface Props {
   value: string;
