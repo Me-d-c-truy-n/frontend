@@ -36,7 +36,7 @@ module.exports = {
         singleQuote: false,
         printWidth: 120,
         jsxSingleQuote: false,
-        proseWrap: "always"
+        proseWrap: "always",
       },
     ],
   },

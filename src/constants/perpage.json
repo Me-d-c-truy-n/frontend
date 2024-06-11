@@ -11,6 +11,10 @@
     {
       "name": "truyenfull",
       "perpage": 50
+    },
+    {
+      "name": "lightnovel",
+      "perpage": 50
     }
   ]
 }
