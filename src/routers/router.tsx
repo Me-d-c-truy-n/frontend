@@ -1,5 +1,5 @@
 import Layout from "../layout/Layout";
-import { createBrowserRouter } from "react-router-dom";
+import { Outlet, createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import NovelPreview from "../pages/NovelPreview";
 import ScrollToTop from "../hooks/useScrollToTop";
@@ -17,63 +17,64 @@ import AboutUs from "../pages/Information/AboutUs";
 const router = createBrowserRouter(
   [
     {
-      element: <ScrollToTop />,
+      element: (
+        <ScrollToTop>
+          <CheckNewServer>
+            <Outlet />
+          </CheckNewServer>
+        </ScrollToTop>
+      ),
       children: [
         {
-          element: <CheckNewServer />,
+          element: <Layout />,
           children: [
             {
-              element: <Layout />,
+              path: "",
+              element: <Home />,
+            },
+            {
+              path: "tu-truyen",
+              element: <Bookcase />,
+            },
+            {
+              path: "truyen/:novelId",
               children: [
                 {
                   path: "",
-                  element: <Home />,
+                  element: <NovelPreview />,
                 },
                 {
-                  path: "tu-truyen",
-                  element: <Bookcase />,
+                  path: ":chapterId",
+                  element: <NovelChapter />,
+                },
+              ],
+            },
+            {
+              path: "tac-gia/:authorId",
+              element: <AuthorPage />,
+            },
+            {
+              path: "tim-kiem",
+              element: <FilterPage />,
+            },
+            {
+              path: "thong-tin",
+              children: [
+                {
+                  path: "dieu-khoan-dich-vu",
+                  element: <TermOfService />,
                 },
                 {
-                  path: "truyen/:novelId",
-                  children: [
-                    {
-                      path: "",
-                      element: <NovelPreview />,
-                    },
-                    {
-                      path: ":chapterId",
-                      element: <NovelChapter />,
-                    },
-                  ],
+                  path: "chinh-sach-bao-mat",
+                  element: <PrivacyPolicy />,
                 },
                 {
-                  path: "tac-gia/:authorId",
-                  element: <AuthorPage />,
+                  path: "ve-ban-quyen",
+                  element: <AboutLicense />,
                 },
                 {
-                  path: "tim-kiem",
-                  element: <FilterPage />,
-                },
-                {
-                  path: "thong-tin",
-                  children: [
-                    {
-                      path: "dieu-khoan-dich-vu",
-                      element: <TermOfService />,
-                    },
-                    {
-                      path: "chinh-sach-bao-mat",
-                      element: <PrivacyPolicy />,
-                    },
-                    {
-                      path: "ve-ban-quyen",
-                      element: <AboutLicense />,
-                    },
-                    {
-                      path: "nhom-phat-trien",
-                      element: <AboutUs />,
-                    },
-                  ],
+                  path: "nhom-phat-trien",
+                  element: <AboutUs />,
                 },
               ],
             },

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { Outlet, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { AppDispatch } from "../store";
 import { useQuery } from "@tanstack/react-query";
 import { ApiGetAllServer } from "../api/apiPlugin";
@@ -7,7 +7,7 @@ import { updateListServer } from "../store/server";
 import LoadingSpinner from "../components/Loading/LoadingSpinner";
 import { toast } from "react-toastify";
 
-const CheckNewServer = () => {
+const CheckNewServer = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useDispatch<AppDispatch>();
   const location = useLocation();
 
@@ -31,7 +31,7 @@ const CheckNewServer = () => {
     toast.error("Không thể tải nguồn truyền");
   }
 
-  return <Outlet />;
+  return children;
 };
 
 export default CheckNewServer;

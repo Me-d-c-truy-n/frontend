@@ -10,11 +10,7 @@ import { AppDispatch, AppState } from "../../store";
 import { changeAlign, changeFontSize, changeFontStyle, changeLeading } from "../../store/settings";
 import { useModal } from "../../hooks/useModal";
 
-interface Props {
-  close: () => void;
-}
-
-const SettingPopup = ({ close }: Props) => {
+const SettingPopup = ({ close }: { close: () => void }) => {
   const { background, color, setColor, resetSettings } = useContext(SettingsContext)!;
 
   const settings = useSelector((state: AppState) => state.settings);
