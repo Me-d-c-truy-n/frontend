@@ -15,11 +15,15 @@ interface Props {
 const ButtonDownload = ({ novelId, file, server, chapterId, numberChapters, close, setErrorMessage }: Props) => {
   function checkNumberChaptersIsValid(numberChapters: number | ""): boolean {
     if (numberChapters === undefined || numberChapters === null || numberChapters === "") {
-      setErrorMessage("Vui lòng nhập số chương muốn tải");
+      setErrorMessage("Vui lòng nhập số chương muốn tải.");
+      return false;
+    }
+    if (numberChapters <= 0) {
+      setErrorMessage("Số chương tải phải lớn hơn 0.");
       return false;
     }
     if (numberChapters > 300) {
-      setErrorMessage("Chỉ có thể tải tối đa 300 chương");
+      setErrorMessage("Chỉ có thể tải tối đa 300 chương.");
       return false;
     }
     return true;
