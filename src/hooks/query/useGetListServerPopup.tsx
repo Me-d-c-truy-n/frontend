@@ -1,27 +1,27 @@
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../store";
 import { useLocation } from "react-router-dom";
+import { AppDispatch } from "../../store";
+import { useQuery } from "@tanstack/react-query";
 import { ApiGetAllServer } from "../../api/apiPlugin";
 import { updateListServer } from "../../store/server";
-import { useQuery } from "@tanstack/react-query";
 
-const useGetListServer = () => {
+const useGetListServerPopup = () => {
   const dispatch = useDispatch<AppDispatch>();
   const location = useLocation();
 
-  const { isLoading, isError } = useQuery({
-    queryKey: ["server", location.pathname],
+  const { isLoading } = useQuery({
+    queryKey: ["server_popup", location.pathname],
     queryFn: async () => {
       const data: string[] = await ApiGetAllServer();
-      if (data.length === 0) throw new Error();
       dispatch(updateListServer(data));
 
       return data;
     },
+
     retry: 0,
   });
 
-  return { isLoading, isError };
+  return { isLoading };
 };
 
-export default useGetListServer;
+export default useGetListServerPopup;

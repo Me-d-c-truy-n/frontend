@@ -7,7 +7,8 @@ import ButtonClose from "../Button/ButtonClose";
 import { changeServerIndex } from "../../store/server";
 import { toast } from "react-toastify";
 import { FaInfoCircle } from "react-icons/fa";
-import useGetListServer from "../../hooks/query/useGetListServer";
+import useGetListServerPopup from "../../hooks/query/useGetListServerPopup";
+import CircularProgress from "@mui/material/CircularProgress";
 
 interface Props {
   close: () => void;
@@ -15,17 +16,15 @@ interface Props {
 
 const PriorityServerPopup = ({ close }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { isLoading, refetch } = useGetListServer();
+  const { isLoading } = useGetListServerPopup();
   const listServer = useSelector((state: AppState) => state.server.listServer);
   const [stores, setStores] = useState(listServer);
 
   useEffect(() => {
     document.body.style.overflowY = "hidden";
-    refetch();
     return () => {
       document.body.style.overflowY = "scroll";
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -76,7 +75,9 @@ const PriorityServerPopup = ({ close }: Props) => {
         </div>
 
         {isLoading ? (
-          <div>Loading...</div>
+          <div className="flex items-center justify-center mt-2">
+            <CircularProgress />
+          </div>
         ) : (
           <div className="border border-slate-400 p-2 px-3 rounded">
             <DragDropContext onDragEnd={handleDragDrop}>
@@ -105,7 +106,7 @@ const PriorityServerPopup = ({ close }: Props) => {
               </div>
             </DragDropContext>
             {stores.length <= 0 && (
-              <div className="text-red-600 font-bold text-center text-xl  mb-2 ">Không có nguồn truyện nào</div>
+              <div className="text-red-600 font-bold text-center text-xl mb-2 ">Không có nguồn truyện nào</div>
             )}
             <i className="md:text-base w-full flex flex-wrap font-semibold text-sky-500 items-center justify-center text-sm gap-1">
               <FaInfoCircle />

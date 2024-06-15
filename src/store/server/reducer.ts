@@ -15,6 +15,6 @@ export const serverReducer = {
 
     state.listServer = state.listServer.filter((srv) => action.payload.includes(srv));
 
-    state.server = state.listServer[0] || "metruyencv";
+    state.server = state.listServer[0] || "";
   },
 };
