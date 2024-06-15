@@ -19,7 +19,7 @@ interface Props {
 }
 
 const ExportEBookPopup = ({ close, novelId, server, chapterId }: Props) => {
-  const [selectedExport, setSelectedExport] = useState<string>("epub");
+  const [selectedExport, setSelectedExport] = useState<string>("");
   const [numberChapters, setNumberChapters] = useState<number | "">(1);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -27,7 +27,10 @@ const ExportEBookPopup = ({ close, novelId, server, chapterId }: Props) => {
     queryKey: ["file_export"],
     queryFn: async () => {
       const data: string[] = await ApiGetAllExport();
-
+      if (data.length > 0) {
+        const middlePosition = Math.floor(data.length / 2) - 1 + (data.length % 2);
+        setSelectedExport(data[middlePosition]);
+      }
       return data;
     },
     retry: 1,

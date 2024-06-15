@@ -31,6 +31,10 @@ const ButtonDownload = ({ novelId, file, server, chapterId, numberChapters, clos
 
   const handleDownload = () => {
     if (!checkNumberChaptersIsValid(numberChapters)) return;
+    if (file.length <= 0 || file === "") {
+      toast.error("Hiện không hỗ trợ export ebook");
+      return;
+    }
     close();
     toast.info("Truyện đang được tải");
     window.open(
