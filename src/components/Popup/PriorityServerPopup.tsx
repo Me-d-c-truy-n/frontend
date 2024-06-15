@@ -15,8 +15,8 @@ interface Props {
 
 const PriorityServerPopup = ({ close }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { listServer } = useSelector((state: AppState) => state.server);
   const { isLoading, refetch } = useGetListServer();
+  const listServer = useSelector((state: AppState) => state.server.listServer);
   const [stores, setStores] = useState(listServer);
 
   useEffect(() => {
@@ -27,6 +27,10 @@ const PriorityServerPopup = ({ close }: Props) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    setStores(listServer);
+  }, [listServer]);
 
   const { modalRef, handleClickOutside } = useModal(close);
 

@@ -13,7 +13,6 @@ const useGetListServer = () => {
     queryKey: ["server", location.pathname],
     queryFn: async () => {
       const data: string[] = await ApiGetAllServer();
-
       if (data.length === 0) throw new Error();
       dispatch(updateListServer(data));
 
