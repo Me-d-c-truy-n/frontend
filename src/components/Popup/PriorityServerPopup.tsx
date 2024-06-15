@@ -7,6 +7,7 @@ import ButtonClose from "../Button/ButtonClose";
 import { changeServerIndex } from "../../store/server";
 import { toast } from "react-toastify";
 import { FaInfoCircle } from "react-icons/fa";
+import useGetListServer from "../../hooks/query/useGetListServer";
 
 interface Props {
   close: () => void;
@@ -15,13 +16,16 @@ interface Props {
 const PriorityServerPopup = ({ close }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const { listServer } = useSelector((state: AppState) => state.server);
+  const { isLoading, refetch } = useGetListServer();
   const [stores, setStores] = useState(listServer);
 
   useEffect(() => {
     document.body.style.overflowY = "hidden";
+    refetch();
     return () => {
       document.body.style.overflowY = "scroll";
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { modalRef, handleClickOutside } = useModal(close);
@@ -67,40 +71,44 @@ const PriorityServerPopup = ({ close }: Props) => {
           <ButtonClose close={close} />
         </div>
 
-        <div className="border border-slate-400 p-2 px-3 rounded">
-          <DragDropContext onDragEnd={handleDragDrop}>
-            <div className="md:mt-2 flex gap-1 flex-col text-white md:text-base text-sm mb-1">
-              <Droppable droppableId="ROOT" type="group">
-                {(provided) => (
-                  <div className="flex gap-1 flex-col" {...provided.droppableProps} ref={provided.innerRef}>
-                    {stores.map((srv, index) => (
-                      <Draggable draggableId={srv} key={srv} index={index}>
-                        {(provided) => (
-                          <div
-                            {...provided.dragHandleProps}
-                            {...provided.draggableProps}
-                            ref={provided.innerRef}
-                            className="border border-slate-800 dark:border-slate-50 text-white rounded px-10 py-2 mb-0.5 text-center bg-amber-500 hover:bg-amber-500/90 md:text-lg text-base"
-                          >
-                            {srv}
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </div>
-          </DragDropContext>
-          {stores.length <= 0 && (
-            <div className="text-red-600 font-bold text-center text-xl  mb-2 ">Không có nguồn truyện nào</div>
-          )}
-          <i className="md:text-base w-full flex flex-wrap font-semibold text-sky-500 items-center justify-center text-sm gap-1">
-            <FaInfoCircle />
-            Kéo thả để thay đổi độ ưu tiên
-          </i>
-        </div>
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <div className="border border-slate-400 p-2 px-3 rounded">
+            <DragDropContext onDragEnd={handleDragDrop}>
+              <div className="md:mt-2 flex gap-1 flex-col text-white md:text-base text-sm mb-1">
+                <Droppable droppableId="ROOT" type="group">
+                  {(provided) => (
+                    <div className="flex gap-1 flex-col" {...provided.droppableProps} ref={provided.innerRef}>
+                      {stores.map((srv, index) => (
+                        <Draggable draggableId={srv} key={srv} index={index}>
+                          {(provided) => (
+                            <div
+                              {...provided.dragHandleProps}
+                              {...provided.draggableProps}
+                              ref={provided.innerRef}
+                              className="border border-slate-800 dark:border-slate-50 text-white rounded px-10 py-2 mb-0.5 text-center bg-amber-500 hover:bg-amber-500/90 md:text-lg text-base"
+                            >
+                              {srv}
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </div>
+            </DragDropContext>
+            {stores.length <= 0 && (
+              <div className="text-red-600 font-bold text-center text-xl  mb-2 ">Không có nguồn truyện nào</div>
+            )}
+            <i className="md:text-base w-full flex flex-wrap font-semibold text-sky-500 items-center justify-center text-sm gap-1">
+              <FaInfoCircle />
+              Kéo thả để thay đổi độ ưu tiên
+            </i>
+          </div>
+        )}
 
         <div className="flex mt-5 gap-3 justify-around pb-1">
           <button
