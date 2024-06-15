@@ -53,7 +53,7 @@ const ExportEBookPopup = ({ close, novelId, server, chapterId }: Props) => {
     setErrorMessage("");
   }
 
-  if (isFetching || !listExport || listExport?.length <= 0) return <DownloadFileSkeleton close={close} />;
+  if (isFetching || !listExport) return <DownloadFileSkeleton close={close} />;
 
   return (
     <div
@@ -64,41 +64,50 @@ const ExportEBookPopup = ({ close, novelId, server, chapterId }: Props) => {
       <div className="shadow-2xl p-2 md:py-5 md:px-4 mx-auto border rounded-lg border-amber-600 bg-white dark:bg-black dark:text-white">
         <div className="flex justify-between items-center mb-5">
           <img src={logo} alt="logo" className="w-10" />
-          <h1 className="text-xl font-bold">Tải truyện - {selectedExport}</h1>
+          <h1 className="text-xl font-bold">
+            Tải truyện {selectedExport && "-"} {selectedExport}
+          </h1>
           <ButtonClose close={close} />
         </div>
-        <div className="px-4">
-          <div className="flex gap-3 items-center justify-center flex-wrap">
-            {listExport.map((ep) => (
-              <SelectionExportType
-                key={ep}
-                setValue={() => setSelectedExport(ep)}
-                selectedExport={selectedExport}
-                id={ep}
-              />
-            ))}
+        {listExport.length === 0 && (
+          <div className="px-4">
+            <p className="text-red-600 font-bold text-center text-xl  mb-2 ">Hiện không hỗ trợ nguồn tải truyện nào</p>
           </div>
-          <GroupInputDownload
-            chapterId={chapterId}
-            numberChapters={numberChapters}
-            setNumberChapters={changeNumberOfChapters}
-          />
-          <p
-            className={`text-red-600 text-sm font-semibold ${errorMessage.length <= 0 && "hidden"} flex items-center gap-1`}
-          >
-            <FaInfoCircle />
-            {errorMessage}
-          </p>
-          <ButtonDownload
-            close={close}
-            novelId={novelId}
-            server={server}
-            file={selectedExport}
-            chapterId={chapterId}
-            numberChapters={numberChapters}
-            setErrorMessage={setErrorMessage}
-          />
-        </div>
+        )}
+        {listExport.length > 0 && (
+          <div className="px-4">
+            <div className="flex gap-3 items-center justify-center flex-wrap">
+              {listExport.map((ep) => (
+                <SelectionExportType
+                  key={ep}
+                  setValue={() => setSelectedExport(ep)}
+                  selectedExport={selectedExport}
+                  id={ep}
+                />
+              ))}
+            </div>
+            <GroupInputDownload
+              chapterId={chapterId}
+              numberChapters={numberChapters}
+              setNumberChapters={changeNumberOfChapters}
+            />
+            <p
+              className={`text-red-600 text-sm font-semibold ${errorMessage.length <= 0 && "hidden"} flex items-center gap-1`}
+            >
+              <FaInfoCircle />
+              {errorMessage}
+            </p>
+            <ButtonDownload
+              close={close}
+              novelId={novelId}
+              server={server}
+              file={selectedExport}
+              chapterId={chapterId}
+              numberChapters={numberChapters}
+              setErrorMessage={setErrorMessage}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
