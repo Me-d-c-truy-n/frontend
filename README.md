@@ -25,7 +25,7 @@ Software Design
 
 Front-end: https://me-d-c-truy-n.github.io/frontend/
 
-Back-end: 
+Back-end: http://demo-novel-api.us-west-2.elasticbeanstalk.com/
 
 ## Installation
 
