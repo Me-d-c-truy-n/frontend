@@ -37,7 +37,7 @@ const FilterPage = () => {
               <EmptyResult title="KHÔNG TÌM THẤY KẾT QUẢ NÀO" />
             ) : (
               <>
-                <div className="grid grid-cols-1 md:gap-5 gap-3 lg:grid-cols-2 mt-2">
+                <div className="grid grid-cols-1 md:gap-5 gap-3 lg:grid-cols-2 mt-2 2xl:grid-cols-3">
                   {novels.map((novel, idx) => (
                     <BoxNovelAuthor key={idx} novel={novel} />
                   ))}

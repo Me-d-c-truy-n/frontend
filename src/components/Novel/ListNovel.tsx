@@ -26,7 +26,7 @@ const ListNovel = () => {
   return (
     <div id="pagination-list-novel">
       <TitleTab name="Danh Sách Truyện" />
-      <div className="grid grid-cols-1 md:gap-5 gap-3 lg:grid-cols-2">
+      <div className="grid grid-cols-1 md:gap-5 gap-3 lg:grid-cols-2 2xl:grid-cols-3">
         {novels.map((novel, idx) => (
           <BoxNovel key={idx} novel={novel} />
         ))}
