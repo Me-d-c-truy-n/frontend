@@ -8,7 +8,6 @@ import AuthorPage from "../pages/AuthorPage";
 import FilterPage from "../pages/FilterPage";
 import Notfound from "../pages/error/Notfound";
 import Bookcase from "../pages/Bookcase";
-import CheckNewServer from "./CheckNewServer";
 import TermOfService from "../pages/Information/TermOfService";
 import PrivacyPolicy from "../pages/Information/PrivacyPolicy";
 import AboutLicense from "../pages/Information/AboutLicense";
@@ -19,9 +18,7 @@ const router = createBrowserRouter(
     {
       element: (
         <ScrollToTop>
-          <CheckNewServer>
-            <Outlet />
-          </CheckNewServer>
+          <Outlet />
         </ScrollToTop>
       ),
       children: [
